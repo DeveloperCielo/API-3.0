@@ -81,9 +81,7 @@ A integração é realizada através de serviços disponibilizados como Web Serv
 * **PUT** - O método HTTP PUT é utilizado para atualização de um recurso já existente. Por exemplo, captura ou cancelamento de uma transação previamente autorizada.
 * **GET** - O método HTTP GET é utilizado para consultas de recursos já existentes. Por exemplo, consulta de transações.
 
-# Integração
-
-## Pagamentos com Cartão de Crédito
+# Pagamentos com Cartão de Crédito
 
 Para que você possa disfrutar de todos os recursos disponíveis em nossa API, é importante que antes você conheça os conceitos envolvidos no processamento de uma transação de cartão de crédito.
 
@@ -1661,6 +1659,15 @@ curl
 --verbose
 ```
 
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. | Guid | 36 | Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. | Texto | 40 | Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. | Guid | 36 |Sim|
+|`PaymentId`|Campo Identificador do Pedido. | Guid | 36 | Sim|
+|`Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 | Não|
+|`SeviceTaxAmount`|Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização. | Número | 15 | Não|
+
 ### Resposta
 
 ```json
@@ -1708,3 +1715,86 @@ curl
         }
     ]
 }
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`ReasonCode`|Código da razão da Operação. | Byte | --- | Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razação da Operação. | Texto | 32 | Successful |
+|`Status`|Status da Transação. | Byte | --- | 2|
+|`ProviderReturnCode`|Código de retorno da adquirente. | Texto | 32 | Texto alfanumérico |
+|`ProviderReturnMessage`|Mensagem de retorno da adquirente. | Texto | 512 | Texto alfanumérico |
+
+## Cancelando uma venda
+
+Para cancelar uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
+
+### Requisição
+
+```json
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.com.br/1/sales/{PaymentId}/void?amount=xxx"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido.|Guid |36 |Sim|
+|`PaymentId`|Campo Identificador do Pedido. |Guid |36 |Sim|
+|`Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Não|
+
+### Resposta
+
+```json
+{
+    "Status": 10,
+    "ReasonCode": 0,
+    "ReasonMessage": "Successful",
+    "ProviderReturnCode": "9",
+    "ProviderReturnMessage": "Operation Successful",
+    "Links": [
+        {
+            "Method": "GET",
+            "Rel": "self",
+            "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+        }
+    ]
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "Status": 10,
+    "ReasonCode": 0,
+    "ReasonMessage": "Successful",
+    "ProviderReturnCode": "9",
+    "ProviderReturnMessage": "Operation Successful",
+    "Links": [
+        {
+            "Method": "GET",
+            "Rel": "self",
+            "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+        }
+    ]
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`ReasonCode`|Código da razão da Operação. |Byte |--- |Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razação da Operação. |Texto |32 |Successful |
+|`Status`|Status da Transação. |Byte |--- |10|
+|`ProviderReturnCode`|Código de retorno da Adquirência. |Texto |32 |Texto alfanumérico 
+|`ProviderReturnMessage`|Mensagem de retorno da Adquirência. |Texto |512 |Texto alfanumérico 

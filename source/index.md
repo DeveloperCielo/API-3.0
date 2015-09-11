@@ -1963,3 +1963,135 @@ curl
 |`ReasonMessage`|Mensagem da razação da Operação. |Texto |32 |Successful |
 |`Status`|Status da Transação. |Byte |--- |0|
 |`ProviderReturnCode`|Código de retorno da Adquirência. |Texto |32 |Texto alfanumérico |
+
+# Pagamentos com Transferência Eletronica
+
+## Criando uma venda simplificada
+
+Para criar uma venda de transferência eletronica, é necessário fazer um POST para o recurso Payment conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.
+
+### Requisição
+
+```json
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"EletronicTransfer",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "ReturnUrl":"http://www.cielo.com.br"
+    }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"EletronicTransfer",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "ReturnUrl":"http://www.cielo.com.br"
+    }
+}
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
+|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
+|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payments.Provider`|Nome do Meio de Pagamento.|Texto |15 |Sim|
+
+### Resposta
+
+```json
+{
+    "MerchantOrderId": "2014111706",
+    "Customer": {
+        "Name": "Comprador Teste",
+    },
+    "Payment": {
+        "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
+        "PaymentId": "765548b6-c4b8-4e2c-b9b9-6458dbd5da0a",
+        "Type": "EletronicTransfer",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 0,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014111706",
+    "Customer": {
+        "Name": "Comprador Teste",
+    },
+    "Payment": {
+        "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
+        "PaymentId": "765548b6-c4b8-4e2c-b9b9-6458dbd5da0a",
+        "Type": "EletronicTransfer",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 0,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`PaymentId`|Campo Identificador do Pedido. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+|`Url`|URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Transferência Eletronica. |Texto |256 |Url de Autenticação |
+|`ReasonCode`|Código da razão da Operação. |Byte |--- |Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razação da Operação. |Texto |32 |Successful |
+|`Status`|Status da Transação. |Byte |--- |0|

@@ -1798,3 +1798,168 @@ curl
 |`Status`|Status da Transação. |Byte |--- |10|
 |`ProviderReturnCode`|Código de retorno da Adquirência. |Texto |32 |Texto alfanumérico 
 |`ProviderReturnMessage`|Mensagem de retorno da Adquirência. |Texto |512 |Texto alfanumérico 
+
+# Pagamentos com Cartão de Débito
+
+## Criando uma venda simplificada
+
+Para criar uma venda que utilizará cartão de débito, é necessário fazer um POST para o recurso Payment conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.
+
+### Requisição
+
+```json
+{  
+   "MerchantOrderId":"2014121201",
+   "Customer":{  
+      "Name":"Comprador Teste"
+   },
+   "Payment":{  
+     "Type":"DebitCard",
+     "Amount":15700,
+     "ReturnUrl":"http://www.cielo.com.br",
+     "DebitCard":{  
+         "CardNumber":"4551870000000183",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"12/2021",
+         "SecurityCode":"123",
+         "Brand":"Visa"
+     }
+   }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+   "MerchantOrderId":"2014121201",
+   "Customer":{  
+      "Name":"Comprador Teste"
+   },
+   "Payment":{  
+     "Type":"DebitCard",
+     "Amount":15700,
+     "ReturnUrl":"http://www.cielo.com.br",
+     "DebitCard":{  
+         "CardNumber":"4551870000000183",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"12/2021",
+         "SecurityCode":"123",
+         "Brand":"Visa"
+     }
+   }
+}
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
+|`Payments.Type`|Tipo do Meio de Pagamento.|Texto |100 |Sim|
+|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payments.ReturnUrl`|Url de retorno do lojista.|Texto |1024 |Sim|
+|`Payments.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Sim|
+|`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
+|`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
+|`CreditCard.Brand`|Bandeira do cartão. |Texto |10 |Sim|
+
+### Resposta
+
+```json
+{
+    "MerchantOrderId": "2014121201",
+    "Customer": {
+        "Name": "Paulo Henrique"
+    },
+    "Payment": {
+        "DebitCard": {
+            "CardNumber": "453211******3703",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2015",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "AuthenticationUrl": "https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?{PaymentId}",
+        "AcquirerTransactionId": "1006993069207A31A001",
+        "PaymentId": "0309f44f-fe5a-4de1-ba39-984f456130bd",
+        "Type": "DebitCard",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "ExtraDataCollection": [],
+        "ReasonCode": 9,
+        "ReasonMessage": "Waiting",
+        "Status": 0,
+        "ProviderReturnCode": "0",
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014121201",
+    "Customer": {
+        "Name": "Paulo Henrique"
+    },
+    "Payment": {
+        "DebitCard": {
+            "CardNumber": "453211******3703",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2015",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "AuthenticationUrl": "https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?{PaymentId}",
+        "AcquirerTransactionId": "1006993069207A31A001",
+        "PaymentId": "0309f44f-fe5a-4de1-ba39-984f456130bd",
+        "Type": "DebitCard",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "ExtraDataCollection": [],
+        "ReasonCode": 9,
+        "ReasonMessage": "Waiting",
+        "Status": 0,
+        "ProviderReturnCode": "0",
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`AuthenticationUrl`|URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Débito. |Texto |56 |Url de Autenticação |
+|`AcquirerTransactionId`|Id da transação na adquirente. |Texto |40 |Texto alfanumérico |
+|`PaymentId`|Campo Identificador do Pedido. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+|`ReturnUrl`|Url de retorno do lojista. URL para onde o lojista vai ser redirecionado no final do fluxo.|Texto |1024 |http://www.urllogista.com.br |
+|`ReasonCode`|Código da razão da Operação. |Byte |--- |Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razação da Operação. |Texto |32 |Successful |
+|`Status`|Status da Transação. |Byte |--- |0|
+|`ProviderReturnCode`|Código de retorno da Adquirência. |Texto |32 |Texto alfanumérico |

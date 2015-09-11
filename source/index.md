@@ -2095,3 +2095,329 @@ curl
 |`ReasonCode`|Código da razão da Operação. |Byte |--- |Número de 1 a 99|
 |`ReasonMessage`|Mensagem da razação da Operação. |Texto |32 |Successful |
 |`Status`|Status da Transação. |Byte |--- |0|
+
+# Pagamentos com Boleto
+
+## Criando uma venda simplificada
+
+Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.
+
+### Requisição
+
+```json
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco"
+    }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco"
+    }
+}
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
+|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
+|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payments.Provider`|Nome do Meio de Pagamento.|Texto |15 |Sim|
+
+### Resposta
+
+```json
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "ExpirationDate": "2014-12-25",
+        "Url": "https://sandbox.cieloecommerce.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Number": "1000000012-8",
+        "BarCodeNumber": "00091628800000157000494250100000001200656560",
+        "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
+        "Address": "Av. Marechal Câmara, 160",
+        "PaymentId": "8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "ExpirationDate": "2014-12-25",
+        "Url": "https://sandbox.cieloecommerce.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Number": "1000000012-8",
+        "BarCodeNumber": "00091628800000157000494250100000001200656560",
+        "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
+        "Address": "Av. Marechal Câmara, 160",
+        "PaymentId": "8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`PaymentId`|Campo Identificador do Pedido. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+|`ExpirationDate`|Data de expiração. |Texto |10 |2014-12-25 |
+|`Url`|Url do Boleto gerado. |string |256 |https://sandbox.cieloecommerce.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d |
+|`Number`|"NossoNumero" gerado. |Texto|50 |1000000012-8 |
+|`BarCodeNumber`|Representação numérica do código de barras. |Texto |44 |00091628800000157000494250100000001200656560 |
+|`DigitableLine`|Linha digitável. |Texto |256 |00090.49420 50100.000004 12006.565605 1 62880000015700 |
+|`Address`|Endereço do Loja. |Texto |256 |Av. Teste, 160 |
+|`ReasonCode`|Código da razão da Operação. |Byte |--- |Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razação da Operação. |Texto |32 |Successful |
+|`Status`|Status da Transação. |Byte |--- |1|
+
+## Criando uma venda completa de Boleto
+
+Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.
+
+```json
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "Address": "Rua Teste",
+        "BoletoNumber": "123",
+        "Assignor": "Empresa Teste",
+        "Demonstrative": "Desmonstrative Teste",
+        "ExpirationDate": "2015-01-05",
+        "Identification": "11884926754",
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia."
+    }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "Address": "Rua Teste",
+        "BoletoNumber": "123",
+        "Assignor": "Empresa Teste",
+        "Demonstrative": "Desmonstrative Teste",
+        "ExpirationDate": "2015-01-05",
+        "Identification": "11884926754",
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia."
+    }
+}
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
+|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
+|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payments.Provider`|Nome do Meio de Pagamento.|Texto |15 |Sim|
+|`Payments.Adress`|Endereço do Cedente.|Texto |255|Não|
+|`Payments.BoletoNumber`|Número do Boleto ("NossoNumero").|Texto |50 |Não|
+|`Payments.Assignor`|Nome do Cedente.|Texto |200|Não|
+|`Payments.Demonstrative`|Texto de Demonstrativo.|Texto |450|Não|
+|`Payments.ExpirationDate`|Data de expiração do Boleto.|Date |10 |Não|
+|`Payments.Identification`|Documento de identificação do Cedente.|Texto |14 |Não|
+|`Payments.Instructions`|Instruções do Boleto.|Texto |450|Não|
+
+### Resposta
+
+```json
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia.",
+        "ExpirationDate": "2015-01-05",
+        "Url": "https://sandbox.cieloecommerce.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Number": "123-2",
+        "BarCodeNumber": "00096629900000157000494250000000012300656560",
+        "DigitableLine": "00090.49420 50000.000013 23006.565602 6 62990000015700",
+        "Assignor": "Empresa Teste",
+        "Address": "Rua Teste",
+        "Identification": "11884926754",
+        "PaymentId": "a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia.",
+        "ExpirationDate": "2015-01-05",
+        "Url": "https://sandbox.cieloecommerce.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Number": "123-2",
+        "BarCodeNumber": "00096629900000157000494250000000012300656560",
+        "DigitableLine": "00090.49420 50000.000013 23006.565602 6 62990000015700",
+        "Assignor": "Empresa Teste",
+        "Address": "Rua Teste",
+        "Identification": "11884926754",
+        "PaymentId": "a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`PaymentId`|Campo Identificador do Pedido. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+|`Instructions`|Instruções do Boleto. |Texto |450 |Ex: Aceitar somente até a data de vencimento, após essa data juros de 1% dia. |
+|`ExpirationDate`|Data de expiração. |Texto |10 |2014-12-25 |
+|`Url`|Url do Boleto gerado. |string |256 |Ex:https://sandbox.cieloecommerce.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d |
+|`Number`|"NossoNumero" gerado. |Texto|50 |Ex: 1000000012-8 |
+|`BarCodeNumber`|Representação numérica do código de barras. |Texto |44 |Ex: 00091628800000157000494250100000001200656560 |
+|`DigitableLine`|Linha digitável. |Texto |256 |Ex: 00090.49420 50100.000004 12006.565605 1 62880000015700 |
+|`Assignor`|Nome do Cedente. |Texto |256 |Ex: Loja Teste |
+|`Address`|Endereço do Cedente. |Texto |256 |Ex: Av. Teste, 160 |
+|`Identification`|Documento de identificação do Cedente. |Texto |14 |CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -) |
+|`ReasonCode`|Código da razão da Operação. |Byte |--- |Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razão da Operação. |Texto |32 |Successful |
+|`Status`|Status da Transação. |Byte |--- |1|

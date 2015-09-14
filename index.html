@@ -7884,90 +7884,345 @@
 
 <h2 id="códigos-de-erros">Códigos de Erros</h2>
 
-<p>|Código|Mensagem|
-|100|RequestId is required|
-|101|MerchantId is required|
-|102|Payment Type is required|
-|103|Payment Type can only contain letters|
-|104|Customer Identity is required|
-|105|Customer Name is required|
-|106|Transaction ID is required|
-|107|You must provide CreditCard Number, Token or Alias|
-|108|Amount must be greater or equal to zero|
-|109|Payment Currency is required|
-|110|Invalid Payment Currency|
-|111|Payment Country is required|
-|112|Invalid Payment Country|
-|113|Invalid Payment Code|
-|114|The provided MerchantId is not in correct format|
-|115|The provided MerchantId was not found|
-|117|Credit Card Holder is required|
-|118|Credit Card Number is required|
-|119|At least one Payment is required|
-|120|Request IP not allowed. Check your IP White List|
-|121|Customer is required|
-|122|MerchantOrderId is required|
-|123|Installments must be greater or equal to one|
-|124|Credit Card is Required|
-|125|Credit Card Expiration Date is required|
-|126|Credit Card Expiration Date is invalid|
-|127|You must provide CreditCard Number, Token or Alias|
-|128|Card Number length exceeded|
-|129|Affiliation not found|
-|130|Could not get Credit Card|
-|131|MerchantKey is required|
-|132|MerchantKey is invalid|
-|133|Provider is not supported for this Payment Type|
-|134|FingerPrint length exceeded|
-|135|MerchantDefinedFieldValue length exceeded|
-|136|ItemDataName length exceeded|
-|137|ItemDataSKU length exceeded|
-|138|PassengerDataName length exceeded|
-|139|PassengerDataStatus length exceeded|
-|140|PassengerDataEmail length exceeded|
-|141|PassengerDataPhone length exceeded|
-|142|TravelDataRoute length exceeded|
-|143|TravelDataJourneyType length exceeded|
-|144|TravelLegDataDestination length exceeded|
-|145|TravelLegDataOrigin length exceeded|
-|146|SecurityCode length exceeded|
-|147|Address Street length exceeded|
-|148|Address Number length exceeded|
-|149|Address Complement length exceeded|
-|150|Address ZipCode length exceeded|
-|151|Address City length exceeded|
-|152|Address State length exceeded|
-|153|Address Country length exceeded|
-|154|Address District length exceeded|
-|155|Customer Name length exceeded|
-|156|Customer Identity length exceeded|
-|157|Customer IdentityType length exceeded|
-|158|Customer Email length exceeded|
-|159|ExtraData Name length exceeded|
-|160|ExtraData Value length exceeded|
-|161|Boleto Instructions length exceeded|
-|162|Boleto Demostrative length exceeded|
-|163|Return Url is required|
-|164|Return Url is invalid|
-|166|AuthorizeNow is required|
-|167|Antifraud not configured|
-|168|Recurrent Payment not found|
-|169|Recurrent Payment is not active|
-|300|MerchantId was not found|
-|301|Request IP is not allowed|
-|302|Sent MerchantOrderId is duplicated|
-|303|Sent OrderId does not exist|
-|304|Customer Identity is required|
-|306|Merchant is blocked|
-|307|Transaction not found|
-|308|Transaction not available to capture|
-|309|Transaction not available to void|
-|310|Payment method doest not support this operation|
-|311|Refund is not enabled for this merchant|
-|312|Transaction not available to refund|
-|313|Recurrent Payment not found|
-|314|Invalid Integration|
-|315|Cannot change NextRecurrency with pending payment|</p>
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Mensagem</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>100</td>
+<td>RequestId is required</td>
+</tr>
+<tr>
+<td>101</td>
+<td>MerchantId is required</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Payment Type is required</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Payment Type can only contain letters</td>
+</tr>
+<tr>
+<td>104</td>
+<td>Customer Identity is required</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Customer Name is required</td>
+</tr>
+<tr>
+<td>106</td>
+<td>Transaction ID is required</td>
+</tr>
+<tr>
+<td>107</td>
+<td>You must provide CreditCard Number, Token or Alias</td>
+</tr>
+<tr>
+<td>108</td>
+<td>Amount must be greater or equal to zero</td>
+</tr>
+<tr>
+<td>109</td>
+<td>Payment Currency is required</td>
+</tr>
+<tr>
+<td>110</td>
+<td>Invalid Payment Currency</td>
+</tr>
+<tr>
+<td>111</td>
+<td>Payment Country is required</td>
+</tr>
+<tr>
+<td>112</td>
+<td>Invalid Payment Country</td>
+</tr>
+<tr>
+<td>113</td>
+<td>Invalid Payment Code</td>
+</tr>
+<tr>
+<td>114</td>
+<td>The provided MerchantId is not in correct format</td>
+</tr>
+<tr>
+<td>115</td>
+<td>The provided MerchantId was not found</td>
+</tr>
+<tr>
+<td>117</td>
+<td>Credit Card Holder is required</td>
+</tr>
+<tr>
+<td>118</td>
+<td>Credit Card Number is required</td>
+</tr>
+<tr>
+<td>119</td>
+<td>At least one Payment is required</td>
+</tr>
+<tr>
+<td>120</td>
+<td>Request IP not allowed. Check your IP White List</td>
+</tr>
+<tr>
+<td>121</td>
+<td>Customer is required</td>
+</tr>
+<tr>
+<td>122</td>
+<td>MerchantOrderId is required</td>
+</tr>
+<tr>
+<td>123</td>
+<td>Installments must be greater or equal to one</td>
+</tr>
+<tr>
+<td>124</td>
+<td>Credit Card is Required</td>
+</tr>
+<tr>
+<td>125</td>
+<td>Credit Card Expiration Date is required</td>
+</tr>
+<tr>
+<td>126</td>
+<td>Credit Card Expiration Date is invalid</td>
+</tr>
+<tr>
+<td>127</td>
+<td>You must provide CreditCard Number, Token or Alias</td>
+</tr>
+<tr>
+<td>128</td>
+<td>Card Number length exceeded</td>
+</tr>
+<tr>
+<td>129</td>
+<td>Affiliation not found</td>
+</tr>
+<tr>
+<td>130</td>
+<td>Could not get Credit Card</td>
+</tr>
+<tr>
+<td>131</td>
+<td>MerchantKey is required</td>
+</tr>
+<tr>
+<td>132</td>
+<td>MerchantKey is invalid</td>
+</tr>
+<tr>
+<td>133</td>
+<td>Provider is not supported for this Payment Type</td>
+</tr>
+<tr>
+<td>134</td>
+<td>FingerPrint length exceeded</td>
+</tr>
+<tr>
+<td>135</td>
+<td>MerchantDefinedFieldValue length exceeded</td>
+</tr>
+<tr>
+<td>136</td>
+<td>ItemDataName length exceeded</td>
+</tr>
+<tr>
+<td>137</td>
+<td>ItemDataSKU length exceeded</td>
+</tr>
+<tr>
+<td>138</td>
+<td>PassengerDataName length exceeded</td>
+</tr>
+<tr>
+<td>139</td>
+<td>PassengerDataStatus length exceeded</td>
+</tr>
+<tr>
+<td>140</td>
+<td>PassengerDataEmail length exceeded</td>
+</tr>
+<tr>
+<td>141</td>
+<td>PassengerDataPhone length exceeded</td>
+</tr>
+<tr>
+<td>142</td>
+<td>TravelDataRoute length exceeded</td>
+</tr>
+<tr>
+<td>143</td>
+<td>TravelDataJourneyType length exceeded</td>
+</tr>
+<tr>
+<td>144</td>
+<td>TravelLegDataDestination length exceeded</td>
+</tr>
+<tr>
+<td>145</td>
+<td>TravelLegDataOrigin length exceeded</td>
+</tr>
+<tr>
+<td>146</td>
+<td>SecurityCode length exceeded</td>
+</tr>
+<tr>
+<td>147</td>
+<td>Address Street length exceeded</td>
+</tr>
+<tr>
+<td>148</td>
+<td>Address Number length exceeded</td>
+</tr>
+<tr>
+<td>149</td>
+<td>Address Complement length exceeded</td>
+</tr>
+<tr>
+<td>150</td>
+<td>Address ZipCode length exceeded</td>
+</tr>
+<tr>
+<td>151</td>
+<td>Address City length exceeded</td>
+</tr>
+<tr>
+<td>152</td>
+<td>Address State length exceeded</td>
+</tr>
+<tr>
+<td>153</td>
+<td>Address Country length exceeded</td>
+</tr>
+<tr>
+<td>154</td>
+<td>Address District length exceeded</td>
+</tr>
+<tr>
+<td>155</td>
+<td>Customer Name length exceeded</td>
+</tr>
+<tr>
+<td>156</td>
+<td>Customer Identity length exceeded</td>
+</tr>
+<tr>
+<td>157</td>
+<td>Customer IdentityType length exceeded</td>
+</tr>
+<tr>
+<td>158</td>
+<td>Customer Email length exceeded</td>
+</tr>
+<tr>
+<td>159</td>
+<td>ExtraData Name length exceeded</td>
+</tr>
+<tr>
+<td>160</td>
+<td>ExtraData Value length exceeded</td>
+</tr>
+<tr>
+<td>161</td>
+<td>Boleto Instructions length exceeded</td>
+</tr>
+<tr>
+<td>162</td>
+<td>Boleto Demostrative length exceeded</td>
+</tr>
+<tr>
+<td>163</td>
+<td>Return Url is required</td>
+</tr>
+<tr>
+<td>164</td>
+<td>Return Url is invalid</td>
+</tr>
+<tr>
+<td>166</td>
+<td>AuthorizeNow is required</td>
+</tr>
+<tr>
+<td>167</td>
+<td>Antifraud not configured</td>
+</tr>
+<tr>
+<td>168</td>
+<td>Recurrent Payment not found</td>
+</tr>
+<tr>
+<td>169</td>
+<td>Recurrent Payment is not active</td>
+</tr>
+<tr>
+<td>300</td>
+<td>MerchantId was not found</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Request IP is not allowed</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Sent MerchantOrderId is duplicated</td>
+</tr>
+<tr>
+<td>303</td>
+<td>Sent OrderId does not exist</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Customer Identity is required</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Merchant is blocked</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Transaction not found</td>
+</tr>
+<tr>
+<td>308</td>
+<td>Transaction not available to capture</td>
+</tr>
+<tr>
+<td>309</td>
+<td>Transaction not available to void</td>
+</tr>
+<tr>
+<td>310</td>
+<td>Payment method doest not support this operation</td>
+</tr>
+<tr>
+<td>311</td>
+<td>Refund is not enabled for this merchant</td>
+</tr>
+<tr>
+<td>312</td>
+<td>Transaction not available to refund</td>
+</tr>
+<tr>
+<td>313</td>
+<td>Recurrent Payment not found</td>
+</tr>
+<tr>
+<td>314</td>
+<td>Invalid Integration</td>
+</tr>
+<tr>
+<td>315</td>
+<td>Cannot change NextRecurrency with pending payment</td>
+</tr>
+</tbody></table>
 
             </div>
             <div class="dark-box">

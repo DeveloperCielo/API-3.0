@@ -596,7 +596,6 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    @include text-shadow(0 1px 0 lighten($aside-notice-bg, 15%));
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
@@ -611,7 +610,44 @@ html, body {
       background-color: $aside-success-bg;
       @include text-shadow(0 1px 0 lighten($aside-success-bg, 15%));
     }
+
+	&.request {
+		padding: 1em 0;
+		background-color: transparent;
+		font-weight: bold;
+		padding-left: 28px;
+		text-shadow: none;
+		overflow: hidden;
+		position: relative;
+		height: 72px;
+
+		.method {
+			padding: 1em;
+			border-radius: 4px 0px 0px 4px;
+			color: #FFFFFF;
+			width: 60px;
+			text-align: center;
+			vertical-align: middle;
+			position: absolute;
+			left: 28px
+		}
+
+		.endpoint {
+			background-color: #EAEAEA;
+			border-radius: 0px 4px 4px 0px;
+			padding: 1em;
+			vertical-align: middle;
+			position: absolute;
+			left: 113px;
+		}
+	}
   }
+
+.method.post { background: #10a54a;}
+.method.put { background: #c5862b;}
+.method.get { background: #0f6ab4;}
+
+aside.request::after { clear: both; content: ""; display: block;}
 
   aside:before {
     vertical-align: middle;

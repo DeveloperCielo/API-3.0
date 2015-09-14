@@ -81,6 +81,17 @@ A integração é realizada através de serviços disponibilizados como Web Serv
 * **PUT** - O método HTTP PUT é utilizado para atualização de um recurso já existente. Por exemplo, captura ou cancelamento de uma transação previamente autorizada.
 * **GET** - O método HTTP GET é utilizado para consultas de recursos já existentes. Por exemplo, consulta de transações.
 
+## Sandbox
+
+Para facilitar os testes durante a integração, a Cielo oferece um ambiente Sandbox que é composto por duas áreas:
+
+1. Cadastro de conta de testes
+2. Endpoints para requisição
+    * **Criação**/**Alteração** de transações: https://sandbox.cieloecommerce.cielo.com.br/
+    * **Consulta** de transações: https://apiquerysandbox.cieloecommerce.cielo.com.br/
+
+Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o [Cadastro do Sandbox](https://cadastrosandbox.cieloecommerce.cielo.com.br/) e criar uma conta de testes. Ao fim do cadastro você receberá um `MerchantId` e um `MerchantKey`, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.
+
 # Pagamentos com Cartão de Crédito
 
 Para que você possa disfrutar de todos os recursos disponíveis em nossa API, é importante que antes você conheça os conceitos envolvidos no processamento de uma transação de cartão de crédito.
@@ -210,7 +221,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
@@ -267,7 +278,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
@@ -514,7 +525,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
             {
                 "Method": "PUT",
@@ -589,7 +600,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
             {
                 "Method": "PUT",
@@ -743,7 +754,7 @@ curl
 			{
 				"Method":"GET",
 				"Rel":"self",
-				"Href":"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{Paymentid}"
+				"Href":"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{Paymentid}"
 			}
 		]
 	}
@@ -793,7 +804,7 @@ curl
 			{
 				"Method":"GET",
 				"Rel":"self",
-				"Href":"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{Paymentid}"
+				"Href":"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{Paymentid}"
 			}
 		]
 	}
@@ -1257,7 +1268,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
@@ -1414,7 +1425,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
@@ -1565,7 +1576,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
@@ -1619,7 +1630,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
@@ -1693,7 +1704,7 @@ curl
         {
             "Method": "GET",
             "Rel": "self",
-            "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
         },
         {
             "Method": "PUT",
@@ -1718,7 +1729,7 @@ curl
         {
             "Method": "GET",
             "Rel": "self",
-            "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
         },
         {
             "Method": "PUT",
@@ -1779,7 +1790,7 @@ curl
         {
             "Method": "GET",
             "Rel": "self",
-            "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
         }
     ]
 }
@@ -1799,7 +1810,7 @@ curl
         {
             "Method": "GET",
             "Rel": "self",
-            "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+            "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
         }
     ]
 }
@@ -1922,7 +1933,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -1962,7 +1973,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -2067,7 +2078,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -2099,7 +2110,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -2206,7 +2217,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -2245,7 +2256,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -2380,7 +2391,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -2423,7 +2434,7 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             }
         ]
     }
@@ -2590,7 +2601,7 @@ curl
             "Link": {
                 "Method": "GET",
                 "Rel": "recurrentPayment",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
             },
             "AuthorizeNow": true
         },
@@ -2598,17 +2609,17 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -2664,7 +2675,7 @@ curl
             "Link": {
                 "Method": "GET",
                 "Rel": "recurrentPayment",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
             },
             "AuthorizeNow": true
         },
@@ -2672,17 +2683,17 @@ curl
             {
                 "Method": "GET",
                 "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
             },
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -2843,7 +2854,7 @@ curl
             "Link": {
                 "Method": "GET",
                 "Rel": "recurrentPayment",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"
             },
             "AuthorizeNow": false
         }
@@ -2893,7 +2904,7 @@ curl
             "Link": {
                 "Method": "GET",
                 "Rel": "recurrentPayment",
-                "Href": "https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{PaymentId}"
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"
             },
             "AuthorizeNow": false
         }
@@ -3413,3 +3424,722 @@ HTTP Status 200
 |400|Bad Request|
 |404|Resource Not Found|
 |500|Internal Server Error|
+
+# Consultando Vendas
+
+## Consultando uma venda
+
+Para consultar uma venda de cartão de crédito, é necessário fazer um GET para o recurso Payment conforme o exemplo.
+
+### Requisição
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales/{PaymentId}</span></aside>
+
+```shell
+curl
+--request GET "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`PaymentId`|Numero de identificação do Pagamento. |Texto |36 |Sim|
+
+### Resposta
+
+```json
+{
+    "MerchantOrderId": "2014111706",
+    "Customer": {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "CreditCard": {
+            "CardNumber": "455187******0183",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2021",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "674532",
+        "AuthorizationCode": "123456",
+        "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
+        "Type": "CreditCard",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014111706",
+    "Customer": {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "CreditCard": {
+            "CardNumber": "455187******0183",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2021",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "674532",
+        "AuthorizationCode": "123456",
+        "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
+        "Type": "CreditCard",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`ProofOfSale`|Número do Comprovante de Venda.|Texto|20|Texto alfanumérico|
+|`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
+|`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`ReasonCode`|Código da razão da Operação.|Byte|---|Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razão da Operação.|Texto|32|Successful|
+|`Status`|Status da Transação.|Byte|---|2|
+|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Payments.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
+|`Payments.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
+|`Payments.Provider`|Texto|15|Sim|Nome do Meio de Pagamento.|
+|`Payments.Installments`|Número|2|Sim|Número de Parcelas.|
+|`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
+|`CreditCard.Holder`|Texto|25|Sim|Nome do Comprador impresso no cartão.|
+|`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
+|`CreditCard.SecurityCode`|Texto|4|Sim|Código de segurança impresso no verso do cartão.|
+|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Mastercard / Amex / Elo / Auria / JCB / Diners / Discover).|
+
+## Consultando uma venda pelo identificador da loja
+
+Não é possível consultar diretamente uma pagamento pelo identificador enviado pela loja (MerchantOrderId), mas é possível obter todos os PaymentIds associados ao identificador.
+
+Para consultar uma venda pelo identificador da loja, é necessário fazer um GET para o recuso sales conforme o exemplo.
+
+### Requisição
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales?merchantOrderId={merchantOrderId}</span></aside>
+
+```shell
+curls
+--request GET " https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales?merchantOrderId={merchantOrderId}"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`MerchantOrderId`|Campo Identificador do Pedido na Loja. |Texto |36 |Sim|
+
+### Resposta
+
+```json
+{
+    "ReasonCode": 0,
+    "ReasonMessage": "Successful",
+    "Payments": [
+        {
+            "PaymentId": "5fb4d606-bb63-4423-a683-c966e15399e8",
+            "ReceveidDate": "2015-04-06T10:13:39.42"
+        },
+        {
+            "PaymentId": "6c1d45c3-a95f-49c1-a626-1e9373feecc2",
+            "ReceveidDate": "2014-12-19T20:23:28.847"
+        }
+    ]
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "ReasonCode": 0,
+    "ReasonMessage": "Successful",
+    "Payments": [
+        {
+            "PaymentId": "5fb4d606-bb63-4423-a683-c966e15399e8",
+            "ReceveidDate": "2015-04-06T10:13:39.42"
+        },
+        {
+            "PaymentId": "6c1d45c3-a95f-49c1-a626-1e9373feecc2",
+            "ReceveidDate": "2014-12-19T20:23:28.847"
+        }
+    ]
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`ReasonCode`|Código da razão da Operação.|Byte|---|Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razão da Operação.|Texto|32|Successful|
+
+## Consultando uma venda com Analise de Fraude
+
+Para consultar uma venda de cartão de crédito com antifraud, é necessário fazer um GET para o recurso Payment conforme o exemplo.
+
+### Requisição
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales/{PaymentId}</span></aside>
+
+```shell
+curl
+--request GET "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`PaymentId`|Numero de identificação do Pagamento. |Texto |36 |Sim|
+
+### Resposta
+
+```json
+{
+    "OrderId": "f381c0c4-2bf9-4de1-91e1-e9e1f11d0854",
+    "MerchantOrderId": "201411173454307",
+    "Customer": {
+        "Name": "Comprador Teste",
+        "Email": "compradorteste@live.com",
+        "Birthdate": "1991-01-02",
+        "Address": {
+            "Street": "Rua Júpter",
+            "Number": "174",
+            "Complement": "AP 201",
+            "ZipCode": "21241140",
+            "City": "Rio de Janeiro",
+            "State": "RJ",
+            "Country": "BRA"
+        }
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "CreditCard": {
+            "CardNumber": "402400******2931",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2015",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "500000",
+        "AcquirerTransactionId": "10069930692625A01001",
+        "AuthorizationCode": "123456",
+        "FraudAnalisys": {
+            "ReasonCode": 100,
+            "Score": 42,
+            "Status": "Accept",
+            "FactorCode": "B^D^R"
+        },
+        "PaymentId": "77df250a-93ce-46a3-a224-a894b78ecd80",
+        "Type": "CreditCard",
+        "Amount": 100,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Cielo",
+        "Credentials": {},
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "OrderId": "f381c0c4-2bf9-4de1-91e1-e9e1f11d0854",
+    "MerchantOrderId": "201411173454307",
+    "Customer": {
+        "Name": "Comprador Teste",
+        "Email": "compradorteste@live.com",
+        "Birthdate": "1991-01-02",
+        "Address": {
+            "Street": "Rua Júpter",
+            "Number": "174",
+            "Complement": "AP 201",
+            "ZipCode": "21241140",
+            "City": "Rio de Janeiro",
+            "State": "RJ",
+            "Country": "BRA"
+        }
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "CreditCard": {
+            "CardNumber": "402400******2931",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2015",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "500000",
+        "AcquirerTransactionId": "10069930692625A01001",
+        "AuthorizationCode": "123456",
+        "FraudAnalisys": {
+            "ReasonCode": 100,
+            "Score": 42,
+            "Status": "Accept",
+            "FactorCode": "B^D^R"
+        },
+        "PaymentId": "77df250a-93ce-46a3-a224-a894b78ecd80",
+        "Type": "CreditCard",
+        "Amount": 100,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Cielo",
+        "Credentials": {},
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`ProofOfSale`|Número do Comprovante de Venda.|Texto|20|Texto alfanumérico|
+|`AcquirerTransactionId`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
+|`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
+|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+|`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`Id`|Indentificação da Transação no Antifraud.|Texto|300|Texto alfanumérico|
+|`Status`|Status da Transação.|Byte|---|2|
+|`FraudAnalisys.ReasonCode`|Resultado da análise.|Byte|---|Número:<br /><ul><li>100 - Operação bem sucedida.</li><li>101 - O pedido está faltando um ou mais campos necessários. Possível ação: Veja os campos que estão faltando na lista AntiFraudResponse.MissingFieldCollection. Reenviar o pedido com a informação completa.</li><li>102 - Um ou mais campos do pedido contêm dados inválidos. Possível ação: Veja os campos inválidos na lista AntiFraudResponse.InvalidFieldCollection. Reenviar o pedido com as informações corretas.</li><li>150 Falha no sistema geral. Possível ação: Aguarde alguns minutos e tente reenviar o pedido.</li><li>151 - O pedido foi recebido, mas ocorreu time-out no servidor. Este erro não inclui time-out entre o cliente e o servidor. Possível ação: Aguarde alguns minutos e tente reenviar o pedido.</li><li>152 O pedido foi recebido, mas ocorreu time-out. Possível ação: Aguarde alguns minutos e reenviar o pedido.</li><li>202 – Prevenção à Fraude recusou o pedido porque o cartão expirou. Você também pode receber este código se a data de validade não coincidir com a data em arquivo do banco emissor. Se o processador de pagamento permite a emissão de créditos para cartões expirados, a CyberSource não limita essa funcionalidade. Possível ação: Solicite um cartão ou outra forma de pagamento.</li><li>231 O número da conta é inválido. Possível ação: Solicite um cartão ou outra forma de pagamento.</li><li>234 - Há um problema com a configuração do comerciante. Possível ação: Não envie o pedido. Entre em contato com o Suporte ao Cliente para corrigir o problema de configuração.</li><li>400 A pontuação de fraude ultrapassa o seu limite. Possível ação: Reveja o pedido do cliente.</li><li>480 O pedido foi marcado para revisão pelo Gerenciador de Decisão.</li><li>481 - O pedido foi rejeitado pelo Gerenciador de Decisão</li></ul>|
+|`FraudAnalisys.FactorCode`|Combinação de códigos que indicam o score do pedido. Os códigos são concatenados usando o caractere ^.|Texto|100|Ex: B^D^R^Z<br /><ul><li>A - Mudança de endereço excessiva. O cliente mudou o endereço de cobrança duas ou mais vezes nos últimos seis meses.</li><li>B - BIN do cartão ou autorização de risco. Os fatores de risco estão relacionados com BIN de cartão de crédito e/ou verificações de autorização do cartão.</li><li>C - Elevado números de cartões de créditos. O cliente tem usado mais de seis números de cartões de créditos nos últimos seis meses.</li><li>D - Impacto do endereço de e-mail. O cliente usa um provedor de e-mail gratuito ou o endereço de email é arriscado.</li><li>E - Lista positiva. O cliente está na sua lista positiva.</li><li>F - Lista negativa. O número da conta, endereço, endereço de e-mail ou endereço IP para este fim aparece sua lista negativa.</li><li>G - Inconsistências de geolocalização. O domínio do cliente de e-mail, número de telefone, endereço de cobrança, endereço de envio ou endereço IP é suspeito.</li><li>H - Excessivas mudanças de nome. O cliente mudou o nome duas ou mais vezes nos últimos seis meses.</li><li>I - Inconsistências de internet. O endereço IP e de domínio de e-mail não são consistentes com o endereço de cobrança.</li><li>N - Entrada sem sentido. O nome do cliente e os campos de endereço contém palavras sem sentido ou idioma.</li><li>O - Obscenidades. Dados do cliente contém palavras obscenas.</li><li>P - Identidade morphing. Vários valores de um elemento de identidade estão ligados a um valor de um elemento de identidade diferentes. Por exemplo, vários números de telefone estão ligados a um número de conta única.</li><li>Q - Inconsistências do telefone. O número de telefone do cliente é suspeito.</li><li>R - Ordem arriscada. A transação, o cliente e o lojista mostram informações correlacionadas de alto risco.</li><li>T - Cobertura Time. O cliente está a tentar uma compra fora do horário esperado.</li><li>U - Endereço não verificável. O endereço de cobrança ou de entrega não pode ser verificado.</li><li>V - Velocity. O número da conta foi usado muitas vezes nos últimos 15 minutos.</li><li>W - Marcado como suspeito. O endereço de cobrança ou de entrega é semelhante a um endereço previamente marcado como suspeito.</li><li>Y - O endereço, cidade, estado ou país dos endereços de cobrança e entrega não se correlacionam.</li><li>Z - Valor inválido. Como a solicitação contém um valor inesperado, um valor padrão foi substituído. Embora a transação ainda possa ser processada, examinar o pedido com cuidado para detectar anomalias.</li></ul>|
+|`FraudAnalisys.Score`|Score total calculado para o pedido.|Número|---|Número|
+|`ReasonCode`|Código da razão da Operação.|Byte|---|Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razão da Operação.|Texto|32|Successful|
+|`ProviderReturnCode`|Código de retorno da Adquirência.|Texto|32|Texto alfanumérico|
+|`ProviderReturnMessage`|Mensagem de retorno da Adquirência.|Texto|512|Texto alfanumérico|
+
+## Consultando uma venda Recorrente
+
+Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.
+
+### Requisição
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}</span></aside>
+
+```shell
+curl
+--request GET "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RecurrentPaymentId`|Campo Identificador da Recorrência. |Texto |36 |Sim|
+
+### Resposta
+
+```json
+{
+    "Customer":
+    {
+        "Name": "Comprador accept"
+    },
+    "RecurrentPayment": {
+        "RecurrentPaymentId": "6716406f-1cba-4c7a-8054-7e8988032b17",
+        "ReasonCode": 0,
+        "NextRecurrency": "2015-11-05",
+        "StartDate": "2015-05-05",
+        "EndDate": "2019-12-01",
+        "Interval": "SemiAnnual",
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "Customer":
+    {
+        "Name": "Comprador accept"
+    },
+    "RecurrentPayment": {
+        "RecurrentPaymentId": "6716406f-1cba-4c7a-8054-7e8988032b17",
+        "ReasonCode": 0,
+        "NextRecurrency": "2015-11-05",
+        "StartDate": "2015-05-05",
+        "EndDate": "2019-12-01",
+        "Interval": "SemiAnnual",
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`RecurrentPaymentId`|Campo Identificador da próxima recorrência. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+|`ReasonCode`|Código da razão da Operação. |Byte |--- |Número de 1 a 99|
+|`ReasonMessage`|Mensagem da razação da Operação. |Texto |32 |Successful |
+|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`StartDate`|Data do inicio da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`EndDate`|Data do fim da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`Interval`|Intervalo entre as recorrência. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
+
+# Anexos
+
+## Lista de Providers
+
+### Providers para Boleto
+
+* Bradesco
+* BancoDoBrasil
+
+### Providers para Transferência Eletronica
+
+* Bradesco
+* BancoDoBrasil
+
+## Reason Code e Reason Message
+
+A tabela abaixo lista todos os ReasonCode e ReasonMessage possiveis retornados pela API
+
+|Reason Code|Reason Message|
+|-----------|--------------|
+|0|Successful|
+|1|AffiliationNotFound|
+|2|IssuficientFunds|
+|3|CouldNotGetCreditCard|
+|4|ConnectionWithAcquirerFailed|
+|5|InvalidTransactionType|
+|6|InvalidPaymentPlan|
+|7|Denied|
+|8|Scheduled|
+|9|Waiting|
+|10|Authenticated|
+|11|NotAuthenticated|
+|12|ProblemsWithCreditCard|
+|13|CardCanceled|
+|14|BlockedCreditCard|
+|15|CardExpired|
+|16|AbortedByFraud|
+|17|CouldNotAntifraud|
+|18|TryAgain|
+|19|InvalidAmount|
+|20|ProblemsWithIssuer|
+|21|InvalidCardNumber|
+|22|TimeOut|
+|98|InvalidRequest|
+|99|InternalError|
+
+## Status
+
+Status retornados pela API
+
+|Código|Descrição|
+|------|---------|
+|0|NotFinished|
+|1|Authorized|
+|2|PaymentConfirmed|
+|3|Denied|
+|10|Voided|
+|11|Refunded|
+|12|Pending|
+|13|Aborted|
+|20|Scheduled|
+
+## Merchant Defined Data
+
+A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro MerchantDefinedData e respectivos tipo de informação que deve ser preenchida.
+
+| ID | Dado | Descrição | Tipo |
+|----|------|-----------|------|
+| 1 | Cliente efetuou Log In | Se o cliente final logou no site para comprar, enviar: o login dele. Se fez compra como visitante, enviar: "Guest". Se a venda foi feita direto por um terceiro, um agente por exemplo, não enviar o campo | String |
+| 2 | Cliente do estabelecimento há: #dias | Quantidade de dias | Número |
+| 3 | Compra Efetuada em (parcelas) | Número de Parcelas | Número |
+| 4 | Canal de Venda | Valores: "Call Center" = portador comprando pelo telefone "Web" = portador comprando pela web "Portal" = um agente fazendo a compra para o cliente "Quiosque" = Compras em quisques "Movel" = Compras feitas em smartphone ou tablets | String |
+| 5 | Código do Cupom/Desconto | Se o comprador for usar cupom, enviar o código do cupom | String |
+| 6 | Última compra efetuada | MM/DD/AAAA | Data |
+| 7 | Afiliação | Nome ou código de revendedor ou intermediador | String |
+| 8 | Tentativas de Compra | Nr de vezes que tentou fazer o pagamento do pedido. Cartões de creditos diferentes tentados e/ou outros meios de pagamentos tentados. Para o mesmo pedido. | Número |
+| 9 | Cliente vai retirar o produto em uma Loja | Valores: "SIM", "NAO" No caso de agência, se vai retirar algum voucher e/ou ticket fisicamente | String |
+| 10 | Pagamento efetuado por 3º | Valores: "SIM", "NAO" Se o pagador está ou não presente na viagem/pacote | String |
+| 11 | Categoria do Hotel | Valores: 1, 2, 3, 4, 5 Quantas estrelas tem o hotel | Número |
+| 12 | Hotel data do Check in | MM/DD/AAAA | Data |
+| 13 | Hotel data do Check out | MM/DD/AAAA | Data |
+| 14 | Viagem/Pacote | Valores: "Nacional", "Internacional", "Nacional/Internacional" | String |
+| 15 | Nome da Cia. Aérea / Locadora de Carro / Hotel | Enviar o nome de cada uma das empresas, separado por "/" | String |
+| 16 | PNR | Enviar o numero do PNR da reserva. Quando houver uma alteração da reserva para este PNR com antecipação da data de voo, é importante fazer uma nova análise de fraude enviando este PNR novamente. | String |
+| 17 | Houve antecipação de reserva? | Valores: "SIM", "NAO" Indicar se houve remarcação do voo para uma data anterior à original. É fundamental o envio também do campo PNR | String |
+| 18 | (reservado) |
+| 19 | (reservado) |
+| 20 | (reservado) |
+| 21 | (reservado) |
+| 22 | (reservado) |
+| 23 | (reservado) |
+| 24 | (reservado) |
+| 25 | (reservado) |
+| 26 | Bin do Cartão de Crédito | Enviar o bin - 6 primeiros digitos do cartão | String |
+| 27 | (reservado) |
+| 28 | (reservado) |
+| 29 | (reservado) |
+| 30 | (reservado) |
+| 31 | Nr de trocas de Cartões de crédito | Nr de vezes que o comprador trocou o cartão de crédito para fazer o pagamento do pedido | Número |
+| 32 | Email colado ou digitado | Valores: "Digitado", "Colado" Informar se o endereço de e-mail foi digitado ou colado no campo | String |
+| 33 | Nr Cartao colado ou digitado | Valores: "Digitado", "Colado" Informar se o nr do cartão de crédito foi digitado ou colado no campo | String |
+| 34 | E-mail confirmado | Se existe rotina de confirmação de e-mail para ativação de conta. Valores: "SIM". Em caso negativo não enviar o MDD | String |
+| 35 | Tipo de cliente (local/turista) | Valores: "Local", "Turista". Não enviar o MDD no caso de não ter essa informação | String |
+| 36 | Utiliza cartao presente na compra ($) | Informar se foi utilizado Cartao Presente (Gift Card) na compra. Valores: "SIM". Em caso negativo não enviar o MDD | String |
+| 37 | Metodo de Envio | Valores: "Sedex", "Sedex 10", "1 Dia", "2 Dias", "Motoboy", "Mesmo Dia", etc. Se não tiver envio, não enviar o MDD | String |
+| 38 | Numero da Bina | Informar o nr de telefone indentificado, com DDD | String |
+| 39 | (reservado) |
+| 40 | (reservado) |
+| 41 a 95 | Campo Livre | Os campos são reservados para envio de dados de lojista, conforme a regra de negócio. | String |
+| 96 | (reservado) |
+| 97 | (reservado) |
+| 98 | (reservado) |
+| 99 | (reservado) |
+| 100 | Documento | Documento (CPG, RG, etc.) | String |
+
+## HTTP Status Code
+
+|HTTP Status Code|Descrição|
+|----------------|---------|
+|200|OK|
+|400|Bad Request|
+|404|Resource Not Found|
+|500|Internal Server Error|
+
+## Códigos de Erros
+
+|Código|Mensagem|
+|100|RequestId is required|
+|101|MerchantId is required|
+|102|Payment Type is required|
+|103|Payment Type can only contain letters|
+|104|Customer Identity is required|
+|105|Customer Name is required|
+|106|Transaction ID is required|
+|107|You must provide CreditCard Number, Token or Alias|
+|108|Amount must be greater or equal to zero|
+|109|Payment Currency is required|
+|110|Invalid Payment Currency|
+|111|Payment Country is required|
+|112|Invalid Payment Country|
+|113|Invalid Payment Code|
+|114|The provided MerchantId is not in correct format|
+|115|The provided MerchantId was not found|
+|117|Credit Card Holder is required|
+|118|Credit Card Number is required|
+|119|At least one Payment is required|
+|120|Request IP not allowed. Check your IP White List|
+|121|Customer is required|
+|122|MerchantOrderId is required|
+|123|Installments must be greater or equal to one|
+|124|Credit Card is Required|
+|125|Credit Card Expiration Date is required|
+|126|Credit Card Expiration Date is invalid|
+|127|You must provide CreditCard Number, Token or Alias|
+|128|Card Number length exceeded|
+|129|Affiliation not found|
+|130|Could not get Credit Card|
+|131|MerchantKey is required|
+|132|MerchantKey is invalid|
+|133|Provider is not supported for this Payment Type|
+|134|FingerPrint length exceeded|
+|135|MerchantDefinedFieldValue length exceeded|
+|136|ItemDataName length exceeded|
+|137|ItemDataSKU length exceeded|
+|138|PassengerDataName length exceeded|
+|139|PassengerDataStatus length exceeded|
+|140|PassengerDataEmail length exceeded|
+|141|PassengerDataPhone length exceeded|
+|142|TravelDataRoute length exceeded|
+|143|TravelDataJourneyType length exceeded|
+|144|TravelLegDataDestination length exceeded|
+|145|TravelLegDataOrigin length exceeded|
+|146|SecurityCode length exceeded|
+|147|Address Street length exceeded|
+|148|Address Number length exceeded|
+|149|Address Complement length exceeded|
+|150|Address ZipCode length exceeded|
+|151|Address City length exceeded|
+|152|Address State length exceeded|
+|153|Address Country length exceeded|
+|154|Address District length exceeded|
+|155|Customer Name length exceeded|
+|156|Customer Identity length exceeded|
+|157|Customer IdentityType length exceeded|
+|158|Customer Email length exceeded|
+|159|ExtraData Name length exceeded|
+|160|ExtraData Value length exceeded|
+|161|Boleto Instructions length exceeded|
+|162|Boleto Demostrative length exceeded|
+|163|Return Url is required|
+|164|Return Url is invalid|
+|166|AuthorizeNow is required|
+|167|Antifraud not configured|
+|168|Recurrent Payment not found|
+|169|Recurrent Payment is not active|
+|300|MerchantId was not found|
+|301|Request IP is not allowed|
+|302|Sent MerchantOrderId is duplicated|
+|303|Sent OrderId does not exist|
+|304|Customer Identity is required|
+|306|Merchant is blocked|
+|307|Transaction not found|
+|308|Transaction not available to capture|
+|309|Transaction not available to void|
+|310|Payment method doest not support this operation|
+|311|Refund is not enabled for this merchant|
+|312|Transaction not available to refund|
+|313|Recurrent Payment not found|
+|314|Invalid Integration|
+|315|Cannot change NextRecurrency with pending payment|

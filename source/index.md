@@ -4060,6 +4060,7 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 ## Códigos de Erros
 
 |Código|Mensagem|
+|------|--------|
 |100|RequestId is required|
 |101|MerchantId is required|
 |102|Payment Type is required|

@@ -174,6 +174,22 @@
 <li><strong>GET</strong> - O método HTTP GET é utilizado para consultas de recursos já existentes. Por exemplo, consulta de transações.</li>
 </ul>
 
+<h2 id="sandbox">Sandbox</h2>
+
+<p>Para facilitar os testes durante a integração, a Cielo oferece um ambiente Sandbox que é composto por duas áreas:</p>
+
+<ol>
+<li>Cadastro de conta de testes</li>
+<li>Endpoints para requisição
+
+<ul>
+<li><strong>Criação</strong>/<strong>Alteração</strong> de transações: https://sandbox.cieloecommerce.cielo.com.br/</li>
+<li><strong>Consulta</strong> de transações: https://apiquerysandbox.cieloecommerce.cielo.com.br/</li>
+</ul></li>
+</ol>
+
+<p>Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o <a href="https://cadastrosandbox.cieloecommerce.cielo.com.br/">Cadastro do Sandbox</a> e criar uma conta de testes. Ao fim do cadastro você receberá um <code class="prettyprint">MerchantId</code> e um <code class="prettyprint">MerchantKey</code>, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.</p>
+
 <h1 id="pagamentos-com-cartão-de-crédito">Pagamentos com Cartão de Crédito</h1>
 
 <p>Para que você possa disfrutar de todos os recursos disponíveis em nossa API, é importante que antes você conheça os conceitos envolvidos no processamento de uma transação de cartão de crédito.</p>
@@ -391,7 +407,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
@@ -446,7 +462,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
@@ -991,7 +1007,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
@@ -1064,7 +1080,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
@@ -1384,7 +1400,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{Paymentid}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{Paymentid}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1432,7 +1448,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>:<span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>:<span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>:<span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{Paymentid}"</span>
+                <span class="s2">"Href"</span>:<span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{Paymentid}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -2428,7 +2444,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
@@ -2583,7 +2599,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
@@ -2960,7 +2976,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
@@ -3012,7 +3028,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
@@ -3198,7 +3214,7 @@
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
@@ -3221,7 +3237,7 @@
         <span class="o">{</span>
             <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
             <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
         <span class="o">}</span>,
         <span class="o">{</span>
             <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
@@ -3352,7 +3368,7 @@
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3370,7 +3386,7 @@
         <span class="o">{</span>
             <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
             <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
@@ -3617,7 +3633,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3655,7 +3671,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -3866,7 +3882,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3896,7 +3912,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -4091,7 +4107,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4128,7 +4144,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -4423,7 +4439,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4464,7 +4480,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -4821,7 +4837,7 @@
             </span><span class="s2">"Link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recurrentPayment"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -4829,17 +4845,17 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4893,7 +4909,7 @@
             <span class="s2">"Link"</span>: <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"recurrentPayment"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
             <span class="o">}</span>,
             <span class="s2">"AuthorizeNow"</span>: <span class="nb">true</span>
         <span class="o">}</span>,
@@ -4901,17 +4917,17 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -5268,7 +5284,7 @@
             </span><span class="s2">"Link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recurrentPayment"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -5316,7 +5332,7 @@
             <span class="s2">"Link"</span>: <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"recurrentPayment"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.com.br/1/RecurrentPayment/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="s2">"AuthorizeNow"</span>: <span class="nb">false</span>
         <span class="o">}</span>
@@ -6487,6 +6503,1471 @@
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
+
+<h1 id="consultando-vendas">Consultando Vendas</h1>
+
+<h2 id="consultando-uma-venda">Consultando uma venda</h2>
+
+<p>Para consultar uma venda de cartão de crédito, é necessário fazer um GET para o recurso Payment conforme o exemplo.</p>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales/{PaymentId}</span></aside>
+<pre><code class="highlight shell">curl
+--request GET <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja no Webservice 3.0. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla no Webservice 3.0. </td>
+<td>Texto </td>
+<td>40 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Campo Identificador do Request do Pedido. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Numero de identificação do Pagamento. </td>
+<td>Texto </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Capture"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"455187******0183"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/2021"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"674532"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15700</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExtraDataCollection"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
+    <span class="s2">"Customer"</span>: <span class="o">{</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Address"</span>: <span class="o">{}</span>
+    <span class="o">}</span>,
+    <span class="s2">"Payment"</span>: <span class="o">{</span>
+        <span class="s2">"ServiceTaxAmount"</span>: 0,
+        <span class="s2">"Installments"</span>: 1,
+        <span class="s2">"Interest"</span>: <span class="s2">"ByMerchant"</span>,
+        <span class="s2">"Capture"</span>: <span class="nb">false</span>,
+        <span class="s2">"Authenticate"</span>: <span class="nb">false</span>,
+        <span class="s2">"CreditCard"</span>: <span class="o">{</span>
+            <span class="s2">"CardNumber"</span>: <span class="s2">"455187******0183"</span>,
+            <span class="s2">"Holder"</span>: <span class="s2">"Teste Holder"</span>,
+            <span class="s2">"ExpirationDate"</span>: <span class="s2">"12/2021"</span>,
+            <span class="s2">"SaveCard"</span>: <span class="nb">false</span>,
+            <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>
+        <span class="o">}</span>,
+        <span class="s2">"ProofOfSale"</span>: <span class="s2">"674532"</span>,
+        <span class="s2">"AuthorizationCode"</span>: <span class="s2">"123456"</span>,
+        <span class="s2">"PaymentId"</span>: <span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span>,
+        <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
+        <span class="s2">"Amount"</span>: 15700,
+        <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
+        <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>,
+        <span class="s2">"ExtraDataCollection"</span>: <span class="o">[]</span>,
+        <span class="s2">"ReasonCode"</span>: 0,
+        <span class="s2">"ReasonMessage"</span>: <span class="s2">"Successful"</span>,
+        <span class="s2">"Status"</span>: 1,
+        <span class="s2">"Links"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+                <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+            <span class="o">}</span>,
+            <span class="o">{</span>
+                <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+                <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+            <span class="o">}</span>,
+            <span class="o">{</span>
+                <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+                <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+            <span class="o">}</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ProofOfSale</code></td>
+<td>Número do Comprovante de Venda.</td>
+<td>Texto</td>
+<td>20</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">AuthorizationCode</code></td>
+<td>Código de autorização.</td>
+<td>Texto</td>
+<td>300</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonCode</code></td>
+<td>Código da razão da Operação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>Número de 1 a 99</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonMessage</code></td>
+<td>Mensagem da razão da Operação.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Successful</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Name</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Sim</td>
+<td>Nome do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Type</code></td>
+<td>Texto</td>
+<td>100</td>
+<td>Sim</td>
+<td>Tipo do Meio de Pagamento.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Amount</code></td>
+<td>Número</td>
+<td>15</td>
+<td>Sim</td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Provider</code></td>
+<td>Texto</td>
+<td>15</td>
+<td>Sim</td>
+<td>Nome do Meio de Pagamento.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Installments</code></td>
+<td>Número</td>
+<td>2</td>
+<td>Sim</td>
+<td>Número de Parcelas.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.CardNumber</code></td>
+<td>Texto</td>
+<td>16</td>
+<td>Sim</td>
+<td>Número do Cartão do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Holder</code></td>
+<td>Texto</td>
+<td>25</td>
+<td>Sim</td>
+<td>Nome do Comprador impresso no cartão.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
+<td>Texto</td>
+<td>7</td>
+<td>Sim</td>
+<td>Data de validade impresso no cartão.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.SecurityCode</code></td>
+<td>Texto</td>
+<td>4</td>
+<td>Sim</td>
+<td>Código de segurança impresso no verso do cartão.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Brand</code></td>
+<td>Texto</td>
+<td>10</td>
+<td>Sim</td>
+<td>Bandeira do cartão (Visa / Mastercard / Amex / Elo / Auria / JCB / Diners / Discover).</td>
+</tr>
+</tbody></table>
+
+<h2 id="consultando-uma-venda-pelo-identificador-da-loja">Consultando uma venda pelo identificador da loja</h2>
+
+<p>Não é possível consultar diretamente uma pagamento pelo identificador enviado pela loja (MerchantOrderId), mas é possível obter todos os PaymentIds associados ao identificador.</p>
+
+<p>Para consultar uma venda pelo identificador da loja, é necessário fazer um GET para o recuso sales conforme o exemplo.</p>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales?merchantOrderId={merchantOrderId}</span></aside>
+<pre><code class="highlight shell">curls
+--request GET <span class="s2">" https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales?merchantOrderId={merchantOrderId}"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja no Webservice 3.0. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla no Webservice 3.0. </td>
+<td>Texto </td>
+<td>40 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Campo Identificador do Request do Pedido. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantOrderId</code></td>
+<td>Campo Identificador do Pedido na Loja. </td>
+<td>Texto </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fb4d606-bb63-4423-a683-c966e15399e8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ReceveidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-06T10:13:39.42"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6c1d45c3-a95f-49c1-a626-1e9373feecc2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ReceveidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-19T20:23:28.847"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"ReasonCode"</span>: 0,
+    <span class="s2">"ReasonMessage"</span>: <span class="s2">"Successful"</span>,
+    <span class="s2">"Payments"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"PaymentId"</span>: <span class="s2">"5fb4d606-bb63-4423-a683-c966e15399e8"</span>,
+            <span class="s2">"ReceveidDate"</span>: <span class="s2">"2015-04-06T10:13:39.42"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"PaymentId"</span>: <span class="s2">"6c1d45c3-a95f-49c1-a626-1e9373feecc2"</span>,
+            <span class="s2">"ReceveidDate"</span>: <span class="s2">"2014-12-19T20:23:28.847"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonCode</code></td>
+<td>Código da razão da Operação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>Número de 1 a 99</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonMessage</code></td>
+<td>Mensagem da razão da Operação.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Successful</td>
+</tr>
+</tbody></table>
+
+<h2 id="consultando-uma-venda-com-analise-de-fraude">Consultando uma venda com Analise de Fraude</h2>
+
+<p>Para consultar uma venda de cartão de crédito com antifraud, é necessário fazer um GET para o recurso Payment conforme o exemplo.</p>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales/{PaymentId}</span></aside>
+<pre><code class="highlight shell">curl
+--request GET <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja no Webservice 3.0. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla no Webservice 3.0. </td>
+<td>Texto </td>
+<td>40 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Campo Identificador do Request do Pedido. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Numero de identificação do Pagamento. </td>
+<td>Texto </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"OrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f381c0c4-2bf9-4de1-91e1-e9e1f11d0854"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201411173454307"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compradorteste@live.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Júpter"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"174"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AP 201"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ZipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21241140"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rio de Janeiro"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RJ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Capture"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"402400******2931"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/2015"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AcquirerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10069930692625A01001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"FraudAnalisys"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Score"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accept"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"FactorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B^D^R"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77df250a-93ce-46a3-a224-a894b78ecd80"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cielo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Credentials"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"ExtraDataCollection"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"OrderId"</span>: <span class="s2">"f381c0c4-2bf9-4de1-91e1-e9e1f11d0854"</span>,
+    <span class="s2">"MerchantOrderId"</span>: <span class="s2">"201411173454307"</span>,
+    <span class="s2">"Customer"</span>: <span class="o">{</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Email"</span>: <span class="s2">"compradorteste@live.com"</span>,
+        <span class="s2">"Birthdate"</span>: <span class="s2">"1991-01-02"</span>,
+        <span class="s2">"Address"</span>: <span class="o">{</span>
+            <span class="s2">"Street"</span>: <span class="s2">"Rua Júpter"</span>,
+            <span class="s2">"Number"</span>: <span class="s2">"174"</span>,
+            <span class="s2">"Complement"</span>: <span class="s2">"AP 201"</span>,
+            <span class="s2">"ZipCode"</span>: <span class="s2">"21241140"</span>,
+            <span class="s2">"City"</span>: <span class="s2">"Rio de Janeiro"</span>,
+            <span class="s2">"State"</span>: <span class="s2">"RJ"</span>,
+            <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>
+        <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"Payment"</span>: <span class="o">{</span>
+        <span class="s2">"ServiceTaxAmount"</span>: 0,
+        <span class="s2">"Installments"</span>: 1,
+        <span class="s2">"Interest"</span>: <span class="s2">"ByMerchant"</span>,
+        <span class="s2">"Capture"</span>: <span class="nb">false</span>,
+        <span class="s2">"Authenticate"</span>: <span class="nb">false</span>,
+        <span class="s2">"CreditCard"</span>: <span class="o">{</span>
+            <span class="s2">"CardNumber"</span>: <span class="s2">"402400******2931"</span>,
+            <span class="s2">"Holder"</span>: <span class="s2">"Teste Holder"</span>,
+            <span class="s2">"ExpirationDate"</span>: <span class="s2">"12/2015"</span>,
+            <span class="s2">"SaveCard"</span>: <span class="nb">false</span>,
+            <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>
+        <span class="o">}</span>,
+        <span class="s2">"ProofOfSale"</span>: <span class="s2">"500000"</span>,
+        <span class="s2">"AcquirerTransactionId"</span>: <span class="s2">"10069930692625A01001"</span>,
+        <span class="s2">"AuthorizationCode"</span>: <span class="s2">"123456"</span>,
+        <span class="s2">"FraudAnalisys"</span>: <span class="o">{</span>
+            <span class="s2">"ReasonCode"</span>: 100,
+            <span class="s2">"Score"</span>: 42,
+            <span class="s2">"Status"</span>: <span class="s2">"Accept"</span>,
+            <span class="s2">"FactorCode"</span>: <span class="s2">"B^D^R"</span>
+        <span class="o">}</span>,
+        <span class="s2">"PaymentId"</span>: <span class="s2">"77df250a-93ce-46a3-a224-a894b78ecd80"</span>,
+        <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
+        <span class="s2">"Amount"</span>: 100,
+        <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
+        <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>,
+        <span class="s2">"Provider"</span>: <span class="s2">"Cielo"</span>,
+        <span class="s2">"Credentials"</span>: <span class="o">{}</span>,
+        <span class="s2">"ExtraDataCollection"</span>: <span class="o">[]</span>,
+        <span class="s2">"ReasonCode"</span>: 0,
+        <span class="s2">"Status"</span>: 1,
+        <span class="s2">"Links"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+                <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+            <span class="o">}</span>,
+            <span class="o">{</span>
+                <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+                <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+            <span class="o">}</span>,
+            <span class="o">{</span>
+                <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+                <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+            <span class="o">}</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ProofOfSale</code></td>
+<td>Número do Comprovante de Venda.</td>
+<td>Texto</td>
+<td>20</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">AcquirerTransactionId</code></td>
+<td>Id da transação na adquirente.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">AuthorizationCode</code></td>
+<td>Código de autorização.</td>
+<td>Texto</td>
+<td>300</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">SoftDescriptor</code></td>
+<td>Texto que será impresso na fatura do portador</td>
+<td>Texto</td>
+<td>13</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Id</code></td>
+<td>Indentificação da Transação no Antifraud.</td>
+<td>Texto</td>
+<td>300</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="prettyprint">FraudAnalisys.ReasonCode</code></td>
+<td>Resultado da análise.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>Número:<br /><ul><li>100 - Operação bem sucedida.</li><li>101 - O pedido está faltando um ou mais campos necessários. Possível ação: Veja os campos que estão faltando na lista AntiFraudResponse.MissingFieldCollection. Reenviar o pedido com a informação completa.</li><li>102 - Um ou mais campos do pedido contêm dados inválidos. Possível ação: Veja os campos inválidos na lista AntiFraudResponse.InvalidFieldCollection. Reenviar o pedido com as informações corretas.</li><li>150 Falha no sistema geral. Possível ação: Aguarde alguns minutos e tente reenviar o pedido.</li><li>151 - O pedido foi recebido, mas ocorreu time-out no servidor. Este erro não inclui time-out entre o cliente e o servidor. Possível ação: Aguarde alguns minutos e tente reenviar o pedido.</li><li>152 O pedido foi recebido, mas ocorreu time-out. Possível ação: Aguarde alguns minutos e reenviar o pedido.</li><li>202 – Prevenção à Fraude recusou o pedido porque o cartão expirou. Você também pode receber este código se a data de validade não coincidir com a data em arquivo do banco emissor. Se o processador de pagamento permite a emissão de créditos para cartões expirados, a CyberSource não limita essa funcionalidade. Possível ação: Solicite um cartão ou outra forma de pagamento.</li><li>231 O número da conta é inválido. Possível ação: Solicite um cartão ou outra forma de pagamento.</li><li>234 - Há um problema com a configuração do comerciante. Possível ação: Não envie o pedido. Entre em contato com o Suporte ao Cliente para corrigir o problema de configuração.</li><li>400 A pontuação de fraude ultrapassa o seu limite. Possível ação: Reveja o pedido do cliente.</li><li>480 O pedido foi marcado para revisão pelo Gerenciador de Decisão.</li><li>481 - O pedido foi rejeitado pelo Gerenciador de Decisão</li></ul></td>
+</tr>
+<tr>
+<td><code class="prettyprint">FraudAnalisys.FactorCode</code></td>
+<td>Combinação de códigos que indicam o score do pedido. Os códigos são concatenados usando o caractere ^.</td>
+<td>Texto</td>
+<td>100</td>
+<td>Ex: B^D^R^Z<br /><ul><li>A - Mudança de endereço excessiva. O cliente mudou o endereço de cobrança duas ou mais vezes nos últimos seis meses.</li><li>B - BIN do cartão ou autorização de risco. Os fatores de risco estão relacionados com BIN de cartão de crédito e/ou verificações de autorização do cartão.</li><li>C - Elevado números de cartões de créditos. O cliente tem usado mais de seis números de cartões de créditos nos últimos seis meses.</li><li>D - Impacto do endereço de e-mail. O cliente usa um provedor de e-mail gratuito ou o endereço de email é arriscado.</li><li>E - Lista positiva. O cliente está na sua lista positiva.</li><li>F - Lista negativa. O número da conta, endereço, endereço de e-mail ou endereço IP para este fim aparece sua lista negativa.</li><li>G - Inconsistências de geolocalização. O domínio do cliente de e-mail, número de telefone, endereço de cobrança, endereço de envio ou endereço IP é suspeito.</li><li>H - Excessivas mudanças de nome. O cliente mudou o nome duas ou mais vezes nos últimos seis meses.</li><li>I - Inconsistências de internet. O endereço IP e de domínio de e-mail não são consistentes com o endereço de cobrança.</li><li>N - Entrada sem sentido. O nome do cliente e os campos de endereço contém palavras sem sentido ou idioma.</li><li>O - Obscenidades. Dados do cliente contém palavras obscenas.</li><li>P - Identidade morphing. Vários valores de um elemento de identidade estão ligados a um valor de um elemento de identidade diferentes. Por exemplo, vários números de telefone estão ligados a um número de conta única.</li><li>Q - Inconsistências do telefone. O número de telefone do cliente é suspeito.</li><li>R - Ordem arriscada. A transação, o cliente e o lojista mostram informações correlacionadas de alto risco.</li><li>T - Cobertura Time. O cliente está a tentar uma compra fora do horário esperado.</li><li>U - Endereço não verificável. O endereço de cobrança ou de entrega não pode ser verificado.</li><li>V - Velocity. O número da conta foi usado muitas vezes nos últimos 15 minutos.</li><li>W - Marcado como suspeito. O endereço de cobrança ou de entrega é semelhante a um endereço previamente marcado como suspeito.</li><li>Y - O endereço, cidade, estado ou país dos endereços de cobrança e entrega não se correlacionam.</li><li>Z - Valor inválido. Como a solicitação contém um valor inesperado, um valor padrão foi substituído. Embora a transação ainda possa ser processada, examinar o pedido com cuidado para detectar anomalias.</li></ul></td>
+</tr>
+<tr>
+<td><code class="prettyprint">FraudAnalisys.Score</code></td>
+<td>Score total calculado para o pedido.</td>
+<td>Número</td>
+<td>&mdash;</td>
+<td>Número</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonCode</code></td>
+<td>Código da razão da Operação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>Número de 1 a 99</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonMessage</code></td>
+<td>Mensagem da razão da Operação.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Successful</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnCode</code></td>
+<td>Código de retorno da Adquirência.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnMessage</code></td>
+<td>Mensagem de retorno da Adquirência.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+</tbody></table>
+
+<h2 id="consultando-uma-venda-recorrente">Consultando uma venda Recorrente</h2>
+
+<p>Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.</p>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}</span></aside>
+<pre><code class="highlight shell">curl
+--request GET <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja no Webservice 3.0. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla no Webservice 3.0. </td>
+<td>Texto </td>
+<td>40 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Campo Identificador do Request do Pedido. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RecurrentPaymentId</code></td>
+<td>Campo Identificador da Recorrência. </td>
+<td>Texto </td>
+<td>36 </td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"RecurrentPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"RecurrentPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6716406f-1cba-4c7a-8054-7e8988032b17"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"NextRecurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"StartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SemiAnnual"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"Customer"</span>:
+    <span class="o">{</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador accept"</span>
+    <span class="o">}</span>,
+    <span class="s2">"RecurrentPayment"</span>: <span class="o">{</span>
+        <span class="s2">"RecurrentPaymentId"</span>: <span class="s2">"6716406f-1cba-4c7a-8054-7e8988032b17"</span>,
+        <span class="s2">"ReasonCode"</span>: 0,
+        <span class="s2">"NextRecurrency"</span>: <span class="s2">"2015-11-05"</span>,
+        <span class="s2">"StartDate"</span>: <span class="s2">"2015-05-05"</span>,
+        <span class="s2">"EndDate"</span>: <span class="s2">"2019-12-01"</span>,
+        <span class="s2">"Interval"</span>: <span class="s2">"SemiAnnual"</span>,
+        <span class="s2">"Links"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+                <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
+            <span class="o">}</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">RecurrentPaymentId</code></td>
+<td>Campo Identificador da próxima recorrência. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonCode</code></td>
+<td>Código da razão da Operação. </td>
+<td>Byte </td>
+<td>&mdash; </td>
+<td>Número de 1 a 99</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReasonMessage</code></td>
+<td>Mensagem da razação da Operação. </td>
+<td>Texto </td>
+<td>32 </td>
+<td>Successful </td>
+</tr>
+<tr>
+<td><code class="prettyprint">NextRecurrency</code></td>
+<td>Data da próxima recorrência. </td>
+<td>Texto </td>
+<td>7 </td>
+<td>05/2019 (MM/YYYY) </td>
+</tr>
+<tr>
+<td><code class="prettyprint">StartDate</code></td>
+<td>Data do inicio da recorrência. </td>
+<td>Texto </td>
+<td>7 </td>
+<td>05/2019 (MM/YYYY) </td>
+</tr>
+<tr>
+<td><code class="prettyprint">EndDate</code></td>
+<td>Data do fim da recorrência. </td>
+<td>Texto </td>
+<td>7 </td>
+<td>05/2019 (MM/YYYY) </td>
+</tr>
+<tr>
+<td><code class="prettyprint">Interval</code></td>
+<td>Intervalo entre as recorrência. </td>
+<td>Texto </td>
+<td>10 </td>
+<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+</tr>
+</tbody></table>
+
+<h1 id="anexos">Anexos</h1>
+
+<h2 id="lista-de-providers">Lista de Providers</h2>
+
+<h3 id="providers-para-boleto">Providers para Boleto</h3>
+
+<ul>
+<li>Bradesco</li>
+<li>BancoDoBrasil</li>
+</ul>
+
+<h3 id="providers-para-transferência-eletronica">Providers para Transferência Eletronica</h3>
+
+<ul>
+<li>Bradesco</li>
+<li>BancoDoBrasil</li>
+</ul>
+
+<h2 id="reason-code-e-reason-message">Reason Code e Reason Message</h2>
+
+<p>A tabela abaixo lista todos os ReasonCode e ReasonMessage possiveis retornados pela API</p>
+
+<table><thead>
+<tr>
+<th>Reason Code</th>
+<th>Reason Message</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Successful</td>
+</tr>
+<tr>
+<td>1</td>
+<td>AffiliationNotFound</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IssuficientFunds</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CouldNotGetCreditCard</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ConnectionWithAcquirerFailed</td>
+</tr>
+<tr>
+<td>5</td>
+<td>InvalidTransactionType</td>
+</tr>
+<tr>
+<td>6</td>
+<td>InvalidPaymentPlan</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Denied</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Scheduled</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Waiting</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Authenticated</td>
+</tr>
+<tr>
+<td>11</td>
+<td>NotAuthenticated</td>
+</tr>
+<tr>
+<td>12</td>
+<td>ProblemsWithCreditCard</td>
+</tr>
+<tr>
+<td>13</td>
+<td>CardCanceled</td>
+</tr>
+<tr>
+<td>14</td>
+<td>BlockedCreditCard</td>
+</tr>
+<tr>
+<td>15</td>
+<td>CardExpired</td>
+</tr>
+<tr>
+<td>16</td>
+<td>AbortedByFraud</td>
+</tr>
+<tr>
+<td>17</td>
+<td>CouldNotAntifraud</td>
+</tr>
+<tr>
+<td>18</td>
+<td>TryAgain</td>
+</tr>
+<tr>
+<td>19</td>
+<td>InvalidAmount</td>
+</tr>
+<tr>
+<td>20</td>
+<td>ProblemsWithIssuer</td>
+</tr>
+<tr>
+<td>21</td>
+<td>InvalidCardNumber</td>
+</tr>
+<tr>
+<td>22</td>
+<td>TimeOut</td>
+</tr>
+<tr>
+<td>98</td>
+<td>InvalidRequest</td>
+</tr>
+<tr>
+<td>99</td>
+<td>InternalError</td>
+</tr>
+</tbody></table>
+
+<h2 id="status">Status</h2>
+
+<p>Status retornados pela API</p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NotFinished</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Authorized</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PaymentConfirmed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Denied</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Voided</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Refunded</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Aborted</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Scheduled</td>
+</tr>
+</tbody></table>
+
+<h2 id="merchant-defined-data">Merchant Defined Data</h2>
+
+<p>A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro MerchantDefinedData e respectivos tipo de informação que deve ser preenchida.</p>
+
+<table><thead>
+<tr>
+<th>ID</th>
+<th>Dado</th>
+<th>Descrição</th>
+<th>Tipo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Cliente efetuou Log In</td>
+<td>Se o cliente final logou no site para comprar, enviar: o login dele. Se fez compra como visitante, enviar: &ldquo;Guest&rdquo;. Se a venda foi feita direto por um terceiro, um agente por exemplo, não enviar o campo</td>
+<td>String</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cliente do estabelecimento há: #dias</td>
+<td>Quantidade de dias</td>
+<td>Número</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Compra Efetuada em (parcelas)</td>
+<td>Número de Parcelas</td>
+<td>Número</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Canal de Venda</td>
+<td>Valores: &ldquo;Call Center&rdquo; = portador comprando pelo telefone &ldquo;Web&rdquo; = portador comprando pela web &ldquo;Portal&rdquo; = um agente fazendo a compra para o cliente &ldquo;Quiosque&rdquo; = Compras em quisques &ldquo;Movel&rdquo; = Compras feitas em smartphone ou tablets</td>
+<td>String</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Código do Cupom/Desconto</td>
+<td>Se o comprador for usar cupom, enviar o código do cupom</td>
+<td>String</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Última compra efetuada</td>
+<td>MM/DD/AAAA</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Afiliação</td>
+<td>Nome ou código de revendedor ou intermediador</td>
+<td>String</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Tentativas de Compra</td>
+<td>Nr de vezes que tentou fazer o pagamento do pedido. Cartões de creditos diferentes tentados e/ou outros meios de pagamentos tentados. Para o mesmo pedido.</td>
+<td>Número</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Cliente vai retirar o produto em uma Loja</td>
+<td>Valores: &ldquo;SIM&rdquo;, &ldquo;NAO&rdquo; No caso de agência, se vai retirar algum voucher e/ou ticket fisicamente</td>
+<td>String</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Pagamento efetuado por 3º</td>
+<td>Valores: &ldquo;SIM&rdquo;, &ldquo;NAO&rdquo; Se o pagador está ou não presente na viagem/pacote</td>
+<td>String</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Categoria do Hotel</td>
+<td>Valores: 1, 2, 3, 4, 5 Quantas estrelas tem o hotel</td>
+<td>Número</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Hotel data do Check in</td>
+<td>MM/DD/AAAA</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Hotel data do Check out</td>
+<td>MM/DD/AAAA</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Viagem/Pacote</td>
+<td>Valores: &ldquo;Nacional&rdquo;, &ldquo;Internacional&rdquo;, &ldquo;Nacional/Internacional&rdquo;</td>
+<td>String</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Nome da Cia. Aérea / Locadora de Carro / Hotel</td>
+<td>Enviar o nome de cada uma das empresas, separado por &ldquo;/&rdquo;</td>
+<td>String</td>
+</tr>
+<tr>
+<td>16</td>
+<td>PNR</td>
+<td>Enviar o numero do PNR da reserva. Quando houver uma alteração da reserva para este PNR com antecipação da data de voo, é importante fazer uma nova análise de fraude enviando este PNR novamente.</td>
+<td>String</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Houve antecipação de reserva?</td>
+<td>Valores: &ldquo;SIM&rdquo;, &ldquo;NAO&rdquo; Indicar se houve remarcação do voo para uma data anterior à original. É fundamental o envio também do campo PNR</td>
+<td>String</td>
+</tr>
+<tr>
+<td>18</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>26</td>
+<td>Bin do Cartão de Crédito</td>
+<td>Enviar o bin - 6 primeiros digitos do cartão</td>
+<td>String</td>
+</tr>
+<tr>
+<td>27</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>28</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>29</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>30</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>Nr de trocas de Cartões de crédito</td>
+<td>Nr de vezes que o comprador trocou o cartão de crédito para fazer o pagamento do pedido</td>
+<td>Número</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Email colado ou digitado</td>
+<td>Valores: &ldquo;Digitado&rdquo;, &ldquo;Colado&rdquo; Informar se o endereço de e-mail foi digitado ou colado no campo</td>
+<td>String</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Nr Cartao colado ou digitado</td>
+<td>Valores: &ldquo;Digitado&rdquo;, &ldquo;Colado&rdquo; Informar se o nr do cartão de crédito foi digitado ou colado no campo</td>
+<td>String</td>
+</tr>
+<tr>
+<td>34</td>
+<td>E-mail confirmado</td>
+<td>Se existe rotina de confirmação de e-mail para ativação de conta. Valores: &ldquo;SIM&rdquo;. Em caso negativo não enviar o MDD</td>
+<td>String</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Tipo de cliente (local/turista)</td>
+<td>Valores: &ldquo;Local&rdquo;, &ldquo;Turista&rdquo;. Não enviar o MDD no caso de não ter essa informação</td>
+<td>String</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Utiliza cartao presente na compra ($)</td>
+<td>Informar se foi utilizado Cartao Presente (Gift Card) na compra. Valores: &ldquo;SIM&rdquo;. Em caso negativo não enviar o MDD</td>
+<td>String</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Metodo de Envio</td>
+<td>Valores: &ldquo;Sedex&rdquo;, &ldquo;Sedex 10&rdquo;, &ldquo;1 Dia&rdquo;, &ldquo;2 Dias&rdquo;, &ldquo;Motoboy&rdquo;, &ldquo;Mesmo Dia&rdquo;, etc. Se não tiver envio, não enviar o MDD</td>
+<td>String</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Numero da Bina</td>
+<td>Informar o nr de telefone indentificado, com DDD</td>
+<td>String</td>
+</tr>
+<tr>
+<td>39</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>40</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>41 a 95</td>
+<td>Campo Livre</td>
+<td>Os campos são reservados para envio de dados de lojista, conforme a regra de negócio.</td>
+<td>String</td>
+</tr>
+<tr>
+<td>96</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>97</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>98</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>99</td>
+<td>(reservado)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>100</td>
+<td>Documento</td>
+<td>Documento (CPG, RG, etc.)</td>
+<td>String</td>
+</tr>
+</tbody></table>
+
+<h2 id="http-status-code">HTTP Status Code</h2>
+
+<table><thead>
+<tr>
+<th>HTTP Status Code</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Resource Not Found</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
+
+<h2 id="códigos-de-erros">Códigos de Erros</h2>
+
+<p>|Código|Mensagem|
+|100|RequestId is required|
+|101|MerchantId is required|
+|102|Payment Type is required|
+|103|Payment Type can only contain letters|
+|104|Customer Identity is required|
+|105|Customer Name is required|
+|106|Transaction ID is required|
+|107|You must provide CreditCard Number, Token or Alias|
+|108|Amount must be greater or equal to zero|
+|109|Payment Currency is required|
+|110|Invalid Payment Currency|
+|111|Payment Country is required|
+|112|Invalid Payment Country|
+|113|Invalid Payment Code|
+|114|The provided MerchantId is not in correct format|
+|115|The provided MerchantId was not found|
+|117|Credit Card Holder is required|
+|118|Credit Card Number is required|
+|119|At least one Payment is required|
+|120|Request IP not allowed. Check your IP White List|
+|121|Customer is required|
+|122|MerchantOrderId is required|
+|123|Installments must be greater or equal to one|
+|124|Credit Card is Required|
+|125|Credit Card Expiration Date is required|
+|126|Credit Card Expiration Date is invalid|
+|127|You must provide CreditCard Number, Token or Alias|
+|128|Card Number length exceeded|
+|129|Affiliation not found|
+|130|Could not get Credit Card|
+|131|MerchantKey is required|
+|132|MerchantKey is invalid|
+|133|Provider is not supported for this Payment Type|
+|134|FingerPrint length exceeded|
+|135|MerchantDefinedFieldValue length exceeded|
+|136|ItemDataName length exceeded|
+|137|ItemDataSKU length exceeded|
+|138|PassengerDataName length exceeded|
+|139|PassengerDataStatus length exceeded|
+|140|PassengerDataEmail length exceeded|
+|141|PassengerDataPhone length exceeded|
+|142|TravelDataRoute length exceeded|
+|143|TravelDataJourneyType length exceeded|
+|144|TravelLegDataDestination length exceeded|
+|145|TravelLegDataOrigin length exceeded|
+|146|SecurityCode length exceeded|
+|147|Address Street length exceeded|
+|148|Address Number length exceeded|
+|149|Address Complement length exceeded|
+|150|Address ZipCode length exceeded|
+|151|Address City length exceeded|
+|152|Address State length exceeded|
+|153|Address Country length exceeded|
+|154|Address District length exceeded|
+|155|Customer Name length exceeded|
+|156|Customer Identity length exceeded|
+|157|Customer IdentityType length exceeded|
+|158|Customer Email length exceeded|
+|159|ExtraData Name length exceeded|
+|160|ExtraData Value length exceeded|
+|161|Boleto Instructions length exceeded|
+|162|Boleto Demostrative length exceeded|
+|163|Return Url is required|
+|164|Return Url is invalid|
+|166|AuthorizeNow is required|
+|167|Antifraud not configured|
+|168|Recurrent Payment not found|
+|169|Recurrent Payment is not active|
+|300|MerchantId was not found|
+|301|Request IP is not allowed|
+|302|Sent MerchantOrderId is duplicated|
+|303|Sent OrderId does not exist|
+|304|Customer Identity is required|
+|306|Merchant is blocked|
+|307|Transaction not found|
+|308|Transaction not available to capture|
+|309|Transaction not available to void|
+|310|Payment method doest not support this operation|
+|311|Refund is not enabled for this merchant|
+|312|Transaction not available to refund|
+|313|Recurrent Payment not found|
+|314|Invalid Integration|
+|315|Cannot change NextRecurrency with pending payment|</p>
 
             </div>
             <div class="dark-box">

@@ -600,15 +600,16 @@ html, body {
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
+	text-shadow: none;
 
     &.warning {
       background-color: $aside-warning-bg;
-      @include text-shadow(0 1px 0 lighten($aside-warning-bg, 15%));
+      text-shadow: none;
     }
 
     &.success {
       background-color: $aside-success-bg;
-      @include text-shadow(0 1px 0 lighten($aside-success-bg, 15%));
+      text-shadow: none;
     }
 
 	&.request {

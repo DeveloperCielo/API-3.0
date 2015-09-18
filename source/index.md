@@ -104,7 +104,6 @@ Para que você possa disfrutar de todos os recursos disponíveis em nossa API, �
 * **Antifraude**: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.
 * **Recorrente**: A Recorrência Inteligente é um recurso indispensável para estabelicimentos que precisam cobrar regularmente por seus produtos/serviços.
 É muito utilizado para assinaturas de revistas, mensalidades, licenças de software, entre outros. Os lojistas contarão com recursos diferenciados para modelar sua cobrança de acordo com o seu negócio, pois toda parametrização é configurável, tais como: periodicidade, data de início e fim, quantidade de tentativas, intervalo entre elas, entre outros.
-* **ANTIFRAUDE**: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.
 
 ## Criando uma transação simples
 
@@ -188,7 +187,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Teste"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -245,7 +244,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Teste"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -3030,12 +3029,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Modificando data final da Recorrência
 
@@ -3075,12 +3069,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Modificando número de parcelas da Recorrência
 
@@ -3120,12 +3109,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Modificando intevalo da Recorrência
 
@@ -3165,12 +3149,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Modificar dia da Recorrência
 
@@ -3212,12 +3191,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Modificando data do próximo Pagamento
 
@@ -3257,12 +3231,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Modificando dados do Pagamento da Recorrência
 
@@ -3340,12 +3309,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Desabilitando um Pedido Recorrente
 
@@ -3379,12 +3343,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 ## Reabilitando um Pedido Recorrente
 
@@ -3418,12 +3377,7 @@ curl
 HTTP Status 200
 ```
 
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
 
 # Consultando Vendas
 

@@ -203,7 +203,6 @@
 <li><strong>Antifraude</strong>: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.</li>
 <li><strong>Recorrente</strong>: A Recorrência Inteligente é um recurso indispensável para estabelicimentos que precisam cobrar regularmente por seus produtos/serviços.
 É muito utilizado para assinaturas de revistas, mensalidades, licenças de software, entre outros. Os lojistas contarão com recursos diferenciados para modelar sua cobrança de acordo com o seu negócio, pois toda parametrização é configurável, tais como: periodicidade, data de início e fim, quantidade de tentativas, intervalo entre elas, entre outros.</li>
-<li><strong>ANTIFRAUDE</strong>: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.</li>
 </ul>
 
 <h2 id="criando-uma-transação-simples">Criando uma transação simples</h2>
@@ -374,8 +373,8 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
-    </span><span class="err">}</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -429,7 +428,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -5660,29 +5659,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="modificando-data-final-da-recorrência">Modificando data final da Recorrência</h2>
 
@@ -5754,29 +5731,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="modificando-número-de-parcelas-da-recorrência">Modificando número de parcelas da Recorrência</h2>
 
@@ -5848,29 +5803,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="modificando-intevalo-da-recorrência">Modificando intevalo da Recorrência</h2>
 
@@ -5942,29 +5875,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="modificar-dia-da-recorrência">Modificar dia da Recorrência</h2>
 
@@ -6038,29 +5949,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="modificando-data-do-próximo-pagamento">Modificando data do próximo Pagamento</h2>
 
@@ -6132,29 +6021,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="modificando-dados-do-pagamento-da-recorrência">Modificando dados do Pagamento da Recorrência</h2>
 
@@ -6312,29 +6179,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="desabilitando-um-pedido-recorrente">Desabilitando um Pedido Recorrente</h2>
 
@@ -6396,29 +6241,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h2 id="reabilitando-um-pedido-recorrente">Reabilitando um Pedido Recorrente</h2>
 
@@ -6480,29 +6303,7 @@
 <pre><code class="highlight shell">HTTP Status 200
 </code></pre>
 
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Resource Not Found</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
 
 <h1 id="consultando-vendas">Consultando Vendas</h1>
 

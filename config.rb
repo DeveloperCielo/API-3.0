@@ -17,7 +17,8 @@ activate :syntax
 activate :relative_assets
 set :relative_links, true
 
-set :translations, false
+set :translations, [{:english => '<a href="english.html" title="English version">English version</a>'},
+                    {:portuguese => '<a href="index.html" title="Versão em português">Versão em português</a>'}]
 
 # Build-specific configuration
 configure :build do

@@ -1918,3 +1918,1392 @@ curl
 |`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|0|
 |`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+
+# Payments with Electronic Transfer
+
+## Creating a simplified sale
+
+To create an electronic transfer in a sale, it must do a POST to the Payment feature as shown. This sample includes a minimum courses required to be sent for authorization.
+
+### Request
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"EletronicTransfer",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "ReturnUrl":"http://www.cielo.com.br"
+    }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"EletronicTransfer",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "ReturnUrl":"http://www.cielo.com.br"
+    }
+}
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in  Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`MerchantOrderId`|The request identification number.|Text|50|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Payments.Type`|Payment Method type.|Text|100|Yes|
+|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payments.Provider`|Payment Method name.|Text|15|Yes|
+
+
+### Response
+
+```json
+{
+    "MerchantOrderId": "2014111706",
+    "Customer": {
+        "Name": "Comprador Teste",
+    },
+    "Payment": {
+        "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
+        "PaymentId": "765548b6-c4b8-4e2c-b9b9-6458dbd5da0a",
+        "Type": "EletronicTransfer",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 0,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014111706",
+    "Customer": {
+        "Name": "Comprador Teste",
+    },
+    "Payment": {
+        "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
+        "PaymentId": "765548b6-c4b8-4e2c-b9b9-6458dbd5da0a",
+        "Type": "EletronicTransfer",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 0,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Property|Description|Type|Size|Format|
+|--------|-----------|----|----|------|
+|`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`Url`|URL to redirect the client to the flow of Electronic Transfer.|Text|256|Authentication Url|
+|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
+|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
+|`Status`|Transaction Status.|Byte|-|0|
+
+# “Boleto” Payment
+
+## Creating a simplified sale
+
+To create a sale with “boleto” payment method, you just need to make a POST as shown.
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco"
+    }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco"
+    }
+}
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`MerchantOrderId`|The request identification number.|Text|50|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Payments.Type`|Payment Method type.|Text|100|Yes|
+|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payments.Provider`|Payment Method name.|Text|15|Yes|
+
+### Response
+
+```json
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "ExpirationDate": "2014-12-25",
+        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Number": "1000000012-8",
+        "BarCodeNumber": "00091628800000157000494250100000001200656560",
+        "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
+        "Address": "Av. Marechal Câmara, 160",
+        "PaymentId": "8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "ExpirationDate": "2014-12-25",
+        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Number": "1000000012-8",
+        "BarCodeNumber": "00091628800000157000494250100000001200656560",
+        "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
+        "Address": "Av. Marechal Câmara, 160",
+        "PaymentId": "8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Property|Description|Type|Size|Format|
+|--------|-----------|----|----|------|
+|`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`ExpirationDate`|Expiration date.|Text|10|12.25.2014|
+|`Url`|“Boleto” Url generated.|string|256|https: //.../pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d|
+|`Number`|"OurNumber" generated.|Text|50|1000000012-8|
+|`BarCodeNumber`|Numerical representation of barcode.|Text|44|00091628800000157000494250100000001200656560|
+|`DigitableLine`|Typeful line.|Text|256|00090.49420 50100.000004 12006.565605 1 62880000015700|
+|`Address`|Address shop.|Text|256|Av. Test 160|
+|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
+|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
+|`Status`|Transaction Status.|Byte|-|1|
+
+## Creating a “Boleto” complete sale
+
+To create a sale with “boleto” payment method, you just need to make a POST as shown.
+
+### Request
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "Address": "Rua Teste",
+        "BoletoNumber": "123",
+        "Assignor": "Empresa Teste",
+        "Demonstrative": "Desmonstrative Teste",
+        "ExpirationDate": "2015-01-05",
+        "Identification": "11884926754",
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia."
+    }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+    "MerchantOrderId":"2014111706",
+    "Customer":
+    {  
+        "Name":"Comprador Teste"
+    },
+    "Payment":
+    {  
+        "Type":"Boleto",
+        "Amount":15700,
+        "Provider":"Bradesco",
+        "Address": "Rua Teste",
+        "BoletoNumber": "123",
+        "Assignor": "Empresa Teste",
+        "Demonstrative": "Desmonstrative Teste",
+        "ExpirationDate": "2015-01-05",
+        "Identification": "11884926754",
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia."
+    }
+}
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`MerchantOrderId`|The request identification number.|Text|50|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Payments.Type`|Payment Method type.|Text|100|Yes|
+|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payments.Provider`|Payment Method’s name.|Text|15|Yes|
+|`Payments.Adress`|Address of the Assignor.|Text|255|No|
+|`Payments.BoletoNumber`|Boleto number ("OurNumber").|Text|50|No|
+|`Payments.Assignor`|Seller's name.|Text|200|No|
+|`Payments.Demonstrative`|Statement text.|Text|450|No|
+|`Payments.ExpirationDate`|Boleto Expiration date.|Date|10|No|
+|`Payments.Identification`|Seller's ID.|Text|14|No|
+|`Payments.Instructions`|Boleto Instructions.|Text|450|No|
+
+### Response
+
+```json
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia.",
+        "ExpirationDate": "2015-01-05",
+        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Number": "123-2",
+        "BarCodeNumber": "00096629900000157000494250000000012300656560",
+        "DigitableLine": "00090.49420 50000.000013 23006.565602 6 62990000015700",
+        "Assignor": "Empresa Teste",
+        "Address": "Rua Teste",
+        "Identification": "11884926754",
+        "PaymentId": "a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014111706",
+    "Customer":
+    {
+        "Name": "Comprador Teste",
+        "Address": {}
+    },
+    "Payment":
+    {
+        "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia.",
+        "ExpirationDate": "2015-01-05",
+        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Number": "123-2",
+        "BarCodeNumber": "00096629900000157000494250000000012300656560",
+        "DigitableLine": "00090.49420 50000.000013 23006.565602 6 62990000015700",
+        "Assignor": "Empresa Teste",
+        "Address": "Rua Teste",
+        "Identification": "11884926754",
+        "PaymentId": "a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Type": "Boleto",
+        "Amount": 15700,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Bradesco",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            }
+        ]
+    }
+}
+```
+
+|Property|Description|Type|Size|Format|
+|--------|-----------|----|----|------|
+|`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`Instructions`|Boleto Instructions.|Text|450|Ex: Accepted only until the expiration date, after this date, you should charge an interest fee of 1% day.|
+|`ExpirationDate`|Expiration date.|Text|10|12.25.2014|
+|`Url`|Boleto Url generated.|string|256|Ex: https: //.../pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d|
+|`Number`|"OurNumber" generated.|Text|50|Ex: 1000000012-8|
+|`BarCodeNumber`|Numerical representation of barcode.|Text|44|Eg 00091628800000157000494250100000001200656560|
+|`DigitableLine`|Typeful line.|Text|256|Eg 00090.49420 50100.000004 12006.565605 1 62880000015700|
+|`Assignor`|Seller's name.|Text|256|Ex: Store Test|
+|`Address`|Address of the Assignor.|Text|256|Ex: Av Test, 160.|
+|`Identification`|Seller's ID.|Text|14|CPF or CNPJ Assignor without special characters (, /, -.)|
+|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
+|`ReasonMessage`|Message of the Transaction reason.|Text|32|Successful|
+|`Status`|Transaction Status.|Byte|-|1|
+
+# Recurring payments
+
+## Authorizing the first recurrence
+
+To create a recurring sale whose first recurrence is authorized in the form of credit card payment, you just need to make a POST as shown.
+
+### Request
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador accept"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Provider":"Simulado",
+     "Installments":1,
+     "SoftDescriptor":"tst",
+     "RecurrentPayment":{
+       "AuthorizeNow":"true",
+       "EndDate":"2019-12-01",
+       "Interval":"SemiAnnual"
+     },
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"03/2019",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+    {
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador accept"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Provider":"Simulado",
+     "Installments":1,
+     "SoftDescriptor":"tst",
+     "RecurrentPayment":{
+       "AuthorizeNow":"true",
+       "EndDate":"2019-12-01",
+       "Interval":"SemiAnnual"
+     },
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"03/2019",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|6|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`MerchantOrderId`|The request identification number.|Text|50|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Payments.Type`|Payment Method type.|Text|100|Yes|
+|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payments.Installments`|Number of installments.|Number|2|Yes|
+|`Payments.SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|No|
+|`Payments.RecurrentPayment.EndDate`|Date to end the recurrence.|Text|10|No|
+|`Payments.RecurrentPayment.Interval`|Recurrence interval.<ul><li>Monthly (Default)</li><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|Text|10|No|
+|`Payments.RecurrentPayment.AuthorizeNow`|Boolean to know if the first recurrence will be authorized or not.|Boolean|-|Yes|
+|`CreditCard.CardNumber`|Buyer's card number.|Text|16|Yes|
+|`CreditCard.Holder`|Buyer's name printed on the card.|Text|25|Yes|
+|`CreditCard.ExpirationDate`|Date of expiration printed on the card.|Text|7|Yes|
+|`CreditCard.SecurityCode`|Security code printed on the back of the card.|Text|4|Yes|
+|`CreditCard.Brand`|Card issuer.|Text|10|Yes|
+
+### Response
+
+```json
+{
+    "MerchantOrderId": "2014113245231706",
+    "Customer": {
+        "Name": "Comprador accept"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "Recurrent": false,
+        "CreditCard": {
+            "CardNumber": "123412******1231",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "03/2019",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "3827556",
+        "AcquirerTransactionId": "0504043827555",
+        "AuthorizationCode": "149867",
+        "SoftDescriptor":"tst",
+        "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
+        "Type": "CreditCard",
+        "Amount": 1500,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Simulado",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "ProviderReturnCode": "4",
+        "ProviderReturnMessage": "Operation Successful",
+        "RecurrentPayment": {
+            "RecurrentPaymentId": "61e5bd30-ec11-44b3-ba0a-56fbbc8274c5",
+            "ReasonCode": 0,
+            "ReasonMessage": "Successful",
+            "NextRecurrency": "2015-11-04",
+            "EndDate": "2019-12-01",
+            "Interval": "SemiAnnual",
+            "Link": {
+                "Method": "GET",
+                "Rel": "recurrentPayment",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+            },
+            "AuthorizeNow": true
+        },
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014113245231706",
+    "Customer": {
+        "Name": "Comprador accept"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "Recurrent": false,
+        "CreditCard": {
+            "CardNumber": "123412******1231",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "03/2019",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "3827556",
+        "AcquirerTransactionId": "0504043827555",
+        "AuthorizationCode": "149867",
+        "SoftDescriptor":"tst",
+        "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
+        "Type": "CreditCard",
+        "Amount": 1500,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Simulado",
+        "ExtraDataCollection": [],
+        "ReasonCode": 0,
+        "ReasonMessage": "Successful",
+        "Status": 1,
+        "ProviderReturnCode": "4",
+        "ProviderReturnMessage": "Operation Successful",
+        "RecurrentPayment": {
+            "RecurrentPaymentId": "61e5bd30-ec11-44b3-ba0a-56fbbc8274c5",
+            "ReasonCode": 0,
+            "ReasonMessage": "Successful",
+            "NextRecurrency": "2015-11-04",
+            "EndDate": "2019-12-01",
+            "Interval": "SemiAnnual",
+            "Link": {
+                "Method": "GET",
+                "Rel": "recurrentPayment",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+            },
+            "AuthorizeNow": true
+        },
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+|Property|Description|Type|Size|Format|
+|--------|-----------|----|----|------|
+|`RecurrentPaymentId`|Field identifier next recurrence.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
+|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
+|`NextRecurrency`|Date of next recurrence.|Text|7|05/2019 (MM / YYYY)|
+|`EndDate`|Date of the end of recurrence.|Text|7|05/2019 (MM / YYYY)|
+|`Interval`|Break between recurrence.|Text|10|<ul><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|
+|`AuthorizeNow`|Boolean to know if the first recurrence will be authorized or not.|Boolean|-|true or false|
+
+## Scheduling a credit recurrence
+
+To create a recurring sale whose first recurrence will not be allowed on the same date in for credit card payment, just make a POST as shown.
+
+### Request
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador accept"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Provider":"Simulado",
+     "Installments":1,
+     "SoftDescriptor":"tst",
+     "RecurrentPayment":{
+       "AuthorizeNow":"false",
+       "EndDate":"2019-12-01",
+       "Interval":"SemiAnnual",
+       "StartDate":"2015-06-01"
+     },
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"03/2019",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador accept"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Provider":"Simulado",
+     "Installments":1,
+     "SoftDescriptor":"tst",
+     "RecurrentPayment":{
+       "AuthorizeNow":"false",
+       "EndDate":"2019-12-01",
+       "Interval":"SemiAnnual",
+       "StartDate":"2015-06-01"
+     },
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"03/2019",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Email`|Email Buyer.|Text|255|No|
+|`Customer.Birthdate`|Date of purchaser birth.|Date|10|No|
+|`Customer.Identity`|RG number, CPF or CNPJ Client.|Text|14|No|
+|`Customer.Address.Street`|Purchaser's address.|Text|255|No|
+|`Customer.Address.Number`|Buyer's address number.|Text|15|No|
+|`Customer.Address.Complement`|Complement address of the Purchaser.|Text|50|No|
+|`Customer.Address.ZIP code`|Purchaser’s Zip code address.|Text|9|No|
+|`Customer.Address.City`|Purchaser’s City address.|Text|50|No|
+|`Customer.Address.State`|Purchaser’ State address.|Text|2|No|
+|`Customer.Address.Country`|Country of Purchaser’s address.|Text|35|No|
+|`Customer.Address.District`|Buyer's neighborhood.|Text|50|No|
+|`Customer.Deliveryaddress.Street`|Purchaser's address.|Text|255|No|
+|`Customer.Deliveryaddress.Number`|Buyer's address number.|Text|15|No|
+|`Customer.Deliveryaddress.Complement`|Purchase Complement  address.|Text|50|No|
+|`Customer.Deliveryaddress.ZIP code`|Purchaser’s zip code address.|Text|9|No|
+|`Customer.Deliveryaddress.City`|Purchaser’s City address.|Text|50|No|
+|`Customer.Deliveryaddress.State`|State the address of the Purchaser.|Text|2|No|
+|`Customer.Deliveryaddress.Country`|Parents of the address of the Purchaser.|Text|35|No|
+|`Customer.Deliveryaddress.District`|Buyer's neighborhood.|Text|50|No|
+
+
+### Response
+
+```json
+{
+    "MerchantOrderId": "2014113245231706",
+    "Customer": {
+        "Name": "Comprador accept"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "Recurrent": false,
+        "CreditCard": {
+            "CardNumber": "123412******1231",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "03/2019",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "SoftDescriptor": "tst",
+        "Type": "CreditCard",
+        "Amount": 1500,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Simulado",
+        "ExtraDataCollection": [],
+        "Status": 20,
+        "RecurrentPayment": {
+            "RecurrentPaymentId": "0d2ff85e-594c-47b9-ad27-bb645a103db4",
+            "ReasonCode": 0,
+            "ReasonMessage": "Successful",
+            "NextRecurrency": "2015-06-01",
+            "StartDate": "2015-06-01",
+            "EndDate": "2019-12-01",
+            "Interval": "SemiAnnual",
+            "Link": {
+                "Method": "GET",
+                "Rel": "recurrentPayment",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"
+            },
+            "AuthorizeNow": false
+        }
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014113245231706",
+    "Customer": {
+        "Name": "Comprador accept"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "Recurrent": false,
+        "CreditCard": {
+            "CardNumber": "123412******1231",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "03/2019",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "SoftDescriptor": "tst",
+        "Type": "CreditCard",
+        "Amount": 1500,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Simulado",
+        "ExtraDataCollection": [],
+        "Status": 20,
+        "RecurrentPayment": {
+            "RecurrentPaymentId": "0d2ff85e-594c-47b9-ad27-bb645a103db4",
+            "ReasonCode": 0,
+            "ReasonMessage": "Successful",
+            "NextRecurrency": "2015-06-01",
+            "StartDate": "2015-06-01",
+            "EndDate": "2019-12-01",
+            "Interval": "SemiAnnual",
+            "Link": {
+                "Method": "GET",
+                "Rel": "recurrentPayment",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"
+            },
+            "AuthorizeNow": false
+        }
+    }
+}
+```
+
+|Property|Description|Type|Size|Format|
+|--------|-----------|----|----|------|
+|`RecurrentPaymentId`|Field identifier next recurrence.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
+|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
+|`NextRecurrency`|Date of next recurrence.|Text|7|05/2019 (MM / YYYY)|
+|`StartDate`|Date of onset of recurrence.|Text|7|05/2019 (MM / YYYY)|
+|`EndDate`|Date of the end of recurrence.|Text|7|05/2019 (MM / YYYY)|
+|`Interval`|Interval between recurrence.|Text|10|<ul><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|
+|`AuthorizeNow`|Boolean to know if the first recurrence will be authorized or not.|Boolean|-|true or false|
+
+## Modifying buyer information
+
+To change the Recurrence buyer's data, you just need to make a Put as shown.
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Customer</span></aside>
+
+```json
+{  
+      "Name":"Customer",
+      "Email":"customer@teste.com",
+      "Birthdate":"1999-12-12",
+      "Identity":"22658954236",
+      "IdentityType":"CPF",
+      "Address":{  
+         "Street":"Rua Teste",
+         "Number":"174",
+         "Complement":"AP 201",
+         "ZipCode":"21241140",
+         "City":"Rio de Janeiro",
+         "State":"RJ",
+         "Country":"BRA"
+      },
+      "DeliveryAddress":{  
+         "Street":"Outra Rua Teste",
+         "Number":"123",
+         "Complement":"AP 111",
+         "ZipCode":"21241111",
+         "City":"Qualquer Lugar",
+         "State":"QL",
+         "Country":"BRA",
+        "District":"Teste"
+      }
+}
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Customer"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+      "Name":"Customer",
+      "Email":"customer@teste.com",
+      "Birthdate":"1999-12-12",
+      "Identity":"22658954236",
+      "IdentityType":"CPF",
+      "Address":{  
+         "Street":"Rua Teste",
+         "Number":"174",
+         "Complement":"AP 201",
+         "ZipCode":"21241140",
+         "City":"Rio de Janeiro",
+         "State":"RJ",
+         "Country":"BRA"
+      },
+      "DeliveryAddress":{  
+         "Street":"Outra Rua Teste",
+         "Number":"123",
+         "Complement":"AP 111",
+         "ZipCode":"21241111",
+         "City":"Qualquer Lugar",
+         "State":"QL",
+         "Country":"BRA",
+        "District":"Teste"
+      }
+   }
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Email`|Email Buyer.|Text|255|No|
+|`Customer.Birthdate`|Date of purchase birth.|Date|10|No|
+|`Customer.Identity`|RG number, CPF or CNPJ Client.|Text|14|No|
+|`Customer.Address.Street`|Purchaser's address.|Text|255|No|
+|`Customer.Address.Number`|Buyer's address number.|Text|15|No|
+|`Customer.Address.Complement`|Complement address of the purchaser.|Text|50|No|
+|`Customer.Address.ZIP code`|Zip code address of purchaser.|Text|9|No|
+|`Customer.Address.City`|City address of purchaser.|Text|50|No|
+|`Customer.Address.State`|Address State of the purchaser|Text|2|No|
+|`Customer.Address.Country`|Country address of purchaser.|Text|35|No|
+|`Customer.Address.District`|Buyer's neighborhood.|Text|50|No|
+|`Customer.Deliveryaddress.Street`|Purchaser's address.|Text|255|No|
+|`Customer.Deliveryaddress.Number`|Buyer's address number.|Text|15|No|
+|`Customer.Deliveryaddress.Complement`|Complement address of purchaser.|Text|50|No|
+|`Customer.Deliveryaddress.ZIP code`|Zip code address of purchaser.|Text|9|No|
+|`Customer.Deliveryaddress.City`|City address of purchaser.|Text|50|No|
+|`Customer.Deliveryaddress.State`|State address of purchaser.|Text|2|No|
+|`Customer.Deliveryaddress.Country`|Country address of purchaser.|Text|35|No|
+|`Customer.Deliveryaddress.District`|Buyer's neighborhood.|Text|50|No|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Modifying end date of Recurrence
+
+To change the end date of recurrence, just make a Put as shown.
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/EndDate</span></aside>
+
+```json
+"2021-01-09"
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/EndDate"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+"2021-01-09"
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`EndDate`|Date to end the recurrence.|Text|10|Yes|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Changing number of Recurrence plots
+
+To change the number of recurrence plots, just make a Put as shown.
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Installments</span></aside>
+
+```json
+3
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+3
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`Installments`|Number of installments.|Number|2|Yes|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Modifying Interval of Recurrence
+
+To change the range of recurrence, just make a Put as shown.
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Interval</span></aside>
+
+```json
+6
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Interval"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+6
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`Interval`|Recurrence interval.<ul><li>Monthly</li><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|Number|2|Yes|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Modify day of Recurrence
+
+To change the day of recurrence, just make a Put as shown.
+
+<aside class="notice"><strong>Rule:</strong> If the new day is informed after the present day, we will update the day of recurrence in effect at the next recurrence. Ex .: Today is 5, and the next day recurrence is 25/05. When I upgrade to 10th, the date of the next recurrence will be day 10 / 05. If the new day is informed before the present day, we will update the day of recurrence, but this is not be implemented until the next recurrence is successfully be executed. Ex .: Today is 5, and the next day recurrence is 25/05. When I upgrade to day 3, the date of the next recurrence remain day 25/05, and after it is executed, the next one is scheduled for 03/06. If the new day is informed before the actual day, but the next recurrence is in another month, we will update the day of recurrence in effect at the next recurrence. Ex .: Today is 5, and the next day recurrence is 25/09. When I upgrade to day 3, the date of the next recurrence will be 03/09.</aside>
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay</span></aside>
+
+```json
+16
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+16
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`RecurrencyDay`|Day Recurrence.|Number|2|Yes|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Modifying date of the next payment
+
+To change the date of the next payment, just make a Put as shown.
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate</span></aside>
+
+```json
+"2016-06-15"
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+"2016-06-15"
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`NextPaymentDate`|Payment date of the next recurrence.|Text|10|Yes|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Modifying the Payment data Recurrence
+
+To change the data of Recurrence payment, just make a Put as shown.
+
+<aside class="notice"><strong>Warning:</strong> This change affects all data on the Payment node. So to keep the previous data you must enter the fields that will not change to the same values ​​that were already saved.</aside>
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Payment</span></aside>
+
+```json
+{  
+   "Type":"CreditCard",
+   "Amount":"123",
+   "Installments":3,
+   "Country":"USA",
+   "Currency":"USD",
+   "SoftDescriptor":"test",
+   "Provider":"Simulado",
+   "CreditCard":{  
+      "Brand":"Master",
+      "Holder":"Teset card",
+      "CardNumber":"1234123412341232",
+      "ExpirationDate":"05/2019"
+   }
+}
+```
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Payment"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+   "Type":"CreditCard",
+   "Amount":"123",
+   "Installments":3,
+   "Country":"USA",
+   "Currency":"USD",
+   "SoftDescriptor":"test",
+   "Provider":"Simulado",
+   "CreditCard":{  
+      "Brand":"Master",
+      "Holder":"Teset card",
+      "CardNumber":"1234123412341232",
+      "ExpirationDate":"05/2019"
+   }
+}
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`Payments.Type`|Payment Method type.|Text|100|Yes|
+|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payments.Installments`|Number of installments.|Number|2|Yes|
+|`Payments.SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|No|
+|`CreditCard.CardNumber`|Buyer's card number.|Text|16|Yes|
+|`CreditCard.Holder`|Buyer's name printed on the card.|Text|25|Yes|
+|`CreditCard.ExpirationDate`|Date of expiration printed on the card.|Text|7|Yes|
+|`CreditCard.SecurityCode`|Security code printed on the back of the card.|Text|4|Yes|
+|`CreditCard.Brand`|Card issuer.|Text|10|Yes|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Disabling a request Recurring
+
+To disable a recurring request, just make a Put as shown.
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate</span></aside>
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+
+## Rehabilitating a Recurring request
+
+To rehabilitate a recurring request, just make a Put as shown.
+
+### Request
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate</span></aside>
+
+```shell
+curl
+--request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0. |Texto |40 |Sim|
+|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
+
+### Response
+
+```shell
+HTTP Status 200
+```
+
+See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.

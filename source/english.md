@@ -3817,3 +3817,215 @@ curl
 |`StartDate`|Date of onset of recurrence.|Text|7|05/2019 (MM / YYYY)|
 |`EndDate`|Date of the end of recurrence.|Text|7|05/2019 (MM / YYYY)|
 |`Interval`|Interval between recurrence.|Text|10|<ul><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|
+
+# Attachments
+
+## List of Providers
+
+### Providers for invoice
+
+* Bradesco
+* Banco do Brasil
+
+### Providers for electronic transfer
+
+* Bradesco
+* Banco do Brasil
+
+## Reason Code e Reason Message
+
+The table below lists all possible reasonCode and ReasonMessage returned by the API
+
+|Reason Code|Reason Message|
+|-----------|--------------|
+|0|Successful|
+|1|AffiliationNotFound|
+|2|IssuficientFunds|
+|3|CouldNotGetCreditCard|
+|4|ConnectionWithAcquirerFailed|
+|5|InvalidTransactionType|
+|6|InvalidPaymentPlan|
+|7|Denied|
+|8|Scheduled|
+|9|Waiting|
+|10|Authenticated|
+|11|NotAuthenticated|
+|12|ProblemsWithCreditCard|
+|13|CardCanceled|
+|14|BlockedCreditCard|
+|15|CardExpired|
+|16|AbortedByFraud|
+|17|CouldNotAntifraud|
+|18|TryAgain|
+|19|InvalidAmount|
+|20|ProblemsWithIssuer|
+|21|InvalidCardNumber|
+|22|TimeOut|
+|98|InvalidRequest|
+|99|InternalError|
+
+## Status
+
+Status returned by the API
+
+|Code|Description|
+|----|-----------|
+|0|NotFinished|
+|1|Authorized|
+|2|PaymentConfirmed|
+|3|Denied|
+|10|Voided|
+|11|Refunded|
+|12|Pending|
+|13|Aborted|
+|20|Scheduled|
+
+## Merchant Defined Data
+
+The table below lists all possible codes to be sent in MerchantDefinedData parameter and its type of information that must be filled.
+
+| Id | Given | Description | Type |
+|----|------|-----------|------|
+| 1 | Customer made Log In | If the end user has logged on the site to buy, send: login it. Purchase was made as a visitor, send: "Guest". If the sale was made directly by a third party, an agent for example, do not send the field | String |
+| 2 | Customer is established there: #dias | Number of days | Number |
+| 3 | Purchase Performed in (plots) | Number of installments | Number |
+| 4 | Sale channel | Values: "Call Center" = carrier buying the phone "Web" = carrier buying the Web "portal" = an agent making the purchase for the customer "Kiosk" = Shopping in “mobile” kiosks = Purchases made on smartphone or tablet | String |
+| 5 | Coupon Code / Discount | If the buyer is using coupon, send the coupon code | String |
+| 6 | Last effected purchase | MM / DD / YYYY | Date |
+| 7 | Affiliation | Name or dealer code or broker | String |
+| 8 | Purchase attempts | Nr of times tried to make the payment request. Attempted different credit cards and / or other payments methods attempted. For the same application. | Number |
+| 9 | Customer will withdraw the product in a store | Values: "Yes", "NOT" In the case of agency, you will remove any voucher and / or physically ticket | String |
+| 10 | Payment made by 3rd | Values "YES", "NO" If the payer is present or not on the trip / package | String |
+| 11 | Hotel Category | Values: 1, 2, 3, 4, 5 How many stars has the hotel | Number |
+| 12 | Hotel Check-in date | MM / DD / YYYY | Date |
+| 13 | Hotel check-out date | MM / DD / YYYY | Date |
+| 14 | Travel / Package | Values: "National", "International", "National / International" | String |
+| 15 | Cia name. Air / Rental Car / Hotel | Send the name of each company, separated by "/" | String |
+| 16 | PNR | Send the PNR number of the reservation. When there is a change of booking for this PNR in advance of the flight date, it is important to make a new analysis of fraud by sending this PNR again. | String |
+| 17 | There was anticipation of reservation? | Values "YES", "NO" Indicate if there was rebooking the flight to an earlier date to the original. It is essential also to send the PNR field | String |
+| 18 | (reserved) | | |
+| 19 | (reserved) | | |
+| 20 | (reserved) | | |
+| 21 | (reserved) | | |
+| 22 | (reserved) | | |
+| 23 | (reserved) | | |
+| 24 | (reserved) | | |
+| 25 | (reserved) | | |
+| 26 | Bin Credit Card | Send the bin - 6/1 digits of the card | String |
+| 27 | (reserved) | | |
+| 28 | (reserved) | | |
+| 29 | (reserved) | | |
+| 30 | (reserved) | | |
+| 31 | Nr credit cards exchanges | Nr of times the buyer changed the credit card to make the payment request | Number |
+| 32 | Email pasted or typed | Values: "Entered," "Stuck" State whether the e-mail address is typed or pasted in the field | String |
+| 33 | Nr pasted or typed Card | Values: "Entered," "Stuck" State whether the nr credit card was typed or pasted in the field | String |
+| 34 | Email confirmed | If there is routine e-mail confirmation for account activation. Values: "Yes". If not, do not send the MDD | String |
+| 35 | Customer type (local / tourist) | Values: "Local", "Tourist". Do not send the MDD in the case of not having this information | String |
+| 36 | Use this card on purchases ($) | Inform whether it was used Card Present (Gift Card) in the purchase. Values: "Yes". If not, do not send the MDD | String |
+| 37 | Shipping Method | Values: "Sedex", "Sedex 10", "Day 1", "2 Days", "Motoboy", "Same Day", etc. If you have not sent, do not send the MDD | String |
+| 38 | Number of Bina | Inform the nr of identification telephone with DDD | String |
+| 39 | (reserved) | | |
+| 40 | (reserved) | | |
+| 41 the 95 | Free field | The fields are reserved for sending shopkeeper data as the business rule. | String |
+| 96 | (reserved) | | |
+| 97 | (reserved) | | |
+| 98 | (reserved) | | |
+| 99 | (reserved) | | |
+| 100 | Document | Document (CPG, RG, etc.) | String |
+
+## HTTP Status Code
+
+|HTTP Status Code|Description|
+|----------------|-----------|
+|200|OK|
+|400|Bad Request|
+|404|Resource Not Found|
+|500|Internal Server Error|
+
+## Error Codes
+
+|Code|Message|
+|----|-------|
+|100|RequestId is required|
+|101|MerchantId is required|
+|102|Payment Type is required|
+|103|Payment Type can only contain letters|
+|104|Customer Identity is required|
+|105|Customer Name is required|
+|106|Transaction ID is required|
+|107|You must Provide CreditCard Number, Token or Alias|
+|108|Amount must be greater or equal to zero|
+|109|Payment Currency is required|
+|110|Invalid Payment Currency|
+|111|Payment is required Country|
+|112|Invalid Payment Country|
+|113|Invalid Payment Code|
+|114|The provided MerchantId is not in correct format|
+|115|The provided MerchantId was not found|
+|117|Credit Card Holder is required|
+|118|Credit Card Number is required|
+|119|At least one Payment is required|
+|120|Request IP not allowed. Check your IP White List|
+|121|Customer is required|
+|122|MerchantOrderId is required|
+|123|Installments must be greater or equal to one|
+|124|Credit Card is Required|
+|125|Credit Card Expiration Date is required|
+|126|Credit Card Expiration Date is invalid|
+|127|You must Provide CreditCard Number, Token or Alias|
+|128|Card Number length exceeded|
+|129|Affiliation not found|
+|130|Could not get Credit Card|
+|131|MerchantKey is required|
+|132|MerchantKey is invalid|
+|133|Provider is not supported for this Payment Type|
+|134|FingerPrint length exceeded|
+|135|MerchantDefinedFieldValue length exceeded|
+|136|ItemDataName length exceeded|
+|137|ItemDataSKU length exceeded|
+|138|PassengerDataName length exceeded|
+|139|PassengerDataStatus length exceeded|
+|140|PassengerDataEmail length exceeded|
+|141|PassengerDataPhone length exceeded|
+|142|TravelDataRoute length exceeded|
+|143|TravelDataJourneyType length exceeded|
+|144|TravelLegDataDestination length exceeded|
+|145|TravelLegDataOrigin length exceeded|
+|146|SecurityCode length exceeded|
+|147|Street address length exceeded|
+|148|Address Number length exceeded|
+|149|Address Complement length exceeded|
+|150|Address ZipCode length exceeded|
+|151|Address City length exceeded|
+|152|Address State length exceeded|
+|153|Address Country length exceeded|
+|154|District Address length exceeded|
+|155|Customer Name length exceeded|
+|156|Customer Identity length exceeded|
+|157|Customer IdentityType length exceeded|
+|158|Customer Email length exceeded|
+|159|ExtraData Name length exceeded|
+|160|ExtraData Value length exceeded|
+|161|Instructions billet length exceeded|
+|162|Demostrative billet length exceeded|
+|163|Return Url is required|
+|164|Return Url is invalid|
+|166|AuthorizeNow is required|
+|167|Antifraud not configured|
+|168|Recurrent Payment not found|
+|169|Recurrent Payment is not active|
+|300|MerchantId was not found|
+|301|Request IP is not allowed|
+|302|Sent MerchantOrderId is duplicated|
+|303|Sent OrderId does not exist|
+|304|Customer Identity is required|
+|306|Merchant is blocked|
+|307|Transaction not found|
+|308|Transaction not available to capture|
+|309|Transaction not available to void|
+|310|Payment method doest not support this operation|
+|311|Refund is not enabled for this merchant|
+|312|Transaction not available to refund|
+|313|Recurrent Payment not found|
+|314|Invalid Integration|
+|315|Can not change NextRecurrency with pending payment|

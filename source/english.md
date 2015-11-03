@@ -1827,3 +1827,94 @@ curl
 |`Status`|Transaction Status.|Byte|-|10|
 |`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
 |`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+
+# Payments Debit Card
+
+## Creating a simplified sale
+
+To create debit card sale, you must do a POST to the Payment feature as shown. This sample includes a minimum courses required to be sent for authorization.
+
+### Request
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+   "MerchantOrderId":"2014121201",
+   "Customer":{  
+      "Name":"Comprador Teste"
+   },
+   "Payment":{  
+     "Type":"DebitCard",
+     "Amount":15700,
+     "ReturnUrl":"http://www.cielo.com.br",
+     "DebitCard":{  
+         "CardNumber":"4551870000000183",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"12/2021",
+         "SecurityCode":"123",
+         "Brand":"Visa"
+     }
+   }
+}
+```
+
+```shell
+curl
+--request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{  
+   "MerchantOrderId":"2014121201",
+   "Customer":{  
+      "Name":"Comprador Teste"
+   },
+   "Payment":{  
+     "Type":"DebitCard",
+     "Amount":15700,
+     "ReturnUrl":"http://www.cielo.com.br",
+     "DebitCard":{  
+         "CardNumber":"4551870000000183",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"12/2021",
+         "SecurityCode":"123",
+         "Brand":"Visa"
+     }
+   }
+}
+--verbose
+```
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`MerchantOrderId`|The request identification number.|Text|50|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Payments.Type`|Payment Method type.|Text|100|Yes|
+|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payments.ReturnUrl`|URL retailer's return.|Text|1024|Yes|
+|`Payments.ReturnUrl`|URL where the user is redirected after the end of payment|Text|1024|Yes|
+|`CreditCard.CardNumber`|Buyer's card number.|Text|16|Yes|
+|`CreditCard.Holder`|Buyer's name printed on the card.|Text|25|Yes|
+|`CreditCard.ExpirationDate`|Date of expiration printed on the card.|Text|7|Yes|
+|`CreditCard.SecurityCode`|Security code printed on the back of the card.|Text|4|Yes|
+|`CreditCard.Brand`|Card issuer.|Text|10|Yes|
+
+
+### Response
+
+|Property|Description|Type|Size|Format|
+|--------|-----------|----|----|------|
+|`AuthenticationUrl`|URL to redirect the client to the debit flow.|Text|56|Authentication URL|
+|`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
+|`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
+|`ReturnUrl`|Url retailer's return. URL where the shopkeeper will be redirected at the end of the flow.|Text|1024|http://www.urllogista.com.br|
+|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
+|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
+|`Status`|Transaction Status.|Byte|-|0|
+|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|

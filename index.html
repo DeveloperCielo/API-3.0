@@ -145,6 +145,154 @@
 <li><strong>VBV (Verified by Visa)</strong>: Programa internacional da Visa que possibilita a autenticação do comprador no momento de uma compra em ambiente E-commerce.</li>
 </ul>
 
+<h1 id="certificado-extended-validation">Certificado Extended Validation</h1>
+
+<h2 id="o-que-é-certificado-ssl?">O que é Certificado SSL?</h2>
+
+<p>O Certificado SSL para servidor web oferece autenticidade e integridade dos dados de um web site, proporcionando aos clientes das lojas virtuais a garantia de que estão realmente acessando o site que desejam, e não uma um site fraudador.</p>
+
+<p>Empresas especializadas são responsáveis por fazer a validação do domínio e, dependendo do tipo de certificado, também da entidade detentora do domínio.</p>
+
+<h3 id="internet-explorer:">Internet Explorer:</h3>
+
+<p><img alt="Certificado EV Internet Explorer" src="images/certificado-ie.jpg" /></p>
+
+<h3 id="firefox">Firefox</h3>
+
+<p><img alt="Certificado EV Firefox" src="images/certificado-firefox.jpg" /></p>
+
+<h3 id="google-chrome">Google Chrome</h3>
+
+<p><img alt="Certificado EV Google Chrome" src="images/certificado-chrome.jpg" /></p>
+
+<h2 id="o-que-é-certificado-ev-ssl?">O que é Certificado EV SSL?</h2>
+
+<p>O Certificado EV foi lançado no mercado recentemente e garante um nível de segurança maior para os clientes das lojas virtuais.</p>
+
+<p>Trata-se de um certificado de maior confiança e quando o https for acessado a barra de endereço ficará verde, dando mais confiabilidade aos visitantes do site.</p>
+
+<h2 id="como-instalar-o-certificado-extended-validation-no-servidor-da-loja?">Como instalar o Certificado Extended Validation no servidor da Loja?</h2>
+
+<p>Basta instalar os três arquivos a seguir na Trustedstore do servidor. A Cielo não oferece suporte para a instalação do Certificado. Caso não esteja seguro sobre como realizar a instalação do Certificado EV, então você deverá ser contatado o suporte do fornecedor do seu servidor.</p>
+
+<ul>
+<li><a href="attachment/Raiz.crt">Certificado Raiz</a></li>
+<li><a href="attachment/Intermediaria.crt">Certificado Intermediária</a></li>
+<li><a href="attachment/ecommerce.cielo.com.br.crt">Certificado E-Commerce Cielo</a></li>
+</ul>
+
+<aside class="notice">Caso seu servidor seja uma distribuição Linux e você tenha familiaridade e acesso ssh, então o <a href="./attachment/cielo.sh">Instalador Linux - cielo.sh</a> poderá ajudá-lo com a instalação. <strong>Apenas utilize o instalador se você souber o que está fazendo</strong>. Na dúvida, entre em contato com o suporte do fornecedor do seu servidor.</aside>
+
+<h2 id="passo-a-passo-para-a-instalação">Passo a Passo para a Instalação</h2>
+
+<h3 id="instalação-no-servidor-da-loja-virtual">Instalação no Servidor da Loja Virtual</h3>
+
+<p>O passo a passo para a instalação do Certificado EV deverá ser contatado o suporte do fornecedor do seu servidor.</p>
+
+<aside class="warning">A Cielo não oferece suporte para a instalação do Certificado.</aside>
+
+<h3 id="acesso-do-cliente-à-loja-virtual">Acesso do Cliente à Loja Virtual</h3>
+
+<p>Normalmente, o browser faz a atualização do Certificado automaticamente, caso não o faça e o cliente entre em contato deverá ser informado os seguintes passos:</p>
+
+<h4 id="1o-passo:">1o Passo:</h4>
+
+<p>Salvar os três arquivos abaixo em uma pasta nova, ou que relembre facilmente, pois será utilizada posteriormente:</p>
+
+<ul>
+<li><a href="attachment/Raiz.crt">Certificado Raiz</a></li>
+<li><a href="attachment/Intermediaria.crt">Certificado Intermediária</a></li>
+<li><a href="attachment/ecommerce.cielo.com.br.crt">Certificado E-Commerce Cielo</a></li>
+</ul>
+
+<h4 id="2o-passo:">2o Passo:</h4>
+
+<p>No “Internet Explorer”, clique no menu “Ferramentas” e acesse as “Opções da Internet”:</p>
+
+<p><img alt="Instalar IE" src="images/certificado-instalar-ie-1.jpg" /></p>
+
+<p>No “Firefox”, clique no menu “Abrir Menu” e acesse “Avançado” e “Opções”:</p>
+
+<p><img alt="Instalar FF" src="images/certificado-instalar-ff-1.jpg" /></p>
+
+<p>No “Chrome”, clique no “Personalizar e Controlar o Google Chrome” e acesse “Configurações” e “Mostrar configurações avançadas&hellip; “Alterar Configurações de Proxy e “Conteúdo” e Certificados:</p>
+
+<p><img alt="Instalar GC" src="images/certificado-instalar-gc-1.jpg" /></p>
+
+<h4 id="3o-passo:">3o Passo:</h4>
+
+<p>No Internet Explorer, em “Certificados”, clique em “Importar”.</p>
+
+<p><img alt="Instalar IE" src="images/certificado-instalar-ie-2.jpg" /></p>
+
+<p>No Firefox clique em “Ver Certificados”, clique em “Importar”</p>
+
+<p><img alt="Instalar FF" src="images/certificado-instalar-ff-2.jpg" /></p>
+
+<p>No Chrome clique em “Gerenciar Certificados”, clique em “Importar”</p>
+
+<p><img alt="Instalar GC" src="images/certificado-instalar-gc-2.jpg" /></p>
+
+<h4 id="4o-passo:">4o Passo:</h4>
+
+<p>No Internet Explorer e Chrome “Assistente para Importação de Certificados”, clique em “Avançar”.</p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-3.jpg" /></p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-4.jpg" /></p>
+
+<p>No Firefox “Aba Servidores ”, clique em “Importar”</p>
+
+<p><img alt="Instalar FF" src="images/certificado-instalar-ff-3.jpg" /></p>
+
+<h4 id="5o-passo:">5o Passo:</h4>
+
+<p>No Chrome e Internet Explorer “Assistente para Importação de Certificados”, clique em “Procurar”, procure a pasta onde estão os arquivos e selecione o arquivo “ecommerce.cielo.com.br.crt, clique em “Abrir” e em seguida “Avançar”.</p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-5.jpg" /></p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-6.jpg" /></p>
+
+<h4 id="6o-passo:">6o Passo:</h4>
+
+<p>Selecionar a opção desejada: adicionar o Certificado em uma pasta padrão ou procurar a pasta de sua escolha.</p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-7.jpg" /></p>
+
+<h4 id="7o-passo:">7o Passo:</h4>
+
+<p>Clique em “Concluir”.</p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-8.jpg" /></p>
+
+<h4 id="8o-passo:">8o Passo:</h4>
+
+<p>Clique em “Ok” para concluir a importação.</p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-9.jpg" /></p>
+
+<aside class="notice">No Firefox não consta a mensagem de Importação com Êxito, apenas conclui a importação.</aside>
+
+<p>O Certificado poderá ser visualizado na aba padrão “Outras Pessoas” ou na escolhida pelo cliente.</p>
+
+<p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-10.jpg" /></p>
+
+<h4 id="9o-passo:">9o Passo:</h4>
+
+<p>Repita o mesmo procedimento para os 3 arquivos enviados.</p>
+
+<h2 id="dúvidas">Dúvidas</h2>
+
+<p>Em caso de dúvidas em qualquer etapa ou outras informações técnicas, entre em contato com o Suporte Web do Cielo e-Commerce nos seguintes canais:</p>
+
+<ul>
+<li><strong>Email:</strong> <a href="mailto:cieloecommerce@cielo.com.br">cieloecommerce@cielo.com.br</a></li>
+<li><strong>Capitais:</strong> 4002-9700</li>
+<li><strong>Demais Cidades:</strong> 0800 570 1700</li>
+</ul>
+
+<p>Horário de atendimento: 24h por dia, 7 dias por semana.</p>
+
 <h1 id="visão-geral">Visão Geral</h1>
 
 <p>Neste manual será apresentado uma visão geral do Cielo E-commerce e o mecanismo tecnológico no formato de integração REST.</p>

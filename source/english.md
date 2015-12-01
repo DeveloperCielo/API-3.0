@@ -52,6 +52,146 @@ To facilitate the understanding, we listed below the small glossary with the mai
 * Transaction: it's the purchase order to cardholder at Cielo.
 * VBV (Verified by Visa): International Program at Visa that allows the buyer authentication at the moment of purchase in e-commerce environment.
 
+# Extended Validation Certificate
+
+## What is SSL Certificate?
+
+The Extended Validation Certificate for web server offers authenticity and integrity of data from a web site, provides customers of virtual stores the guarantee that they are actually accessing the site they want, and not a fraudster site.
+
+Specialized companies are responsible for making domain validation and depending on the type of certificate, also the owner of the domain entity.
+
+## What is EV SSL Certificate?
+
+The EV Certificate was released in the market recently and ensures a higher level of security for customers of online stores.
+
+It is a certificate of greater confidence and when https is accessed, the address bar turns green, giving more reliability to site visitors.
+
+### Internet Explorer:
+
+![Certificado EV Internet Explorer](./images/certificado-ie.jpg)
+
+### Firefox
+
+![Certificado EV Firefox](./images/certificado-firefox.jpg)
+
+### Google Chrome
+
+![Certificado EV Google Chrome](./images/certificado-chrome.jpg)
+
+## How to install the Extended Validation Certificate in the shop server?
+
+You just need to install the three following files on the Trustedstore server. Cielo does not support the installation of the certificate. If you are unsure on how to perform install the EV Certificate, then you should contact your server vendor support.
+
+* [Root Certificate](./attachment/Raiz.crt)
+* [Intermediate Certificate](./attachment/Intermediaria.crt)
+* [E-Commerce Cielo Certificate](./attachment/ecommerce.cielo.com.br.crt)
+
+<aside class="notice">If your server is a Linux distribution and you have familiarity and ssh access, then <a href="./attachment/cielo.sh">the Linux Installer - cielo.sh</a> can help you with the installation. Only use the installer if you know what you're doing. When in doubt, contact your server vendor support.</aside>
+
+## Step by Step Installation
+
+### INSTALLATION ON THE SERVER OF ONLINE STORE
+
+To install the EV Certificate you shall contact your server vendor support.
+
+<aside class="warning">Cielo does not support the installation of the certificate.</aside>
+
+### CUSTOMER ACCESS TO ONLINE STORE
+
+Normally, the browser makes a Certificate update automatically, in  case of failure and client contacted you to inform it, follow the steps:
+
+#### 1st STEP:
+
+Save the three files below into a new folder, or recall easily to be used later:
+
+* [Root Certificate](./attachment/Raiz.crt)
+* [Intermediate Certificate](./attachment/Intermediaria.crt)
+* [E-Commerce Cielo Certificate](./attachment/ecommerce.cielo.com.br.crt)
+
+#### 2nd STEP:
+
+In the "Internet Explorer", click on "Tools" menu and access the "Internet Options":
+
+![Instalar IE](./images/certificado-instalar-ie-1.jpg)
+
+In the "Firefox" browser, click on "Open Menu" and go to "Advanced" and "Options":
+
+![Instalar FF](./images/certificado-instalar-ff-1.jpg)
+
+In "Chrome", click on  "Customize and control Google Chrome" and go to "Settings" and "Show advanced settings ..." “Change Proxy Settings” and "Content" and Certificates:
+
+![Instalar GC](./images/certificado-instalar-gc-1.jpg)
+
+#### 3rd STEP:
+
+In Internet Explorer, on "Certificates", click "Import".
+
+![Instalar IE](./images/certificado-instalar-ie-2.jpg)
+
+In Firefox click "View Certificates", click "Import"
+
+![Instalar FF](./images/certificado-instalar-ff-2.jpg)
+
+In Chrome click "Manage Certificates", click "Import"
+
+![Instalar GC](./images/certificado-instalar-gc-2.jpg)
+
+#### 4th STEP:
+
+In Internet Explorer and in Chrome, "Certificate import wizard", click "Next"
+
+![Instalar IE e GC](./images/certificado-instalar-ie-gc-3.jpg)
+
+![Instalar IE e GC](./images/certificado-instalar-ie-gc-4.jpg)
+
+In Firefox "Abba servers," click "Import"
+
+![Instalar FF](./images/certificado-instalar-ff-3.jpg)
+
+#### 5th STEP:
+
+In Chrome and Internet Explorer "Certificate Import Assistent", click "Browse", find the folder where the files are and select the file "ecommerce.cielo.com.br.crt, click" Open "and then" Advance".
+
+![Instalar IE e GC](./images/certificado-instalar-ie-gc-5.jpg)
+
+![Instalar IE e GC](./images/certificado-instalar-ie-gc-6.jpg)
+
+#### 6th STEP:
+
+Select the desired option: add the certificate in a default folder or browse to the folder of your choice.
+
+![Instalar IE e GC](./images/certificado-instalar-ie-gc-7.jpg)
+
+#### 7th STEP:
+
+Click "Finish".
+
+![Instalar IE e GC](./images/certificado-instalar-ie-gc-8.jpg)
+
+#### 8th STEP:
+
+Click "Ok" to complete the import.
+
+![Instalar IE e GC](./images/certificado-instalar-ie-gc-9.jpg)
+
+<aside class="notice">At Firefox does not appear the message “Import Successfully”, it just completes the import.</aside>
+
+The certificate can be viewed in the default tab "Others" or chosen by the customer.
+
+#### 9th STEP:
+
+Repeat the same procedure for the 3 uploaded files.
+
+### Questions:
+
+If you have questions at any stage or other technical information, contact the Support Web Cielo e-Commerce in the following channels:
+
+* **Email:** [cieloecommerce@cielo.com.br](mailto:cieloecommerce@cielo.com.br)
+* **Metropolitan region:** 4002-9700
+* **Other Cities:** 0800 570 1700
+
+Hours: 24 hours a day, 7 days a week.
+
 # Overview
 
 In this manual will be presented an overview of Cielo E-commerce and the technical mechanism on the integration REST format.

@@ -14,12 +14,19 @@ O objetivo desta documentação é orientar o desenvolvedor sobre como integrar 
 
 O mecanismo de integração com o Cielo E-commerce é simples, de modo que apenas conhecimentos intermediários em linguagem de programação para Web, requisições HTTP/HTTPS e manipulação de arquivos JSON, são necessários para implantar a solução Cielo E-commerce com sucesso.
 
-Nesse manual você encontrará a referência sobre todas as operações disponíveis na API REST do Webservice 3.0. Estas operações devem ser executadas utilizando sua chave específica nos respectivos ambientes:
+Nesse manual você encontrará a referência sobre todas as operações disponíveis na API REST do Webservice 3.0. Estas operações devem ser executadas utilizando sua chave específica (Merchant ID e Merchant Key) nos respectivos endpoints dos ambientes:
 
-* **Sandbox**: https://sandbox.cieloecommerce.cielo.com.br/
-* **Consulta**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
+Ambiente Produção
 
-Para executar uma operação, combine a URL base do ambiente Sandbox com a URL da operação desejada e envie utilizando o verbo HTTP conforme descrito na operação.
+* **Requisição de transação**: https://api.cieloecommerce.cielo.com.br/
+* **Consulta transação**: https://apiquery.cieloecommerce.cielo.com.br/
+
+Ambiente Sandbox
+
+* **Requisição de transação**: https://apisandbox.cieloecommerce.cielo.com.br
+* **Consulta transação**: https://apiquerysandbox.cieloecommerce.cielo.com.br
+
+Para executar uma operação, combine a URL base do ambiente com a URL da operação desejada e envie utilizando o verbo HTTP conforme descrito na operação.
 
 ## Suporte Cielo
 
@@ -228,9 +235,10 @@ A integração é realizada através de serviços disponibilizados como Web Serv
 Para facilitar os testes durante a integração, a Cielo oferece um ambiente Sandbox que é composto por duas áreas:
 
 1. Cadastro de conta de testes
-2. Endpoints para requisição
-    * **Criação**/**Alteração** de transações: https://sandbox.cieloecommerce.cielo.com.br/
-    * **Consulta** de transações: https://apiquerysandbox.cieloecommerce.cielo.com.br/
+2. Endpoints transacionais 
+
+    * **Requisição**: https://apisandbox.cieloecommerce.cielo.com.br
+    * **Consulta**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
 
 Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o [Cadastro do Sandbox](https://cadastrosandbox.cieloecommerce.cielo.com.br/) e criar uma conta de testes. Ao fim do cadastro você receberá um `MerchantId` e um `MerchantKey`, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.
 

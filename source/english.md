@@ -16,8 +16,15 @@ The integration mechanism with Cielo E-commerce is simple, it’s only necessary
 
 In this manual you will find the reference about all operations available on REST Web services API of 3.0. These operations must be Performed using a specific key in their environments:
 
-* Sandbox: https://sandbox.cieloecommerce.cielo.com.br/
-* Query: https://apiquerysandbox.cieloecommerce.cielo.com.br/
+Production environment:
+
+* **Request of transaction**: https://api.cieloecommerce.cielo.com.br/
+* **Query a transaction**: https://apiquery.cieloecommerce.cielo.com.br/
+
+Sanbox environment:
+
+* **Request of transaction**: https://apisandbox.cieloecommerce.cielo.com.br
+* **Query a transaction**: https://apiquerysandbox.cieloecommerce.cielo.com.br
 
 To perform this operation, combine the base URL of Sandbox environment with the URL of the requested operation and send it using the HTTP verb, as described in the operation.
 

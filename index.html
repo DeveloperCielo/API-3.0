@@ -341,7 +341,7 @@
 
 <ol>
 <li>Cadastro de conta de testes</li>
-<li>Endpoints transacionais </li>
+<li>Endpoints transacionais</li>
 </ol>
 
 <p>* <strong>Requisição</strong>: https://apisandbox.cieloecommerce.cielo.com.br
@@ -6103,6 +6103,81 @@
 <td>Sim</td>
 </tr>
 </tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight shell">HTTP Status 200
+</code></pre>
+
+<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
+
+<h2 id="modificando-o-valor-da-recorrência">Modificando o valor da Recorrência</h2>
+
+<p>Para modificar o valor da recorrência, basta fazer um Put conforme o exemplo.</p>
+
+<h3 id="requsição">Requsição</h3>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Amount</span></aside>
+<pre><code class="highlight json"><span class="mi">156</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">curl
+--request POST <span class="s2">"https://apisandbox.braspag.com.br/v2/RecurrentPayment/{Recurr
+entPaymentId}/Amount"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+156
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja no Webservice 3.0.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla no Webservice 3.0.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Campo Identificador do Request do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RecurrentPaymentId</code></td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Amount</code></td>
+<td>Valor do Pedido em centavos: 156 equivale a R$ 1,56</td>
+<td>Número</td>
+<td>15</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">Essa alteração só afeta a data de pagamento da próxima recorrência.</aside>
 
 <h3 id="resposta">Resposta</h3>
 <pre><code class="highlight shell">HTTP Status 200

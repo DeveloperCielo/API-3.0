@@ -235,7 +235,7 @@ A integração é realizada através de serviços disponibilizados como Web Serv
 Para facilitar os testes durante a integração, a Cielo oferece um ambiente Sandbox que é composto por duas áreas:
 
 1. Cadastro de conta de testes
-2. Endpoints transacionais 
+2. Endpoints transacionais
 
     * **Requisição**: https://apisandbox.cieloecommerce.cielo.com.br
     * **Consulta**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
@@ -3334,6 +3334,49 @@ curl
 |`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`RecurrencyDay`|Dia da Recorrência.|Número |2 |Sim|
+
+### Resposta
+
+```shell
+HTTP Status 200
+```
+
+Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
+
+## Modificando o valor da Recorrência
+
+Para modificar o valor da recorrência, basta fazer um Put conforme o exemplo.
+
+### Requsição
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Amount</span></aside>
+
+```json
+156
+```
+
+```shell
+curl
+--request POST "https://apisandbox.braspag.com.br/v2/RecurrentPayment/{Recurr
+entPaymentId}/Amount"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+156
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no Webservice 3.0.|Guid|36|Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no Webservice 3.0.|Texto|40|Sim|
+|`RequestId`|Campo Identificador do Request do Pedido.|Guid|36|Sim|
+|`RecurrentPaymentId`|Numero de identificação da Recorrência.|Texto|50|Sim|
+|`Payments.Amount`|Valor do Pedido em centavos: 156 equivale a R$ 1,56|Número|15|Sim|
+
+<aside class="warning">Essa alteração só afeta a data de pagamento da próxima recorrência.</aside>
 
 ### Resposta
 

@@ -3269,6 +3269,25 @@ curl
 ```shell
 HTTP Status 200
 ```
+## Modify the value of recurrency 
+
+To modify the value of recurrency, you only need to do a Put, as the example.
+
+**Request**
+
+|PUT|1/RecurrentPayment/{RecurrentPaymentId}/Amount
+
+|Property|Description|Type|Size|Mandatory|
+|--------|-----------|----|----|---------|
+|`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
+|`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
+|`RequestId`|Field Application Request identifier of the order|Guid|36|Yes|
+|`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
+|`RecurrencyDay`|Value of the order in cents: 156 equals to R$ 1,56|Numeric|15|Yes|
+
+<aside class="warning">This adjustment only affect the payment date of the next recurrence.</aside>
+
+### Response
 
 See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 

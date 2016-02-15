@@ -43,21 +43,21 @@ After reading this documentation, if you still have questions (technical or not)
 
 To facilitate the understanding, we listed below the small glossary with the main terms related to e-commerce, card acquiring market and services:
 
-* Authentication: process to ensure que the buyer is really who says that he(she) is (authentic holder), generally it happens at the issuing bank using the digital token or security key card.
-* Authorization: process to verify if the purchase can be realized or not with the card. In this moment several verification are done with the card and the holder (funds availability, blocked account, blockades, etc.), It's also at this moment that the card limit is cross-checked with the transaction value.
-* Cancellation: process to cancel the purchase realized with card.
-* Capture: process to confirm the authorization que realized previously. Only after the capture, the cardholder can check this in his bank statement or invoice.
-* Key access: it's a specific secure code for each store, created by Cielo, and used to realized an authentication and communication in all messages exchanged with Cielo. It's also known as production and key data key.
-* Buyer: who effectives purchase at the online store.
-* Emitter (or Issuing Bank): it's the financial institution which issues credit card, debt or voucher.
-* Commercial establishment or EC: entity responsible for online store.
-* Payment gateway: company responsible for technical integration and for processing transactions.
-* Credential number: it's an identifier number that the retailer receives after registered at Cielo.
-* Holder: It's the person who carries the card in the moment of purchase.
-* Security Code: international program of MasterCard to allow the buyer authentication in the moment of purchase in e-commerce environment.
-* TID (Transaction identifier): a code composed by 20 characters that identifies only the Cielo e-commerce transactions.
-* Transaction: it's the purchase order to cardholder at Cielo.
-* VBV (Verified by Visa): International Program at Visa that allows the buyer authentication at the moment of purchase in e-commerce environment.
+* **Authentication**: process to ensure que the buyer is really who says that he(she) is (authentic holder), generally it happens at the issuing bank using the digital token or security key card.
+* **Authorization**: process to verify if the purchase can be realized or not with the card. In this moment several verification are done with the card and the holder (funds availability, blocked account, blockades, etc.), It's also at this moment that the card limit is cross-checked with the transaction value.
+* **Cancellation**: process to cancel the purchase realized with card.
+* **Capture**: process to confirm the authorization que realized previously. Only after the capture, the cardholder can check this in his bank statement or invoice.
+* **Key access**: it's a specific secure code for each store, created by Cielo, and used to realized an authentication and communication in all messages exchanged with Cielo. It's also known as production and key data key.
+* **Buyer**: who effectives purchase at the online store.
+* **Emitter (or Issuing Bank)**: it's the financial institution which issues credit card, debt or voucher.
+* **Commercial establishment or EC**: entity responsible for online store.
+* **Payment gateway**: company responsible for technical integration and for processing transactions.
+* **Credential number**: it's an identifier number that the retailer receives after registered at Cielo.
+* **Holder**: It's the person who carries the card in the moment of purchase.
+* **Security Code**: international program of MasterCard to allow the buyer authentication in the moment of purchase in e-commerce environment.
+* **TID (Transaction identifier)**: a code composed by 20 characters that identifies only the Cielo e-commerce transactions.
+* **Transaction**: it's the purchase order to cardholder at Cielo.
+* **VBV (Verified by Visa)**: International Program at Visa that allows the buyer authentication at the moment of purchase in e-commerce environment.
 
 # Extended Validation Certificate
 
@@ -203,9 +203,9 @@ Hours: 24 hours a day, 7 days a week.
 
 In this manual will be presented an overview of Cielo E-commerce and the technical mechanism on the integration REST format.
 
-For all purchase orders, the goal is convert it in a sale. A sale using a card can be characterized in an authorized and captured transaction.
+For all purchase orders, the goal is convert it in a sale. A sale using a card can be characterized in **an authorized and captured transaction**.
 
-An authorized transaction only creates credit to the retailer if it can be captured (or confirmed).
+<aside class="warning">An authorized transaction only creates credit to the retailer if it can be captured (or confirmed).</aside>
 
 ## Solutions characteristics:
 
@@ -213,12 +213,12 @@ The Webservice 3.0 at Cielo E-commerce platform was developed based on REST tech
 
 Among others characteristics, the most highlighted attributes of Cielo e-commerce platform are:
 
-* No proprietary application: it's not necessary to install application at online store environment in no case.
-* Simplicity: the HTTP protocol is used purely.
-* Testing facility: Cielo's platform offers a Sandbox environment with public access, which allows the developer to create a test account without credential, facilitating and speeding up the start of integration.
-* Credential: the handling of client credentials (membership number and access key) travels in the message header of the HTTP request.
-* Security: the information exchange always happens between the Store Server and Cielo, in other words, without the buyer's browser.
-* Multiplatform: the integration is realized through the Web Service REST.
+* **No proprietary application**: it's not necessary to install application at online store environment in no case.
+* **Simplicity**: the HTTP protocol is used purely.
+* **Testing facility**: Cielo's platform offers a Sandbox environment with public access, which allows the developer to create a test account without credential, facilitating and speeding up the start of integration.
+* **Credential**: the handling of client credentials (membership number and access key) travels in the message header of the HTTP request.
+* **Security**: the information exchange always happens between the Store Server and Cielo, in other words, without the buyer's browser.
+* **Multiplatform**: the integration is realized through the Web Service REST.
 
 ## Architecture
 
@@ -226,9 +226,9 @@ The integration is realized through the services available as Web Services. The 
 
 These two URLs will receive the messages through the HTTP POST, GET or PUT methods. Each kind of message must be sent for an identified source through the path.
 
-* POST - The HTTP POST method is used at creation of resource or sending information to be processed. For example, when creating the transaction.
-* PUT - The HTTP PUT method is used for updating the resource already created. For example, to capture or cancel the transaction previously authorized.
-* GET - The HTTP GET method is used for consult resources already created. For example, query transactions.
+* **POST** - The HTTP POST method is used at creation of resource or sending information to be processed. For example, when creating the transaction.
+* **PUT** - The HTTP PUT method is used for updating the resource already created. For example, to capture or cancel the transaction previously authorized.
+* **GET** - The HTTP GET method is used for consult resources already created. For example, query transactions.
 
 ## Sandbox
 
@@ -236,22 +236,23 @@ During the tests to Facilitate integration, Cielo offers a Sandbox environment w
 
 1. Registration account test
 2. Endpoints to requisition
-    * Creation / Changes of transactions: https://sandbox.cieloecommerce.cielo.com.br/
-    * Transaction consult: https://apiquerysandbox.cieloecommerce.cielo.com.br/
 
-It's not necessary to be a member to use Cielo 'Sandbox. At the end of registration, you will receive a MerchantID and the MerchanKey, that should be used to authenticate all the requests done for the endpoint of API.
+    * **Creation / Changes of transactions**: https://sandbox.cieloecommerce.cielo.com.br/
+    * **Transaction consult**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
+
+It's not necessary to be a member to use Cielo 'Sandbox. You only need to access [Sandob Registry](https://cadastrosandbox.cieloecommerce.cielo.com.br/) and create a test account. At the end of registration, you will receive a 'MerchantID' and the 'MerchanKey', that should be used to authenticate all the requests done for the endpoint of API.
 
 # Credit Card Payments
 
 For the better use of all the features available in our API, first of all, it is important to know the concepts involved in processing a credit card transaction.
 
-* Authorization: The authorization (or pre-authorization) is the main operation in e-commerce, because through it is the sale can be achieved. The pre-authorization only sensitizes the client threshold but still generates no charge to the consumer.
-* Capture: When performing a pre-authorization, confirmation of this so that recovery is effected the cardholder is required. This operation become pre-authorization effective, which may be executed in usually within 5 days after the date of pre-authorization.
-* Cancellation: The cancellation is necessary when, for any reason, someone doesn’t want effect a sale anymore. In the case of a pre-authorization, cancellation will release the limit of the card that was sensitized at the pre-authorization. When the transaction is already captured or for an Authorization, the cancellation will undo the sale, but must be executed until 23:59:59 from the authorization/capture date.
-* Authentication: The authentication process allows making a sale which will pass for the card-issuing bank authentication process. This process brings more security to the sale and transfers the risk of fraud to the bank.
-* Protected card: It is a platform that enables the secure storage of sensitive credit card data. These data are processed in an encrypted code called as "token," which may be stored in the database. With the platform, the store might offer features such as "Buy with one click" and "retry transaction sending", while preserving the integrity and confidentiality of information.
-* Anti Fraud: It is a platform for the prevention of fraud which provides a detailed risk analysis of online shopping. Each transaction is subjected to more than 260 rules, in addition to the specific rules of each segment, and generate a risk recommendation in about two seconds. This process is completely transparent to the cardholder. According to the established criteria, the application can be automatically accepted, refused or referred for manual analysis.
-* Recurrent: The Recurrence Smart is an indispensable resource for establishments
+* **Authorization**: The authorization (or pre-authorization) is the main operation in e-commerce, because through it is the sale can be achieved. The pre-authorization only sensitizes the client threshold but still generates no charge to the consumer.
+* **Capture**: When performing a pre-authorization, confirmation of this so that recovery is effected the cardholder is required. This operation become pre-authorization effective, which may be executed in usually within 5 days after the date of pre-authorization.
+* **Cancellation**: The cancellation is necessary when, for any reason, someone doesn’t want effect a sale anymore. In the case of a pre-authorization, cancellation will release the limit of the card that was sensitized at the pre-authorization. When the transaction is already captured or for an Authorization, the cancellation will undo the sale, but must be executed until 23:59:59 from the authorization/capture date.
+* **Authentication**: The authentication process allows making a sale which will pass for the card-issuing bank authentication process. This process brings more security to the sale and transfers the risk of fraud to the bank.
+* **Protected card**: It is a platform that enables the secure storage of sensitive credit card data. These data are processed in an encrypted code called as "token," which may be stored in the database. With the platform, the store might offer features such as "Buy with one click" and "retry transaction sending", while preserving the integrity and confidentiality of information.
+* **Anti-Fraud**: It is a platform for the prevention of fraud which provides a detailed risk analysis of online shopping. Each transaction is subjected to more than 260 rules, in addition to the specific rules of each segment, and generate a risk recommendation in about two seconds. This process is completely transparent to the cardholder. According to the established criteria, the application can be automatically accepted, refused or referred for manual analysis.
+* **Recurrent**: The Recurrence Smart is an indispensable resource for establishments
 that need to regularly charge for their products/services. It is widely used for magazine subscriptions, fees, software licenses, among others. Retailers will have different features to model their collection according to their business, because every parameter, such as frequency, start and end date, number of attempts, time between them, among others are configurable.
 
 ## Creating a simple transaction
@@ -777,7 +778,7 @@ curl
 
 ## Creating a sale with Authentication
 
-To create a transaction with authentication that uses credit card, you must send a request using the POST method to the Payment feature as shown.
+To create a transaction with authentication that uses credit card, you must send a request using the 'POST' method to the Payment feature as shown.
 
 <aside class="notice"><strong>Authentication:</strong> In this mode the cardholder is directed to the bank's authentication environment card issuer where the inclusion of the password of the card will be requested.</aside>
 
@@ -1975,7 +1976,7 @@ curl
 |`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
 |`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
-# Payments Debit Card
+# Payments with Debit Card
 
 ## Creating a simplified sale
 
@@ -2206,6 +2207,8 @@ curl
 ## Creating a simplified sale
 
 To create a sale with “boleto” payment method, you just need to make a POST as shown.
+
+### Request
 
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
 
@@ -3105,7 +3108,7 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 ## Modifying end date of Recurrence
 
@@ -3145,7 +3148,7 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 ## Changing number of Recurrence plots
 
@@ -3185,7 +3188,7 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 ## Modifying Interval of Recurrence
 
@@ -3225,9 +3228,9 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
-## Modify day of Recurrence
+## Modify the date of Recurrence
 
 To change the day of recurrence, just make a Put as shown.
 
@@ -3267,9 +3270,9 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
-## Modifying date of the next payment
+## Modifying the date of the next payment
 
 To change the date of the next payment, just make a Put as shown.
 
@@ -3307,13 +3310,11 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 ## Modifying the Payment data Recurrence
 
 To change the data of Recurrence payment, just make a Put as shown.
-
-<aside class="notice"><strong>Warning:</strong> This change affects all data on the Payment node. So to keep the previous data you must enter the fields that will not change to the same values ​​that were already saved.</aside>
 
 ### Request
 
@@ -3385,7 +3386,7 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 ## Disabling a request Recurring
 
@@ -3419,7 +3420,7 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 ## Rehabilitating a Recurring request
 
@@ -3453,7 +3454,7 @@ curl
 HTTP Status 200
 ```
 
-See Appendix HTTP Status Code to the list of all the HTTP status codes possibly returned by the API.
+See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 # Consulting Sales
 
@@ -3615,6 +3616,7 @@ curl
 ## Referring to a sale by the store identifier
 
 It’s not possible to consult directly a payment by the identifier sent from the store (MerchantOrderId), but you can get all the PaymentIds associated with the identifier.
+
 For consult a sale using the store identifier, you must do a GET to refuse sales as shown.
 
 ### Request

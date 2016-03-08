@@ -6,7 +6,7 @@ language_tabs:
   - shell: cURL
 
 toc_footers:
-  - <a href='/Boas-praticas-de-eCommerce/'>Boas práticas de eCommerce</a>
+  - <a href='/Boas-praticas-de-ecommerce/'>Boas práticas de eCommerce</a>
 
 search: true
 ---

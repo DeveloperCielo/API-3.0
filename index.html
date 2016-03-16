@@ -353,6 +353,74 @@
 
 <p>Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o <a href="https://cadastrosandbox.cieloeCommerce.cielo.com.br/">Cadastro do Sandbox</a> e criar uma conta de testes. Ao fim do cadastro você receberá um <code class="prettyprint">MerchantId</code> e um <code class="prettyprint">MerchantKey</code>, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.</p>
 
+<h3 id="meio-de-pagamento-simulado">Meio de Pagamento Simulado</h3>
+
+<p>O Simulado é um meio de pagamento que emula a utilizaçao de pagamentos com Cartão de Crétido. Com esse meio de pagamento é possivel simular todos os fluxos de Autorização, Captura e Cancelamento.</p>
+
+<p>Para melhor utilização do Meio de Pagamento Simulado, estamos disponibilizando cartões de testes na tabela abaixo.</p>
+
+<p>Os status das transações serão conforme a utilização de cada cartão.</p>
+
+<table><thead>
+<tr>
+<th>Status da Transação</th>
+<th>Cartões para realização dos testes</th>
+<th>Código de Retorno</th>
+<th>Mensagem de Retorno</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Autorizado</td>
+<td>0000.0000.0000.0001 / 0000.0000.0000.0004</td>
+<td>4</td>
+<td>Operação realizada com sucesso</td>
+</tr>
+<tr>
+<td>Não Autorizado</td>
+<td>0000.0000.0000.0002</td>
+<td>2</td>
+<td>Não Autorizada</td>
+</tr>
+<tr>
+<td>Autorização Aleatória</td>
+<td>0000.0000.0000.0009</td>
+<td>4 / 99</td>
+<td>Operation Successful / Time Out</td>
+</tr>
+<tr>
+<td>Não Autorizado</td>
+<td>0000.0000.0000.0007</td>
+<td>77</td>
+<td>Cartão Cancelado</td>
+</tr>
+<tr>
+<td>Não Autorizado</td>
+<td>0000.0000.0000.0008</td>
+<td>70</td>
+<td>Problemas com o Cartão de Crédito</td>
+</tr>
+<tr>
+<td>Não Autorizado</td>
+<td>0000.0000.0000.0005</td>
+<td>78</td>
+<td>Cartão Bloqueado</td>
+</tr>
+<tr>
+<td>Não Autorizado</td>
+<td>0000.0000.0000.0003</td>
+<td>57</td>
+<td>Cartão Expirado</td>
+</tr>
+<tr>
+<td>Não Autorizado</td>
+<td>0000.0000.0000.0006</td>
+<td>99</td>
+<td>Time Out</td>
+</tr>
+</tbody></table>
+
+<p>As informações de Cód.Segurança (CVV) e validade podem ser aleatórias, mantendo o formato - CVV (3 dígitos) Validade (MM/YYYY).</p>
+
 <h1 id="pagamentos-com-cartão-de-crédito">Pagamentos com Cartão de Crédito</h1>
 
 <p>Para que você possa disfrutar de todos os recursos disponíveis em nossa API, é importante que antes você conheça os conceitos envolvidos no processamento de uma transação de cartão de crédito.</p>

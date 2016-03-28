@@ -4,6 +4,9 @@ title: Webservices 3.0 Integration
 language_tabs:
   - json: JSON
   - shell: cURL
+   
+  toc_footers:
+  - <a href='/Boas-praticas-de-eCommerce/'>Boas práticas de eCommerce</a>
 
 search: true
 ---
@@ -241,6 +244,27 @@ During the tests to Facilitate integration, Cielo offers a Sandbox environment w
     * **Transaction consult**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
 
 It's not necessary to be a member to use Cielo 'Sandbox. You only need to access [Sandob Registry](https://cadastrosandbox.cieloecommerce.cielo.com.br/) and create a test account. At the end of registration, you will receive a 'MerchantID' and the 'MerchanKey', that should be used to authenticate all the requests done for the endpoint of API.
+
+### Mock payment method 
+
+The mock is a payment method that emulates the use of credit card payment. With this payment method is possible to simulate all the Authorization, Capture and Cancellation streams.
+ 
+For better use of Mock Payment Method, we are providing test cards on the table below.
+ 
+The status of the transaction will be as the use of each card.
+
+|Transaction Status|Cards for performing the tests|Return Code|Return message|
+|-------------------|----------------------------------|-----------------|-------------------|
+|Authorized|0000.0000.0000.0001 / 0000.0000.0000.0004|4|Operation was successful|
+|Not authorized|0000.0000.0000.0002|2|Not authorized|
+|Authorization Random|0000.0000.0000.0009|4/99|Successful Operation/Time Out|
+|Not authorized|0000.0000.0000.0007|77|Card Cancelled|
+|Not authorized|0000.0000.0000.0008|70|Problems with Credit Card|
+|Not authorized|0000.0000.0000.0005|78|card locked|
+|Not authorized|0000.0000.0000.0003|57|Card Expired|
+|Not authorized|0000.0000.0000.0006|99|Time Out|
+
+The information Cód.Segurança (CVV) and validity can be random, keeping the format - CVV (3 digits) Expiration (MM/YYYY).
 
 # Credit Card Payments
 

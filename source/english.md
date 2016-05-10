@@ -1559,8 +1559,7 @@ curl
             },
             "Id": "0e4d0a3c-e424-4fa5-a573-4eabbd44da42",
             "Status": 1,
-            "ReasonCode": 100,
-            "ReplyData": {
+                "ReplyData": {
                 "AddressInfoCode": "COR-BA^MM-BIN",
                 "FactorCode": "B^D^R^Z",
                 "Score": 42,
@@ -1580,11 +1579,9 @@ curl
         "Currency": "BRL",
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
-        "ProviderReturnCode": "4",
-        "ProviderReturnMessage": "Transação autorizada",
+        "ReturnCode": "4",
+        "ReturnMessage": "Transação autorizada",
         "Links": [
             {
                 "Method": "GET",
@@ -1609,7 +1606,7 @@ curl
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
-|`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
+|`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
 |`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
@@ -1627,10 +1624,8 @@ curl
 |`IpRoutingMethod`|IP routing type used by the computer.|Text|-|<ul><li>AolBased</li><li>CacheProxy</li><li>Fixed</li><li>InternationalProxy</li><li>MobileGateway</li><li>Pop</li><li>RegionalProxy</li><li>Satellite</li><li>Superpop</li></ul>|
 |`ScoreModelUsed`|Name score of model used.|Text|20|Eg default_lac|
 |`CasePriority`|If the merchant is subscriber Enhanced Case Management, you receive this value with the level of priority, with 1 being the highest and 5 the lowest.|Number|-|3|
-|`ReasonCode`|Reason code of operation.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message reason the Transaction.|Text|32|Successful|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
-|`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
 ## Creating a sale with Card Token
 
@@ -1641,52 +1636,52 @@ To create a credit card sale with the secure token card, you must do a POST to t
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
 
 ```json
-{  
-   "MerchantOrderId":"2014111706",
-   "Customer":{  
-      "Name":"Comprador Teste"
-   },
-   "Payment":{  
-     "Type":"CreditCard",
-     "Amount":100,
-     "Installments":1,,
-     "SoftDescriptor":"tst",
-     "CreditCard":{  
-         "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
-         "SecurityCode":"262",
-         "Brand":"Visa"
-     }
-   }
-}
-```
-
-```shell
-curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
---header "Content-Type: application/json"
---header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---header "MerchantKey: 0123456789012345678901234567890123456789"
---header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---data-binary
-{  
-   "MerchantOrderId":"2014111706",
-   "Customer":{  
-      "Name":"Comprador Teste"
-   },
-   "Payment":{  
-     "Type":"CreditCard",
-     "Amount":100,
-     "Installments":1,,
-     "SoftDescriptor":"tst",
-     "CreditCard":{  
-         "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
-         "SecurityCode":"262",
-         "Brand":"Visa"
-     }
-   }
-}
---verbose
-```
+ {  
+    "MerchantOrderId":"2014111706",
+    "Customer":{  
+       "Name":"Comprador Teste"
+    },
+    "Payment":{  
+      "Type":"CreditCard",
+      "Amount":100,
+      "Installments":1,,
+      "SoftDescriptor":"tst",
+      "CreditCard":{  
+          "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
+          "SecurityCode":"262",
+          "Brand":"Visa"
+      }
+    }
+ }
+ ```
+ 
+ ```shell
+ curl
+ --request POST "https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"
+ --header "Content-Type: application/json"
+ --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ --header "MerchantKey: 0123456789012345678901234567890123456789"
+ --header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ --data-binary
+ {  
+    "MerchantOrderId":"2014111706",
+    "Customer":{  
+       "Name":"Comprador Teste"
+    },
+    "Payment":{  
+      "Type":"CreditCard",
+      "Amount":100,
+      "Installments":1,,
+      "SoftDescriptor":"tst",
+      "CreditCard":{  
+          "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
+          "SecurityCode":"262",
+          "Brand":"Visa"
+      }
+    }
+ }
+ --verbose
+ ```
 
 |Property|Description|Type|Size|Mandatory|
 |--------|-----------|----|----|---------|
@@ -1724,7 +1719,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "5036294",
-        "AcquirerTransactionId": "0310025036294",
+        "Tid": "0310025036294",
         "AuthorizationCode": "319285",
         "SoftDescriptor":"tst",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
@@ -1733,8 +1728,6 @@ curl
         "Currency": "BRL",
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -1778,7 +1771,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "5036294",
-        "AcquirerTransactionId": "0310025036294",
+        "Tid": "0310025036294",
         "AuthorizationCode": "319285",
         "SoftDescriptor":"tst",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
@@ -1787,8 +1780,6 @@ curl
         "Currency": "BRL",
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -1814,16 +1805,14 @@ curl
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
-|`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
+|`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
 |`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Electronic Commerce Indicator. It is how safe is a transaction.|Text|2|Examples: 7|
-|`ReasonCode`|Reason code of operation.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of transaction reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|2|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
-|`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
 ## Capturing a sale
 
@@ -1860,10 +1849,8 @@ curl
 ```json
 {
     "Status": 2,
-    "ReasonCode": 0,
-    "ReasonMessage": "Successful",
-    "ProviderReturnCode": "6",
-    "ProviderReturnMessage": "Operation Successful",
+    "ReturnCode": "6",
+    "ReturnMessage": "Operation Successful",
     "Links": [
         {
             "Method": "GET",
@@ -1885,10 +1872,8 @@ curl
 --data-binary
 {
     "Status": 2,
-    "ReasonCode": 0,
-    "ReasonMessage": "Successful",
-    "ProviderReturnCode": "6",
-    "ProviderReturnMessage": "Operation Successful",
+    "ReturnCode": "6",
+    "ReturnMessage": "Operation Successful",
     "Links": [
         {
             "Method": "GET",
@@ -1906,11 +1891,9 @@ curl
 
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|2|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
-|`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
 ## Cancelling a sale
 
@@ -1946,10 +1929,8 @@ curl
 ```json
 {
     "Status": 10,
-    "ReasonCode": 0,
-    "ReasonMessage": "Successful",
-    "ProviderReturnCode": "9",
-    "ProviderReturnMessage": "Operation Successful",
+    "ReturnCode": "9",
+    "ReturnMessage": "Operation Successful",
     "Links": [
         {
             "Method": "GET",
@@ -1966,10 +1947,8 @@ curl
 --data-binary
 {
     "Status": 10,
-    "ReasonCode": 0,
-    "ReasonMessage": "Successful",
-    "ProviderReturnCode": "9",
-    "ProviderReturnMessage": "Operation Successful",
+    "ReturnCode": "9",
+    "ReturnMessage": "Operation Successful",
     "Links": [
         {
             "Method": "GET",
@@ -1982,11 +1961,9 @@ curl
 
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|10|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
-|`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
 # Payments with Debit Card
 
@@ -1999,54 +1976,80 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
 
 ```json
-{  
-   "MerchantOrderId":"2014121201",
-   "Customer":{  
-      "Name":"Comprador Teste"
-   },
-   "Payment":{  
-     "Type":"DebitCard",
-     "Amount":15700,
-     "ReturnUrl":"http://www.cielo.com.br",
-     "DebitCard":{  
-         "CardNumber":"4551870000000183",
-         "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
-         "SecurityCode":"123",
-         "Brand":"Visa"
+ {
+     "MerchantOrderId": "2014121201",
+     "Customer": {
+         "Name": "Paulo Henrique"
+     },
+     "Payment": {
+         "DebitCard": {
+             "CardNumber": "453211******3703",
+             "Holder": "Teste Holder",
+             "ExpirationDate": "12/2015",
+             "SaveCard": false,
+              "Brand": "Visa"
+          },
+          "AuthenticationUrl": "https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?{PaymentId}",
+         "Tid": "1006993069207A31A001",
+          "PaymentId": "0309f44f-fe5a-4de1-ba39-984f456130bd",
+          "Type": "DebitCard",
+          "Amount": 15700,
+          "Currency": "BRL",
+          "Country": "BRA",
+          "ExtraDataCollection": [],
+          "Status": 0,
+          "ReturnCode": "0",
+          "Links": [
+              {
+                  "Method": "GET",
+                 "Rel": "self",
+                 "Href": "https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"
+             }
+         ]
      }
-   }
-}
-```
-
-```shell
-curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
---header "Content-Type: application/json"
---header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---header "MerchantKey: 0123456789012345678901234567890123456789"
---header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---data-binary
-{  
-   "MerchantOrderId":"2014121201",
-   "Customer":{  
-      "Name":"Comprador Teste"
-   },
-   "Payment":{  
-     "Type":"DebitCard",
-     "Amount":15700,
-     "ReturnUrl":"http://www.cielo.com.br",
-     "DebitCard":{  
-         "CardNumber":"4551870000000183",
-         "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
-         "SecurityCode":"123",
-         "Brand":"Visa"
+ }
+ ```
+ ```shell
+ --header "Content-Type: application/json"
+ --header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ --data-binary
+ {
+     "MerchantOrderId": "2014121201",
+     "Customer": {
+         "Name": "Paulo Henrique"
+     },
+     "Payment": {
+         "DebitCard": {
+             "CardNumber": "453211******3703",
+             "Holder": "Teste Holder",
+             "ExpirationDate": "12/2015",
+             "SaveCard": false,
+              "Brand": "Visa"
+          },
+          "AuthenticationUrl": "https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?{PaymentId}",
+ -        "AcquirerTransactionId": "1006993069207A31A001",
+ +        "Tid": "1006993069207A31A001",
+          "PaymentId": "0309f44f-fe5a-4de1-ba39-984f456130bd",
+          "Type": "DebitCard",
+          "Amount": 15700,
+          "Currency": "BRL",
+          "Country": "BRA",
+          "ExtraDataCollection": [],
+ -        "ReasonCode": 9,
+ -        "ReasonMessage": "Waiting",
+          "Status": 0,
+ -        "ProviderReturnCode": "0",
+ +        "ReturnCode": "0",
+          "Links": [
+              {
+                  "Method": "GET",
+                 "Rel": "self",
+                 "Href": "https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"
+             }
+         ]
      }
-   }
-}
---verbose
-```
+ }
+ ```
 
 |Property|Description|Type|Size|Mandatory|
 |--------|-----------|----|----|---------|
@@ -2065,19 +2068,89 @@ curl
 |`CreditCard.SecurityCode`|Security code printed on the back of the card.|Text|4|Yes|
 |`CreditCard.Brand`|Card issuer.|Text|10|Yes|
 
-
 ### Response
+
+ ```json
+ {
+     "MerchantOrderId": "2014121201",
+     "Customer": {
+         "Name": "Paulo Henrique"
+     },
+     "Payment": {
+         "DebitCard": {
+             "CardNumber": "453211******3703",
+             "Holder": "Teste Holder",
+             "ExpirationDate": "12/2015",
+             "SaveCard": false,
+              "Brand": "Visa"
+          },
+          "AuthenticationUrl": "https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?{PaymentId}",
+          "Tid": "1006993069207A31A001",
+          "PaymentId": "0309f44f-fe5a-4de1-ba39-984f456130bd",
+          "Type": "DebitCard",
+          "Amount": 15700,
+          "Currency": "BRL",
+          "Country": "BRA",
+          "ExtraDataCollection": [],
+          "Status": 0,
+          "ReturnCode": "0",
+          "Links": [
+              {
+                  "Method": "GET",
+                 "Rel": "self",
+                 "Href": "https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"
+             }
+         ]
+     }
+ }
+ ```
+ 
+ ```shell
+ --header "Content-Type: application/json"
+ --header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ --data-binary
+ {
+     "MerchantOrderId": "2014121201",
+     "Customer": {
+         "Name": "Paulo Henrique"
+     },
+     "Payment": {
+         "DebitCard": {
+             "CardNumber": "453211******3703",
+             "Holder": "Teste Holder",
+             "ExpirationDate": "12/2015",
+             "SaveCard": false,
+              "Brand": "Visa"
+          },
+          "AuthenticationUrl": "https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?{PaymentId}",
+          "Tid": "1006993069207A31A001",
+          "PaymentId": "0309f44f-fe5a-4de1-ba39-984f456130bd",
+          "Type": "DebitCard",
+          "Amount": 15700,
+          "Currency": "BRL",
+          "Country": "BRA",
+          "ExtraDataCollection": [],
+          "Status": 0,
+          "ReturnCode": "0",
+          "Links": [
+              {
+                  "Method": "GET",
+                 "Rel": "self",
+                 "Href": "https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"
+             }
+         ]
+     }
+ }
+ ```
 
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`AuthenticationUrl`|URL to redirect the client to the debit flow.|Text|56|Authentication URL|
-|`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
+|`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ReturnUrl`|Url retailer's return. URL where the shopkeeper will be redirected at the end of the flow.|Text|1024|http://www.urllogista.com.br|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|0|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
 
 # Payments with Electronic Transfer
 
@@ -2142,7 +2215,6 @@ curl
 |`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
 |`Payments.Provider`|Payment Method name.|Text|15|Yes|
 
-
 ### Response
 
 ```json
@@ -2160,8 +2232,6 @@ curl
         "Country": "BRA",
         "Provider": "Bradesco",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 0,
         "Links": [
             {
@@ -2192,8 +2262,6 @@ curl
         "Country": "BRA",
         "Provider": "Bradesco",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 0,
         "Links": [
             {
@@ -2210,8 +2278,6 @@ curl
 |--------|-----------|----|----|------|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Url`|URL to redirect the client to the flow of Electronic Transfer.|Text|256|Authentication Url|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|0|
 
 # “Boleto” Payment
@@ -2299,8 +2365,6 @@ curl
         "Country": "BRA",
         "Provider": "Bradesco",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -2338,8 +2402,6 @@ curl
         "Country": "BRA",
         "Provider": "Bradesco",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -2361,8 +2423,6 @@ curl
 |`BarCodeNumber`|Numerical representation of barcode.|Text|44|00091628800000157000494250100000001200656560|
 |`DigitableLine`|Typeful line.|Text|256|00090.49420 50100.000004 12006.565605 1 62880000015700|
 |`Address`|Address shop.|Text|256|Av. Test 160|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|1|
 
 ## Creating a “Boleto” complete sale
@@ -2473,8 +2533,6 @@ curl
         "Country": "BRA",
         "Provider": "Bradesco",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -2516,8 +2574,6 @@ curl
         "Country": "BRA",
         "Provider": "Bradesco",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -2542,8 +2598,6 @@ curl
 |`Assignor`|Seller's name.|Text|256|Ex: Store Test|
 |`Address`|Address of the Assignor.|Text|256|Ex: Av Test, 160.|
 |`Identification`|Seller's ID.|Text|14|CPF or CNPJ Assignor without special characters (, /, -.)|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of the Transaction reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|1|
 
 # Recurring payments
@@ -2665,7 +2719,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "3827556",
-        "AcquirerTransactionId": "0504043827555",
+        "Tid": "0504043827555",
         "AuthorizationCode": "149867",
         "SoftDescriptor":"tst",
         "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
@@ -2675,15 +2729,11 @@ curl
         "Country": "BRA",
         "Provider": "Simulado",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
-        "ProviderReturnCode": "4",
-        "ProviderReturnMessage": "Operation Successful",
+        "ReturnCode": "4",
+        "ReturnMessage": "Operation Successful",
         "RecurrentPayment": {
             "RecurrentPaymentId": "61e5bd30-ec11-44b3-ba0a-56fbbc8274c5",
-            "ReasonCode": 0,
-            "ReasonMessage": "Successful",
             "NextRecurrency": "2015-11-04",
             "EndDate": "2019-12-01",
             "Interval": "SemiAnnual",
@@ -2739,7 +2789,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "3827556",
-        "AcquirerTransactionId": "0504043827555",
+        "Tid": "0504043827555",
         "AuthorizationCode": "149867",
         "SoftDescriptor":"tst",
         "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
@@ -2749,15 +2799,11 @@ curl
         "Country": "BRA",
         "Provider": "Simulado",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
-        "ProviderReturnCode": "4",
-        "ProviderReturnMessage": "Operation Successful",
+        "ReturnCode": "4",
+        "ReturnMessage": "Operation Successful",
         "RecurrentPayment": {
             "RecurrentPaymentId": "61e5bd30-ec11-44b3-ba0a-56fbbc8274c5",
-            "ReasonCode": 0,
-            "ReasonMessage": "Successful",
             "NextRecurrency": "2015-11-04",
             "EndDate": "2019-12-01",
             "Interval": "SemiAnnual",
@@ -2792,8 +2838,6 @@ curl
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`RecurrentPaymentId`|Field identifier next recurrence.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`NextRecurrency`|Date of next recurrence.|Text|7|05/2019 (MM / YYYY)|
 |`EndDate`|Date of the end of recurrence.|Text|7|05/2019 (MM / YYYY)|
 |`Interval`|Break between recurrence.|Text|10|<ul><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|
@@ -2902,7 +2946,6 @@ curl
 |`Customer.Deliveryaddress.Country`|Parents of the address of the Purchaser.|Text|35|No|
 |`Customer.Deliveryaddress.District`|Buyer's neighborhood.|Text|50|No|
 
-
 ### Response
 
 ```json
@@ -2935,8 +2978,6 @@ curl
         "Status": 20,
         "RecurrentPayment": {
             "RecurrentPaymentId": "0d2ff85e-594c-47b9-ad27-bb645a103db4",
-            "ReasonCode": 0,
-            "ReasonMessage": "Successful",
             "NextRecurrency": "2015-06-01",
             "StartDate": "2015-06-01",
             "EndDate": "2019-12-01",
@@ -2985,8 +3026,6 @@ curl
         "Status": 20,
         "RecurrentPayment": {
             "RecurrentPaymentId": "0d2ff85e-594c-47b9-ad27-bb645a103db4",
-            "ReasonCode": 0,
-            "ReasonMessage": "Successful",
             "NextRecurrency": "2015-06-01",
             "StartDate": "2015-06-01",
             "EndDate": "2019-12-01",
@@ -3005,8 +3044,6 @@ curl
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`RecurrentPaymentId`|Field identifier next recurrence.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Operation reason.|Text|32|Successful|
 |`NextRecurrency`|Date of next recurrence.|Text|7|05/2019 (MM / YYYY)|
 |`StartDate`|Date of onset of recurrence.|Text|7|05/2019 (MM / YYYY)|
 |`EndDate`|Date of the end of recurrence.|Text|7|05/2019 (MM / YYYY)|
@@ -3119,7 +3156,6 @@ curl
 ```shell
 HTTP Status 200
 ```
-
 See Appendix [HTTP Status Code](#http-status-code) to the list of all the HTTP status codes possibly returned by the API.
 
 ## Modifying end date of Recurrence
@@ -3545,8 +3581,6 @@ curl
         "Currency": "BRL",
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -3600,8 +3634,6 @@ curl
         "Currency": "BRL",
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
         "Links": [
             {
@@ -3629,8 +3661,6 @@ curl
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Transaction reason.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|2|
 |`Customer.Name`|Text|255|Yes|Buyer's name.|
 |`Payments.Type`|Text|100|Yes|Payment Method type.|
@@ -3677,8 +3707,6 @@ curls
 
 ```json
 {
-    "ReasonCode": 0,
-    "ReasonMessage": "Successful",
     "Payments": [
         {
             "PaymentId": "5fb4d606-bb63-4423-a683-c966e15399e8",
@@ -3697,9 +3725,7 @@ curls
 --header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --data-binary
 {
-    "ReasonCode": 0,
-    "ReasonMessage": "Successful",
-    "Payments": [
+     "Payments": [
         {
             "PaymentId": "5fb4d606-bb63-4423-a683-c966e15399e8",
             "ReceveidDate": "2015-04-06T10:13:39.42"
@@ -3715,8 +3741,6 @@ curls
 |Property|Description|Type|Size|Mandatory|
 |--------|-----------|----|----|---------|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
-|`ReasonCode`|Code of operation reason.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message of Transaction reason.|Text|32|Successful|
 
 ## Referring a sale with Fraud Analysis
 
@@ -3778,7 +3802,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "500000",
-        "AcquirerTransactionId": "10069930692625A01001",
+        "Tid": "10069930692625A01001",
         "AuthorizationCode": "123456",
         "FraudAnalisys": {
             "ReasonCode": 100,
@@ -3852,7 +3876,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "500000",
-        "AcquirerTransactionId": "10069930692625A01001",
+         "Tid": "10069930692625A01001",
         "AuthorizationCode": "123456",
         "FraudAnalisys": {
             "ReasonCode": 100,
@@ -3894,7 +3918,7 @@ curl
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
-|`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
+|`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
 |`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
@@ -3903,10 +3927,8 @@ curl
 |`FraudAnalisys.ReasonCode`|Analysis of the results.|Byte|-|Number:<ul><li>100 - Successful operation.</li><li>101 - There are one or more missed requests fields. Possible action: See the fields that are missing in AntiFraudResponse list.MissingFieldCollection. Resend the request with complete information.</li><li>102 - One or more request fields contain invalid data. Possible action: See the invalid fields in AntiFraudResponse list.InvalidFieldCollection. Resubmit the request with the correct information.</li><li>150 Failure in the general system. Possible action: wait a few minutes and try resending the request.</li><li>151 - The request was received, but time-out occurred on the server.This error does not include time-out between the client and the server. Possible action: Wait a few minutes and try resending the request.</li><li>152 The request was received, but was time-out. Possible action: Wait a few minutes and resubmit the request.</li><li>202 - Fraud Prevention refused the request because the card has expired. You can also receive this code if the expiration date does not coincide with the date on issuing bank file. If payment processor allows emission credits for expired cards, CyberSource does not limit this functionality. Possible action: Request a card or other payment method.</li><li>231 The account number is invalid. Possible action: Request a card or other payment method.</li><li>234 - There is a problem with the merchant setup. Possible action: Do not click. Please contact customer support to correct the configuration problem.</li><li>400 A fraud score exceeds its limit. Possible action: Review the customer's request.</li><li>480 The request was scheduled for review by Manager decision.</li><li>481 - The request was rejected by Manager decision</li></ul>|
 |`FraudAnalisys.FactorCode`|Combination codes that indicate the score of the application. The codes are concatenated using the ^.|Text|100|Eg B ^ D ^ R ^ Z<ul><li>A - Excessive Change of Address.The customer has changed the billing address two or more times in the last six months.</li><li>B - BIN card or risk authorization. Risk factors are related to credit card and BIN / or card authorization checks.</li><li>C - High numbers of credit cards.The customer has used more than six numbers of credit cards in the past six months.</li><li>D - Impact of the e-mail address.The customer uses a free email provider or e-mail address is risky.</li><li>E - Positive list.The customer is in its positive list.</li><li>F - Negative list.The account number, address, email address or IP address for this purpose appears its negative list.</li><li>G - geolocation inconsistencies.The email client domain, phone number, billing address, shipping address or IP address is suspect.</li><li>H - excessive name changes.The customer changed its name twice or more in the past six months.</li><li>I - Internet inconsistencies.The IP address and e-mail domain are not consistent with the billing address.</li><li>N - Entrance meaningless. The customer name and address fields contain meaningless words or language.</li><li>The - obscenities. Customer data contains obscene words.</li><li>P - morphing identity.Various amounts of an identity element are attached to a different value of an identity element. For example, various telephone numbers are connected to a single account number.</li><li>Q - Inconsistencies phone.The customer's phone number is suspect.</li><li>R - risky Order.The transaction, the customer and the merchant show information correlated high risk.</li><li>T - Time Coverage.The client is attempting a purchase outside the expected time.</li><li>U - unverifiable address.The billing address or delivery can not be verified.</li><li>V - Velocity.The account number was used many times in the last 15 minutes.</li><li>W - marked as suspect.The billing address and delivery is similar to an address previously marked suspect.</li><li>Y - The address, city, state or country of billing and shipping addresses do not correlate.</li><li>Z - Invalid value. As the request contains an unexpected value, a default value has been replaced. Although the transaction can still be processed, examine the application carefully to detect abnormalities.</li></ul>|
 |`FraudAnalisys.Score`|Total score calculated for the application.|Number|-|Number|
-|`ReasonCode`|Reason code of operation.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message reason the Transaction.|Text|32|Successful|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
-|`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
 ## Referring a sale Recurrent
 
@@ -3945,7 +3967,6 @@ curl
     },
     "RecurrentPayment": {
         "RecurrentPaymentId": "6716406f-1cba-4c7a-8054-7e8988032b17",
-        "ReasonCode": 0,
         "NextRecurrency": "2015-11-05",
         "StartDate": "2015-05-05",
         "EndDate": "2019-12-01",
@@ -3972,7 +3993,6 @@ curl
     },
     "RecurrentPayment": {
         "RecurrentPaymentId": "6716406f-1cba-4c7a-8054-7e8988032b17",
-        "ReasonCode": 0,
         "NextRecurrency": "2015-11-05",
         "StartDate": "2015-05-05",
         "EndDate": "2019-12-01",
@@ -4011,38 +4031,6 @@ curl
 
 * Bradesco
 * Banco do Brasil
-
-## Reason Code e Reason Message
-
-The table below lists all possible reasonCode and ReasonMessage returned by the API
-
-|Reason Code|Reason Message|
-|-----------|--------------|
-|0|Successful|
-|1|AffiliationNotFound|
-|2|IssuficientFunds|
-|3|CouldNotGetCreditCard|
-|4|ConnectionWithAcquirerFailed|
-|5|InvalidTransactionType|
-|6|InvalidPaymentPlan|
-|7|Denied|
-|8|Scheduled|
-|9|Waiting|
-|10|Authenticated|
-|11|NotAuthenticated|
-|12|ProblemsWithCreditCard|
-|13|CardCanceled|
-|14|BlockedCreditCard|
-|15|CardExpired|
-|16|AbortedByFraud|
-|17|CouldNotAntifraud|
-|18|TryAgain|
-|19|InvalidAmount|
-|20|ProblemsWithIssuer|
-|21|InvalidCardNumber|
-|22|TimeOut|
-|98|InvalidRequest|
-|99|InternalError|
 
 ## Status
 

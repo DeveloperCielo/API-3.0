@@ -377,7 +377,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "674532",
-        "AcquirerTransactionId": "0305023644309",
+        "Tid": "0305023644309",
         "AuthorizationCode": "123456",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
@@ -385,11 +385,9 @@ curl
         "Currency": "BRL",
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
-        "ProviderReturnCode": "4",
-        "ProviderReturnMessage": "Operation Successful",
+        "ReturnCode": "4",
+        "ReturnMessage": "Operation Successful",
         "Links": [
             {
                 "Method": "GET",
@@ -434,7 +432,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "674532",
-        "AcquirerTransactionId": "0305023644309",
+        "Tid": "0305023644309",
         "AuthorizationCode": "123456",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
@@ -442,11 +440,9 @@ curl
         "Currency": "BRL",
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 1,
-        "ProviderReturnCode": "4",
-        "ProviderReturnMessage": "Operation Successful",
+        "ReturnCode": "4",
+        "ReturnMessage": "Operation Successful",
         "Links": [
             {
                 "Method": "GET",
@@ -472,16 +468,14 @@ curl
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
-|`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
+|`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
 |`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Electronic Commerce Indicator. It is how safe is a transaction.|Text|2|Examples: 7|
-|`ReasonCode`|Reason code of operation.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message reason the Transaction.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|2|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
-|`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
 ## Creating a complete transaction
 
@@ -681,7 +675,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "674532",
-        "AcquirerTransactionId": "0305020554239",
+        "Tid": "0305020554239",
         "AuthorizationCode": "123456",
         "SoftDescriptor":"tst",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
@@ -690,11 +684,9 @@ curl
         "CapturedAmount": 15700,
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 2,
-        "ProviderReturnCode": "6",
-        "ProviderReturnMessage": "Operation Successful",
+        "ReturnCode": "6",
+        "ReturnMessage": "Operation Successful",
         "Links": [
             {
                 "Method": "GET",
@@ -756,7 +748,7 @@ curl
             "Brand": "Visa"
         },
         "ProofOfSale": "674532",
-        "AcquirerTransactionId": "0305020554239",
+        "Tid": "0305020554239",
         "AuthorizationCode": "123456",
         "SoftDescriptor":"tst",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
@@ -765,11 +757,9 @@ curl
         "CapturedAmount": 15700,
         "Country": "BRA",
         "ExtraDataCollection": [],
-        "ReasonCode": 0,
-        "ReasonMessage": "Successful",
         "Status": 2,
-        "ProviderReturnCode": "6",
-        "ProviderReturnMessage": "Operation Successful",
+        "ReturnCode": "6",
+        "ReturnMessage": "Operation Successful",
         "Links": [
             {
                 "Method": "GET",
@@ -789,16 +779,14 @@ curl
 |Property|Description|Type|Size|Format|
 |--------|-----------|----|----|------|
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
-|`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
+|`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
 |`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Electronic Commerce Indicator. It is how safe is a transaction.|Text|2|Examples: 7|
-|`ReasonCode`|Reason code of operation.|Byte|-|Number from 1 to 99|
-|`ReasonMessage`|Message reason the Transaction.|Text|32|Successful|
 |`Status`|Transaction Status.|Byte|-|2|
-|`ProviderReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
-|`ProviderReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
+|`ReturnCode`|Acquiring the return code.|Text|32|Alphanumeric text|
+|`ReturnMessage`|Acquiring the return message.|Text|512|Alphanumeric text|
 
 ## Creating a sale with Authentication
 
@@ -911,7 +899,7 @@ curl
 			"Brand":"Visa"
 		},
 		"AuthenticationUrl":"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe",
-        "AcquirerTransactionId": "1006993069257E521001",
+        "Tid": "1006993069257E521001",
         "SoftDescriptor":"tst",
 		"PaymentId":"f2dbd5df-c2ee-482f-ab1b-7fee039108c0",
 		"Type":"CreditCard",

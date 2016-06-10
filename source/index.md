@@ -353,7 +353,7 @@ curl
 |`CreditCard.Holder`|Texto|25|Sim|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Sim|Código de segurança impresso no verso do cartão.|
-|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Mastercard / Amex / Elo / Auria / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Master / Amex / Elo / Auria / JCB / Diners / Discover).|
 
 ### Resposta
 

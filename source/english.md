@@ -5,7 +5,7 @@ language_tabs:
   - json: JSON
   - shell: cURL
    
-  toc_footers:
+toc_footers:
   - <a href='/Boas-praticas-de-eCommerce/'>Boas práticas de eCommerce</a>
 
 search: true

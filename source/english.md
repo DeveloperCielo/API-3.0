@@ -240,10 +240,10 @@ During the tests to Facilitate integration, Cielo offers a Sandbox environment w
 1. Registration account test
 2. Endpoints to requisition
 
-    * **Creation / Changes of transactions**: https://sandbox.cieloecommerce.cielo.com.br/
+    * **Creation / Changes of transactions**: https://apisandbox.cieloeCommerce.cielo.com.br 
     * **Transaction consult**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
 
-It's not necessary to be a member to use Cielo 'Sandbox. You only need to access [Sandob Registry](https://cadastrosandbox.cieloecommerce.cielo.com.br/) and create a test account. At the end of registration, you will receive a 'MerchantID' and the 'MerchanKey', that should be used to authenticate all the requests done for the endpoint of API.
+It's not necessary to be a member to use Cielo 'Sandbox. You only need to access [Sandbox Registry](https://cadastrosandbox.cieloecommerce.cielo.com.br/) and create a test account. At the end of registration, you will receive a 'MerchantID' and the 'MerchanKey', that should be used to authenticate all the requests done for the endpoint of API.
 
 ### Mock payment method 
 

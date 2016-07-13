@@ -109,15 +109,15 @@
 <p>Ambiente Produção</p>
 
 <ul>
-<li><strong>Requisição de transação</strong>: https://api.cieloeCommerce.cielo.com.br/</li>
-<li><strong>Consulta transação</strong>: https://apiquery.cieloeCommerce.cielo.com.br/</li>
+<li><strong>Requisição de transação</strong>: https://api.cieloecommerce.cielo.com.br/</li>
+<li><strong>Consulta transação</strong>: https://apiquery.cieloecommerce.cielo.com.br/</li>
 </ul>
 
 <p>Ambiente Sandbox</p>
 
 <ul>
-<li><strong>Requisição de transação</strong>: https://apisandbox.cieloeCommerce.cielo.com.br</li>
-<li><strong>Consulta transação</strong>: https://apiquerysandbox.cieloeCommerce.cielo.com.br</li>
+<li><strong>Requisição de transação</strong>: https://apisandbox.cieloecommerce.cielo.com.br</li>
+<li><strong>Consulta transação</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br</li>
 </ul>
 
 <p>Para executar uma operação, combine a URL base do ambiente com a URL da operação desejada e envie utilizando o verbo HTTP conforme descrito na operação.</p>
@@ -135,7 +135,7 @@
 <li>Opção 1 – <em>Suporte técnico;</em></li>
 <li>Opção 2 – <em>Credenciamento eCommerce.</em></li>
 </ul></li>
-<li>Email: <a href="mailto:cieloeCommerce@cielo.com.br">cieloeCommerce@cielo.com.br</a></li>
+<li>Email: <a href="mailto:cieloecommerce@cielo.com.br">cieloeCommerce@cielo.com.br</a></li>
 </ul>
 
 <h2 id="glossário">Glossário</h2>
@@ -193,7 +193,7 @@
 <ul>
 <li><a href="attachment/Raiz.crt">Certificado Raiz</a></li>
 <li><a href="attachment/Intermediaria.crt">Certificado Intermediária</a></li>
-<li><a href="./attachment/eCommerce.cielo.com.br.crt">Certificado E-Commerce Cielo</a></li>
+<li><a href="attachment/ecommerce.cielo.com.br.crt">Certificado E-Commerce Cielo</a></li>
 </ul>
 
 <aside class="notice">Caso seu servidor seja uma distribuição Linux e você tenha familiaridade e acesso ssh, então o <a href="./attachment/cielo.sh">Instalador Linux - cielo.sh</a> poderá ajudá-lo com a instalação. <strong>Apenas utilize o instalador se você souber o que está fazendo</strong>. Na dúvida, entre em contato com o suporte do fornecedor do seu servidor.</aside>
@@ -217,7 +217,7 @@
 <ul>
 <li><a href="attachment/Raiz.crt">Certificado Raiz</a></li>
 <li><a href="attachment/Intermediaria.crt">Certificado Intermediária</a></li>
-<li><a href="./attachment/eCommerce.cielo.com.br.crt">Certificado E-Commerce Cielo</a></li>
+<li><a href="attachment/ecommerce.cielo.com.br.crt">Certificado E-Commerce Cielo</a></li>
 </ul>
 
 <h4 id="2o-passo:">2o Passo:</h4>
@@ -262,7 +262,7 @@
 
 <h4 id="5o-passo:">5o Passo:</h4>
 
-<p>No Chrome e Internet Explorer “Assistente para Importação de Certificados”, clique em “Procurar”, procure a pasta onde estão os arquivos e selecione o arquivo “eCommerce.cielo.com.br.crt, clique em “Abrir” e em seguida “Avançar”.</p>
+<p>No Chrome e Internet Explorer “Assistente para Importação de Certificados”, clique em “Procurar”, procure a pasta onde estão os arquivos e selecione o arquivo “ecommerce.cielo.com.br.crt, clique em “Abrir” e em seguida “Avançar”.</p>
 
 <p><img alt="Instalar IE e GC" src="images/certificado-instalar-ie-gc-5.jpg" /></p>
 
@@ -350,10 +350,10 @@
 <li>Endpoints transacionais</li>
 </ol>
 
-<p>* <strong>Requisição</strong>: https://apisandbox.cieloeCommerce.cielo.com.br
-    * <strong>Consulta</strong>: https://apiquerysandbox.cieloeCommerce.cielo.com.br/</p>
+<p>* <strong>Requisição</strong>: https://apisandbox.cieloecommerce.cielo.com.br
+    * <strong>Consulta</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br/</p>
 
-<p>Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o <a href="https://cadastrosandbox.cieloeCommerce.cielo.com.br/">Cadastro do Sandbox</a> e criar uma conta de testes. Ao fim do cadastro você receberá um <code class="prettyprint">MerchantId</code> e um <code class="prettyprint">MerchantKey</code>, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.</p>
+<p>Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o <a href="https://cadastrosandbox.cieloecommerce.cielo.com.br/">Cadastro do Sandbox</a> e criar uma conta de testes. Ao fim do cadastro você receberá um <code class="prettyprint">MerchantId</code> e um <code class="prettyprint">MerchantKey</code>, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.</p>
 
 <h3 id="meio-de-pagamento-simulado">Meio de Pagamento Simulado</h3>
 
@@ -466,7 +466,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -637,17 +637,17 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -690,17 +690,17 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -836,7 +836,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -1219,12 +1219,12 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1290,12 +1290,12 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -1410,7 +1410,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -1594,7 +1594,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{Paymentid}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{Paymentid}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1640,7 +1640,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>:<span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>:<span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>:<span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{Paymentid}"</span>
+                <span class="s2">"Href"</span>:<span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{Paymentid}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -1832,7 +1832,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -2619,17 +2619,17 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2771,17 +2771,17 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -2972,7 +2972,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3132,17 +3132,17 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3182,17 +3182,17 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -3282,7 +3282,7 @@
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/capture</span></aside>
 <pre><code class="highlight json"></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture?amount=xxx&amp;serviceTaxAmount=xxx"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture?amount=xxx&amp;serviceTaxAmount=xxx"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3352,12 +3352,12 @@
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3373,12 +3373,12 @@
         <span class="o">{</span>
             <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
             <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
         <span class="o">}</span>,
         <span class="o">{</span>
             <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
             <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+            <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
@@ -3425,7 +3425,7 @@
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=xxx</span></aside>
 <pre><code class="highlight json"></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=xxx"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=xxx"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3488,7 +3488,7 @@
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3504,7 +3504,7 @@
         <span class="o">{</span>
             <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
             <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
@@ -3571,7 +3571,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3735,7 +3735,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3771,7 +3771,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -3856,7 +3856,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3966,7 +3966,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3994,7 +3994,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -4057,7 +4057,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -4157,7 +4157,7 @@
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-25"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000012-8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"BarCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00091628800000157000494250100000001200656560"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DigitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00090.49420 50100.000004 12006.565605 1 62880000015700"</span><span class="p">,</span><span class="w">
@@ -4173,7 +4173,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4192,7 +4192,7 @@
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>
         <span class="s2">"ExpirationDate"</span>: <span class="s2">"2014-12-25"</span>,
-        <span class="s2">"Url"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span>,
+        <span class="s2">"Url"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span>,
         <span class="s2">"Number"</span>: <span class="s2">"1000000012-8"</span>,
         <span class="s2">"BarCodeNumber"</span>: <span class="s2">"00091628800000157000494250100000001200656560"</span>,
         <span class="s2">"DigitableLine"</span>: <span class="s2">"00090.49420 50100.000004 12006.565605 1 62880000015700"</span>,
@@ -4208,7 +4208,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -4311,7 +4311,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -4468,7 +4468,7 @@
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aceitar somente até a data de vencimento, após essa data juros de 1% dia."</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-05"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-2"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"BarCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00096629900000157000494250000000012300656560"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DigitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00090.49420 50000.000013 23006.565602 6 62990000015700"</span><span class="p">,</span><span class="w">
@@ -4487,7 +4487,7 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4507,7 +4507,7 @@
     <span class="o">{</span>
         <span class="s2">"Instructions"</span>: <span class="s2">"Aceitar somente até a data de vencimento, após essa data juros de 1% dia."</span>,
         <span class="s2">"ExpirationDate"</span>: <span class="s2">"2015-01-05"</span>,
-        <span class="s2">"Url"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span>,
+        <span class="s2">"Url"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span>,
         <span class="s2">"Number"</span>: <span class="s2">"123-2"</span>,
         <span class="s2">"BarCodeNumber"</span>: <span class="s2">"00096629900000157000494250000000012300656560"</span>,
         <span class="s2">"DigitableLine"</span>: <span class="s2">"00090.49420 50000.000013 23006.565602 6 62990000015700"</span>,
@@ -4526,7 +4526,7 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -4658,7 +4658,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -4865,7 +4865,7 @@
             </span><span class="s2">"Link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recurrentPayment"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -4873,17 +4873,17 @@
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4933,7 +4933,7 @@
             <span class="s2">"Link"</span>: <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"recurrentPayment"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
             <span class="o">}</span>,
             <span class="s2">"AuthorizeNow"</span>: <span class="nb">true</span>
         <span class="o">}</span>,
@@ -4941,17 +4941,17 @@
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -5040,7 +5040,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5292,7 +5292,7 @@
             </span><span class="s2">"Link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recurrentPayment"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -5338,7 +5338,7 @@
             <span class="s2">"Link"</span>: <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"recurrentPayment"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="s2">"AuthorizeNow"</span>: <span class="nb">false</span>
         <span class="o">}</span>
@@ -5434,7 +5434,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Customer"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Customer"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5664,7 +5664,7 @@
 <pre><code class="highlight json"><span class="s2">"2021-01-09"</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/EndDate"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/EndDate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5736,7 +5736,7 @@
 <pre><code class="highlight json"><span class="mi">3</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5808,7 +5808,7 @@
 <pre><code class="highlight json"><span class="mi">6</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Interval"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Interval"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5882,7 +5882,7 @@
 <pre><code class="highlight json"><span class="mi">16</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6029,7 +6029,7 @@ entPaymentId}/Amount"</span>
 <pre><code class="highlight json"><span class="s2">"2016-06-15"</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6117,7 +6117,7 @@ entPaymentId}/Amount"</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Payment"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Payment"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6257,7 +6257,7 @@ entPaymentId}/Amount"</span>
 
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate</span></aside>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6319,7 +6319,7 @@ entPaymentId}/Amount"</span>
 
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate</span></aside>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate"</span>
+--request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6383,7 +6383,7 @@ entPaymentId}/Amount"</span>
 
 <aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales/{PaymentId}</span></aside>
 <pre><code class="highlight shell">curl
---request GET <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+--request GET <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6464,17 +6464,17 @@ entPaymentId}/Amount"</span>
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -6515,17 +6515,17 @@ entPaymentId}/Amount"</span>
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -6651,7 +6651,7 @@ entPaymentId}/Amount"</span>
 
 <aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales?merchantOrderId={merchantOrderId}</span></aside>
 <pre><code class="highlight shell">curls
---request GET <span class="s2">" https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales?merchantOrderId={merchantOrderId}"</span>
+--request GET <span class="s2">" https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales?merchantOrderId={merchantOrderId}"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6756,7 +6756,7 @@ entPaymentId}/Amount"</span>
 
 <aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/sales/{PaymentId}</span></aside>
 <pre><code class="highlight shell">curl
---request GET <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+--request GET <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6858,17 +6858,17 @@ entPaymentId}/Amount"</span>
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -6930,17 +6930,17 @@ entPaymentId}/Amount"</span>
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -7050,7 +7050,7 @@ entPaymentId}/Amount"</span>
 
 <aside class="request"><span class="method get">GET</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}</span></aside>
 <pre><code class="highlight shell">curl
---request GET <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
+--request GET <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -7114,7 +7114,7 @@ entPaymentId}/Amount"</span>
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -7138,7 +7138,7 @@ entPaymentId}/Amount"</span>
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>

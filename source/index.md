@@ -7,7 +7,7 @@ language_tabs:
 
 toc_footers:
   - <a href='/Guia-de-migracao-1.5x3.0/'>Guia de migração da API 1.5 para a 3.0</a>
-  - <a href='/Checkout-Boleto-e-Debito/'>Manual de Boleto e débito online</a>
+  - <a href='/Habilitacao-meios-de-pagamento/'>Manual de Boleto e débito online</a>
   - <a href='/Boas-praticas-de-ecommerce/'>Boas práticas de eCommerce</a>
 
 search: true

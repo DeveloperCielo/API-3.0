@@ -158,6 +158,8 @@
 <li><strong>TID (Transaction Identifier)</strong>: código composto por 20 caracteres que identificada unicamente uma transação Cielo eCommerce.</li>
 <li><strong>Transação</strong>: é o pedido de compra do portador do cartão na Cielo.</li>
 <li><strong>VBV (Verified by Visa)</strong>: Programa internacional da Visa que possibilita a autenticação do comprador no momento de uma compra em ambiente eCommerce.</li>
+<li><strong>Multiliquidação</strong>: A Multiliquidação Cielo permite que um lojista realize transações dividindo a compensação dos recursos da venda com um grupo
+de sub lojas de sua preferência.</li>
 </ul>
 
 <h1 id="certificado-extended-validation">Certificado Extended Validation</h1>
@@ -436,6 +438,8 @@
 <li><strong>Antifraude</strong>: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.</li>
 <li><strong>Recorrente</strong>: A Recorrência Inteligente é um recurso indispensável para estabelicimentos que precisam cobrar regularmente por seus produtos/serviços.
 É muito utilizado para assinaturas de revistas, mensalidades, licenças de software, entre outros. Os lojistas contarão com recursos diferenciados para modelar sua cobrança de acordo com o seu negócio, pois toda parametrização é configurável, tais como: periodicidade, data de início e fim, quantidade de tentativas, intervalo entre elas, entre outros.</li>
+<li><strong>Multiliquidação</strong>: A Multiliquidação Cielo permite que um lojista realize transações dividindo a compensação dos recursos da venda com um grupo
+de sub lojas de sua preferência.</li>
 </ul>
 
 <h2 id="criando-uma-transação-simples">Criando uma transação simples</h2>
@@ -3539,6 +3543,498 @@
 <td>Texto </td>
 <td>512 </td>
 <td>Texto alfanumérico </td>
+</tr>
+</tbody></table>
+
+<h1 id="pagamentos-com-multiliquidação">Pagamentos com Multiliquidação</h1>
+
+<p>A Multiliquidação Cielo permite que um lojista realize transações dividindo a compensação dos recursos da venda com um grupo de sub lojas de sua preferência.</p>
+
+<h2 id="criando-uma-transação-com-multiliquidação">Criando uma transação com Multiliquidação</h2>
+
+<p>Para realizar uma transação de multiliquidação o lojista deve obedecer às seguintes premissas:</p>
+
+<ol>
+<li>Seu EC deve estar cadastrado como uma das classificações abaixo dentro da Cielo:
+
+<ul>
+<li>Ancora: Para receber a transação principal e realizar a partilha do recurso via contrato</li>
+<li>Subordinado: Para ser parte da partilha de um ancora.</li>
+</ul></li>
+<li>Deve enviar dentro do contrato transacional, no nó payment, o Array “Split”
+
+<ul>
+<li>O nó de Establishment e Amount devem se repetir para cada subordinado.</li>
+<li>O campo Establishment informa o EC a ser usado como Subordinado na operação.</li>
+<li>O Campo Amount informa o valor a ser destinado ao subordinado
+
+<ul>
+<li>O valor total de todos os amounts não deve superar o valor total da transação.</li>
+</ul></li>
+</ul></li>
+</ol>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111701"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compradorteste@teste.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Teste"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AP 123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ZipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345987"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rio de Janeiro"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RJ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"DeliveryAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Teste"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AP 123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ZipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345987"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rio de Janeiro"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RJ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/2021"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Splits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;EC&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;EC&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111701"</span>,
+    <span class="s2">"Customer"</span>: <span class="o">{</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Email"</span>: <span class="s2">"compradorteste@teste.com"</span>,
+        <span class="s2">"Birthdate"</span>: <span class="s2">"1991-01-02"</span>,
+        <span class="s2">"Address"</span>: <span class="o">{</span>
+            <span class="s2">"Street"</span>: <span class="s2">"Rua Teste"</span>,
+            <span class="s2">"Number"</span>: <span class="s2">"123"</span>,
+            <span class="s2">"Complement"</span>: <span class="s2">"AP 123"</span>,
+            <span class="s2">"ZipCode"</span>: <span class="s2">"12345987"</span>,
+            <span class="s2">"City"</span>: <span class="s2">"Rio de Janeiro"</span>,
+            <span class="s2">"State"</span>: <span class="s2">"RJ"</span>,
+            <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>
+        <span class="o">}</span>,
+        <span class="s2">"DeliveryAddress"</span>: <span class="o">{</span>
+            <span class="s2">"Street"</span>: <span class="s2">"Rua Teste"</span>,
+            <span class="s2">"Number"</span>: <span class="s2">"123"</span>,
+            <span class="s2">"Complement"</span>: <span class="s2">"AP 123"</span>,
+            <span class="s2">"ZipCode"</span>: <span class="s2">"12345987"</span>,
+            <span class="s2">"City"</span>: <span class="s2">"Rio de Janeiro"</span>,
+            <span class="s2">"State"</span>: <span class="s2">"RJ"</span>,
+            <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>
+        <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"Payment"</span>: <span class="o">{</span>
+        <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
+        <span class="s2">"Amount"</span>: 10000,
+        <span class="s2">"Provider"</span>: <span class="s2">"Simulado"</span>,
+        <span class="s2">"Installments"</span>: 1,
+        <span class="s2">"CreditCard"</span>: <span class="o">{</span>
+            <span class="s2">"CardNumber"</span>: <span class="s2">"1234123412341231"</span>,
+            <span class="s2">"Holder"</span>: <span class="s2">"Teste Holder"</span>,
+            <span class="s2">"ExpirationDate"</span>: <span class="s2">"12/2021"</span>,
+            <span class="s2">"SecurityCode"</span>: <span class="s2">"123"</span>,
+            <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>,
+            <span class="s2">"Splits"</span>: <span class="o">[</span>
+                <span class="o">{</span>
+                    <span class="s2">"Establishment"</span>: <span class="s2">"&lt;EC&gt;"</span>,
+                    <span class="s2">"Amount"</span>: <span class="s2">"9000"</span>
+                <span class="o">}</span>,
+                <span class="o">{</span>
+                    <span class="s2">"Establishment"</span>: <span class="s2">"&lt;EC&gt;"</span>,
+                    <span class="s2">"Amount"</span>: <span class="s2">"1000"</span>
+                <span class="o">}</span>
+            <span class="o">]</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantOrderId</code></td>
+<td>Texto</td>
+<td>50</td>
+<td>Sim</td>
+<td>Numero de identificação do Pedido.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Name</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Sim</td>
+<td>Nome do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Email</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Email do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Birthdate</code></td>
+<td>Date</td>
+<td>10</td>
+<td>Não</td>
+<td>Data de nascimento do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Address.Street</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Address.Number</code></td>
+<td>Texto</td>
+<td>15</td>
+<td>Não</td>
+<td>Número do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Address.Complement</code></td>
+<td>Texto</td>
+<td>50</td>
+<td>Não</td>
+<td>Complemento do endereço do Comprador.br</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Address.ZipCode</code></td>
+<td>Texto</td>
+<td>9</td>
+<td>Não</td>
+<td>CEP do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Address.City</code></td>
+<td>Texto</td>
+<td>50</td>
+<td>Não</td>
+<td>Cidade do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Address.State</code></td>
+<td>Texto</td>
+<td>2</td>
+<td>Não</td>
+<td>Estado do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Address.Country</code></td>
+<td>Texto</td>
+<td>35</td>
+<td>Não</td>
+<td>Pais do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.DeliveryAddress.Street</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.DeliveryAddress.Number</code></td>
+<td>Texto</td>
+<td>15</td>
+<td>Não</td>
+<td>Número do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.DeliveryAddress.Complement</code></td>
+<td>Texto</td>
+<td>50</td>
+<td>Não</td>
+<td>Complemento do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.DeliveryAddress.ZipCode</code></td>
+<td>Texto</td>
+<td>9</td>
+<td>Não</td>
+<td>CEP do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.DeliveryAddress.City</code></td>
+<td>Texto</td>
+<td>50</td>
+<td>Não</td>
+<td>Cidade do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.DeliveryAddress.State</code></td>
+<td>Texto</td>
+<td>2</td>
+<td>Não</td>
+<td>Estado do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.DeliveryAddress.Country</code></td>
+<td>Texto</td>
+<td>35</td>
+<td>Não</td>
+<td>Pais do endereço do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Type</code></td>
+<td>Texto</td>
+<td>100</td>
+<td>Sim</td>
+<td>Tipo do Meio de Pagamento.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Amount</code></td>
+<td>Número</td>
+<td>15</td>
+<td>Sim</td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Provider</code></td>
+<td>Texto</td>
+<td>15</td>
+<td>Sim</td>
+<td>Nome do Meio de Pagamento.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payments.Installments</code></td>
+<td>Número</td>
+<td>2</td>
+<td>Sim</td>
+<td>Número de Parcelas.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.CardNumber</code></td>
+<td>Texto</td>
+<td>16</td>
+<td>Sim</td>
+<td>Número do Cartão do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Holder</code></td>
+<td>Texto</td>
+<td>25</td>
+<td>Sim</td>
+<td>Nome do Comprador impresso no cartão.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
+<td>Texto</td>
+<td>7</td>
+<td>Sim</td>
+<td>Data de validade impresso no cartão.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.SecurityCode</code></td>
+<td>Texto</td>
+<td>4</td>
+<td>Sim</td>
+<td>Código de segurança impresso no verso do cartão.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Brand</code></td>
+<td>Texto</td>
+<td>10</td>
+<td>Sim</td>
+<td>Bandeira do cartão (Visa / Mastercard / Amex / Elo / Auria / JCB / Diners / Discover).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Splits.Establishment</code></td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+<td>EC a ser usado como Subordinado na operação.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Splits.Amount</code></td>
+<td>Número</td>
+<td>15</td>
+<td>Sim</td>
+<td>Valor a ser destinado ao subordinado.</td>
+</tr>
+</tbody></table>
+
+<h2 id="capturando-uma-venda-com-multiliquidação">Capturando uma venda com multiliquidação</h2>
+
+<p>Regras de captura no Multiliquidação:</p>
+
+<ol>
+<li>Apenas o âncora é capaz de realizar capturas</li>
+<li>O âncora deve capturar transações de seus subordinados.</li>
+<li>A Captura pode ocorrer apenas uma vez. Após a captura, não é possível realizar uma nova tentativa</li>
+</ol>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{MID}/capture?amount=xxx&i=cielo</span></aside>
+<pre><code class="highlight json"><span class="s2">"Splits"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="s2">"1010705935"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="s2">"1001335780"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">24000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="s2">"104183"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">25000</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="s2">"Splits"</span>: <span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"Establishment"</span>:<span class="s2">"1010705935"</span>,
+    <span class="s2">"Amount"</span>:1000
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"Establishment"</span>:<span class="s2">"1001335780"</span>,
+    <span class="s2">"Amount"</span>:24000
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"Establishment"</span>:<span class="s2">"104183"</span>,
+    <span class="s2">"Amount"</span>:25000
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MID</code></td>
+<td>Guid`</td>
+<td>36</td>
+<td>Sim</td>
+<td>MerchantID do lojista.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Amount</code></td>
+<td>Número</td>
+<td>15</td>
+<td>Sim</td>
+<td>Valor total das transações capturadas dentro do nó</td>
+</tr>
+</tbody></table>
+
+<h2 id="cancelando-uma-venda-com-multiliquidação">Cancelando uma venda com multiliquidação</h2>
+
+<p>Regras de cancelamento no Multiliquidação:</p>
+
+<ol>
+<li>Apenas o âncora é capaz de realizar cancelamentos</li>
+<li>O Cancelamento pode ocorrer em diferentes momentos, sendo possível cancelar splits individualmente.</li>
+</ol>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{MID}/void?amount=xxx&i=cielo</span></aside>
+<pre><code class="highlight json"><span class="s2">"Splits"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="s2">"1010705935"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="s2">"1001335780"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">24000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Establishment"</span><span class="p">:</span><span class="s2">"104183"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">25000</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="s2">"Splits"</span>: <span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"Establishment"</span>:<span class="s2">"1010705935"</span>,
+    <span class="s2">"Amount"</span>:1000
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"Establishment"</span>:<span class="s2">"1001335780"</span>,
+    <span class="s2">"Amount"</span>:24000
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"Establishment"</span>:<span class="s2">"104183"</span>,
+    <span class="s2">"Amount"</span>:25000
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MID</code></td>
+<td>Guid`</td>
+<td>36</td>
+<td>Sim</td>
+<td>MerchantID do lojista.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Amount</code></td>
+<td>Número</td>
+<td>15</td>
+<td>Sim</td>
+<td>Valor total das transações capturadas dentro do nó</td>
 </tr>
 </tbody></table>
 

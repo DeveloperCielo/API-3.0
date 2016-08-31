@@ -4099,6 +4099,8 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 
 ## Códigos de Erros
 
+Códigos retornados em caso de erro, identificando o motivo do erro e suas respectivas mensagens.
+
 |Código|Mensagem|
 |------|--------|
 |100|RequestId is required|
@@ -4185,7 +4187,9 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 |314|Invalid Integration|
 |315|Cannot change NextRecurrency with pending payment|
 
-## Códigos de Retorno
+## Códigos de Retorno das Vendas
+
+Códigos retornados pelo autorizador e que descrevem a autorização ou não da venda e, em caso negativo, os cenários onde o lojista pode retentar enviar a transação.
 
 |Código Resposta|Definição|Significado|Ação|Permite Retentativa|
 |------------------|---------|-----------|----|-------------------|

@@ -4097,7 +4097,7 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 |404|Resource Not Found|
 |500|Internal Server Error|
 
-## Códigos de Erros
+## Códigos de Erros da API
 
 Códigos retornados em caso de erro, identificando o motivo do erro e suas respectivas mensagens.
 

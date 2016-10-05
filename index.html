@@ -454,7 +454,6 @@
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
@@ -521,8 +520,8 @@
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Sim</td>
-<td>Campo Identificador do Request do Pedido.</td>
+<td>Não</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -539,28 +538,28 @@
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
 <td>Sim</td>
 <td>Tipo do Meio de Pagamento.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Número</td>
 <td>15</td>
 <td>Sim</td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Texto</td>
 <td>15</td>
-<td>Sim</td>
-<td>Nome do Meio de Pagamento.</td>
+<td>&mdash;</td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número</td>
 <td>2</td>
 <td>Sim</td>
@@ -819,7 +818,6 @@
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Currency"</span><span class="p">:</span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Country"</span><span class="p">:</span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Interest"</span><span class="p">:</span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
@@ -919,8 +917,8 @@
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Sim</td>
-<td>Campo Identificador do Request do Pedido.</td>
+<td>Não</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -935,6 +933,20 @@
 <td>255</td>
 <td>Sim</td>
 <td>Nome do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Identity</code></td>
+<td>Texto </td>
+<td>14 </td>
+<td>Não</td>
+<td>Número do RG, CPF ou CNPJ do Cliente.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.IdentityType</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Tipo de documento de identificação do comprador (CFP/CNPJ).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
@@ -1049,74 +1061,74 @@
 <td>Pais do endereço do Comprador.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
 <td>Sim</td>
 <td>Tipo do Meio de Pagamento.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Número</td>
 <td>15</td>
 <td>Sim</td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Currency</code></td>
+<td><code class="prettyprint">Payment.Currency</code></td>
 <td>Texto</td>
 <td>3</td>
 <td>Não</td>
-<td>Moeda moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).</td>
+<td>Moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Country</code></td>
+<td><code class="prettyprint">Payment.Country</code></td>
 <td>Texto</td>
 <td>3</td>
 <td>Não</td>
 <td>Pais na qual o pagamento será feito.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Texto</td>
 <td>15</td>
-<td>Sim</td>
-<td>Nome do Meio de Pagamento.</td>
+<td>&mdash;</td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SeviceTaxAmount</code></td>
+<td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
 <td>Número</td>
 <td>15</td>
 <td>Sim</td>
 <td>Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número</td>
 <td>2</td>
 <td>Sim</td>
 <td>Número de Parcelas.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Interest</code></td>
+<td><code class="prettyprint">Payment.Interest</code></td>
 <td>Texto</td>
 <td>10</td>
 <td>Não</td>
-<td>Tipo de parcelamento (Loja ou Cartão).</td>
+<td>Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Capture</code></td>
+<td><code class="prettyprint">Payment.Capture</code></td>
 <td>Booleano</td>
 <td>&mdash;</td>
 <td>Não (Default false)</td>
 <td>Booleano que identifica que a autorização deve ser com captura automática.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Authenticate</code></td>
+<td><code class="prettyprint">Payment.Authenticate</code></td>
 <td>Booleano</td>
 <td>&mdash;</td>
 <td>Não (Default false)</td>
-<td>Booleano que identifica que a autorização deve ser com autenticação.</td>
+<td>Define se o comprador será direcionado ao Banco emissor para autenticação do cartão</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
@@ -1158,7 +1170,7 @@
 <td>Texto</td>
 <td>10</td>
 <td>Sim</td>
-<td>Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).</td>
+<td>Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).</td>
 </tr>
 </tbody></table>
 
@@ -1396,7 +1408,6 @@
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Cielo"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w">
@@ -1468,8 +1479,8 @@
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Sim</td>
-<td>Campo Identificador do Request do Pedido.</td>
+<td>Não</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -1486,39 +1497,39 @@
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
 <td>Sim</td>
 <td>Tipo do Meio de Pagamento.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Número</td>
 <td>15</td>
 <td>Sim</td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Texto</td>
 <td>15</td>
-<td>Sim</td>
-<td>Nome do Meio de Pagamento.</td>
+<td>&mdash;</td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número</td>
 <td>2</td>
 <td>Sim</td>
 <td>Número de Parcelas.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Authenticate</code></td>
+<td><code class="prettyprint">Payment.Authenticate</code></td>
 <td>Booleano</td>
 <td>&mdash;</td>
 <td>Não (Default false)</td>
-<td>Booleano que identifica que a autorização deve ser com autenticação.</td>
+<td>Define se o comprador será direcionado ao Banco emissor para autenticação do cartão</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber.</code></td>
@@ -1553,7 +1564,7 @@
 <td>Texto</td>
 <td>10</td>
 <td>Sim</td>
-<td>Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).</td>
+<td>Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).</td>
 </tr>
 </tbody></table>
 
@@ -1759,7 +1770,6 @@
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Currency"</span><span class="p">:</span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Country"</span><span class="p">:</span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Interest"</span><span class="p">:</span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
@@ -1970,8 +1980,8 @@
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Sim</td>
-<td>Campo Identificador do Request do Pedido.</td>
+<td>Não</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -2100,74 +2110,74 @@
 <td>Pais do endereço do Comprador.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
 <td>Sim</td>
 <td>Tipo do Meio de Pagamento.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Número</td>
 <td>15</td>
 <td>Sim</td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Currency</code></td>
+<td><code class="prettyprint">Payment.Currency</code></td>
 <td>Texto</td>
 <td>3</td>
 <td>Não</td>
-<td>Moeda moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).</td>
+<td>Moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Country</code></td>
+<td><code class="prettyprint">Payment.Country</code></td>
 <td>Texto</td>
 <td>3</td>
 <td>Não</td>
 <td>Pais na qual o pagamento será feito.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Texto</td>
 <td>15</td>
-<td>Sim</td>
-<td>Nome do Meio de Pagamento.</td>
+<td>&mdash;</td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SeviceTaxAmount</code></td>
+<td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
 <td>Número</td>
 <td>15</td>
 <td>Sim</td>
 <td>Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número</td>
 <td>2</td>
 <td>Sim</td>
 <td>Número de Parcelas.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Interest</code></td>
+<td><code class="prettyprint">Payment.Interest</code></td>
 <td>Texto</td>
 <td>10</td>
 <td>Não</td>
-<td>Tipo de parcelamento (Loja ou Cartão).</td>
+<td>Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Capture</code></td>
+<td><code class="prettyprint">Payment.Capture</code></td>
 <td>Booleano</td>
 <td>&mdash;</td>
 <td>Não (Default false)</td>
 <td>Booleano que identifica que a autorização deve ser com captura automática.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Authenticate</code></td>
+<td><code class="prettyprint">Payment.Authenticate</code></td>
 <td>Booleano</td>
 <td>&mdash;</td>
 <td>Não (Default false)</td>
-<td>Booleano que identifica que a autorização deve ser com autenticação.</td>
+<td>Define se o comprador será direcionado ao Banco emissor para autenticação do cartão</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
@@ -2209,7 +2219,7 @@
 <td>Texto</td>
 <td>10</td>
 <td>Sim</td>
-<td>Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).</td>
+<td>Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Sequence</code></td>
@@ -3024,10 +3034,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
 <td> Guid </td>
 <td> 36 </td>
-<td>Sim</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -3044,35 +3054,35 @@
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td> Texto </td>
 <td> 100 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 <td> Número </td>
 <td> 15 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
 <td> Número </td>
 <td> 2 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SoftDescriptor</code></td>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
 <td>Texto que será impresso na fatura do portador</td>
 <td> Texto </td>
 <td> 13 </td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ReturnUrl</code></td>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URI para onde o usuário será redirecionado após o fim do pagamento</td>
 <td>Texto </td>
 <td>1024 </td>
@@ -3316,10 +3326,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
 <td> Guid </td>
 <td> 36 </td>
-<td>Sim</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
@@ -3336,7 +3346,7 @@
 <td> Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">SeviceTaxAmount</code></td>
+<td><code class="prettyprint">ServiceTaxAmount</code></td>
 <td>Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização. </td>
 <td> Número </td>
 <td> 15 </td>
@@ -3459,10 +3469,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido.</td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
@@ -3624,10 +3634,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -3644,28 +3654,28 @@
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento.</td>
 <td>Texto </td>
 <td>100 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 <td>Número </td>
 <td>15 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ReturnUrl</code></td>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>Url de retorno do lojista.</td>
 <td>Texto </td>
 <td>1024 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ReturnUrl</code></td>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URI para onde o usuário será redirecionado após o fim do pagamento</td>
 <td>Texto </td>
 <td>1024 </td>
@@ -3905,10 +3915,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -3925,25 +3935,25 @@
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td>Texto </td>
 <td>100 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 <td>Número </td>
 <td>15 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
-<td>Nome do Meio de Pagamento.</td>
+<td><code class="prettyprint">Payment.Provider</code></td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto </td>
 <td>15 </td>
-<td>Sim</td>
+<td>&mdash;</td>
 </tr>
 </tbody></table>
 
@@ -4105,10 +4115,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -4125,25 +4135,25 @@
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td>Texto </td>
 <td>100 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 <td>Número </td>
 <td>15 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
-<td>Nome do Meio de Pagamento.</td>
+<td><code class="prettyprint">Payment.Provider</code></td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto </td>
 <td>15 </td>
-<td>Sim</td>
+<td>&mdash;</td>
 </tr>
 </tbody></table>
 
@@ -4366,10 +4376,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -4386,70 +4396,70 @@
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td>Texto </td>
 <td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 <td>Número </td>
 <td>15 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
-<td>Nome do Meio de Pagamento.</td>
+<td><code class="prettyprint">Payment.Provider</code></td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto </td>
 <td>15 </td>
-<td>Sim</td>
+<td>&mdash;</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Adress</code></td>
+<td><code class="prettyprint">Payment.Adress</code></td>
 <td>Endereço do Cedente.</td>
 <td>Texto </td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.BoletoNumber</code></td>
+<td><code class="prettyprint">Payment.BoletoNumber</code></td>
 <td>Número do Boleto (&ldquo;NossoNumero&rdquo;).</td>
 <td>Texto </td>
 <td>50 </td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Assignor</code></td>
+<td><code class="prettyprint">Payment.Assignor</code></td>
 <td>Nome do Cedente.</td>
 <td>Texto </td>
 <td>200</td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Demonstrative</code></td>
+<td><code class="prettyprint">Payment.Demonstrative</code></td>
 <td>Texto de Demonstrativo.</td>
 <td>Texto </td>
 <td>450</td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ExpirationDate</code></td>
+<td><code class="prettyprint">Payment.ExpirationDate</code></td>
 <td>Data de expiração do Boleto.</td>
 <td>Date </td>
 <td>10 </td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Identification</code></td>
+<td><code class="prettyprint">Payment.Identification</code></td>
 <td>Documento de identificação do Cedente.</td>
 <td>Texto </td>
 <td>14 </td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Instructions</code></td>
+<td><code class="prettyprint">Payment.Instructions</code></td>
 <td>Instruções do Boleto.</td>
 <td>Texto </td>
 <td>450</td>
@@ -4639,7 +4649,6 @@
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
      </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"RecurrentPayment"</span><span class="p">:{</span><span class="w">
@@ -4673,7 +4682,6 @@
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:1500,
-     <span class="s2">"Provider"</span>:<span class="s2">"Simulado"</span>,
      <span class="s2">"Installments"</span>:1,
      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
      <span class="s2">"RecurrentPayment"</span>:<span class="o">{</span>
@@ -4719,10 +4727,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -4739,49 +4747,49 @@
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td>Texto </td>
 <td>100 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 <td>Número </td>
 <td>15 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
 <td>Número </td>
 <td>2 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SoftDescriptor</code></td>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
 <td>Texto que será impresso na fatura do portador</td>
 <td>Texto </td>
 <td>13 </td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.RecurrentPayment.EndDate</code></td>
+<td><code class="prettyprint">Payment.RecurrentPayment.EndDate</code></td>
 <td>Data para termino da recorrência.</td>
 <td>Texto </td>
 <td>10 </td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.RecurrentPayment.Interval</code></td>
+<td><code class="prettyprint">Payment.RecurrentPayment.Interval</code></td>
 <td>Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
 <td>Texto </td>
 <td>10 </td>
 <td>Não</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.RecurrentPayment.AuthorizeNow</code></td>
+<td><code class="prettyprint">Payment.RecurrentPayment.AuthorizeNow</code></td>
 <td>Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.</td>
 <td>Booleano </td>
 <td>&mdash; </td>
@@ -4921,7 +4929,6 @@
         <span class="s2">"Amount"</span>: 1500,
         <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
         <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>,
-        <span class="s2">"Provider"</span>: <span class="s2">"Simulado"</span>,
         <span class="s2">"ExtraDataCollection"</span>: <span class="o">[]</span>,
         <span class="s2">"Status"</span>: 1,
         <span class="s2">"ReturnCode"</span>: <span class="s2">"4"</span>,
@@ -5020,7 +5027,6 @@
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
      </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"RecurrentPayment"</span><span class="p">:{</span><span class="w">
@@ -5055,7 +5061,6 @@
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:1500,
-     <span class="s2">"Provider"</span>:<span class="s2">"Simulado"</span>,
      <span class="s2">"Installments"</span>:1,
      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
      <span class="s2">"RecurrentPayment"</span>:<span class="o">{</span>
@@ -5102,10 +5107,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36</td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5281,7 +5286,6 @@
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ExtraDataCollection"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="s2">"RecurrentPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5495,10 +5499,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5534,6 +5538,13 @@
 <td>Texto </td>
 <td>14 </td>
 <td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.IdentityType</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Tipo de documento de identificação do comprador (CFP/CNPJ).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Street</code></td>
@@ -5700,10 +5711,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5772,10 +5783,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5844,10 +5855,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5918,10 +5929,10 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5991,10 +6002,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6004,7 +6015,7 @@ entPaymentId}/Amount"</span>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido em centavos: 156 equivale a R$ 1,56</td>
 <td>Número</td>
 <td>15</td>
@@ -6065,10 +6076,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6108,7 +6119,6 @@ entPaymentId}/Amount"</span>
    </span><span class="s2">"Country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
       </span><span class="s2">"Brand"</span><span class="p">:</span><span class="s2">"Master"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teset card"</span><span class="p">,</span><span class="w">
@@ -6131,7 +6141,6 @@ entPaymentId}/Amount"</span>
    <span class="s2">"Country"</span>:<span class="s2">"USA"</span>,
    <span class="s2">"Currency"</span>:<span class="s2">"USD"</span>,
    <span class="s2">"SoftDescriptor"</span>:<span class="s2">"test"</span>,
-   <span class="s2">"Provider"</span>:<span class="s2">"Simulado"</span>,
    <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
       <span class="s2">"Brand"</span>:<span class="s2">"Master"</span>,
       <span class="s2">"Holder"</span>:<span class="s2">"Teset card"</span>,
@@ -6167,10 +6176,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6180,28 +6189,28 @@ entPaymentId}/Amount"</span>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td>Texto </td>
 <td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 <td>Número </td>
 <td>15 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
 <td>Número </td>
 <td>2 </td>
 <td>Sim</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SoftDescriptor</code></td>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
 <td>Texto que será impresso na fatura do portador</td>
 <td>Texto </td>
 <td>13</td>
@@ -6292,10 +6301,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6354,10 +6363,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6418,10 +6427,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
@@ -6578,28 +6587,28 @@ entPaymentId}/Amount"</span>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
 <td>Sim</td>
 <td>Tipo do Meio de Pagamento.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Número</td>
 <td>15</td>
 <td>Sim</td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Texto</td>
 <td>15</td>
-<td>Sim</td>
-<td>Nome do Meio de Pagamento.</td>
+<td>&mdash;</td>
+<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número</td>
 <td>2</td>
 <td>Sim</td>
@@ -6638,7 +6647,7 @@ entPaymentId}/Amount"</span>
 <td>Texto</td>
 <td>10</td>
 <td>Sim</td>
-<td>Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).</td>
+<td>Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).</td>
 </tr>
 </tbody></table>
 
@@ -6686,10 +6695,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -6702,7 +6711,7 @@ entPaymentId}/Amount"</span>
 
 <h3 id="resposta">Resposta</h3>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fb4d606-bb63-4423-a683-c966e15399e8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"ReceveidDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-06T10:13:39.42"</span><span class="w">
@@ -6718,7 +6727,7 @@ entPaymentId}/Amount"</span>
 --header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --data-binary
 <span class="o">{</span>
-    <span class="s2">"Payments"</span>: <span class="o">[</span>
+    <span class="s2">"Payment"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"PaymentId"</span>: <span class="s2">"5fb4d606-bb63-4423-a683-c966e15399e8"</span>,
             <span class="s2">"ReceveidDate"</span>: <span class="s2">"2015-04-06T10:13:39.42"</span>
@@ -6791,10 +6800,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
@@ -7085,10 +7094,10 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Campo Identificador do Request do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -7217,46 +7226,22 @@ entPaymentId}/Amount"</span>
 <table><thead>
 <tr>
 <th>Código</th>
+<th>Status do Pagamento</th>
+<th>Meio de pagamento</th>
 <th>Descrição</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>0</td>
-<td>NotFinished</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Authorized</td>
-</tr>
-<tr>
-<td>2</td>
-<td>PaymentConfirmed</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Denied</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Voided</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Refunded</td>
-</tr>
-<tr>
-<td>12</td>
-<td>Pending</td>
-</tr>
-<tr>
-<td>13</td>
-<td>Aborted</td>
-</tr>
-<tr>
-<td>20</td>
-<td>Scheduled</td>
-</tr>
 </tbody></table>
+
+<p>|0|NotFinished|Todos|Falha ao processar o pagamento|
+|1|Authorized|Todos|Meio de pagamento apto a ser capturado ou pago(Boleto|
+|2|PaymentConfirmed|Todos|Pagamento confirmado e finalizado|
+|3|Denied|Cartão de Crédito e Débito / Transferência eletrônica|
+|10|Voided|Todos|Pagamento cancelado|
+|11|Refunded|Cartão de crédito e Débito|Pagamento Cancelado/Estornado|
+|12|Pending|Cartão de Crédito e Débito / Transferência eletrônica |Esperando retorno da instituição financeira|
+|13|Aborted|Todos|Pagamento cancelado por falha no processamento|
+|20|Scheduled|Cartão de crédito|Recorrência agendada|</p>
 
 <h2 id="merchant-defined-data">Merchant Defined Data</h2>
 
@@ -7582,341 +7567,413 @@ entPaymentId}/Amount"</span>
 <tr>
 <th>Código</th>
 <th>Mensagem</th>
+<th>Descrição</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>0</td>
+<td>Internal error</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
 <td>100</td>
 <td>RequestId is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>101</td>
 <td>MerchantId is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>102</td>
 <td>Payment Type is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>103</td>
 <td>Payment Type can only contain letters</td>
+<td>Caracteres especiais não permitidos</td>
 </tr>
 <tr>
 <td>104</td>
 <td>Customer Identity is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>105</td>
 <td>Customer Name is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>106</td>
 <td>Transaction ID is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>107</td>
-<td>You must provide CreditCard Number, Token or Alias</td>
+<td>OrderId is invalid or does not exists</td>
+<td>Campo enviado excede o tamanho ou contem caracteres especiais</td>
 </tr>
 <tr>
 <td>108</td>
 <td>Amount must be greater or equal to zero</td>
+<td>Valor da transação deve ser maior que &ldquo;0&rdquo;</td>
 </tr>
 <tr>
 <td>109</td>
 <td>Payment Currency is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>110</td>
 <td>Invalid Payment Currency</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>111</td>
 <td>Payment Country is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>112</td>
 <td>Invalid Payment Country</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>113</td>
 <td>Invalid Payment Code</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>114</td>
 <td>The provided MerchantId is not in correct format</td>
+<td>O MerchantId enviado não é um GUID</td>
 </tr>
 <tr>
 <td>115</td>
 <td>The provided MerchantId was not found</td>
+<td>O MerchantID não existe ou pertence a outro ambiente (EX: Sandbox)</td>
+</tr>
+<tr>
+<td>116</td>
+<td>The provided MerchantId is blocked</td>
+<td>Loja bloqueada, entre em contato com o suporte Cielo</td>
 </tr>
 <tr>
 <td>117</td>
 <td>Credit Card Holder is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>118</td>
 <td>Credit Card Number is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>119</td>
 <td>At least one Payment is required</td>
+<td>Nó &ldquo;Payment&rdquo; não enviado</td>
 </tr>
 <tr>
 <td>120</td>
 <td>Request IP not allowed. Check your IP White List</td>
+<td>IP bloqueado por questões de segurança</td>
 </tr>
 <tr>
 <td>121</td>
 <td>Customer is required</td>
+<td>Nó &ldquo;Customer&rdquo; não enviado</td>
 </tr>
 <tr>
 <td>122</td>
 <td>MerchantOrderId is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>123</td>
 <td>Installments must be greater or equal to one</td>
+<td>Numero de parcelas deve ser superior a 1</td>
 </tr>
 <tr>
 <td>124</td>
 <td>Credit Card is Required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>125</td>
 <td>Credit Card Expiration Date is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>126</td>
 <td>Credit Card Expiration Date is invalid</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>127</td>
-<td>You must provide CreditCard Number, Token or Alias</td>
+<td>You must provide CreditCard Number</td>
+<td>Numero do cartão de crédito é obrigatório</td>
 </tr>
 <tr>
 <td>128</td>
 <td>Card Number length exceeded</td>
+<td>Numero do cartão superiro a 16 digitos</td>
 </tr>
 <tr>
 <td>129</td>
 <td>Affiliation not found</td>
+<td>Meio de pagamento não vinculado a loja ou Provider invalido</td>
 </tr>
 <tr>
 <td>130</td>
 <td>Could not get Credit Card</td>
+<td>&mdash;</td>
 </tr>
 <tr>
 <td>131</td>
 <td>MerchantKey is required</td>
+<td>Campo enviado está vazio ou invalido</td>
 </tr>
 <tr>
 <td>132</td>
 <td>MerchantKey is invalid</td>
+<td>O Merchantkey enviado não é um válido</td>
 </tr>
 <tr>
 <td>133</td>
 <td>Provider is not supported for this Payment Type</td>
+<td>Provider enviado não existe</td>
 </tr>
 <tr>
 <td>134</td>
 <td>FingerPrint length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>135</td>
 <td>MerchantDefinedFieldValue length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>136</td>
 <td>ItemDataName length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>137</td>
 <td>ItemDataSKU length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>138</td>
 <td>PassengerDataName length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>139</td>
 <td>PassengerDataStatus length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>140</td>
 <td>PassengerDataEmail length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>141</td>
 <td>PassengerDataPhone length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>142</td>
 <td>TravelDataRoute length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>143</td>
 <td>TravelDataJourneyType length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>144</td>
 <td>TravelLegDataDestination length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>145</td>
 <td>TravelLegDataOrigin length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>146</td>
 <td>SecurityCode length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>147</td>
 <td>Address Street length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>148</td>
 <td>Address Number length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>149</td>
 <td>Address Complement length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>150</td>
 <td>Address ZipCode length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>151</td>
 <td>Address City length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>152</td>
 <td>Address State length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>153</td>
 <td>Address Country length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>154</td>
 <td>Address District length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>155</td>
 <td>Customer Name length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>156</td>
 <td>Customer Identity length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>157</td>
 <td>Customer IdentityType length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>158</td>
 <td>Customer Email length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>159</td>
 <td>ExtraData Name length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>160</td>
 <td>ExtraData Value length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>161</td>
 <td>Boleto Instructions length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>162</td>
 <td>Boleto Demostrative length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
 </tr>
 <tr>
 <td>163</td>
 <td>Return Url is required</td>
-</tr>
-<tr>
-<td>164</td>
-<td>Return Url is invalid</td>
-</tr>
-<tr>
-<td>166</td>
-<td>AuthorizeNow is required</td>
-</tr>
-<tr>
-<td>167</td>
-<td>Antifraud not configured</td>
-</tr>
-<tr>
-<td>168</td>
-<td>Recurrent Payment not found</td>
-</tr>
-<tr>
-<td>169</td>
-<td>Recurrent Payment is not active</td>
-</tr>
-<tr>
-<td>300</td>
-<td>MerchantId was not found</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Request IP is not allowed</td>
-</tr>
-<tr>
-<td>302</td>
-<td>Sent MerchantOrderId is duplicated</td>
-</tr>
-<tr>
-<td>303</td>
-<td>Sent OrderId does not exist</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Customer Identity is required</td>
-</tr>
-<tr>
-<td>306</td>
-<td>Merchant is blocked</td>
-</tr>
-<tr>
-<td>307</td>
-<td>Transaction not found</td>
-</tr>
-<tr>
-<td>308</td>
-<td>Transaction not available to capture</td>
-</tr>
-<tr>
-<td>309</td>
-<td>Transaction not available to void</td>
-</tr>
-<tr>
-<td>310</td>
-<td>Payment method doest not support this operation</td>
-</tr>
-<tr>
-<td>311</td>
-<td>Refund is not enabled for this merchant</td>
-</tr>
-<tr>
-<td>312</td>
-<td>Transaction not available to refund</td>
-</tr>
-<tr>
-<td>313</td>
-<td>Recurrent Payment not found</td>
-</tr>
-<tr>
-<td>314</td>
-<td>Invalid Integration</td>
-</tr>
-<tr>
-<td>315</td>
-<td>Cannot change NextRecurrency with pending payment</td>
+<td>URL de retorno não é valida - Não é aceito paginação ou extenções (EX .PHP) na URL de retorno</td>
 </tr>
 </tbody></table>
+
+<h1 id="ref!">REF!</h1>
+
+<p>|166|AuthorizeNow is required|&mdash;|
+|167|Antifraud not configured|Antifraude não vinculado ao cadastro do lojista|
+|168|Recurrent Payment not found|Recorrencia não encontrada|
+|169|Recurrent Payment is not active|Recorrencia não está ativa. Execução paralizada|
+|170|Cartão Protegido not configured|Cartão protegido não vinculado ao cadastro do lojista|
+|171|Affiliation data not sent|Falha no processamento do pedido - Entre em contato com o suporte Cielo|
+|172|Credential Code is required|Falha na validação das credenciadas enviadas|
+|173|Payment method is not enabled|Meio de pagamento não vinculado ao cadastro do lojista|
+|174|Card Number is required|Campo enviado está vazio ou invalido|
+|175|EAN is required|Campo enviado está vazio ou invalido|
+|176|Payment Currency is not supported|Campo enviado está vazio ou invalido|
+|177|Card Number is invalid|Campo enviado está vazio ou invalido|
+|178|EAN is invalid|Campo enviado está vazio ou invalido|
+|179|The max number of installments allowed for recurring payment is 1|Campo enviado está vazio ou invalido|
+|180|The provided Card PaymentToken was not found|Token do Cartão protegido não encontrado|
+|181|The MerchantIdJustClick is not configured|Token do Cartão protegido bloqueado|
+|182|Brand is required|Bandeira do cartão não enviado|
+|183|Invalid customer bithdate|Data de nascimento invalida ou futura|
+|184|Request could not be empty|Falha no formado ta requisição. Verifique o código enviado|
+|185|Brand is not supported by selected provider|Bandeira não suportada pela API Cielo|
+|186|The selected provider does not support the options provided (Capture, Authenticate, Recurrent or Installments)|Meio de pagamento não suporta o comando enviado|
+|187|ExtraData Collection contains one or more duplicated names|&mdash;|
+|188|Avs with CPF invalid|&mdash;|
+|189|Avs with length of street exceeded|Dado enviado excede o tamanho do campo|
+|190|Avs with length of number exceeded|Dado enviado excede o tamanho do campo|
+|190|Avs with length of complement exceeded|Dado enviado excede o tamanho do campo|
+|191|Avs with length of district exceeded|Dado enviado excede o tamanho do campo|
+|192|Avs with zip code invalid|CEP enviado é invalido|
+|193|Split Amount must be greater than zero|Valor para realização do SPLIT deve ser superior a 0|
+|194|Split Establishment is Required|SPLIT não habilitado para o cadastro da loja|
+|195|The PlataformId is required|Validados de plataformas não enviado|
+|196|DeliveryAddress is required|Campo obrigatório não enviado|
+|197|Street is required|Campo obrigatório não enviado|
+|198|Number is required|Campo obrigatório não enviado|
+|199|ZipCode is required|Campo obrigatório não enviado|
+|200|City is required|Campo obrigatório não enviado|
+|201|State is required|Campo obrigatório não enviado|
+|202|District is required|Campo obrigatório não enviado|
+|203|Cart item Name is required|Campo obrigatório não enviado|
+|204|Cart item Quantity is required|Campo obrigatório não enviado|
+|205|Cart item type is required|Campo obrigatório não enviado|
+|206|Cart item name length exceeded |Dado enviado excede o tamanho do campo|
+|207|Cart item description length exceeded |Dado enviado excede o tamanho do campo|
+|208|Cart item sku length exceeded |Dado enviado excede o tamanho do campo|
+|209|Shipping addressee sku length exceeded |Dado enviado excede o tamanho do campo|
+|210|Shipping data cannot be null|Campo obrigatório não enviado|
+|211|WalletKey is invalid|Dados da Visa Checkout invalidos|
+|212|Merchant Wallet Configuration not found|Visa Checkout não vinculado a conta do lojista|
+|213|Credit Card Number is invalid|Cartão de crédito enviado é invalido|
+|214|Credit Card Holder Must Have Only Letters|Portador do cartão não deve conter caracteres especiais|
+|215|Agency is required in Boleto Credential|Campo obrigatório não enviado|
+|216|Customer IP address is invalid|IP bloqueado por questões de segurança|
+|300|MerchantId was not found|&mdash;|
+|301|Request IP is not allowed|&mdash;|
+|302|Sent MerchantOrderId is duplicated|&mdash;|
+|303|Sent OrderId does not exist|&mdash;|
+|304|Customer Identity is required|&mdash;|
+|306|Merchant is blocked|&mdash;|
+|307|Transaction not found|Transação não encontrada ou não existente no ambiente.|
+|308|Transaction not available to capture|Transação não pode ser capturada - Entre em contato com o suporte Cielo|
+|309|Transaction not available to void|Transação não pode ser Cancelada - Entre em contato com o suporte Cielo|
+|310|Payment method doest not support this operation|Comando enviado não suportado pelo meio de pagamento|
+|311|Refund is not enabled for this merchant|Cancelamento após 24 horas não liberado para o lojista|
+|312|Transaction not available to refund|Transação não permite cancelamento após 24 horas|
+|313|Recurrent Payment not found|Transação recorrente não encontrada ou não disponivel no ambiente|
+|314|Invalid Integration|&mdash;|
+|315|Cannot change NextRecurrency with pending payment|&mdash;|
+|316|Cannot set NextRecurrency to past date|Não é permitido alterada dada da recorrencia para uma data passada|
+|317|Invalid Recurrency Day|&mdash;|
+|318|No transaction found|&mdash;|
+|319|Smart recurrency is not enabled|Recorrencia não vinculada ao cadastro do lojista|
+|320|Can not Update Affiliation Because this Recurrency not Affiliation saved|&mdash;|
+|321|Can not set EndDate to before next recurrency.|&mdash;|
+|322|Zero Dollar Auth is not enabled|Zero Dollar não vinculado ao cadastro do lojista|
+|323|Bin Query is not enabled|Consulta de Bins não vinculada ao cadastro do lojista|</p>
 
 <h2 id="códigos-de-retorno-das-vendas">Códigos de Retorno das Vendas</h2>
 

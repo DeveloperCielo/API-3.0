@@ -299,7 +299,6 @@ Para criar uma transação que utilizará cartão de crédito, é necessário en
    "Payment":{
      "Type":"CreditCard",
      "Amount":15700,
-     "Provider":"Simulado",
      "Installments":1,
      "CreditCard":{
          "CardNumber":"1234123412341231",
@@ -345,13 +344,13 @@ curl
 |-----------|----|-------|-----------|---------|
 |`MerchantId`|Guid|36|Sim|Identificador da loja na Cielo.|
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
-|`RequestId`|Guid|36|Sim|Campo Identificador do Request do Pedido.|
+|`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
-|`Payments.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
-|`Payments.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payments.Provider`|Texto|15|Sim|Nome do Meio de Pagamento.|
-|`Payments.Installments`|Número|2|Sim|Número de Parcelas.|
+|`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
+|`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
+|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Sim|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
@@ -518,7 +517,6 @@ Para criar uma transação que utilizará cartão de crédito, é necessário en
      "Amount":15700,
      "Currency":"BRL",
      "Country":"BRA",
-     "Provider":"Simulado",
      "ServiceTaxAmount":0,
      "Installments":1,
      "Interest":"ByMerchant",
@@ -597,9 +595,11 @@ curl
 |-----------|----|-------|-----------|---------|
 |`MerchantId`|Guid|36|Sim|Identificador da loja na Cielo.|
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
-|`RequestId`|Guid|36|Sim|Campo Identificador do Request do Pedido.|
+|`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Identity`|Texto |14 |Não|Número do RG, CPF ou CNPJ do Cliente.| 
+|`Customer.IdentityType`|Texto|255|Não|Tipo de documento de identificação do comprador (CFP/CNPJ).|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
 |`Customer.Birthdate`|Date|10|Não|Data de nascimento do Comprador.|
 |`Customer.Address.Street`|Texto|255|Não|Endereço do Comprador.|
@@ -616,22 +616,22 @@ curl
 |`Customer.DeliveryAddress.City`|Texto|50|Não|Cidade do endereço do Comprador.|
 |`Customer.DeliveryAddress.State`|Texto|2|Não|Estado do endereço do Comprador.|
 |`Customer.DeliveryAddress.Country`|Texto|35|Não|Pais do endereço do Comprador.|
-|`Payments.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
-|`Payments.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payments.Currency`|Texto|3|Não|Moeda moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).|
-|`Payments.Country`|Texto|3|Não|Pais na qual o pagamento será feito.|
-|`Payments.Provider`|Texto|15|Sim|Nome do Meio de Pagamento.|
-|`Payments.SeviceTaxAmount`|Número|15|Sim|Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.|
-|`Payments.Installments`|Número|2|Sim|Número de Parcelas.|
-|`Payments.Interest`|Texto|10|Não|Tipo de parcelamento (Loja ou Cartão).|
-|`Payments.Capture`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com captura automática.|
-|`Payments.Authenticate`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com autenticação.|
+|`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
+|`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
+|`Payment.Currency`|Texto|3|Não|Moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).|
+|`Payment.Country`|Texto|3|Não|Pais na qual o pagamento será feito.|
+|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.ServiceTaxAmount`|Número|15|Sim|Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.|
+|`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
+|`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|
+|`Payment.Capture`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com captura automática.|
+|`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
 |`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Sim|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Sim|Código de segurança impresso no verso do cartão.|
 |`CreditCard.SaveCard`|Booleano|---|Não (Default false)|Booleano que identifica se o cartão será salvo para gerar o CardToken.|
-|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).|
 
 ### Resposta
 
@@ -811,7 +811,6 @@ Para criar uma transação com autenticação que utilizará cartão de crédito
 	{
 	    "Type":"CreditCard",
 	    "Amount":15700,
-	    "Provider":"Cielo",
 	    "Installments":1,
 	    "Authenticate":true,
 	    "CreditCard":
@@ -862,19 +861,19 @@ curl
 |-----------|----|-------|-----------|---------|
 |`MerchantId`|Guid|36|Sim|Identificador da loja na Cielo.|
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
-|`RequestId`|Guid|36|Sim|Campo Identificador do Request do Pedido.|
+|`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
-|`Payments.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
-|`Payments.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payments.Provider`|Texto|15|Sim|Nome do Meio de Pagamento.|
-|`Payments.Installments`|Número|2|Sim|Número de Parcelas.|
-|`Payments.Authenticate`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com autenticação.|
+|`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
+|`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
+|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
+|`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
 |`CreditCard.CardNumber.`|Texto|16|Sim|Número do Cartão do Comprador|
 |`CreditCard.Holder`|Texto|25|Sim|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Sim|Código de segurança impresso no verso do cartão.|
-|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).|
 
 ### Resposta
 
@@ -1022,7 +1021,6 @@ Para criar uma venda com cartão de crédito e analise de fraude, é necessário
      "Amount":100,
      "Currency":"BRL",
      "Country":"BRA",
-     "Provider":"Simulado",
      "ServiceTaxAmount":0,
      "Installments":1,
      "Interest":"ByMerchant",
@@ -1212,7 +1210,7 @@ curl
 |-----------|----|-------|-----------|---------|
 |`MerchantId`|Guid|36|Sim|Identificador da loja na Cielo.|
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
-|`RequestId`|Guid|36|Sim|Campo Identificador do Request do Pedido.|
+|`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
@@ -1231,22 +1229,22 @@ curl
 |`Customer.DeliveryAddress.City`|Texto|50|Não|Cidade do endereço do Comprador.|
 |`Customer.DeliveryAddress.State`|Texto|2|Não|Estado do endereço do Comprador.|
 |`Customer.DeliveryAddress.Country`|Texto|35|Não|Pais do endereço do Comprador.|
-|`Payments.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
-|`Payments.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payments.Currency`|Texto|3|Não|Moeda moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).|
-|`Payments.Country`|Texto|3|Não|Pais na qual o pagamento será feito.|
-|`Payments.Provider`|Texto|15|Sim|Nome do Meio de Pagamento.|
-|`Payments.SeviceTaxAmount`|Número|15|Sim|Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.|
-|`Payments.Installments`|Número|2|Sim|Número de Parcelas.|
-|`Payments.Interest`|Texto|10|Não|Tipo de parcelamento (Loja ou Cartão).|
-|`Payments.Capture`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com captura automática.|
-|`Payments.Authenticate`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com autenticação.|
+|`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
+|`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
+|`Payment.Currency`|Texto|3|Não|Moeda na qual o pagamento será feito (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).|
+|`Payment.Country`|Texto|3|Não|Pais na qual o pagamento será feito.|
+|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.ServiceTaxAmount`|Número|15|Sim|Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.|
+|`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
+|`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|
+|`Payment.Capture`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com captura automática.|
+|`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
 |`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Sim|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Sim|Código de segurança impresso no verso do cartão.|
 |`CreditCard.SaveCard`|Booleano|---|Não (Default false)|Booleano que identifica se o cartão será salvo para gerar o CardToken.|
-|`CreditCard.Brand`|Texto|10|Sim|Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Texto|10|Sim|Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).|
 |`FraudAnalysis.Sequence`|Texto|14|Não|Tipo de Fluxo para realização da análise de fraude. Primeiro Analise (AnalyseFirst) ou Primeiro Autorização (AuthorizeFirst)|
 |`FraudAnalysis.SequenceCriteria`|Texto|9|Não|Critério do fluxo. OnSuccess - Só realiza a analise se tiver sucesso na transação. Always - Sempre realiza a analise|
 |`FraudAnalysis.FingerPrintId`|Texto|50|Não|Identificador utilizado para cruzar informações obtidas pelo Browser do internauta com os dados enviados para análise. Este mesmo valor deve ser passado na variável SESSIONID do script do DeviceFingerPrint.|
@@ -1678,14 +1676,14 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto | 40 | Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. | Guid | 36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto | 255 |Sim|
-|`Payments.Type`|Tipo do Meio de Pagamento. | Texto | 100 |Sim|
-|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 |Sim|
-|`Payments.Installments`|Número de Parcelas.| Número | 2 |Sim|
-|`Payments.SoftDescriptor`|Texto que será impresso na fatura do portador| Texto | 13 |Não|
-|`Payments.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim quando Authenticate = true|
+|`Payment.Type`|Tipo do Meio de Pagamento. | Texto | 100 |Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 |Sim|
+|`Payment.Installments`|Número de Parcelas.| Número | 2 |Sim|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador| Texto | 13 |Não|
+|`Payment.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim quando Authenticate = true|
 |`CreditCard.CardToken`|Token de identificação do Cartão. |Guid |36 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
 |`CreditCard.Brand`|Bandeira do cartão.|Texto |10 |Sim|
@@ -1830,10 +1828,10 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. | Guid | 36 | Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. | Texto | 40 | Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. | Guid | 36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Campo Identificador do Pedido. | Guid | 36 | Sim|
 |`Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 | Não|
-|`SeviceTaxAmount`|Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização. | Número | 15 | Não|
+|`ServiceTaxAmount`|Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização. | Número | 15 | Não|
 
 ### Resposta
 
@@ -1911,7 +1909,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido.|Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Campo Identificador do Pedido. |Guid |36 |Sim|
 |`Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Não|
 
@@ -2020,13 +2018,13 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
-|`Payments.Type`|Tipo do Meio de Pagamento.|Texto |100 |Sim|
-|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payments.ReturnUrl`|Url de retorno do lojista.|Texto |1024 |Sim|
-|`Payments.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim|
+|`Payment.Type`|Tipo do Meio de Pagamento.|Texto |100 |Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.ReturnUrl`|Url de retorno do lojista.|Texto |1024 |Sim|
+|`Payment.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim|
 |`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Sim|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
@@ -2173,12 +2171,12 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
-|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
-|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payments.Provider`|Nome do Meio de Pagamento.|Texto |15 |Sim|
+|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
 
 ### Resposta
 
@@ -2299,12 +2297,12 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
-|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
-|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payments.Provider`|Nome do Meio de Pagamento.|Texto |15 |Sim|
+|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
 
 ### Resposta
 
@@ -2456,19 +2454,19 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
-|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
-|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payments.Provider`|Nome do Meio de Pagamento.|Texto |15 |Sim|
-|`Payments.Adress`|Endereço do Cedente.|Texto |255|Não|
-|`Payments.BoletoNumber`|Número do Boleto ("NossoNumero").|Texto |50 |Não|
-|`Payments.Assignor`|Nome do Cedente.|Texto |200|Não|
-|`Payments.Demonstrative`|Texto de Demonstrativo.|Texto |450|Não|
-|`Payments.ExpirationDate`|Data de expiração do Boleto.|Date |10 |Não|
-|`Payments.Identification`|Documento de identificação do Cedente.|Texto |14 |Não|
-|`Payments.Instructions`|Instruções do Boleto.|Texto |450|Não|
+|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
+|`Payment.Adress`|Endereço do Cedente.|Texto |255|Não|
+|`Payment.BoletoNumber`|Número do Boleto ("NossoNumero").|Texto |50 |Não|
+|`Payment.Assignor`|Nome do Cedente.|Texto |200|Não|
+|`Payment.Demonstrative`|Texto de Demonstrativo.|Texto |450|Não|
+|`Payment.ExpirationDate`|Data de expiração do Boleto.|Date |10 |Não|
+|`Payment.Identification`|Documento de identificação do Cedente.|Texto |14 |Não|
+|`Payment.Instructions`|Instruções do Boleto.|Texto |450|Não|
 
 ### Resposta
 
@@ -2584,7 +2582,6 @@ Para criar uma venda recorrente cuja a primeira recorrência é autorizada com a
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
-     "Provider":"Simulado",
      "Installments":1,
      "SoftDescriptor":"tst",
      "RecurrentPayment":{
@@ -2620,7 +2617,6 @@ curl
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
-     "Provider":"Simulado",
      "Installments":1,
      "SoftDescriptor":"tst",
      "RecurrentPayment":{
@@ -2645,16 +2641,16 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |6 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
-|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
-|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payments.Installments`|Número de Parcelas.|Número |2 |Sim|
-|`Payments.SoftDescriptor`|Texto que será impresso na fatura do portador|Texto |13 |Não|
-|`Payments.RecurrentPayment.EndDate`|Data para termino da recorrência.|Texto |10 |Não|
-|`Payments.RecurrentPayment.Interval`|Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |Texto |10 |Não|
-|`Payments.RecurrentPayment.AuthorizeNow`|Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.|Booleano |--- |Sim|
+|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador|Texto |13 |Não|
+|`Payment.RecurrentPayment.EndDate`|Data para termino da recorrência.|Texto |10 |Não|
+|`Payment.RecurrentPayment.Interval`|Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |Texto |10 |Não|
+|`Payment.RecurrentPayment.AuthorizeNow`|Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.|Booleano |--- |Sim|
 |`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Sim|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
@@ -2762,7 +2758,6 @@ curl
         "Amount": 1500,
         "Currency": "BRL",
         "Country": "BRA",
-        "Provider": "Simulado",
         "ExtraDataCollection": [],
         "Status": 1,
         "ReturnCode": "4",
@@ -2825,7 +2820,6 @@ Para criar uma venda recorrente cuja a primeira recorrência não será autoriza
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
-     "Provider":"Simulado",
      "Installments":1,
      "SoftDescriptor":"tst",
      "RecurrentPayment":{
@@ -2862,7 +2856,6 @@ curl
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
-     "Provider":"Simulado",
      "Installments":1,
      "SoftDescriptor":"tst",
      "RecurrentPayment":{
@@ -2888,7 +2881,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0 |Guid |36|Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0 |Texto |40|Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36|Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50|Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
 |`Customer.Email`|Email do Comprador. |Texto |255 |Não|
@@ -2938,7 +2931,6 @@ curl
         "Amount": 1500,
         "Currency": "BRL",
         "Country": "BRA",
-        "Provider": "Simulado",
         "ExtraDataCollection": [],
         "Status": 20,
         "RecurrentPayment": {
@@ -3093,12 +3085,13 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0 |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0|Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
 |`Customer.Email`|Email do Comprador. |Texto |255|Não|
 |`Customer.Birthdate`|Data de nascimento do Comprador. |Date |10 |Não|
-|`Customer.Identity`|Número do RG, CPF ou CNPJ do Cliente. |Texto |14 |Não
+|`Customer.Identity`|Número do RG, CPF ou CNPJ do Cliente. |Texto |14 |Não|
+|`Customer.IdentityType`|Texto|255|Não|Tipo de documento de identificação do comprador (CFP/CNPJ).|
 |`Customer.Address.Street`|Endereço do Comprador. |Texto |255 |Não|
 |`Customer.Address.Number`|Número do endereço do Comprador. |Texto |15 |Não|
 |`Customer.Address.Complement`|Complemento do endereço do Comprador.|Texto |50 |Não|
@@ -3152,7 +3145,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`EndDate`|Data para termino da recorrência.|Texto |10 |Sim|
 
@@ -3192,7 +3185,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`Installments`|Número de Parcelas.|Número |2 |Sim|
 
@@ -3232,7 +3225,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`Interval`|Intervalo da recorrência. <ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul>|Número |2 |Sim|
 
@@ -3274,7 +3267,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`RecurrencyDay`|Dia da Recorrência.|Número |2 |Sim|
 
@@ -3315,9 +3308,9 @@ entPaymentId}/Amount"
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0.|Guid|36|Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto|40|Sim|
-|`RequestId`|Campo Identificador do Request do Pedido.|Guid|36|Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência.|Texto|50|Sim|
-|`Payments.Amount`|Valor do Pedido em centavos: 156 equivale a R$ 1,56|Número|15|Sim|
+|`Payment.Amount`|Valor do Pedido em centavos: 156 equivale a R$ 1,56|Número|15|Sim|
 
 <aside class="warning">Essa alteração só afeta a data de pagamento da próxima recorrência.</aside>
 
@@ -3357,7 +3350,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`NextPaymentDate`|Data de pagamento da próxima recorrência.|Texto |10 |Sim|
 
@@ -3387,7 +3380,6 @@ Para alterar os dados de pagamento da Recorrência, basta fazer um Put conform
    "Country":"USA",
    "Currency":"USD",
    "SoftDescriptor":"test",
-   "Provider":"Simulado",
    "CreditCard":{  
       "Brand":"Master",
       "Holder":"Teset card",
@@ -3412,7 +3404,6 @@ curl
    "Country":"USA",
    "Currency":"USD",
    "SoftDescriptor":"test",
-   "Provider":"Simulado",
    "CreditCard":{  
       "Brand":"Master",
       "Holder":"Teset card",
@@ -3427,12 +3418,12 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
-|`Payments.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
-|`Payments.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payments.Installments`|Número de Parcelas.|Número |2 |Sim|
-|`Payments.SoftDescriptor`|Texto que será impresso na fatura do portador|Texto |13|Não|
+|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador|Texto |13|Não|
 |`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16|Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25|Sim|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
@@ -3470,7 +3461,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 
 ### Resposta
@@ -3504,7 +3495,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 
 ### Resposta
@@ -3540,7 +3531,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Numero de identificação do Pagamento. |Texto |36 |Sim|
 
 ### Resposta
@@ -3655,15 +3646,15 @@ curl
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Status`|Status da Transação.|Byte|---|2|
 |`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
-|`Payments.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
-|`Payments.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payments.Provider`|Texto|15|Sim|Nome do Meio de Pagamento.|
-|`Payments.Installments`|Número|2|Sim|Número de Parcelas.|
+|`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
+|`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
+|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Sim|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Sim|Código de segurança impresso no verso do cartão.|
-|`CreditCard.Brand`|Texto|10|Sim |Bandeira do cartão (Visa / Mastercard / Amex / Elo / Aura / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Texto|10|Sim|Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).|
 
 ## Consultando uma venda pelo identificador da loja
 
@@ -3690,14 +3681,14 @@ curls
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Campo Identificador do Pedido na Loja. |Texto |36 |Sim|
 
 ### Resposta
 
 ```json
 {
-    "Payments": [
+    "Payment": [
         {
             "PaymentId": "5fb4d606-bb63-4423-a683-c966e15399e8",
             "ReceveidDate": "2015-04-06T10:13:39.42"
@@ -3715,7 +3706,7 @@ curls
 --header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --data-binary
 {
-    "Payments": [
+    "Payment": [
         {
             "PaymentId": "5fb4d606-bb63-4423-a683-c966e15399e8",
             "ReceveidDate": "2015-04-06T10:13:39.42"
@@ -3755,7 +3746,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Numero de identificação do Pagamento. |Texto |36 |Sim|
 
 ### Resposta
@@ -3943,7 +3934,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Campo Identificador do Request do Pedido. |Guid |36 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Campo Identificador da Recorrência. |Texto |36 |Sim|
 
 ### Resposta
@@ -4023,17 +4014,18 @@ curl
 
 Status retornados pela API
 
-|Código|Descrição|
-|------|---------|
-|0|NotFinished|
-|1|Authorized|
-|2|PaymentConfirmed|
-|3|Denied|
-|10|Voided|
-|11|Refunded|
-|12|Pending|
-|13|Aborted|
-|20|Scheduled|
+|Código|Status do Pagamento|Meio de pagamento|Descrição|
+|------|-------------------|-----------------|---------|
+
+|0|NotFinished|Todos|Falha ao processar o pagamento|
+|1|Authorized|Todos|Meio de pagamento apto a ser capturado ou pago(Boleto|
+|2|PaymentConfirmed|Todos|Pagamento confirmado e finalizado|
+|3|Denied|Cartão de Crédito e Débito / Transferência eletrônica|
+|10|Voided|Todos|Pagamento cancelado|
+|11|Refunded|Cartão de crédito e Débito|Pagamento Cancelado/Estornado|
+|12|Pending|Cartão de Crédito e Débito / Transferência eletrônica |Esperando retorno da instituição financeira|
+|13|Aborted|Todos|Pagamento cancelado por falha no processamento|
+|20|Scheduled|Cartão de crédito|Recorrência agendada|
 
 ## Merchant Defined Data
 
@@ -4101,91 +4093,149 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 
 Códigos retornados em caso de erro, identificando o motivo do erro e suas respectivas mensagens.
 
-|Código|Mensagem|
-|------|--------|
-|100|RequestId is required|
-|101|MerchantId is required|
-|102|Payment Type is required|
-|103|Payment Type can only contain letters|
-|104|Customer Identity is required|
-|105|Customer Name is required|
-|106|Transaction ID is required|
-|107|You must provide CreditCard Number, Token or Alias|
-|108|Amount must be greater or equal to zero|
-|109|Payment Currency is required|
-|110|Invalid Payment Currency|
-|111|Payment Country is required|
-|112|Invalid Payment Country|
-|113|Invalid Payment Code|
-|114|The provided MerchantId is not in correct format|
-|115|The provided MerchantId was not found|
-|117|Credit Card Holder is required|
-|118|Credit Card Number is required|
-|119|At least one Payment is required|
-|120|Request IP not allowed. Check your IP White List|
-|121|Customer is required|
-|122|MerchantOrderId is required|
-|123|Installments must be greater or equal to one|
-|124|Credit Card is Required|
-|125|Credit Card Expiration Date is required|
-|126|Credit Card Expiration Date is invalid|
-|127|You must provide CreditCard Number, Token or Alias|
-|128|Card Number length exceeded|
-|129|Affiliation not found|
-|130|Could not get Credit Card|
-|131|MerchantKey is required|
-|132|MerchantKey is invalid|
-|133|Provider is not supported for this Payment Type|
-|134|FingerPrint length exceeded|
-|135|MerchantDefinedFieldValue length exceeded|
-|136|ItemDataName length exceeded|
-|137|ItemDataSKU length exceeded|
-|138|PassengerDataName length exceeded|
-|139|PassengerDataStatus length exceeded|
-|140|PassengerDataEmail length exceeded|
-|141|PassengerDataPhone length exceeded|
-|142|TravelDataRoute length exceeded|
-|143|TravelDataJourneyType length exceeded|
-|144|TravelLegDataDestination length exceeded|
-|145|TravelLegDataOrigin length exceeded|
-|146|SecurityCode length exceeded|
-|147|Address Street length exceeded|
-|148|Address Number length exceeded|
-|149|Address Complement length exceeded|
-|150|Address ZipCode length exceeded|
-|151|Address City length exceeded|
-|152|Address State length exceeded|
-|153|Address Country length exceeded|
-|154|Address District length exceeded|
-|155|Customer Name length exceeded|
-|156|Customer Identity length exceeded|
-|157|Customer IdentityType length exceeded|
-|158|Customer Email length exceeded|
-|159|ExtraData Name length exceeded|
-|160|ExtraData Value length exceeded|
-|161|Boleto Instructions length exceeded|
-|162|Boleto Demostrative length exceeded|
-|163|Return Url is required|
-|164|Return Url is invalid|
-|166|AuthorizeNow is required|
-|167|Antifraud not configured|
-|168|Recurrent Payment not found|
-|169|Recurrent Payment is not active|
-|300|MerchantId was not found|
-|301|Request IP is not allowed|
-|302|Sent MerchantOrderId is duplicated|
-|303|Sent OrderId does not exist|
-|304|Customer Identity is required|
-|306|Merchant is blocked|
-|307|Transaction not found|
-|308|Transaction not available to capture|
-|309|Transaction not available to void|
-|310|Payment method doest not support this operation|
-|311|Refund is not enabled for this merchant|
-|312|Transaction not available to refund|
-|313|Recurrent Payment not found|
-|314|Invalid Integration|
-|315|Cannot change NextRecurrency with pending payment|
+|Código|Mensagem|Descrição|
+|------|--------|---------|
+|0|Internal error|Dado enviado excede o tamanho do campo|
+|100|RequestId is required|Campo enviado está vazio ou invalido|
+|101|MerchantId is required|Campo enviado está vazio ou invalido|
+|102|Payment Type is required|Campo enviado está vazio ou invalido|
+|103|Payment Type can only contain letters|Caracteres especiais não permitidos|
+|104|Customer Identity is required|Campo enviado está vazio ou invalido|
+|105|Customer Name is required|Campo enviado está vazio ou invalido|
+|106|Transaction ID is required|Campo enviado está vazio ou invalido|
+|107|OrderId is invalid or does not exists|Campo enviado excede o tamanho ou contem caracteres especiais |
+|108|Amount must be greater or equal to zero|Valor da transação deve ser maior que "0"|
+|109|Payment Currency is required|Campo enviado está vazio ou invalido|
+|110|Invalid Payment Currency|Campo enviado está vazio ou invalido|
+|111|Payment Country is required|Campo enviado está vazio ou invalido|
+|112|Invalid Payment Country|Campo enviado está vazio ou invalido|
+|113|Invalid Payment Code|Campo enviado está vazio ou invalido|
+|114|The provided MerchantId is not in correct format|O MerchantId enviado não é um GUID|
+|115|The provided MerchantId was not found|O MerchantID não existe ou pertence a outro ambiente (EX: Sandbox)|
+|116|The provided MerchantId is blocked|Loja bloqueada, entre em contato com o suporte Cielo|
+|117|Credit Card Holder is required|Campo enviado está vazio ou invalido|
+|118|Credit Card Number is required|Campo enviado está vazio ou invalido|
+|119|At least one Payment is required|Nó "Payment" não enviado|
+|120|Request IP not allowed. Check your IP White List|IP bloqueado por questões de segurança|
+|121|Customer is required|Nó "Customer" não enviado|
+|122|MerchantOrderId is required|Campo enviado está vazio ou invalido|
+|123|Installments must be greater or equal to one|Numero de parcelas deve ser superior a 1|
+|124|Credit Card is Required|Campo enviado está vazio ou invalido|
+|125|Credit Card Expiration Date is required|Campo enviado está vazio ou invalido|
+|126|Credit Card Expiration Date is invalid|Campo enviado está vazio ou invalido|
+|127|You must provide CreditCard Number|Numero do cartão de crédito é obrigatório|
+|128|Card Number length exceeded|Numero do cartão superiro a 16 digitos|
+|129|Affiliation not found|Meio de pagamento não vinculado a loja ou Provider invalido|
+|130|Could not get Credit Card|---|
+|131|MerchantKey is required|Campo enviado está vazio ou invalido|
+|132|MerchantKey is invalid|O Merchantkey enviado não é um válido|
+|133|Provider is not supported for this Payment Type|Provider enviado não existe|
+|134|FingerPrint length exceeded|Dado enviado excede o tamanho do campo|
+|135|MerchantDefinedFieldValue length exceeded|Dado enviado excede o tamanho do campo|
+|136|ItemDataName length exceeded|Dado enviado excede o tamanho do campo|
+|137|ItemDataSKU length exceeded|Dado enviado excede o tamanho do campo|
+|138|PassengerDataName length exceeded|Dado enviado excede o tamanho do campo|
+|139|PassengerDataStatus length exceeded|Dado enviado excede o tamanho do campo|
+|140|PassengerDataEmail length exceeded|Dado enviado excede o tamanho do campo|
+|141|PassengerDataPhone length exceeded|Dado enviado excede o tamanho do campo|
+|142|TravelDataRoute length exceeded|Dado enviado excede o tamanho do campo|
+|143|TravelDataJourneyType length exceeded|Dado enviado excede o tamanho do campo|
+|144|TravelLegDataDestination length exceeded|Dado enviado excede o tamanho do campo|
+|145|TravelLegDataOrigin length exceeded|Dado enviado excede o tamanho do campo|
+|146|SecurityCode length exceeded|Dado enviado excede o tamanho do campo|
+|147|Address Street length exceeded|Dado enviado excede o tamanho do campo|
+|148|Address Number length exceeded|Dado enviado excede o tamanho do campo|
+|149|Address Complement length exceeded|Dado enviado excede o tamanho do campo|
+|150|Address ZipCode length exceeded|Dado enviado excede o tamanho do campo|
+|151|Address City length exceeded|Dado enviado excede o tamanho do campo|
+|152|Address State length exceeded|Dado enviado excede o tamanho do campo|
+|153|Address Country length exceeded|Dado enviado excede o tamanho do campo|
+|154|Address District length exceeded|Dado enviado excede o tamanho do campo|
+|155|Customer Name length exceeded|Dado enviado excede o tamanho do campo|
+|156|Customer Identity length exceeded|Dado enviado excede o tamanho do campo|
+|157|Customer IdentityType length exceeded|Dado enviado excede o tamanho do campo|
+|158|Customer Email length exceeded|Dado enviado excede o tamanho do campo|
+|159|ExtraData Name length exceeded|Dado enviado excede o tamanho do campo|
+|160|ExtraData Value length exceeded|Dado enviado excede o tamanho do campo|
+|161|Boleto Instructions length exceeded|Dado enviado excede o tamanho do campo|
+|162|Boleto Demostrative length exceeded|Dado enviado excede o tamanho do campo|
+|163|Return Url is required|URL de retorno não é valida - Não é aceito paginação ou extenções (EX .PHP) na URL de retorno|
+#REF!
+|166|AuthorizeNow is required|---|
+|167|Antifraud not configured|Antifraude não vinculado ao cadastro do lojista|
+|168|Recurrent Payment not found|Recorrencia não encontrada|
+|169|Recurrent Payment is not active|Recorrencia não está ativa. Execução paralizada|
+|170|Cartão Protegido not configured|Cartão protegido não vinculado ao cadastro do lojista|
+|171|Affiliation data not sent|Falha no processamento do pedido - Entre em contato com o suporte Cielo|
+|172|Credential Code is required|Falha na validação das credenciadas enviadas|
+|173|Payment method is not enabled|Meio de pagamento não vinculado ao cadastro do lojista|
+|174|Card Number is required|Campo enviado está vazio ou invalido|
+|175|EAN is required|Campo enviado está vazio ou invalido|
+|176|Payment Currency is not supported|Campo enviado está vazio ou invalido|
+|177|Card Number is invalid|Campo enviado está vazio ou invalido|
+|178|EAN is invalid|Campo enviado está vazio ou invalido|
+|179|The max number of installments allowed for recurring payment is 1|Campo enviado está vazio ou invalido|
+|180|The provided Card PaymentToken was not found|Token do Cartão protegido não encontrado|
+|181|The MerchantIdJustClick is not configured|Token do Cartão protegido bloqueado|
+|182|Brand is required|Bandeira do cartão não enviado|
+|183|Invalid customer bithdate|Data de nascimento invalida ou futura|
+|184|Request could not be empty|Falha no formado ta requisição. Verifique o código enviado|
+|185|Brand is not supported by selected provider|Bandeira não suportada pela API Cielo|
+|186|The selected provider does not support the options provided (Capture, Authenticate, Recurrent or Installments)|Meio de pagamento não suporta o comando enviado|
+|187|ExtraData Collection contains one or more duplicated names|---|
+|188|Avs with CPF invalid|---|
+|189|Avs with length of street exceeded|Dado enviado excede o tamanho do campo|
+|190|Avs with length of number exceeded|Dado enviado excede o tamanho do campo|
+|190|Avs with length of complement exceeded|Dado enviado excede o tamanho do campo|
+|191|Avs with length of district exceeded|Dado enviado excede o tamanho do campo|
+|192|Avs with zip code invalid|CEP enviado é invalido|
+|193|Split Amount must be greater than zero|Valor para realização do SPLIT deve ser superior a 0|
+|194|Split Establishment is Required|SPLIT não habilitado para o cadastro da loja|
+|195|The PlataformId is required|Validados de plataformas não enviado|
+|196|DeliveryAddress is required|Campo obrigatório não enviado|
+|197|Street is required|Campo obrigatório não enviado|
+|198|Number is required|Campo obrigatório não enviado|
+|199|ZipCode is required|Campo obrigatório não enviado|
+|200|City is required|Campo obrigatório não enviado|
+|201|State is required|Campo obrigatório não enviado|
+|202|District is required|Campo obrigatório não enviado|
+|203|Cart item Name is required|Campo obrigatório não enviado|
+|204|Cart item Quantity is required|Campo obrigatório não enviado|
+|205|Cart item type is required|Campo obrigatório não enviado|
+|206|Cart item name length exceeded |Dado enviado excede o tamanho do campo|
+|207|Cart item description length exceeded |Dado enviado excede o tamanho do campo|
+|208|Cart item sku length exceeded |Dado enviado excede o tamanho do campo|
+|209|Shipping addressee sku length exceeded |Dado enviado excede o tamanho do campo|
+|210|Shipping data cannot be null|Campo obrigatório não enviado|
+|211|WalletKey is invalid|Dados da Visa Checkout invalidos|
+|212|Merchant Wallet Configuration not found|Visa Checkout não vinculado a conta do lojista|
+|213|Credit Card Number is invalid|Cartão de crédito enviado é invalido|
+|214|Credit Card Holder Must Have Only Letters|Portador do cartão não deve conter caracteres especiais|
+|215|Agency is required in Boleto Credential|Campo obrigatório não enviado|
+|216|Customer IP address is invalid|IP bloqueado por questões de segurança|
+|300|MerchantId was not found|---|
+|301|Request IP is not allowed|---|
+|302|Sent MerchantOrderId is duplicated|---|
+|303|Sent OrderId does not exist|---|
+|304|Customer Identity is required|---|
+|306|Merchant is blocked|---|
+|307|Transaction not found|Transação não encontrada ou não existente no ambiente.|
+|308|Transaction not available to capture|Transação não pode ser capturada - Entre em contato com o suporte Cielo|
+|309|Transaction not available to void|Transação não pode ser Cancelada - Entre em contato com o suporte Cielo|
+|310|Payment method doest not support this operation|Comando enviado não suportado pelo meio de pagamento|
+|311|Refund is not enabled for this merchant|Cancelamento após 24 horas não liberado para o lojista|
+|312|Transaction not available to refund|Transação não permite cancelamento após 24 horas|
+|313|Recurrent Payment not found|Transação recorrente não encontrada ou não disponivel no ambiente|
+|314|Invalid Integration|---|
+|315|Cannot change NextRecurrency with pending payment|---|
+|316|Cannot set NextRecurrency to past date|Não é permitido alterada dada da recorrencia para uma data passada|
+|317|Invalid Recurrency Day|---|
+|318|No transaction found|---|
+|319|Smart recurrency is not enabled|Recorrencia não vinculada ao cadastro do lojista|
+|320|Can not Update Affiliation Because this Recurrency not Affiliation saved|---|
+|321|Can not set EndDate to before next recurrency.|---|
+|322|Zero Dollar Auth is not enabled|Zero Dollar não vinculado ao cadastro do lojista|
+|323|Bin Query is not enabled|Consulta de Bins não vinculada ao cadastro do lojista|
 
 ## Códigos de Retorno das Vendas
 

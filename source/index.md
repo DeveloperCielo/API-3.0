@@ -4016,7 +4016,6 @@ Status retornados pela API
 
 |Código|Status do Pagamento|Meio de pagamento|Descrição|
 |------|-------------------|-----------------|---------|
-
 |0|NotFinished|Todos|Falha ao processar o pagamento|
 |1|Authorized|Todos|Meio de pagamento apto a ser capturado ou pago(Boleto|
 |2|PaymentConfirmed|Todos|Pagamento confirmado e finalizado|
@@ -4160,7 +4159,6 @@ Códigos retornados em caso de erro, identificando o motivo do erro e suas respe
 |161|Boleto Instructions length exceeded|Dado enviado excede o tamanho do campo|
 |162|Boleto Demostrative length exceeded|Dado enviado excede o tamanho do campo|
 |163|Return Url is required|URL de retorno não é valida - Não é aceito paginação ou extenções (EX .PHP) na URL de retorno|
-#REF!
 |166|AuthorizeNow is required|---|
 |167|Antifraud not configured|Antifraude não vinculado ao cadastro do lojista|
 |168|Recurrent Payment not found|Recorrencia não encontrada|

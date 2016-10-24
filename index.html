@@ -7231,17 +7231,61 @@ entPaymentId}/Amount"</span>
 <th>Descrição</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>0</td>
+<td>NotFinished</td>
+<td>Todos</td>
+<td>Falha ao processar o pagamento</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Authorized</td>
+<td>Todos</td>
+<td>Meio de pagamento apto a ser capturado ou pago(Boleto</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PaymentConfirmed</td>
+<td>Todos</td>
+<td>Pagamento confirmado e finalizado</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Denied</td>
+<td>Cartão de Crédito e Débito / Transferência eletrônica</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Voided</td>
+<td>Todos</td>
+<td>Pagamento cancelado</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Refunded</td>
+<td>Cartão de crédito e Débito</td>
+<td>Pagamento Cancelado/Estornado</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Pending</td>
+<td>Cartão de Crédito e Débito / Transferência eletrônica</td>
+<td>Esperando retorno da instituição financeira</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Aborted</td>
+<td>Todos</td>
+<td>Pagamento cancelado por falha no processamento</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Scheduled</td>
+<td>Cartão de crédito</td>
+<td>Recorrência agendada</td>
+</tr>
 </tbody></table>
-
-<p>|0|NotFinished|Todos|Falha ao processar o pagamento|
-|1|Authorized|Todos|Meio de pagamento apto a ser capturado ou pago(Boleto|
-|2|PaymentConfirmed|Todos|Pagamento confirmado e finalizado|
-|3|Denied|Cartão de Crédito e Débito / Transferência eletrônica|
-|10|Voided|Todos|Pagamento cancelado|
-|11|Refunded|Cartão de crédito e Débito|Pagamento Cancelado/Estornado|
-|12|Pending|Cartão de Crédito e Débito / Transferência eletrônica |Esperando retorno da instituição financeira|
-|13|Aborted|Todos|Pagamento cancelado por falha no processamento|
-|20|Scheduled|Cartão de crédito|Recorrência agendada|</p>
 
 <h2 id="merchant-defined-data">Merchant Defined Data</h2>
 
@@ -7895,85 +7939,382 @@ entPaymentId}/Amount"</span>
 <td>Return Url is required</td>
 <td>URL de retorno não é valida - Não é aceito paginação ou extenções (EX .PHP) na URL de retorno</td>
 </tr>
+<tr>
+<td>166</td>
+<td>AuthorizeNow is required</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>167</td>
+<td>Antifraud not configured</td>
+<td>Antifraude não vinculado ao cadastro do lojista</td>
+</tr>
+<tr>
+<td>168</td>
+<td>Recurrent Payment not found</td>
+<td>Recorrencia não encontrada</td>
+</tr>
+<tr>
+<td>169</td>
+<td>Recurrent Payment is not active</td>
+<td>Recorrencia não está ativa. Execução paralizada</td>
+</tr>
+<tr>
+<td>170</td>
+<td>Cartão Protegido not configured</td>
+<td>Cartão protegido não vinculado ao cadastro do lojista</td>
+</tr>
+<tr>
+<td>171</td>
+<td>Affiliation data not sent</td>
+<td>Falha no processamento do pedido - Entre em contato com o suporte Cielo</td>
+</tr>
+<tr>
+<td>172</td>
+<td>Credential Code is required</td>
+<td>Falha na validação das credenciadas enviadas</td>
+</tr>
+<tr>
+<td>173</td>
+<td>Payment method is not enabled</td>
+<td>Meio de pagamento não vinculado ao cadastro do lojista</td>
+</tr>
+<tr>
+<td>174</td>
+<td>Card Number is required</td>
+<td>Campo enviado está vazio ou invalido</td>
+</tr>
+<tr>
+<td>175</td>
+<td>EAN is required</td>
+<td>Campo enviado está vazio ou invalido</td>
+</tr>
+<tr>
+<td>176</td>
+<td>Payment Currency is not supported</td>
+<td>Campo enviado está vazio ou invalido</td>
+</tr>
+<tr>
+<td>177</td>
+<td>Card Number is invalid</td>
+<td>Campo enviado está vazio ou invalido</td>
+</tr>
+<tr>
+<td>178</td>
+<td>EAN is invalid</td>
+<td>Campo enviado está vazio ou invalido</td>
+</tr>
+<tr>
+<td>179</td>
+<td>The max number of installments allowed for recurring payment is 1</td>
+<td>Campo enviado está vazio ou invalido</td>
+</tr>
+<tr>
+<td>180</td>
+<td>The provided Card PaymentToken was not found</td>
+<td>Token do Cartão protegido não encontrado</td>
+</tr>
+<tr>
+<td>181</td>
+<td>The MerchantIdJustClick is not configured</td>
+<td>Token do Cartão protegido bloqueado</td>
+</tr>
+<tr>
+<td>182</td>
+<td>Brand is required</td>
+<td>Bandeira do cartão não enviado</td>
+</tr>
+<tr>
+<td>183</td>
+<td>Invalid customer bithdate</td>
+<td>Data de nascimento invalida ou futura</td>
+</tr>
+<tr>
+<td>184</td>
+<td>Request could not be empty</td>
+<td>Falha no formado ta requisição. Verifique o código enviado</td>
+</tr>
+<tr>
+<td>185</td>
+<td>Brand is not supported by selected provider</td>
+<td>Bandeira não suportada pela API Cielo</td>
+</tr>
+<tr>
+<td>186</td>
+<td>The selected provider does not support the options provided (Capture, Authenticate, Recurrent or Installments)</td>
+<td>Meio de pagamento não suporta o comando enviado</td>
+</tr>
+<tr>
+<td>187</td>
+<td>ExtraData Collection contains one or more duplicated names</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>188</td>
+<td>Avs with CPF invalid</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>189</td>
+<td>Avs with length of street exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>190</td>
+<td>Avs with length of number exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>190</td>
+<td>Avs with length of complement exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>191</td>
+<td>Avs with length of district exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>192</td>
+<td>Avs with zip code invalid</td>
+<td>CEP enviado é invalido</td>
+</tr>
+<tr>
+<td>193</td>
+<td>Split Amount must be greater than zero</td>
+<td>Valor para realização do SPLIT deve ser superior a 0</td>
+</tr>
+<tr>
+<td>194</td>
+<td>Split Establishment is Required</td>
+<td>SPLIT não habilitado para o cadastro da loja</td>
+</tr>
+<tr>
+<td>195</td>
+<td>The PlataformId is required</td>
+<td>Validados de plataformas não enviado</td>
+</tr>
+<tr>
+<td>196</td>
+<td>DeliveryAddress is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>197</td>
+<td>Street is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>198</td>
+<td>Number is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>199</td>
+<td>ZipCode is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>200</td>
+<td>City is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>201</td>
+<td>State is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>202</td>
+<td>District is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Cart item Name is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>204</td>
+<td>Cart item Quantity is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Cart item type is required</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Cart item name length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>207</td>
+<td>Cart item description length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>208</td>
+<td>Cart item sku length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>209</td>
+<td>Shipping addressee sku length exceeded</td>
+<td>Dado enviado excede o tamanho do campo</td>
+</tr>
+<tr>
+<td>210</td>
+<td>Shipping data cannot be null</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>211</td>
+<td>WalletKey is invalid</td>
+<td>Dados da Visa Checkout invalidos</td>
+</tr>
+<tr>
+<td>212</td>
+<td>Merchant Wallet Configuration not found</td>
+<td>Visa Checkout não vinculado a conta do lojista</td>
+</tr>
+<tr>
+<td>213</td>
+<td>Credit Card Number is invalid</td>
+<td>Cartão de crédito enviado é invalido</td>
+</tr>
+<tr>
+<td>214</td>
+<td>Credit Card Holder Must Have Only Letters</td>
+<td>Portador do cartão não deve conter caracteres especiais</td>
+</tr>
+<tr>
+<td>215</td>
+<td>Agency is required in Boleto Credential</td>
+<td>Campo obrigatório não enviado</td>
+</tr>
+<tr>
+<td>216</td>
+<td>Customer IP address is invalid</td>
+<td>IP bloqueado por questões de segurança</td>
+</tr>
+<tr>
+<td>300</td>
+<td>MerchantId was not found</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Request IP is not allowed</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Sent MerchantOrderId is duplicated</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>303</td>
+<td>Sent OrderId does not exist</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Customer Identity is required</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Merchant is blocked</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Transaction not found</td>
+<td>Transação não encontrada ou não existente no ambiente.</td>
+</tr>
+<tr>
+<td>308</td>
+<td>Transaction not available to capture</td>
+<td>Transação não pode ser capturada - Entre em contato com o suporte Cielo</td>
+</tr>
+<tr>
+<td>309</td>
+<td>Transaction not available to void</td>
+<td>Transação não pode ser Cancelada - Entre em contato com o suporte Cielo</td>
+</tr>
+<tr>
+<td>310</td>
+<td>Payment method doest not support this operation</td>
+<td>Comando enviado não suportado pelo meio de pagamento</td>
+</tr>
+<tr>
+<td>311</td>
+<td>Refund is not enabled for this merchant</td>
+<td>Cancelamento após 24 horas não liberado para o lojista</td>
+</tr>
+<tr>
+<td>312</td>
+<td>Transaction not available to refund</td>
+<td>Transação não permite cancelamento após 24 horas</td>
+</tr>
+<tr>
+<td>313</td>
+<td>Recurrent Payment not found</td>
+<td>Transação recorrente não encontrada ou não disponivel no ambiente</td>
+</tr>
+<tr>
+<td>314</td>
+<td>Invalid Integration</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>315</td>
+<td>Cannot change NextRecurrency with pending payment</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>316</td>
+<td>Cannot set NextRecurrency to past date</td>
+<td>Não é permitido alterada dada da recorrencia para uma data passada</td>
+</tr>
+<tr>
+<td>317</td>
+<td>Invalid Recurrency Day</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>318</td>
+<td>No transaction found</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>319</td>
+<td>Smart recurrency is not enabled</td>
+<td>Recorrencia não vinculada ao cadastro do lojista</td>
+</tr>
+<tr>
+<td>320</td>
+<td>Can not Update Affiliation Because this Recurrency not Affiliation saved</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>321</td>
+<td>Can not set EndDate to before next recurrency.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>322</td>
+<td>Zero Dollar Auth is not enabled</td>
+<td>Zero Dollar não vinculado ao cadastro do lojista</td>
+</tr>
+<tr>
+<td>323</td>
+<td>Bin Query is not enabled</td>
+<td>Consulta de Bins não vinculada ao cadastro do lojista</td>
+</tr>
 </tbody></table>
-
-<h1 id="ref!">REF!</h1>
-
-<p>|166|AuthorizeNow is required|&mdash;|
-|167|Antifraud not configured|Antifraude não vinculado ao cadastro do lojista|
-|168|Recurrent Payment not found|Recorrencia não encontrada|
-|169|Recurrent Payment is not active|Recorrencia não está ativa. Execução paralizada|
-|170|Cartão Protegido not configured|Cartão protegido não vinculado ao cadastro do lojista|
-|171|Affiliation data not sent|Falha no processamento do pedido - Entre em contato com o suporte Cielo|
-|172|Credential Code is required|Falha na validação das credenciadas enviadas|
-|173|Payment method is not enabled|Meio de pagamento não vinculado ao cadastro do lojista|
-|174|Card Number is required|Campo enviado está vazio ou invalido|
-|175|EAN is required|Campo enviado está vazio ou invalido|
-|176|Payment Currency is not supported|Campo enviado está vazio ou invalido|
-|177|Card Number is invalid|Campo enviado está vazio ou invalido|
-|178|EAN is invalid|Campo enviado está vazio ou invalido|
-|179|The max number of installments allowed for recurring payment is 1|Campo enviado está vazio ou invalido|
-|180|The provided Card PaymentToken was not found|Token do Cartão protegido não encontrado|
-|181|The MerchantIdJustClick is not configured|Token do Cartão protegido bloqueado|
-|182|Brand is required|Bandeira do cartão não enviado|
-|183|Invalid customer bithdate|Data de nascimento invalida ou futura|
-|184|Request could not be empty|Falha no formado ta requisição. Verifique o código enviado|
-|185|Brand is not supported by selected provider|Bandeira não suportada pela API Cielo|
-|186|The selected provider does not support the options provided (Capture, Authenticate, Recurrent or Installments)|Meio de pagamento não suporta o comando enviado|
-|187|ExtraData Collection contains one or more duplicated names|&mdash;|
-|188|Avs with CPF invalid|&mdash;|
-|189|Avs with length of street exceeded|Dado enviado excede o tamanho do campo|
-|190|Avs with length of number exceeded|Dado enviado excede o tamanho do campo|
-|190|Avs with length of complement exceeded|Dado enviado excede o tamanho do campo|
-|191|Avs with length of district exceeded|Dado enviado excede o tamanho do campo|
-|192|Avs with zip code invalid|CEP enviado é invalido|
-|193|Split Amount must be greater than zero|Valor para realização do SPLIT deve ser superior a 0|
-|194|Split Establishment is Required|SPLIT não habilitado para o cadastro da loja|
-|195|The PlataformId is required|Validados de plataformas não enviado|
-|196|DeliveryAddress is required|Campo obrigatório não enviado|
-|197|Street is required|Campo obrigatório não enviado|
-|198|Number is required|Campo obrigatório não enviado|
-|199|ZipCode is required|Campo obrigatório não enviado|
-|200|City is required|Campo obrigatório não enviado|
-|201|State is required|Campo obrigatório não enviado|
-|202|District is required|Campo obrigatório não enviado|
-|203|Cart item Name is required|Campo obrigatório não enviado|
-|204|Cart item Quantity is required|Campo obrigatório não enviado|
-|205|Cart item type is required|Campo obrigatório não enviado|
-|206|Cart item name length exceeded |Dado enviado excede o tamanho do campo|
-|207|Cart item description length exceeded |Dado enviado excede o tamanho do campo|
-|208|Cart item sku length exceeded |Dado enviado excede o tamanho do campo|
-|209|Shipping addressee sku length exceeded |Dado enviado excede o tamanho do campo|
-|210|Shipping data cannot be null|Campo obrigatório não enviado|
-|211|WalletKey is invalid|Dados da Visa Checkout invalidos|
-|212|Merchant Wallet Configuration not found|Visa Checkout não vinculado a conta do lojista|
-|213|Credit Card Number is invalid|Cartão de crédito enviado é invalido|
-|214|Credit Card Holder Must Have Only Letters|Portador do cartão não deve conter caracteres especiais|
-|215|Agency is required in Boleto Credential|Campo obrigatório não enviado|
-|216|Customer IP address is invalid|IP bloqueado por questões de segurança|
-|300|MerchantId was not found|&mdash;|
-|301|Request IP is not allowed|&mdash;|
-|302|Sent MerchantOrderId is duplicated|&mdash;|
-|303|Sent OrderId does not exist|&mdash;|
-|304|Customer Identity is required|&mdash;|
-|306|Merchant is blocked|&mdash;|
-|307|Transaction not found|Transação não encontrada ou não existente no ambiente.|
-|308|Transaction not available to capture|Transação não pode ser capturada - Entre em contato com o suporte Cielo|
-|309|Transaction not available to void|Transação não pode ser Cancelada - Entre em contato com o suporte Cielo|
-|310|Payment method doest not support this operation|Comando enviado não suportado pelo meio de pagamento|
-|311|Refund is not enabled for this merchant|Cancelamento após 24 horas não liberado para o lojista|
-|312|Transaction not available to refund|Transação não permite cancelamento após 24 horas|
-|313|Recurrent Payment not found|Transação recorrente não encontrada ou não disponivel no ambiente|
-|314|Invalid Integration|&mdash;|
-|315|Cannot change NextRecurrency with pending payment|&mdash;|
-|316|Cannot set NextRecurrency to past date|Não é permitido alterada dada da recorrencia para uma data passada|
-|317|Invalid Recurrency Day|&mdash;|
-|318|No transaction found|&mdash;|
-|319|Smart recurrency is not enabled|Recorrencia não vinculada ao cadastro do lojista|
-|320|Can not Update Affiliation Because this Recurrency not Affiliation saved|&mdash;|
-|321|Can not set EndDate to before next recurrency.|&mdash;|
-|322|Zero Dollar Auth is not enabled|Zero Dollar não vinculado ao cadastro do lojista|
-|323|Bin Query is not enabled|Consulta de Bins não vinculada ao cadastro do lojista|</p>
 
 <h2 id="códigos-de-retorno-das-vendas">Códigos de Retorno das Vendas</h2>
 

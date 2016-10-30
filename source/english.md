@@ -6,6 +6,9 @@ language_tabs:
   - shell: cURL
    
 toc_footers:
+    - <a href='/Guia-de-migracao-1.5x3.0/'>Guia de migração da API 1.5 para a 3.0</a>
+    - <a href='/Checkout-Boleto-e-Debito/'>Manual de Boleto e débito online</a>
+    - <a href='/Habilitacao-meios-de-pagamento/'>Manual de Boleto e débito online</a>
     - <a href='/Boas-praticas-de-eCommerce/'>Boas práticas de eCommerce</a>
 
 search: true
@@ -240,7 +243,7 @@ During the tests to Facilitate integration, Cielo offers a Sandbox environment w
 1. Registration account test
 2. Endpoints to requisition
 
-    * **Creation / Changes of transactions**: https://apisandbox.cieloeCommerce.cielo.com.br 
+    * **Creation / Changes of transactions**: https://apisandbox.cieloeommerce.cielo.com.br 
     * **Transaction consult**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
 
 It's not necessary to be a member to use Cielo 'Sandbox. You only need to access [Sandbox Registry](https://cadastrosandbox.cieloecommerce.cielo.com.br/) and create a test account. At the end of registration, you will receive a 'MerchantID' and the 'MerchanKey', that should be used to authenticate all the requests done for the endpoint of API.
@@ -311,7 +314,7 @@ To create a transaction that uses credit card, you must send a request using the
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -397,12 +400,12 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -452,12 +455,12 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -536,7 +539,7 @@ To create a transaction using a credit card, you must send a request using the P
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -696,7 +699,7 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -769,7 +772,7 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -826,7 +829,7 @@ To create a transaction with authentication that uses credit card, you must send
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -1104,7 +1107,7 @@ To create a sale with credit card and fraud analysis, it must send a request usi
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -1437,7 +1440,7 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
@@ -1591,12 +1594,12 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -1657,7 +1660,7 @@ To create a credit card sale with the secure token card, you must do a POST to t
  
  ```shell
  curl
- --request POST "https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"
+ --request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
  --header "Content-Type: application/json"
  --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
  --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -1738,12 +1741,12 @@ To create a credit card sale with the secure token card, you must do a POST to t
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -1790,12 +1793,12 @@ To create a credit card sale with the secure token card, you must do a POST to t
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -1827,7 +1830,7 @@ To capture credit card sale, you must do a PUT to the Payment feature as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture?amount=xxx&serviceTaxAmount=xxx"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture?amount=xxx&serviceTaxAmount=xxx"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -1860,7 +1863,7 @@ curl
         {
             "Method": "PUT",
             "Rel": "void",
-            "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
         }
     ]
 }
@@ -1883,7 +1886,7 @@ curl
         {
             "Method": "PUT",
             "Rel": "void",
-            "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
         }
     ]
 }
@@ -1908,7 +1911,7 @@ To cancel a sale credit card sale, you must do a PUT to the Payment feature as s
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=xxx"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=xxx"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -2044,7 +2047,7 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
               {
                   "Method": "GET",
                  "Rel": "self",
-                 "Href": "https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"
+                 "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
              }
          ]
      }
@@ -2098,7 +2101,7 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
               {
                   "Method": "GET",
                  "Rel": "self",
-                 "Href": "https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"
+                 "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
              }
          ]
      }
@@ -2136,7 +2139,7 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
               {
                   "Method": "GET",
                  "Rel": "self",
-                 "Href": "https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"
+                 "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
              }
          ]
      }
@@ -2181,7 +2184,7 @@ To create an electronic transfer in a sale, it must do a POST to the Payment fea
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -2308,7 +2311,7 @@ To create a sale with “boleto” payment method, you just need to make a POST 
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -2354,7 +2357,7 @@ curl
     "Payment":
     {
         "ExpirationDate": "2014-12-25",
-        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Url": "https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
         "Number": "1000000012-8",
         "BarCodeNumber": "00091628800000157000494250100000001200656560",
         "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
@@ -2391,7 +2394,7 @@ curl
     "Payment":
     {
         "ExpirationDate": "2014-12-25",
-        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
+        "Url": "https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
         "Number": "1000000012-8",
         "BarCodeNumber": "00091628800000157000494250100000001200656560",
         "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
@@ -2458,7 +2461,7 @@ To create a sale with “boleto” payment method, you just need to make a POST 
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -2519,7 +2522,7 @@ curl
     {
         "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia.",
         "ExpirationDate": "2015-01-05",
-        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Url": "https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
         "Number": "123-2",
         "BarCodeNumber": "00096629900000157000494250000000012300656560",
         "DigitableLine": "00090.49420 50000.000013 23006.565602 6 62990000015700",
@@ -2560,7 +2563,7 @@ curl
     {
         "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia.",
         "ExpirationDate": "2015-01-05",
-        "Url": "https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
+        "Url": "https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51",
         "Number": "123-2",
         "BarCodeNumber": "00096629900000157000494250000000012300656560",
         "DigitableLine": "00090.49420 50000.000013 23006.565602 6 62990000015700",
@@ -2641,7 +2644,7 @@ To create a recurring sale whose first recurrence is authorized in the form of c
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -2883,7 +2886,7 @@ To create a recurring sale whose first recurrence will not be allowed on the sam
 
 ```shell
 curl
---request POST "https://sandbox.cieloecommerce.cielo.com.br/1/sales/"
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3089,7 +3092,7 @@ To change the Recurrence buyer's data, you just need to make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Customer"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Customer"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3172,7 +3175,7 @@ To change the end date of recurrence, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/EndDate"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/EndDate"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3212,7 +3215,7 @@ To change the number of recurrence plots, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3252,7 +3255,7 @@ To change the range of recurrence, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Interval"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Interval"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3294,7 +3297,7 @@ To change the day of recurrence, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3353,7 +3356,7 @@ To change the date of the next payment, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3407,7 +3410,7 @@ To change the data of Recurrence payment, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Payment"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Payment"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3465,7 +3468,7 @@ To disable a recurring request, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3499,7 +3502,7 @@ To rehabilitate a recurring request, just make a Put as shown.
 
 ```shell
 curl
---request PUT "https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate"
+--request PUT "https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3591,12 +3594,12 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -3644,12 +3647,12 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -3829,12 +3832,12 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }
@@ -3903,12 +3906,12 @@ curl
             {
                 "Method": "PUT",
                 "Rel": "capture",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
             },
             {
                 "Method": "PUT",
                 "Rel": "void",
-                "Href": "https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
             }
         ]
     }

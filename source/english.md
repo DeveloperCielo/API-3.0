@@ -345,13 +345,13 @@ curl
 |--------|----|----|---------|-----------|
 |`MerchantId`|Guid|36|Yes|Store identifier in Cielo.|
 |`MerchantKey`|Text|40|Yes|Public key for Double Authentication Cielo.|
-|`RequestId`|Guid|36|Yes|Field Application Request identifier.|
+|`RequestId`|Guid|36|No|Request identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
 |`Customer.Name`|Text|255|Yes|Buyer's name.|
-|`Payments.Type`|Text|100|Yes|Payment Method type.|
-|`Payments.Amount`|Number|15|Yes|Order value (to be sent in cents).|
-|`Payments.Provider`|Text|15|Yes|Payment Method name.|
-|`Payments.Installments`|Number|2|Yes|Number of installments.|
+|`Payment.Type`|Text|100|Yes|Payment Method type.|
+|`Payment.Amount`|Number|15|Yes|Order value (to be sent in cents).|
+|`Payment.Provider`|Text|15|---|Payment Method name/NOT MANDATORY FOR CREDIT|
+|`Payment.Installments`|Number|2|Yes|Number of installments.|
 |`CreditCard.CardNumber`|Text|16|Yes|Buyer's card number.|
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
@@ -598,9 +598,11 @@ curl
 |--------|----|----|---------|-----------|
 |`MerchantId`|Guid|36|Yes|Store identifier in Cielo.|
 |`MerchantKey`|Text|40|Yes|Public key for Double Authentication Cielo.|
-|`RequestId`|Guid|36|Yes|Field Application Request identifier.|
+|`RequestId`|Guid|36|No|Request identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
 |`Customer.Name`|Text|255|Yes|Buyer's name.|
+|`Customer.Identity`|Text|14|No|Identification number (RG, CPF or CNPJ).| 
+|`Customer.IdentityType`|Text|255|No|Type of document identification of buyer (CFP/CNPJ).|
 |`Customer.Email`|Text|255|No|Email Buyer.|
 |`Customer.Birthdate`|Date|10|No|Date of birth of the Purchaser.|
 |`Customer.Address.Street`|Text|255|No|Purchaser's address.|
@@ -617,22 +619,22 @@ curl
 |`Customer.Deliveryaddress.City`|Text|50|No|Purchaser’s City address.|
 |`Customer.Deliveryaddress.State`|Text|2|No|Purchaser’ State address|
 |`Customer.Deliveryaddress.Country`|Text|35|No|Address Country of the Purchaser.|
-|`Payments.Type`|Text|100|Yes|Payment Method type.|
-|`Payments.Amount`|Number|15|Yes|Order value (to be sent in cents).|
-|`Payments.Currency`|Text|3|No|Currency in which the payment will be made (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).|
-|`Payments.Country`|Text|3|No|Parents in which payment will be made.|
-|`Payments.Provider`|Text|15|Yes|Payment Method name.|
-|`Payments.SeviceTaxAmount`|Number|15|Yes|Value”s amount of the authorization should be for the service charge. Obs .: This value is not added to the authorization amount.|
-|`Payments.Installments`|Number|2|Yes|Number of installments.|
-|`Payments.Interest`|Text|10|No|Installment type (Shop or card).|
-|`Payments.Capture`|Boolean|-|No (Default false)|Boolean that identifies the authorization shall be made using automatic capture.|
-|`Payments.Authenticate`|Boolean|-|No (Default false)|Boolean that identifies the authorization should be made with authentication.|
+|`Payment.Type`|Text|100|Yes|Payment Method type.|
+|`Payment.Amount`|Number|15|Yes|Order value (to be sent in cents).|
+|`Payment.Currency`|Text|3|No|Currency in which the payment will be made (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).|
+|`Payment.Country`|Text|3|No|Parents in which payment will be made.|
+|`Payment.Provider`|Text|15|---|Payment Method name/NOT REQUIRED FOR CREDIT.|
+|`Payment.ServiceTaxAmount`|Number|15|Yes|Value”s amount of the authorization should be for the service charge. Obs .: This value is not added to the authorization amount.|
+|`Payment.Installments`|Number|2|Yes|Number of installments.|
+|`Payment.Interest`|Text|10|No|Installment type - Shop (ByMerchant) or card (ByIssuer).|
+|`Payment.Capture`|Boolean|-|No (Default false)|Boolean that identifies the authorization shall be made using automatic capture.|
+|`Payment.Authenticate`|Boolean|---|No (Default false)|Defines if the buyer will be directed to the issuing bank for card authentication|
 |`CreditCard.CardNumber`|Text|16|Yes|Buyer's card number.|
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
 |`CreditCard.SaveCard`|Boolean|-|No (Default false)|Boolean that identifies whether the card will be saved to generate the CardToken.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).|
 
 ### Response
 
@@ -863,19 +865,19 @@ curl
 |--------|----|----|---------|-----------|
 |`MerchantId`|Guid|36|Yes|Store identifier in Cielo.|
 |`MerchantKey`|Text|40|Yes|Public key for Cielo Double Authentication.|
-|`RequestId`|Guid|36|Yes|Field Application Request identifier.|
+|`RequestId`|Guid|36|No|Request identifier used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
 |`Customer.Name`|Text|255|Yes|Buyer's name.|
-|`Payments.Type`|Text|100|Yes|Payment Method type.|
-|`Payments.Amount`|Number|15|Yes|Order value (to be sent in cents).|
-|`Payments.Provider`|Text|15|Yes|Payment Method name.|
-|`Payments.Installments`|Number|2|Yup|Number of installments.|
-|`Payments.Authenticate`|Boolean|-|No (Default false)|Boolean that identifies the authorization should be authentication.|
+|`Payment.Type`|Text|100|Yes|Payment Method type.|
+|`Payment.Amount`|Number|15|Yes|Order value (to be sent in cents).|
+|`Payment.Provider`|Text|15|---|Payment Method name/NOT REQUIRED FOR CREDIT.|
+|`Payment.Installments`|Number|2|Yup|Number of installments.|
+|`Payment.Authenticate`|Boolean|-|No (Default false)|Defines if the buyer will be directed to the issuing bank for card authentication|
 |`CreditCard.CardNumber.`|Text|16|Yes|Buyer's Card Number|
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).|
 
 ### Response
 
@@ -1221,7 +1223,7 @@ curl
 |--------|----|----|---------|-----------|
 |`MerchantId`|Guid|36|Yes|Store identifier in Cielo.|
 |`MerchantKey`|Text|40|Yes|Public key for Cielo Double Authentication.|
-|`RequestId`|Guid|36|Yes|Field Application Request identifier.|
+|`RequestId`|Guid|36|No|Request the identifier used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
 |`Customer.Name`|Text|255|Yes|Buyer's name.|
 |`Customer.Email`|Text|255|No|Email Buyer.|
@@ -1243,19 +1245,19 @@ curl
 |`Payments.Type`|Text|100|Yes|Payment Method type.|
 |`Payments.Amount`|Number|15|Yes|Order value (to be sent in cents).|
 |`Payments.Currency`|Text|3|No|Currency in which the payment will be made (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).|
-|`Payments.Country`|Text|3|No|Country where payment will be made.|
-|`Payments.Provider`|Text|15|Yes|Payment Method name.|
-|`Payments.SeviceTaxAmount`|Number|15|Yes|Value amount of the authorization that should be destined to the service charge. Obs .: This value is not added to the authorization amount.|
-|`Payments.Installments`|Number|2|Yes|Number of installments.|
-|`Payments.Interest`|Text|10|No|Installment type (Shop or card).|
-|`Payments.Capture`|Boolean|-|No (Default false)|Boolean that identifies the authorization that must be destined to automatic capture.|
-|`Payments.Authenticate`|Boolean|-|No (Default false)|Boolean that identifies the authorization that must be destined to|
+|`Payment.Country`|Text|3|No|Country where payment will be made.|
+|`Payment.Provider`|Text|15|---|Payment Method name/NOT REQUIRED FOR CREDIT.|
+|`Payment.SeviceTaxAmount`|Number|15|Yes|Value amount of the authorization that should be destined to the service charge. Obs .: This value is not added to the authorization amount.|
+|`Payment.Installments`|Number|2|Yes|Number of installments.|
+|`Payment.Interest`|Text|10|No|Installment type - Shop (ByMerchant) or Card (ByIssuer).|
+|`Payment.Capture`|Boolean|-|No (Default false)|Boolean that identifies the authorization that must be destined to automatic capture.|
+|`Payments.Authenticate`|Boolean|-|No (Default false)|The buyer will be directed to the issuing bank for card authentication|
 |`CreditCard.CardNumber`|Text|16|Yes|Buyer's card number.|
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name as printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Expiration date printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
 |`CreditCard.SaveCard`|Boolean|-|No (Default false)|Boolean that identifies if the card will be saved to generate the CardToken.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).|
 |`FraudAnalysis.Sequence`|Text|14|No|Type flow for carrying out the fraud analysis. First Analysis (AnalyseFirst) or the first authorization (AuthorizeFirst)|
 |`FraudAnalysis.SequenceCriteria`|Text|9|No|Criterion flow. OnSuccess - Only performs analysis when transaction is successful. Always - always performs analysis|
 |`FraudAnalysis.FingerPrintId`|Text|50|No|Identifier used to cross information obtained by the internet browser with data sent for analysis. This same value must be passed in SESSIONID variable DeviceFingerPrint the script.|
@@ -1690,14 +1692,14 @@ To create a credit card sale with the secure token card, you must do a POST to t
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
-|`Payments.Type`|Payment Method type.|Text|100|Yes|
-|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
-|`Payments.Installments`|Number of installments.|Number|2|Yes|
-|`Payments.SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|No|
-|`Payments.ReturnUrl`|URL where the user is redirected after the end of payment|Text|1024|Yes when Authenticate = true|
+|`Payment.Type`|Payment Method type.|Text|100|Yes|
+|`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payment.Installments`|Number of installments.|Number|2|Yes|
+|`Payment.SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|No|
+|`Payment.ReturnUrl`|URL where the user is redirected after the end of payment|Text|1024|Yes when Authenticate = true|
 |`CreditCard.CardToken`|Card identification token.|Guid|36|Yes|
 |`CreditCard.SecurityCode`|Security code printed on the back of the card.|Text|4|Yes|
 |`CreditCard.Brand`|Card issuer.|Text|10|Yes|
@@ -1842,10 +1844,10 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request identifier, used when the merchant uses different servers for each GET/POST/PUT|guid|36|No|
 |`PaymentId`|Field Application Identifier.|Guid|36|Yes|
 |`Amount`|Order value (to be sent in cents).|Number|15|No|
-|`SeviceTaxAmount`|Value amount of the authorization should be destined for the service charge. Obs .: This value is not added to the authorization amount.|Number|15|No|
+|`ServiceTaxAmount`|Value amount of the authorization should be destined for the service charge. Obs .: This value is not added to the authorization amount.|Number|15|No|
 
 ### Response
 
@@ -1923,8 +1925,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
-|`PaymentId`|Field Application Identifier.|Guid|36|Yes|
+|`PaymentId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|guid|36|No|
 |`Amount`|Order value (to be sent in cents).|Number|15|No|
 
 ### Response
@@ -2058,13 +2059,13 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
-|`Payments.Type`|Payment Method type.|Text|100|Yes|
-|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
-|`Payments.ReturnUrl`|URL retailer's return.|Text|1024|Yes|
-|`Payments.ReturnUrl`|URL where the user is redirected after the end of payment|Text|1024|Yes|
+|`Payment.Type`|Payment Method type.|Text|100|Yes|
+|`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payment.ReturnUrl`|URL retailer's return.|Text|1024|Yes|
+|`Payment.ReturnUrl`|URL where the user is redirected after the end of payment|Text|1024|Yes|
 |`CreditCard.CardNumber`|Buyer's card number.|Text|16|Yes|
 |`CreditCard.Holder`|Buyer's name printed on the card.|Text|25|Yes|
 |`CreditCard.ExpirationDate`|Date of expiration printed on the card.|Text|7|Yes|
@@ -2211,12 +2212,12 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in  Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
-|`Payments.Type`|Payment Method type.|Text|100|Yes|
-|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
-|`Payments.Provider`|Payment Method name.|Text|15|Yes|
+|`Payment.Type`|Payment Method type.|Text|100|Yes|
+|`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payment.Provider`|Payment Method name/NOT REQUIRED FOR CREDIT|Text|15|---|
 
 ### Response
 
@@ -2337,12 +2338,12 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
-|`Payments.Type`|Payment Method type.|Text|100|Yes|
-|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
-|`Payments.Provider`|Payment Method name.|Text|15|Yes|
+|`Payment.Type`|Payment Method type.|Text|100|Yes|
+|`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payment.Provider`|Payment Method name/NOT REQUIRED FOR CREDIT|Text|15|---|
 
 ### Response
 
@@ -2494,19 +2495,19 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
-|`Payments.Type`|Payment Method type.|Text|100|Yes|
-|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
-|`Payments.Provider`|Payment Method’s name.|Text|15|Yes|
-|`Payments.Adress`|Address of the Assignor.|Text|255|No|
-|`Payments.BoletoNumber`|Boleto number ("OurNumber").|Text|50|No|
-|`Payments.Assignor`|Seller's name.|Text|200|No|
-|`Payments.Demonstrative`|Statement text.|Text|450|No|
-|`Payments.ExpirationDate`|Boleto Expiration date.|Date|10|No|
-|`Payments.Identification`|Seller's ID.|Text|14|No|
-|`Payments.Instructions`|Boleto Instructions.|Text|450|No|
+|`Payment.Type`|Payment Method type.|Text|100|Yes|
+|`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payment.Provider`|Payment Method’s name.|Text|15|Yes|
+|`Payment.Adress`|Address of the Assignor.|Text|255|No|
+|`Payment.BoletoNumber`|Boleto number ("OurNumber").|Text|50|No|
+|`Payment.Assignor`|Seller's name.|Text|200|No|
+|`Payment.Demonstrative`|Statement text.|Text|450|No|
+|`Payment.ExpirationDate`|Boleto Expiration date.|Date|10|No|
+|`Payment.Identification`|Seller's ID.|Text|14|No|
+|`Payment.Instructions`|Boleto Instructions.|Text|450|No|
 
 ### Response
 
@@ -2683,16 +2684,16 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|6|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
-|`Payments.Type`|Payment Method type.|Text|100|Yes|
-|`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
-|`Payments.Installments`|Number of installments.|Number|2|Yes|
-|`Payments.SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|No|
-|`Payments.RecurrentPayment.EndDate`|Date to end the recurrence.|Text|10|No|
-|`Payments.RecurrentPayment.Interval`|Recurrence interval.<ul><li>Monthly (Default)</li><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|Text|10|No|
-|`Payments.RecurrentPayment.AuthorizeNow`|Boolean to know if the first recurrence will be authorized or not.|Boolean|-|Yes|
+|`Payment.Type`|Payment Method type.|Text|100|Yes|
+|`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
+|`Payment.Installments`|Number of installments.|Number|2|Yes|
+|`Payment.SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|No|
+|`Payment.RecurrentPayment.EndDate`|Date to end the recurrence.|Text|10|No|
+|`Payment.RecurrentPayment.Interval`|Recurrence interval.<ul><li>Monthly (Default)</li><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|Text|10|No|
+|`Payment.RecurrentPayment.AuthorizeNow`|Boolean to know if the first recurrence will be authorized or not.|Boolean|-|Yes|
 |`CreditCard.CardNumber`|Buyer's card number.|Text|16|Yes|
 |`CreditCard.Holder`|Buyer's name printed on the card.|Text|25|Yes|
 |`CreditCard.ExpirationDate`|Date of expiration printed on the card.|Text|7|Yes|
@@ -2926,7 +2927,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
 |`Customer.Email`|Email Buyer.|Text|255|No|
@@ -3131,7 +3132,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 |`Customer.Name`|Buyer's name.|Text|255|Yes|
 |`Customer.Email`|Email Buyer.|Text|255|No|
@@ -3269,7 +3270,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 |`Interval`|Recurrence interval.<ul><li>Monthly</li><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul>|Number|2|Yes|
 
@@ -3311,7 +3312,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 |`RecurrencyDay`|Day Recurrence.|Number|2|Yes|
 
@@ -3332,7 +3333,7 @@ To modify the value of recurrency, you only need to do a Put, as the example.
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier of the order|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 |`RecurrencyDay`|Value of the order in cents: 156 equals to R$ 1,56|Numeric|15|Yes|
 
@@ -3370,7 +3371,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 |`NextPaymentDate`|Payment date of the next recurrence.|Text|10|Yes|
 
@@ -3438,7 +3439,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 |`Payments.Type`|Payment Method type.|Text|100|Yes|
 |`Payments.Amount`|Order value (to be sent in cents).|Number|15|Yes|
@@ -3481,7 +3482,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 
 ### Response
@@ -3515,7 +3516,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
 
 ### Response
@@ -3551,7 +3552,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`PaymentId`|Payment identification number.|Text|36|Yes|
 
 ### Response
@@ -3666,16 +3667,15 @@ curl
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Status`|Transaction Status.|Byte|-|2|
 |`Customer.Name`|Text|255|Yes|Buyer's name.|
-|`Payments.Type`|Text|100|Yes|Payment Method type.|
-|`Payments.Amount`|Number|15|Yes|Order value (to be sent in cents).|
-|`Payments.Provider`|Text|15|Yes|Payment Method name.|
-|`Payments.Installments`|Number|2|Yes|Number of installments.|
+|`Payment.Type`|Text|100|Yes|Payment Method type.|
+|`Payment.Amount`|Number|15|Yes|Order value (to be sent in cents).|
+|`Payment.Provider`|Text|15|Yes|Payment Method name.|
+|`Payment.Installments`|Number|2|Yes|Number of installments.|
 |`CreditCard.CardNumber`|Text|16|Yes|Buyer's card number.|
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
-
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).|
 
 ## Referring to a sale by the store identifier
 
@@ -3702,7 +3702,7 @@ curls
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|Field Application Identifier in our Shop.|Text|36|Yes|
 
 
@@ -3768,7 +3768,7 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`PaymentId`|Payment identification number.|Text|36|Yes|
 
 ### Response
@@ -3956,9 +3956,8 @@ curl
 |--------|-----------|----|----|---------|
 |`MerchantId`|Store identifier in Webservice 3.0.|Guid|36|Yes|
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
-|`RequestId`|Field Application Request identifier.|Guid|36|Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Recurrence field identifier.|Text|36|Yes|
-
 
 ### Response
 
@@ -4039,51 +4038,51 @@ curl
 
 Status returned by the API
 
-|Code|Description|
-|----|-----------|
-|0|NotFinished|
-|1|Authorized|
-|2|PaymentConfirmed|
-|3|Denied|
-|10|Voided|
-|11|Refunded|
-|12|Pending|
-|13|Aborted|
-|20|Scheduled|
+|Code|Payment Status|Payment Method|Description|
+|----|--------------|--------------|-----------|
+|0|NotFinished|All|Failed to process the payment|
+|1|Authorized|All|Suitable payment method to be captured or paid (Boleto)|
+|2|PaymentConfirmed|All|Payment Confirmed and concluded|
+|3|Denied|Credit Card and Debt/Eletronic transfer|
+|10|Voided|All|Canceled Payment|
+|11|Refunded|Credit Card and Debit|Payment Cancelled/Reversed|
+|12|Pending|Credit Card and Debit/Eletronicll|Payment canceled for failure processing|Transfer|Waiting return of financial institution|
+|13|Aborted|All|Payment canceled for failure processing|
+|20|Scheduled|Credit card|Scheduled Recurrence|
 
 ## Merchant Defined Data
 
 The table below lists all possible codes to be sent in MerchantDefinedData parameter and its type of information that must be filled.
 
 | Id | Given | Description | Type |
-|----|------|-----------|------|
-| 1 | Customer made Log In | If the end user has logged on the site to buy, send: login it. Purchase was made as a visitor, send: "Guest". If the sale was made directly by a third party, an agent for example, do not send the field | String |
-| 2 | Customer is established there: #dias | Number of days | Number |
-| 3 | Purchase Performed in (plots) | Number of installments | Number |
-| 4 | Sale channel | Values: "Call Center" = carrier buying the phone "Web" = carrier buying the Web "portal" = an agent making the purchase for the customer "Kiosk" = Shopping in “mobile” kiosks = Purchases made on smartphone or tablet | String |
-| 5 | Coupon Code / Discount | If the buyer is using coupon, send the coupon code | String |
-| 6 | Last effected purchase | MM / DD / YYYY | Date |
-| 7 | Affiliation | Name or dealer code or broker | String |
-| 8 | Purchase attempts | Nr of times tried to make the payment request. Attempted different credit cards and / or other payments methods attempted. For the same application. | Number |
-| 9 | Customer will withdraw the product in a store | Values: "Yes", "NOT" In the case of agency, you will remove any voucher and / or physically ticket | String |
-| 10 | Payment made by 3rd | Values "YES", "NO" If the payer is present or not on the trip / package | String |
-| 11 | Hotel Category | Values: 1, 2, 3, 4, 5 How many stars has the hotel | Number |
-| 12 | Hotel Check-in date | MM / DD / YYYY | Date |
-| 13 | Hotel check-out date | MM / DD / YYYY | Date |
-| 14 | Travel / Package | Values: "National", "International", "National / International" | String |
-| 15 | Cia name. Air / Rental Car / Hotel | Send the name of each company, separated by "/" | String |
-| 16 | PNR | Send the PNR number of the reservation. When there is a change of booking for this PNR in advance of the flight date, it is important to make a new analysis of fraud by sending this PNR again. | String |
-| 17 | There was anticipation of reservation? | Values "YES", "NO" Indicate if there was rebooking the flight to an earlier date to the original. It is essential also to send the PNR field | String |
-| 18 | (reserved) | | |
-| 19 | (reserved) | | |
-| 20 | (reserved) | | |
-| 21 | (reserved) | | |
-| 22 | (reserved) | | |
-| 23 | (reserved) | | |
-| 24 | (reserved) | | |
-| 25 | (reserved) | | |
-| 26 | Bin Credit Card | Send the bin - 6/1 digits of the card | String |
-| 27 | (reserved) | | |
+|----|-------|-------------|------|
+| 1 |Customer made Log In | If the end user has logged on the site to buy, send: login it. Purchase was made as a visitor, send: "Guest". If the sale was made directly by a third party, an agent for example, do not send the field | String |
+| 2 |Customer is established there: #dias | Number of days | Number |
+| 3 |Purchase Performed in (plots) | Number of installments | Number |
+| 4 |Sale channel| Values: "Call Center" = carrier buying the phone "Web" = carrier buying the Web "portal" = an agent making the purchase for the customer "Kiosk" = Shopping in “mobile” kiosks = Purchases made on smartphone or tablet | String |
+| 5 |Coupon Code/Discount|If the buyer is using coupon, send the coupon code | String |
+| 6 |Last effected purchase | MM / DD / YYYY | Date |
+| 7 |Affiliation| Name or dealer code or broker | String |
+| 8 |Purchase attempts| Nr of times tried to make the payment request. Attempted different credit cards and / or other payments methods attempted. For the same application. | Number |
+| 9 |Customer will withdraw the product in a store | Values: "Yes", "NOT" In the case of agency, you will remove any voucher and / or physically ticket | String |
+| 10 |Payment made by 3rd | Values "YES", "NO" If the payer is present or not on the trip / package | String |
+| 11 |Hotel Category | Values: 1, 2, 3, 4, 5 How many stars has the hotel | Number |
+| 12 |Hotel Check-in date | MM / DD / YYYY | Date |
+| 13 |Hotel check-out date | MM / DD / YYYY | Date |
+| 14 |Travel / Package | Values: "National", "International", "National / International" | String |
+| 15 |Cia name. Air / Rental Car / Hotel | Send the name of each company, separated by "/" | String |
+| 16 |PNR | Send the PNR number of the reservation. When there is a change of booking for this PNR in advance of the flight date, it is important to make a new analysis of fraud by sending this PNR again. | String |
+| 17 |There was anticipation of reservation? | Values "YES", "NO" Indicate if there was rebooking the flight to an earlier date to the original. It is essential also to send the PNR field | String |
+| 18 |(reserved)| | |
+| 19 |(reserved) | | |
+| 20 |(reserved) | | |
+| 21 |(reserved) | | |
+| 22 |(reserved) | | |
+| 23 |(reserved) | | |
+| 24 |(reserved) | | |
+| 25 |(reserved) | | |
+| 26 |Bin Credit Card | Send the bin - 6/1 digits of the card | String |
+| 27 |(reserved) | | |
 | 28 | (reserved) | | |
 | 29 | (reserved) | | |
 | 30 | (reserved) | | |
@@ -4115,91 +4114,149 @@ The table below lists all possible codes to be sent in MerchantDefinedData param
 
 ## Error Codes
 
-|Code|Message|
-|----|-------|
-|100|RequestId is required|
-|101|MerchantId is required|
-|102|Payment Type is required|
-|103|Payment Type can only contain letters|
-|104|Customer Identity is required|
-|105|Customer Name is required|
-|106|Transaction ID is required|
-|107|You must Provide CreditCard Number, Token or Alias|
-|108|Amount must be greater or equal to zero|
-|109|Payment Currency is required|
-|110|Invalid Payment Currency|
-|111|Payment is required Country|
-|112|Invalid Payment Country|
-|113|Invalid Payment Code|
-|114|The provided MerchantId is not in correct format|
-|115|The provided MerchantId was not found|
-|117|Credit Card Holder is required|
-|118|Credit Card Number is required|
-|119|At least one Payment is required|
-|120|Request IP not allowed. Check your IP White List|
-|121|Customer is required|
-|122|MerchantOrderId is required|
-|123|Installments must be greater or equal to one|
-|124|Credit Card is Required|
-|125|Credit Card Expiration Date is required|
-|126|Credit Card Expiration Date is invalid|
-|127|You must Provide CreditCard Number, Token or Alias|
-|128|Card Number length exceeded|
-|129|Affiliation not found|
-|130|Could not get Credit Card|
-|131|MerchantKey is required|
-|132|MerchantKey is invalid|
-|133|Provider is not supported for this Payment Type|
-|134|FingerPrint length exceeded|
-|135|MerchantDefinedFieldValue length exceeded|
-|136|ItemDataName length exceeded|
-|137|ItemDataSKU length exceeded|
-|138|PassengerDataName length exceeded|
-|139|PassengerDataStatus length exceeded|
-|140|PassengerDataEmail length exceeded|
-|141|PassengerDataPhone length exceeded|
-|142|TravelDataRoute length exceeded|
-|143|TravelDataJourneyType length exceeded|
-|144|TravelLegDataDestination length exceeded|
-|145|TravelLegDataOrigin length exceeded|
-|146|SecurityCode length exceeded|
-|147|Street address length exceeded|
-|148|Address Number length exceeded|
-|149|Address Complement length exceeded|
-|150|Address ZipCode length exceeded|
-|151|Address City length exceeded|
-|152|Address State length exceeded|
-|153|Address Country length exceeded|
-|154|District Address length exceeded|
-|155|Customer Name length exceeded|
-|156|Customer Identity length exceeded|
-|157|Customer IdentityType length exceeded|
-|158|Customer Email length exceeded|
-|159|ExtraData Name length exceeded|
-|160|ExtraData Value length exceeded|
-|161|Instructions billet length exceeded|
-|162|Demostrative billet length exceeded|
-|163|Return Url is required|
-|164|Return Url is invalid|
-|166|AuthorizeNow is required|
-|167|Antifraud not configured|
-|168|Recurrent Payment not found|
-|169|Recurrent Payment is not active|
-|300|MerchantId was not found|
-|301|Request IP is not allowed|
-|302|Sent MerchantOrderId is duplicated|
-|303|Sent OrderId does not exist|
-|304|Customer Identity is required|
-|306|Merchant is blocked|
-|307|Transaction not found|
-|308|Transaction not available to capture|
-|309|Transaction not available to void|
-|310|Payment method doest not support this operation|
-|311|Refund is not enabled for this merchant|
-|312|Transaction not available to refund|
-|313|Recurrent Payment not found|
-|314|Invalid Integration|
-|315|Can not change NextRecurrency with pending payment|
+|Code|Message|Description|
+|----|-------|-----------|
+|0|Internal error|Data sent exceeds the field size|
+|100|RequestId is required|Field sent is blank or invalid |
+|101|MerchantId is required|Field sent is blank or invalid |
+|102|Payment Type is required|Field sent is blank or invalid |
+|103|Payment Type can only contain letters|Special characters not allowed|
+|104|Customer Identity is required|Field sent is blank or invalid |
+|105|Customer Name is required|Field sent is blank or invalid |
+|106|Transaction ID is required|Field sent is blank or invalid |
+|107|You must Provide CreditCard Number, Token or Alias|Data sent exceeds the field size|
+|108|Amount must be greater or equal to zero|transaction value must be greater than "0" |
+|109|Payment Currency is required|Field sent is blank or invalid |Field sent is blank or invalid |
+|110|Invalid Payment Currency|Field sent is blank or invalid |
+|111|Payment is required Country|Field sent is blank or invalid |
+|112|Invalid Payment Country|Field sent is blank or invalid |
+|113|Invalid Payment Code|Field sent is blank or invalid |
+|114|The provided MerchantId is not in correct format|The merchantId sent is not a GUID |
+|115|The provided MerchantId was not found|Merchant ID does not exist or belongs to another environment (Eg: Sandbox) |
+|116|The provided MerchantId is blocked|locked store, contact the Cielo support|
+|117|Credit Card Holder is required|Field sent is blank or invalid |
+|118|Credit Card Number is required|Field sent is blank or invalid |
+|119|At least one Payment is required|Node "Payment" unsent |
+|120|Request IP not allowed. Check your IP White List|IP blocked for security reasons|
+|121|Customer is required|Node "Customer" unsent|
+|122|MerchantOrderId is required|Field sent is blank or invalid |
+|123|Installments must be greater or equal to one|Number of installments should be greater than 1 |
+|124|Credit Card is Required|Sent field is empty or invalid |
+|125|Credit Card Expiration Date is required|Sent field is empty or invalid |
+|126|Credit Card Expiration Date is invalid|Sent field is empty or invalid |
+|127|You must Provide CreditCard Number, Token or Alias|Credit card number is required |
+|128|Card Number length exceeded|Number of card is greater than 16 digits |
+|129|Affiliation not found|payment method not tied to store or invalid Provider |
+|130|Could not get Credit Card|---|
+|131|MerchantKey is required|Field sent is blank or invalid |
+|132|MerchantKey is invalid|Merchantkey sent is not a valid |
+|133|Provider is not supported for this Payment Type|Provider sent does not exist |
+|134|FingerPrint length exceeded|Data sent exceeds the field size |
+|135|MerchantDefinedFieldValue length exceeded|Data sent exceeds the field size |
+|136|ItemDataName length exceeded|Data sent exceeds the field size |
+|137|ItemDataSKU length exceeded|Data sent exceeds the field size |
+|138|PassengerDataName length exceeded|Data sent exceeds the field size |
+|139|PassengerDataStatus length exceeded|Data sent exceeds the field size |
+|140|PassengerDataEmail length exceeded|Data sent exceeds the field size |
+|141|PassengerDataPhone length exceeded|Data sent exceeds the field size |
+|142|TravelDataRoute length exceeded|Data sent exceeds the field size |
+|143|TravelDataJourneyType length exceeded|Data sent exceeds the field size |
+|144|TravelLegDataDestination length exceeded|Data sent exceeds the field size |
+|145|TravelLegDataOrigin length exceeded|Data sent exceeds the field size |
+|146|SecurityCode length exceeded|Data sent exceeds the field size |
+|147|Street address length exceeded|Data sent exceeds the field size |
+|148|Address Number length exceeded|Data sent exceeds the field size |
+|149|Address Complement length exceeded|Data sent exceeds the field size |
+|150|Address ZipCode length exceeded|Data sent exceeds the field size |
+|151|Address City length exceeded|Data sent exceeds the field size |
+|152|Address State length exceeded|Data sent exceeds the field size |
+|153|Address Country length exceeded|Data sent exceeds the field size |
+|154|District Address length exceeded|Data sent exceeds the field size |
+|155|Customer Name length exceeded|Data sent exceeds the field size |
+|156|Customer Identity length exceeded|Data sent exceeds the field size |
+|157|Customer IdentityType length exceeded|Data sent exceeds the field size |
+|158|Customer Email length exceeded|Data sent exceeds the field size |
+|159|ExtraData Name length exceeded|Data sent exceeds the field size |
+|160|ExtraData Value length exceeded|Data sent exceeds the field size |
+|161|Instructions billet length exceeded|Data sent exceeds the field size |
+|162|Demostrative billet length exceeded|Data sent exceeds the field size |
+|163|Return Url is required|return URL is not valid - not accepted paging or extensions (Eg .php) in the return URL |
+#REF!
+|166|AuthorizeNow is required|---|
+|167|Antifraud not configured|Antifraud not linked to the Merchant's registration |
+|168|Recurrent Payment not found|Recurrence not found |
+|169|Recurrent Payment is not active|Recurrence is not active. Execution paralyzed |
+|170|Cartão Protegido not configured|protected card not linked to the Merchant's registration|
+|171|Affiliation data not sent|Failure in processing the request - Please contact the Cielo support|
+|172|Credential Code is required|Failed validation of sent accredited|
+|173|Payment method is not enabled|Payment method not linked to the Merchant's registration|
+|174|Card Number is required|Sent field is empty or invalid|
+|175|EAN is required|Sent field is empty or invalid|
+|176|Payment Currency is not supported|Sent field is empty or invalid|
+|177|Card Number is invalid|Sent field is empty or invalid|
+|178|EAN is invalid|Sent field is empty or invalid|
+|179|The max number of installments allowed for recurring payment is 1|Sent field is empty or invalid|
+|180|The provided Card PaymentToken was not found|Token do Cartão protegido não encontrado|
+|181|The MerchantIdJustClick is not configured|Token blocked protected Card|
+|182|Brand is required|Card Issuer unsent|
+|183|Invalid customer bithdate|Date of birth or invalidates future|
+|184|Request could not be empty|Failure in the request format. Check code sent|
+|185|Brand is not supported by selected provider|Card issuer not supported by Cielo API|
+|186|The selected provider does not support the options provided (Capture, Authenticate, Recurrent or Installments)|Payment method does not support the command sent|
+|187|ExtraData Collection contains one or more duplicated names|---|
+|188|Avs with CPF invalid|---|
+|189|Avs with length of street exceeded|Data sent exceeds the field size|
+|190|Avs with length of number exceeded|Data sent exceeds the field size|
+|190|Avs with length of complement exceeded|Data sent exceeds the field size|
+|191|Avs with length of district exceeded|Data sent exceeds the field size|
+|192|Avs with zip code invalid|ZipCod sent is invalid|
+|193|Split Amount must be greater than zero|Value for performing split should be greater than 0|
+|194|Split Establishment is Required|SPLIT not enabled to register store|
+|195|The PlataformId is required|Platform Validated not sent|
+|196|DeliveryAddress is required|Required field not sent|
+|197|Street is required|Required field not sent|
+|198|Number is required|Required field not sent|
+|199|ZipCode is required|Required field not sent|
+|200|City is required|Required field not sent|
+|201|State is required|Required field not sent|
+|202|District is required|Required field not sent|
+|203|Cart item Name is required|Required field not sent|
+|204|Cart item Quantity is required|Required field not sent|
+|205|Cart item type is required|Required field not sent|
+|206|Cart item name length exceeded |Data sent exceeds the field size|
+|207|Cart item description length exceeded |Data sent exceeds the field size|
+|208|Cart item sku length exceeded |Data sent exceeds the field size|
+|209|Shipping addressee sku length exceeded |Data sent exceeds the field size|
+|210|Shipping data cannot be null|Required field not sent|
+|211|WalletKey is invalid|Visa Checkout data invalid|
+|212|Merchant Wallet Configuration not found|Visa Checkout not tied to merchant account|
+|213|Credit Card Number is invalid|Credit card sent is invalid|
+|214|Credit Card Holder Must Have Only Letters|Cardholder must not contain special characters|
+|215|Agency is required in Boleto Credential|Required field not sent|
+|216|Customer IP address is invalid|IP blocked for security reasons|
+|300|MerchantId was not found|---|
+|301|Request IP is not allowed|---|
+|302|Sent MerchantOrderId is duplicated|---|
+|303|Sent OrderId does not exist|---|
+|304|Customer Identity is required|---|
+|306|Merchant is blocked|---|
+|307|Transaction not found|Transaction not found or does not exist in the environment. |
+|308|Transaction not available to capture|Transaction can not be captured - Contact Cielo support |
+|309|Transaction not available to void|Transaction can not be canceled - Contact Cielo support |
+|310|Payment method doest not support this operation|Command sent not supported by the means of payment |
+|311|Refund is not enabled for this merchant|Cancellation after 24 hours not released to the merchant |
+|312|Transaction not available to refund|Recurring transaction not found or not available in the environment |
+|313|Recurrent Payment not found|---|
+|314|Invalid Integration|---|
+|315|Can not change NextRecurrency with pending payment|---|
+|316|Cannot set NextRecurrency to past date|Não é permitido alterada dada da recorrencia para uma data passada|
+|317|Invalid Recurrency Day|---|
+|318|No transaction found|---|
+|319|Smart recurrency is not enabled|Recurrence not linked to the Merchant's registration |
+|320|Can not Update Affiliation Because this Recurrency not Affiliation saved|---|
+|321|Can not set EndDate to before next recurrency.|---|
+|322|Zero Dollar Auth is not enabled|Zero Dollar not linked to the Merchant's registration |
+|323|Bin Query is not enabled|Bins consultation not linked to the Merchant's registration |
 
 ## Return Codes
 
@@ -4268,13 +4325,8 @@ The table below lists all possible codes to be sent in MerchantDefinedData param
 |FA|Denied|Unauthorised Transaction Amex|Unauthorised Transaction. Contact your issuing bank.|No|
 |FC|Call Amex|Unauthorized transaction. Guide the carrier to contact the issuing bank.|Unauthorised Transaction. Contact your issuing bank.|No|
 |FD|Transaction denied. Retain special status card|Transaction not authorized by the rules of the issuing bank.|Unauthorised Transaction. Contact your issuing bank|no|
-| FE | Unauthorised Transaction. Divergence on the date of transaction / payment |. Unauthorised Transaction. Transaction date or date of the first invalid payment |. Unauthorised Transaction. Redo the transaction confirming data. | No |
-| FF | Cancellation OK | Cancellation Transaction authorized successfully | Cancellation Transaction authorized successfully | no |
-| FG | CALL AMEX | Unauthorised Transaction. Orient the carrier to contact the Call Center AmEx |. Unauthorised Transaction. Contact the Call Center AmEx. | No |
-| FG | Call 08007285090 | Unauthorised Transaction. Orient the carrier to contact the Call Center AmEx |. Unauthorised Transaction. Contact the Call Center AmEx. | No |
-| JB | transaction value Invalid |. Unauthorised Transaction. Invalid value. Ask the carrier to review the value and try again. If the error persists, contact Cielo |. Transaction not authorized. Invalid value. Redo the transaction confirming the reported data. If the error persists, contact the shop. | No |
-
-
-
-
-
+|FE|Unauthorised Transaction. Divergence on the date of transaction / payment |. Unauthorised Transaction. Transaction date or date of the first invalid payment |. Unauthorised Transaction. Redo the transaction confirming data. |No|
+|FF|Cancellation OK|Cancellation Transaction authorized successfully| Cancellation Transaction authorized successfully|no |
+|FG|CALL AMEX|Unauthorised Transaction. Orient the carrier to contact AmEx Call Center|Unauthorised Transaction. Contact AmEx Call Center.|No|
+|FG|Call 08007285090|Unauthorised Transaction. Guide the carrier to contact AmEx Call Center AmEx|Unauthorised Transaction. Contact AmEx Call Center|No|
+|JB|Transaction value Invalid|Unauthorised Transaction. Invalid value. Ask the carrier to review the value and try again. If the error persists, contact Cielo|Transaction not authorized. Invalid value. Redo the transaction confirming the reported data. If the error persists, contact the merchant.|No|

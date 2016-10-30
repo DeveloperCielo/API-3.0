@@ -356,7 +356,7 @@ curl
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Master / Amex / link / Auria / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Master / Amex / link / Aura / JCB / Diners / Discover).|
 
 ### Response
 

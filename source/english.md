@@ -632,7 +632,7 @@ curl
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
 |`CreditCard.SaveCard`|Boolean|-|No (Default false)|Boolean that identifies whether the card will be saved to generate the CardToken.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
 
 ### Response
 
@@ -875,7 +875,7 @@ curl
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
 
 ### Response
 
@@ -1255,7 +1255,7 @@ curl
 |`CreditCard.ExpirationDate`|Text|7|Yes|Expiration date printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
 |`CreditCard.SaveCard`|Boolean|-|No (Default false)|Boolean that identifies if the card will be saved to generate the CardToken.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
 |`FraudAnalysis.Sequence`|Text|14|No|Type flow for carrying out the fraud analysis. First Analysis (AnalyseFirst) or the first authorization (AuthorizeFirst)|
 |`FraudAnalysis.SequenceCriteria`|Text|9|No|Criterion flow. OnSuccess - Only performs analysis when transaction is successful. Always - always performs analysis|
 |`FraudAnalysis.FingerPrintId`|Text|50|No|Identifier used to cross information obtained by the internet browser with data sent for analysis. This same value must be passed in SESSIONID variable DeviceFingerPrint the script.|
@@ -3674,7 +3674,7 @@ curl
 |`CreditCard.Holder`|Text|25|Yes|Buyer's name printed on the card.|
 |`CreditCard.ExpirationDate`|Text|7|Yes|Date of expiration printed on the card.|
 |`CreditCard.SecurityCode`|Text|4|Yes|Security code printed on the back of the card.|
-|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).|
+|`CreditCard.Brand`|Text|10|Yes|Card issuer (Visa / Mastercard / Amex / link / Aura / JCB / Diners / Discover).|
 
 
 ## Referring to a sale by the store identifier
@@ -4200,3 +4200,81 @@ The table below lists all possible codes to be sent in MerchantDefinedData param
 |313|Recurrent Payment not found|
 |314|Invalid Integration|
 |315|Can not change NextRecurrency with pending payment|
+
+## Return Codes
+
+|Return Codes|Definition|Meaning|Action|Allows retry|
+|------------|----------|-------|------|------------|
+|00|Authorized transaction|Authorization approved|Authorization approved|no|
+|000|Authorized transaction|Authorization approved|Authorization approved|no|
+|01|Unauthorized transaction - Referred by the issuing bank.|Unauthorized transaction - Referred by the issuing bank.|Unauthorized transaction. Contact your issuing bank.|no|
+|02|Consultation Cielo.Transação said.|Unauthorized transaction. Referred to by some rule of the bank.|Unauthorized transaction. Contact your issuing bank.|no|
+|03|Error in registering the property code in the TEF configuration file|Denied transaction. Invalid establishment.|Unable to process the transaction.|no|
+|04|Unauthorized transaction. Card blocked by the issuing bank.|Unauthorized transaction. Card blocked by the issuing bank.|Unauthorized transaction. Contact your issuing bank.|no|
+|05|Unauthorized transaction. Defaulter card (Do not honor).|Unauthorized transaction. Unable to process the transaction. Issues related to security, default or carrier limit.|Unauthorized transaction. Contact your issuing bank.|Yes; Cielo recommends only 4 times in 16 days.|
+|06|Unauthorized transaction. Canceled card.|Unauthorized transaction. Unable to process the transaction. Card permanently canceled by the issuing bank.|Unable to process the transaction. Contact your issuing bank.|no|
+|07|Denied transaction. Hold card special condition|Transaction not authorized by the rules of the issuing bank.|Unauthorized transaction. Contact your issuing bank|no|
+|08|Unauthorized transaction. CVV2 Invalid| Unauthorised Transaction|Unauthorised Transaction.|no|
+|11|Transaction authorized for cards issued overseas|Approved authorization|Authorization Approved|no|
+|12|Invalid transaction, card error.|Unable to process the transaction. Ask the carrier to check the card data and try again.|Unable to process the transaction. Review the data and try again. If the error persists, please contact your issuing bank.|no|
+|13|Invalid transaction amount|Unauthorised Transaction. Invalid value. Ask the carrier to review the value and try again. If the error persists, contact Cielo|Transaction not authorized. Invalid value. Do the transaction again confirming the data reported. If the error persists, contact the merchant.|no|
+|14|Invalid Card|Unauthorised Transaction. Invalid card. Try using the Lhum Algorithm (Mod 10) to prevent unauthorized transactions for that reason.| Unauthorised Transaction. Invalid card. Do the transaction again confirming the data reported.|no|
+|15|Bank issuer unavailable or nonexistent.|Unauthorized transaction. Issuing bank not available|Unable to process the transaction. Contact your issuing bank.|no|
+|19|Do the transaction again or try again later.| We could not process the transaction. Do the transaction again or try again later. If the error persists, contact Cielo|We could not process the transaction. Do the transaction again or try again later. If the error persists contact the merchant| Yes; Cielo recommends only 4 times in 16 days.|
+|21|Cancellation not made. Transaction not found.| We could not process the cancellation. If the error persists, contact Cielo|We could not process the cancellation. Try again later. If the error persists, contact the merchant.|no|
+|22|Invalid installment. Number of invalid installments.| Could not process the transaction. Number of invalid installments. If the error persists, contact Cielo|We could not process the transaction. Invalid value. Do the transaction again confirming the reported data. If the error persists, contact the merchant.|no|
+|23|Value of the invalid provision.| Unable to process the transaction. Value of the invalid provision. If the error persists, contact Cielo|We could not process the transaction. Value of the invalid provision. Do the transaction again confirming the data reported. If the error persists, contact the merchant.|no|
+|24|Number of invalid installments|. Unable to process the transaction. Number of invalid installments. If the error persists, contact Cielo|We could not process the transaction. Number of invalid installments. Do the transaction again confirming the reported data. If the error persists, contact the merchant.|no|
+|25|Authorization application did not send the card number| Unable to process the transaction. Authorization request did not send the card number. If the error persists, contact Cielo |We could not process the transaction. Do the transaction again confirming the data reported. If the error persists, contact the merchant|Yes.; Cielo recommends only 4 times in 16 days.|
+|28|Archive temporarily unavailable.| We could not process the transaction. File unavailable. If the error persists, contact Cielo|We could not process the transaction.Please try again later|Yes; Cielo recommends only 4 times in 16 days.|
+|39|Error issuing bank| Unauthorised Transaction. Error in issuing bank.|Unauthorised Transaction. Contact your issuing bank.|No|
+|43|Unauthorised Transaction. Blocked because of theft|Unauthorised Transaction. Blocked because of theft|Unauthorised Transaction. Contact your issuing bank.|No|
+|51|Limit Exceeded/without balance.|Unauthorised Transaction. Exceeded limit/no balance.|Unauthorised Transaction. Contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days.|
+|52|Card with invalid digit control.|We could not process the transaction. Card digit invalid control|Unauthorised Transaction. Do the transaction again confirming data.|No|
+|53|Transaction not allowed. Invalid savings card|Transaction not allowed. Invalid card savings.|Could not process the transaction. Contact your issuing bank.|No|
+|54|Expired Card|Unauthorised Transaction. Expired card|Unauthorised Transaction. Do the transaction again confirming data.|No|
+|55|Unauthorized transaction. Invalid password|Unauthorised Transaction. Invalid password.|Unauthorised Transaction. Contact your issuing bank.|No| 
+|57|Transaction not allowed for the card|Unauthorized transaction. Transaction not allowed for the card.|Unauthorized transaction. Contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days; Visa recommends aims recommends not retry.|
+|58|Transaction not allowed. Invalid payment option|Transaction not allowed. Invalid payment option. Review if the chosen payment option is enabled in the register|Unauthorised Transaction. Contact merchant.|No|
+|59|Unauthorised Transaction. Suspected fraud|Transaction not authorized. Suspected fraud|Transaction not authorized. Contact your issuing bank.|No|
+|60|Unauthorised Transaction|Unauthorised Transaction. Try again. If the error persists, the holder should contact the issuing bank.|We could not process the transaction. Try again later. If the error persists, please contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days.|
+|61|Visa issuing bank available|Unauthorised Transaction. Visa issuing bank available|Unauthorised Transaction. Try again. If the error persists, please contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days.|
+|62|Unauthorised Transaction. Restricted card to domestic use| Unauthorized transaction. Restricted card to domestic use| Unauthorised Transaction.Contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days.|
+|63|Unauthorised Transaction. Security breach| Transaction unauthorized. Security breach.|Unauthorised Transaction. Contact your issuing bank.|No|
+|64|Unauthorised Transaction. Value below the minimum required by the issuing bank.|Unauthorised Transaction. Contact your issuing bank.|Unauthorised Transaction. Value below the minimum required by the issuing bank.|No|
+|65|Unauthorised Transaction. Exceeded the number of transactions for the card.|Transaction not authorized. Exceeded the number of transactions for the card.|Transaction not authorized.Contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days.|
+|70|Unauthorised Transaction. Limit Exceeded|Unauthorised Transaction. Exceeded limit/no balance.|Unauthorised Transaction. Contact your issuing bank.|No|
+|75|Password locked. Exceeded card attempts.|Transaction not authorized|Your transaction may not be processed. Contact the Issuer of your card.|No|
+|76|Cancellation not made. Issuing bank did not locate the original transaction|Cancellation not made. Issuing bank did not locate the original transaction|Cancellation not made. Contact the merchant.|No|
+|77|Cancellation not made. It was located the original transaction|Cancellation not made. It was located the original transaction|Cancellation not made. Contact the merchant|No|
+|78|Unauthorised Transaction. Blocked card, first use|Unauthorised Transaction. Card locked first use. Ask your carrier to unlock the card directly with your issuing bank.|Unauthorised Transaction. Contact your issuing bank and request the unlock card.|No|
+|80|Unauthorised Transaction. Divergence on the date of transaction/payment|Unauthorised Transaction. Transaction date or date of the first invalid payment|Unauthorised Transaction. Do the transaction again confirming data.|No|
+|82|Unauthorised Transaction. Invalid Card|Unauthorised Transaction. Invalid Card. Ask the carrier to review the data and try again.|Unauthorised Transaction. Do the transaction again confirming the data. If the error persists, please contact your issuing bank.|No|
+|83|Unauthorised Transaction. Error in control passwords|Unauthorized transaction. Error in control passwords|Unauthorized transaction. Do the transaction again confirming the data. If the error persists, please contact your issuing bank.|No|
+|97|Not amount allowed for this transaction.|Unauthorised Transaction. Not allowed value for this transaction.|Unauthorised Transaction. Not allowed value for this transaction.|no|
+|89|Error in the transaction.|Transaction not authorized. Error in the transaction. The carrier must try again and if the error persists, contact the issuing bank.|Unauthorised Transaction. Error in the transaction. Please try again and if the error persists, please contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days.|
+|91|Unauthorised Transaction. Issuing bank temporarily unavailable.|Unauthorised Transaction. Issuing bank temporarily unavailable.|Unauthorised Transaction. Issuing bank temporarily unavailable.Contact your issuing bank|Yes; Cielo recommends only 4 times in 16 days.|
+|92|Unauthorised Transaction. Exceeded communication time|Unauthorised Transaction. Exceeded communication time|Unauthorised Transaction. Temporarily unavailable communication. Contact the merchant|Yes; Cielo recommends only 4 times in 16 days.|
+|93|Unauthorised Transaction. Rule violation - Possible error in the register|Unauthorised Transaction.Rule violation - Possible error in the record|Your transaction can not be processed. Contact the merchant.|No|
+|96|Processing failed.|Unable to process the transaction. Failure Cielo system. If the error persists, contact Cielo|Your transaction may not be processed, please try again later. If the error persists, contact the merchant|Yes; Cielo recommends only 4 times in 16 days.|
+|98| System/unavailable communication|Unauthorised Transaction. Without communication system transmitter. If general, check SITEF, GATEWAY and/or connectivity|Your Transaction can not be processed, please try again later. If the error persists, contact the merchant|Yes; Cielo recommends only 4 times in 16 days.|
+|99|System/unavailable communication|Unauthorised Transaction. Without communication system transmitter. Try later. Can be error in SITEF, please check|Your transaction may not be processed, please try again later. If the error persists, contact the merchant|Yes; Cielo recommends only 4 times in 16 days.|
+|999|System/unavailable communication|Unauthorised Transaction. Without communication system transmitter. Try later. Can be error in SITEF, please check| Your transaction may not be processed, please try again later. If the error persists, contact the merchant|Yes; Cielo recommends only 4 times in 16 days.|
+|AA|Timeout|Timeout in communication with the issuing bank. East carrier to try again, if the error persists is necessary that the carrier contact your issuing bank.|Time Exceeded in its communication with the issuing bank, try again later. If the error persists, contact your bank|Yes; Cielo recommends only 4 times in 16 days.|
+|AE|Try Later|Timeout in communication with the issuing bank. Guide the carrier to try again, if the error persists is necessary that the carrier contact your issuing bank.|Time Exceeded in its communication with the issuing bank, please try again later. If the error persists, contact your bank|Yes; Cielo recommends only 4 times in 16 days.|
+|BM|Invalid Card|Unauthorised Transaction. Invalid card. Try using the Lhum Algorithm (Mod 10) to prevent unauthorized transactions for that reason.|Unauthorised Transaction. Invalid card. Do the transaction again confirming the reported data.|No|
+|BV|Expired Card|Unauthorised Transaction. Overdue card|Unauthorised Transaction. Check the data and try again.|No|
+|DA|Establishment Invalid 03|Unauthorised Transaction. Failure to communicate with the issuing bank. Guide the carrier to contact the issuing bank.| Unauthorised Transaction. Contact the issuing bank.|No|
+|FA|Denied|Unauthorised Transaction Amex|Unauthorised Transaction. Contact your issuing bank.|No|
+|FC|Call Amex|Unauthorized transaction. Guide the carrier to contact the issuing bank.|Unauthorised Transaction. Contact your issuing bank.|No|
+|FD|Transaction denied. Retain special status card|Transaction not authorized by the rules of the issuing bank.|Unauthorised Transaction. Contact your issuing bank|no|
+| FE | Unauthorised Transaction. Divergence on the date of transaction / payment |. Unauthorised Transaction. Transaction date or date of the first invalid payment |. Unauthorised Transaction. Redo the transaction confirming data. | No |
+| FF | Cancellation OK | Cancellation Transaction authorized successfully | Cancellation Transaction authorized successfully | no |
+| FG | CALL AMEX | Unauthorised Transaction. Orient the carrier to contact the Call Center AmEx |. Unauthorised Transaction. Contact the Call Center AmEx. | No |
+| FG | Call 08007285090 | Unauthorised Transaction. Orient the carrier to contact the Call Center AmEx |. Unauthorised Transaction. Contact the Call Center AmEx. | No |
+| JB | transaction value Invalid |. Unauthorised Transaction. Invalid value. Ask the carrier to review the value and try again. If the error persists, contact Cielo |. Transaction not authorized. Invalid value. Redo the transaction confirming the reported data. If the error persists, contact the shop. | No |
+
+
+
+
+

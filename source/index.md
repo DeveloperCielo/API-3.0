@@ -1805,7 +1805,7 @@ curl
 
 ## Capturando uma venda
 
-Para captura uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
+Para captura uma venda que utilizou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
 
 ### Requisição
 
@@ -1886,7 +1886,7 @@ curl
 
 ## Cancelando uma venda
 
-Para cancelar uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
+Para cancelar uma venda que utilizou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
 
 ### Requisição
 

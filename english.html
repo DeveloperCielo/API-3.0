@@ -83,6 +83,9 @@
         </div>
         <h2 class="toc-footer-title">Materiais complementares</h2>
         <ul class="toc-footer">
+            <li><a href='/Guia-de-migracao-1.5x3.0/'>Guia de migração da API 1.5 para a 3.0</a></li>
+            <li><a href='/Checkout-Boleto-e-Debito/'>Manual de Boleto e débito online</a></li>
+            <li><a href='/Habilitacao-meios-de-pagamento/'>Manual de Boleto e débito online</a></li>
             <li><a href='/Boas-praticas-de-eCommerce/'>Boas práticas de eCommerce</a></li>
         </ul>
         <div class="links-footer">
@@ -348,7 +351,7 @@
 <li>Endpoints to requisition</li>
 </ol>
 
-<p>* <strong>Creation / Changes of transactions</strong>: https://apisandbox.cieloeCommerce.cielo.com.br 
+<p>* <strong>Creation / Changes of transactions</strong>: https://apisandbox.cieloeommerce.cielo.com.br 
     * <strong>Transaction consult</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br/</p>
 
 <p>It&rsquo;s not necessary to be a member to use Cielo &lsquo;Sandbox. You only need to access <a href="https://cadastrosandbox.cieloecommerce.cielo.com.br/">Sandbox Registry</a> and create a test account. At the end of registration, you will receive a &#39;MerchantID&rsquo; and the &#39;MerchanKey&rsquo;, that should be used to authenticate all the requests done for the endpoint of API.</p>
@@ -464,7 +467,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -518,8 +521,8 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
-<td>Field Application Request identifier.</td>
+<td>No</td>
+<td>Request identifier, used when the merchant uses different servers for each GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -536,28 +539,28 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 <td>Payment Method type.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 <td>Order value (to be sent in cents).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Text</td>
 <td>15</td>
-<td>Yes</td>
-<td>Payment Method name.</td>
+<td>&mdash;</td>
+<td>Payment Method name/NOT MANDATORY FOR CREDIT</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Number</td>
 <td>2</td>
 <td>Yes</td>
@@ -596,7 +599,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Text</td>
 <td>10</td>
 <td>Yes</td>
-<td>Card issuer (Visa / Master / Amex / link / Auria / JCB / Diners / Discover).</td>
+<td>Card issuer (Visa / Master / Amex / link / Aura / JCB / Diners / Discover).</td>
 </tr>
 </tbody></table>
 
@@ -640,12 +643,12 @@ that need to regularly charge for their products/services. It is widely used for
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -693,12 +696,12 @@ that need to regularly charge for their products/services. It is widely used for
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -834,7 +837,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -916,8 +919,8 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
-<td>Field Application Request identifier.</td>
+<td>No</td>
+<td>Request identifier, used when the merchant uses different servers for each GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -932,6 +935,20 @@ that need to regularly charge for their products/services. It is widely used for
 <td>255</td>
 <td>Yes</td>
 <td>Buyer&rsquo;s name.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Identity</code></td>
+<td>Text</td>
+<td>14</td>
+<td>No</td>
+<td>Identification number (RG, CPF or CNPJ).</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.IdentityType</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Type of document identification of buyer (CFP/CNPJ).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
@@ -1046,74 +1063,74 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Address Country of the Purchaser.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 <td>Payment Method type.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 <td>Order value (to be sent in cents).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Currency</code></td>
+<td><code class="prettyprint">Payment.Currency</code></td>
 <td>Text</td>
 <td>3</td>
 <td>No</td>
 <td>Currency in which the payment will be made (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Country</code></td>
+<td><code class="prettyprint">Payment.Country</code></td>
 <td>Text</td>
 <td>3</td>
 <td>No</td>
 <td>Parents in which payment will be made.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Text</td>
 <td>15</td>
-<td>Yes</td>
-<td>Payment Method name.</td>
+<td>&mdash;</td>
+<td>Payment Method name/NOT REQUIRED FOR CREDIT.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SeviceTaxAmount</code></td>
+<td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 <td>Value”s amount of the authorization should be for the service charge. Obs .: This value is not added to the authorization amount.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Number</td>
 <td>2</td>
 <td>Yes</td>
 <td>Number of installments.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Interest</code></td>
+<td><code class="prettyprint">Payment.Interest</code></td>
 <td>Text</td>
 <td>10</td>
 <td>No</td>
-<td>Installment type (Shop or card).</td>
+<td>Installment type - Shop (ByMerchant) or card (ByIssuer).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Capture</code></td>
+<td><code class="prettyprint">Payment.Capture</code></td>
 <td>Boolean</td>
 <td>-</td>
 <td>No (Default false)</td>
 <td>Boolean that identifies the authorization shall be made using automatic capture.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Authenticate</code></td>
+<td><code class="prettyprint">Payment.Authenticate</code></td>
 <td>Boolean</td>
-<td>-</td>
+<td>&mdash;</td>
 <td>No (Default false)</td>
-<td>Boolean that identifies the authorization should be made with authentication.</td>
+<td>Defines if the buyer will be directed to the issuing bank for card authentication</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
@@ -1155,7 +1172,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Text</td>
 <td>10</td>
 <td>Yes</td>
-<td>Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).</td>
+<td>Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).</td>
 </tr>
 </tbody></table>
 
@@ -1222,7 +1239,7 @@ that need to regularly charge for their products/services. It is widely used for
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1293,7 +1310,7 @@ that need to regularly charge for their products/services. It is widely used for
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -1408,7 +1425,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -1465,8 +1482,8 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
-<td>Field Application Request identifier.</td>
+<td>No</td>
+<td>Request identifier used when the merchant uses different servers for each GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -1483,39 +1500,39 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 <td>Payment Method type.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 <td>Order value (to be sent in cents).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Text</td>
 <td>15</td>
-<td>Yes</td>
-<td>Payment Method name.</td>
+<td>&mdash;</td>
+<td>Payment Method name/NOT REQUIRED FOR CREDIT.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Number</td>
 <td>2</td>
 <td>Yup</td>
 <td>Number of installments.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Authenticate</code></td>
+<td><code class="prettyprint">Payment.Authenticate</code></td>
 <td>Boolean</td>
 <td>-</td>
 <td>No (Default false)</td>
-<td>Boolean that identifies the authorization should be authentication.</td>
+<td>Defines if the buyer will be directed to the issuing bank for card authentication</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber.</code></td>
@@ -1550,7 +1567,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Text</td>
 <td>10</td>
 <td>Yes</td>
-<td>Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).</td>
+<td>Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).</td>
 </tr>
 </tbody></table>
 
@@ -1850,7 +1867,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -1987,8 +2004,8 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">RequestId</code></td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
-<td>Field Application Request identifier.</td>
+<td>No</td>
+<td>Request the identifier used when the merchant uses different servers for each GET/POST/PUT.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -2138,42 +2155,42 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Currency in which the payment will be made (BRL / USD / MXN / COP / CLP / ARS / PEN / EUR / PYN / UYU / VEB / VEF / GBP).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Country</code></td>
+<td><code class="prettyprint">Payment.Country</code></td>
 <td>Text</td>
 <td>3</td>
 <td>No</td>
 <td>Country where payment will be made.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Text</td>
 <td>15</td>
-<td>Yes</td>
-<td>Payment Method name.</td>
+<td>&mdash;</td>
+<td>Payment Method name/NOT REQUIRED FOR CREDIT.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SeviceTaxAmount</code></td>
+<td><code class="prettyprint">Payment.SeviceTaxAmount</code></td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 <td>Value amount of the authorization that should be destined to the service charge. Obs .: This value is not added to the authorization amount.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Number</td>
 <td>2</td>
 <td>Yes</td>
 <td>Number of installments.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Interest</code></td>
+<td><code class="prettyprint">Payment.Interest</code></td>
 <td>Text</td>
 <td>10</td>
 <td>No</td>
-<td>Installment type (Shop or card).</td>
+<td>Installment type - Shop (ByMerchant) or Card (ByIssuer).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Capture</code></td>
+<td><code class="prettyprint">Payment.Capture</code></td>
 <td>Boolean</td>
 <td>-</td>
 <td>No (Default false)</td>
@@ -2184,7 +2201,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Boolean</td>
 <td>-</td>
 <td>No (Default false)</td>
-<td>Boolean that identifies the authorization that must be destined to</td>
+<td>The buyer will be directed to the issuing bank for card authentication</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
@@ -2226,7 +2243,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Text</td>
 <td>10</td>
 <td>Yes</td>
-<td>Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).</td>
+<td>Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).</td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Sequence</code></td>
@@ -2645,7 +2662,7 @@ that need to regularly charge for their products/services. It is widely used for
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
@@ -2797,12 +2814,12 @@ that need to regularly charge for their products/services. It is widely used for
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -2993,7 +3010,7 @@ that need to regularly charge for their products/services. It is widely used for
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell"> curl
- --request POST <span class="s2">"https://sandbox.cieloeCommerce.cielo.com.br/1/sales/"</span>
+ --request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
  --header <span class="s2">"Content-Type: application/json"</span>
  --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
  --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3044,10 +3061,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -3064,35 +3081,35 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method type.</td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Order value (to be sent in cents).</td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Number of installments.</td>
 <td>Number</td>
 <td>2</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SoftDescriptor</code></td>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
 <td>Text to be printed on the carrier&rsquo;s invoice</td>
 <td>Text</td>
 <td>13</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ReturnUrl</code></td>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URL where the user is redirected after the end of payment</td>
 <td>Text</td>
 <td>1024</td>
@@ -3158,12 +3175,12 @@ that need to regularly charge for their products/services. It is widely used for
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3208,12 +3225,12 @@ that need to regularly charge for their products/services. It is widely used for
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -3303,7 +3320,7 @@ that need to regularly charge for their products/services. It is widely used for
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/capture</span></aside>
 <pre><code class="highlight json"></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture?amount=xxx&amp;serviceTaxAmount=xxx"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture?amount=xxx&amp;serviceTaxAmount=xxx"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3336,10 +3353,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
-<td>Guid</td>
+<td>Request identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
+<td>guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
@@ -3356,7 +3373,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">SeviceTaxAmount</code></td>
+<td><code class="prettyprint">ServiceTaxAmount</code></td>
 <td>Value amount of the authorization should be destined for the service charge. Obs .: This value is not added to the authorization amount.</td>
 <td>Number</td>
 <td>15</td>
@@ -3378,7 +3395,7 @@ that need to regularly charge for their products/services. It is widely used for
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3399,7 +3416,7 @@ that need to regularly charge for their products/services. It is widely used for
         <span class="o">{</span>
             <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
             <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
@@ -3446,7 +3463,7 @@ that need to regularly charge for their products/services. It is widely used for
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=xxx</span></aside>
 <pre><code class="highlight json"></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=xxx"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=xxx"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3478,18 +3495,11 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Yes</td>
-</tr>
-<tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Field Application Identifier.</td>
-<td>Guid</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
+<td>guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Amount</code></td>
@@ -3639,7 +3649,7 @@ that need to regularly charge for their products/services. It is widely used for
               <span class="o">{</span>
                   <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                  <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                 <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                 <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
              <span class="o">}</span>
          <span class="o">]</span>
      <span class="o">}</span>
@@ -3671,10 +3681,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
-<td>Guid</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
+<td>guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -3691,28 +3701,28 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method type.</td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Order value (to be sent in cents).</td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ReturnUrl</code></td>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URL retailer&rsquo;s return.</td>
 <td>Text</td>
 <td>1024</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ReturnUrl</code></td>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URL where the user is redirected after the end of payment</td>
 <td>Text</td>
 <td>1024</td>
@@ -3783,7 +3793,7 @@ that need to regularly charge for their products/services. It is widely used for
               </span><span class="p">{</span><span class="w">
                   </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                  </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+                 </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
              </span><span class="p">}</span><span class="w">
          </span><span class="p">]</span><span class="w">
      </span><span class="p">}</span><span class="w">
@@ -3819,7 +3829,7 @@ that need to regularly charge for their products/services. It is widely used for
               <span class="o">{</span>
                   <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                  <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                 <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloeCommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+                 <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
              <span class="o">}</span>
          <span class="o">]</span>
      <span class="o">}</span>
@@ -3904,7 +3914,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -3952,10 +3962,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -3972,25 +3982,25 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method type.</td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Order value (to be sent in cents).</td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
-<td>Payment Method name.</td>
+<td><code class="prettyprint">Payment.Provider</code></td>
+<td>Payment Method name/NOT REQUIRED FOR CREDIT</td>
 <td>Text</td>
 <td>15</td>
-<td>Yes</td>
+<td>&mdash;</td>
 </tr>
 </tbody></table>
 
@@ -4105,7 +4115,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -4152,10 +4162,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -4172,25 +4182,25 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method type.</td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Order value (to be sent in cents).</td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
-<td>Payment Method name.</td>
+<td><code class="prettyprint">Payment.Provider</code></td>
+<td>Payment Method name/NOT REQUIRED FOR CREDIT</td>
 <td>Text</td>
 <td>15</td>
-<td>Yes</td>
+<td>&mdash;</td>
 </tr>
 </tbody></table>
 
@@ -4205,7 +4215,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-25"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000012-8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"BarCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00091628800000157000494250100000001200656560"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DigitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00090.49420 50100.000004 12006.565605 1 62880000015700"</span><span class="p">,</span><span class="w">
@@ -4240,7 +4250,7 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>
         <span class="s2">"ExpirationDate"</span>: <span class="s2">"2014-12-25"</span>,
-        <span class="s2">"Url"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span>,
+        <span class="s2">"Url"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d"</span>,
         <span class="s2">"Number"</span>: <span class="s2">"1000000012-8"</span>,
         <span class="s2">"BarCodeNumber"</span>: <span class="s2">"00091628800000157000494250100000001200656560"</span>,
         <span class="s2">"DigitableLine"</span>: <span class="s2">"00090.49420 50100.000004 12006.565605 1 62880000015700"</span>,
@@ -4359,7 +4369,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -4413,10 +4423,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -4433,70 +4443,70 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method type.</td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Order value (to be sent in cents).</td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Payment Method’s name.</td>
 <td>Text</td>
 <td>15</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Adress</code></td>
+<td><code class="prettyprint">Payment.Adress</code></td>
 <td>Address of the Assignor.</td>
 <td>Text</td>
 <td>255</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.BoletoNumber</code></td>
+<td><code class="prettyprint">Payment.BoletoNumber</code></td>
 <td>Boleto number (&ldquo;OurNumber&rdquo;).</td>
 <td>Text</td>
 <td>50</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Assignor</code></td>
+<td><code class="prettyprint">Payment.Assignor</code></td>
 <td>Seller&rsquo;s name.</td>
 <td>Text</td>
 <td>200</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Demonstrative</code></td>
+<td><code class="prettyprint">Payment.Demonstrative</code></td>
 <td>Statement text.</td>
 <td>Text</td>
 <td>450</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.ExpirationDate</code></td>
+<td><code class="prettyprint">Payment.ExpirationDate</code></td>
 <td>Boleto Expiration date.</td>
 <td>Date</td>
 <td>10</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Identification</code></td>
+<td><code class="prettyprint">Payment.Identification</code></td>
 <td>Seller&rsquo;s ID.</td>
 <td>Text</td>
 <td>14</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Instructions</code></td>
+<td><code class="prettyprint">Payment.Instructions</code></td>
 <td>Boleto Instructions.</td>
 <td>Text</td>
 <td>450</td>
@@ -4516,7 +4526,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aceitar somente até a data de vencimento, após essa data juros de 1% dia."</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-05"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-2"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"BarCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00096629900000157000494250000000012300656560"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DigitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00090.49420 50000.000013 23006.565602 6 62990000015700"</span><span class="p">,</span><span class="w">
@@ -4555,7 +4565,7 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="o">{</span>
         <span class="s2">"Instructions"</span>: <span class="s2">"Aceitar somente até a data de vencimento, após essa data juros de 1% dia."</span>,
         <span class="s2">"ExpirationDate"</span>: <span class="s2">"2015-01-05"</span>,
-        <span class="s2">"Url"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span>,
+        <span class="s2">"Url"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/a5f3181d-c2e2-4df9-a5b4-d8f6edf6bd51"</span>,
         <span class="s2">"Number"</span>: <span class="s2">"123-2"</span>,
         <span class="s2">"BarCodeNumber"</span>: <span class="s2">"00096629900000157000494250000000012300656560"</span>,
         <span class="s2">"DigitableLine"</span>: <span class="s2">"00090.49420 50000.000013 23006.565602 6 62990000015700"</span>,
@@ -4706,7 +4716,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -4766,10 +4776,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -4786,49 +4796,49 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method type.</td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Order value (to be sent in cents).</td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Number of installments.</td>
 <td>Number</td>
 <td>2</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.SoftDescriptor</code></td>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
 <td>Text to be printed on the carrier&rsquo;s invoice</td>
 <td>Text</td>
 <td>13</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.RecurrentPayment.EndDate</code></td>
+<td><code class="prettyprint">Payment.RecurrentPayment.EndDate</code></td>
 <td>Date to end the recurrence.</td>
 <td>Text</td>
 <td>10</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.RecurrentPayment.Interval</code></td>
+<td><code class="prettyprint">Payment.RecurrentPayment.Interval</code></td>
 <td>Recurrence interval.<ul><li>Monthly (Default)</li><li>Bimonthly</li><li>Quarterly</li><li>Semiannual</li><li>Annual</li></ul></td>
 <td>Text</td>
 <td>10</td>
 <td>No</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.RecurrentPayment.AuthorizeNow</code></td>
+<td><code class="prettyprint">Payment.RecurrentPayment.AuthorizeNow</code></td>
 <td>Boolean to know if the first recurrence will be authorized or not.</td>
 <td>Boolean</td>
 <td>-</td>
@@ -5088,7 +5098,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5149,10 +5159,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5482,7 +5492,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Customer"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Customer"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5542,10 +5552,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5712,7 +5722,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="s2">"2021-01-09"</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/EndDate"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/EndDate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5784,7 +5794,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="mi">3</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5856,7 +5866,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="mi">6</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Interval"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Interval"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5891,10 +5901,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -5930,7 +5940,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="mi">16</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/RecurrencyDay"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -5965,10 +5975,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6023,10 +6033,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier of the order</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6060,7 +6070,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="s2">"2016-06-15"</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/NextPaymentDate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6095,10 +6105,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6146,7 +6156,7 @@ that need to regularly charge for their products/services. It is widely used for
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Payment"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Payment"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6195,10 +6205,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6286,7 +6296,7 @@ that need to regularly charge for their products/services. It is widely used for
 
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate</span></aside>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Deactivate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6320,10 +6330,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6348,7 +6358,7 @@ that need to regularly charge for their products/services. It is widely used for
 
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate</span></aside>
 <pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate"</span>
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Reactivate"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6382,10 +6392,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -6446,10 +6456,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
@@ -6498,12 +6508,12 @@ that need to regularly charge for their products/services. It is widely used for
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -6549,12 +6559,12 @@ that need to regularly charge for their products/services. It is widely used for
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -6606,28 +6616,28 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Type</code></td>
+<td><code class="prettyprint">Payment.Type</code></td>
 <td>Text</td>
 <td>100</td>
 <td>Yes</td>
 <td>Payment Method type.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Amount</code></td>
+<td><code class="prettyprint">Payment.Amount</code></td>
 <td>Number</td>
 <td>15</td>
 <td>Yes</td>
 <td>Order value (to be sent in cents).</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Provider</code></td>
+<td><code class="prettyprint">Payment.Provider</code></td>
 <td>Text</td>
 <td>15</td>
 <td>Yes</td>
 <td>Payment Method name.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payments.Installments</code></td>
+<td><code class="prettyprint">Payment.Installments</code></td>
 <td>Number</td>
 <td>2</td>
 <td>Yes</td>
@@ -6666,7 +6676,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Text</td>
 <td>10</td>
 <td>Yes</td>
-<td>Card issuer (Visa / Mastercard / Amex / link / Auria / JCB / Diners / Discover).</td>
+<td>Card issuer (Visa/Master/Amex/Elo/Aura/JCB/Diners/Discover).</td>
 </tr>
 </tbody></table>
 
@@ -6714,10 +6724,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
@@ -6819,10 +6829,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
@@ -6892,12 +6902,12 @@ that need to regularly charge for their products/services. It is widely used for
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -6964,12 +6974,12 @@ that need to regularly charge for their products/services. It is widely used for
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
             <span class="o">}</span>,
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://sandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
             <span class="o">}</span>
         <span class="o">]</span>
     <span class="o">}</span>
@@ -7113,10 +7123,10 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Field Application Request identifier.</td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT</td>
 <td>Guid</td>
 <td>36</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
@@ -7259,44 +7269,64 @@ that need to regularly charge for their products/services. It is widely used for
 <table><thead>
 <tr>
 <th>Code</th>
+<th>Payment Status</th>
+<th>Payment Method</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>0</td>
 <td>NotFinished</td>
+<td>All</td>
+<td>Failed to process the payment</td>
 </tr>
 <tr>
 <td>1</td>
 <td>Authorized</td>
+<td>All</td>
+<td>Suitable payment method to be captured or paid (Boleto)</td>
 </tr>
 <tr>
 <td>2</td>
 <td>PaymentConfirmed</td>
+<td>All</td>
+<td>Payment Confirmed and concluded</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Denied</td>
+<td>Credit Card and Debt/Eletronic transfer</td>
+<td></td>
 </tr>
 <tr>
 <td>10</td>
 <td>Voided</td>
+<td>All</td>
+<td>Canceled Payment</td>
 </tr>
 <tr>
 <td>11</td>
 <td>Refunded</td>
+<td>Credit Card and Debit</td>
+<td>Payment Cancelled/Reversed</td>
 </tr>
 <tr>
 <td>12</td>
 <td>Pending</td>
+<td>Credit Card and Debit/Eletronicll</td>
+<td>Payment canceled for failure processing</td>
 </tr>
 <tr>
 <td>13</td>
 <td>Aborted</td>
+<td>All</td>
+<td>Payment canceled for failure processing</td>
 </tr>
 <tr>
 <td>20</td>
 <td>Scheduled</td>
+<td>Credit card</td>
+<td>Scheduled Recurrence</td>
 </tr>
 </tbody></table>
 
@@ -7338,7 +7368,7 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td>5</td>
-<td>Coupon Code / Discount</td>
+<td>Coupon Code/Discount</td>
 <td>If the buyer is using coupon, send the coupon code</td>
 <td>String</td>
 </tr>
@@ -7622,339 +7652,942 @@ that need to regularly charge for their products/services. It is widely used for
 <tr>
 <th>Code</th>
 <th>Message</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>0</td>
+<td>Internal error</td>
+<td>Data sent exceeds the field size</td>
+</tr>
+<tr>
 <td>100</td>
 <td>RequestId is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>101</td>
 <td>MerchantId is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>102</td>
 <td>Payment Type is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>103</td>
 <td>Payment Type can only contain letters</td>
+<td>Special characters not allowed</td>
 </tr>
 <tr>
 <td>104</td>
 <td>Customer Identity is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>105</td>
 <td>Customer Name is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>106</td>
 <td>Transaction ID is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>107</td>
 <td>You must Provide CreditCard Number, Token or Alias</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>108</td>
 <td>Amount must be greater or equal to zero</td>
+<td>transaction value must be greater than &ldquo;0&rdquo;</td>
 </tr>
 <tr>
 <td>109</td>
 <td>Payment Currency is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>110</td>
 <td>Invalid Payment Currency</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>111</td>
 <td>Payment is required Country</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>112</td>
 <td>Invalid Payment Country</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>113</td>
 <td>Invalid Payment Code</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>114</td>
 <td>The provided MerchantId is not in correct format</td>
+<td>The merchantId sent is not a GUID</td>
 </tr>
 <tr>
 <td>115</td>
 <td>The provided MerchantId was not found</td>
+<td>Merchant ID does not exist or belongs to another environment (Eg: Sandbox)</td>
+</tr>
+<tr>
+<td>116</td>
+<td>The provided MerchantId is blocked</td>
+<td>locked store, contact the Cielo support</td>
 </tr>
 <tr>
 <td>117</td>
 <td>Credit Card Holder is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>118</td>
 <td>Credit Card Number is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>119</td>
 <td>At least one Payment is required</td>
+<td>Node &ldquo;Payment&rdquo; unsent</td>
 </tr>
 <tr>
 <td>120</td>
 <td>Request IP not allowed. Check your IP White List</td>
+<td>IP blocked for security reasons</td>
 </tr>
 <tr>
 <td>121</td>
 <td>Customer is required</td>
+<td>Node &ldquo;Customer&rdquo; unsent</td>
 </tr>
 <tr>
 <td>122</td>
 <td>MerchantOrderId is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>123</td>
 <td>Installments must be greater or equal to one</td>
+<td>Number of installments should be greater than 1</td>
 </tr>
 <tr>
 <td>124</td>
 <td>Credit Card is Required</td>
+<td>Sent field is empty or invalid</td>
 </tr>
 <tr>
 <td>125</td>
 <td>Credit Card Expiration Date is required</td>
+<td>Sent field is empty or invalid</td>
 </tr>
 <tr>
 <td>126</td>
 <td>Credit Card Expiration Date is invalid</td>
+<td>Sent field is empty or invalid</td>
 </tr>
 <tr>
 <td>127</td>
 <td>You must Provide CreditCard Number, Token or Alias</td>
+<td>Credit card number is required</td>
 </tr>
 <tr>
 <td>128</td>
 <td>Card Number length exceeded</td>
+<td>Number of card is greater than 16 digits</td>
 </tr>
 <tr>
 <td>129</td>
 <td>Affiliation not found</td>
+<td>payment method not tied to store or invalid Provider</td>
 </tr>
 <tr>
 <td>130</td>
 <td>Could not get Credit Card</td>
+<td>&mdash;</td>
 </tr>
 <tr>
 <td>131</td>
 <td>MerchantKey is required</td>
+<td>Field sent is blank or invalid</td>
 </tr>
 <tr>
 <td>132</td>
 <td>MerchantKey is invalid</td>
+<td>Merchantkey sent is not a valid</td>
 </tr>
 <tr>
 <td>133</td>
 <td>Provider is not supported for this Payment Type</td>
+<td>Provider sent does not exist</td>
 </tr>
 <tr>
 <td>134</td>
 <td>FingerPrint length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>135</td>
 <td>MerchantDefinedFieldValue length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>136</td>
 <td>ItemDataName length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>137</td>
 <td>ItemDataSKU length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>138</td>
 <td>PassengerDataName length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>139</td>
 <td>PassengerDataStatus length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>140</td>
 <td>PassengerDataEmail length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>141</td>
 <td>PassengerDataPhone length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>142</td>
 <td>TravelDataRoute length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>143</td>
 <td>TravelDataJourneyType length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>144</td>
 <td>TravelLegDataDestination length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>145</td>
 <td>TravelLegDataOrigin length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>146</td>
 <td>SecurityCode length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>147</td>
 <td>Street address length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>148</td>
 <td>Address Number length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>149</td>
 <td>Address Complement length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>150</td>
 <td>Address ZipCode length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>151</td>
 <td>Address City length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>152</td>
 <td>Address State length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>153</td>
 <td>Address Country length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>154</td>
 <td>District Address length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>155</td>
 <td>Customer Name length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>156</td>
 <td>Customer Identity length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>157</td>
 <td>Customer IdentityType length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>158</td>
 <td>Customer Email length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>159</td>
 <td>ExtraData Name length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>160</td>
 <td>ExtraData Value length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>161</td>
 <td>Instructions billet length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>162</td>
 <td>Demostrative billet length exceeded</td>
+<td>Data sent exceeds the field size</td>
 </tr>
 <tr>
 <td>163</td>
 <td>Return Url is required</td>
+<td>return URL is not valid - not accepted paging or extensions (Eg .php) in the return URL</td>
+</tr>
+</tbody></table>
+
+<h1 id="ref!">REF!</h1>
+
+<p>|166|AuthorizeNow is required|&mdash;|
+|167|Antifraud not configured|Antifraud not linked to the Merchant&rsquo;s registration |
+|168|Recurrent Payment not found|Recurrence not found |
+|169|Recurrent Payment is not active|Recurrence is not active. Execution paralyzed |
+|170|Cartão Protegido not configured|protected card not linked to the Merchant&rsquo;s registration|
+|171|Affiliation data not sent|Failure in processing the request - Please contact the Cielo support|
+|172|Credential Code is required|Failed validation of sent accredited|
+|173|Payment method is not enabled|Payment method not linked to the Merchant&rsquo;s registration|
+|174|Card Number is required|Sent field is empty or invalid|
+|175|EAN is required|Sent field is empty or invalid|
+|176|Payment Currency is not supported|Sent field is empty or invalid|
+|177|Card Number is invalid|Sent field is empty or invalid|
+|178|EAN is invalid|Sent field is empty or invalid|
+|179|The max number of installments allowed for recurring payment is 1|Sent field is empty or invalid|
+|180|The provided Card PaymentToken was not found|Token do Cartão protegido não encontrado|
+|181|The MerchantIdJustClick is not configured|Token blocked protected Card|
+|182|Brand is required|Card Issuer unsent|
+|183|Invalid customer bithdate|Date of birth or invalidates future|
+|184|Request could not be empty|Failure in the request format. Check code sent|
+|185|Brand is not supported by selected provider|Card issuer not supported by Cielo API|
+|186|The selected provider does not support the options provided (Capture, Authenticate, Recurrent or Installments)|Payment method does not support the command sent|
+|187|ExtraData Collection contains one or more duplicated names|&mdash;|
+|188|Avs with CPF invalid|&mdash;|
+|189|Avs with length of street exceeded|Data sent exceeds the field size|
+|190|Avs with length of number exceeded|Data sent exceeds the field size|
+|190|Avs with length of complement exceeded|Data sent exceeds the field size|
+|191|Avs with length of district exceeded|Data sent exceeds the field size|
+|192|Avs with zip code invalid|ZipCod sent is invalid|
+|193|Split Amount must be greater than zero|Value for performing split should be greater than 0|
+|194|Split Establishment is Required|SPLIT not enabled to register store|
+|195|The PlataformId is required|Platform Validated not sent|
+|196|DeliveryAddress is required|Required field not sent|
+|197|Street is required|Required field not sent|
+|198|Number is required|Required field not sent|
+|199|ZipCode is required|Required field not sent|
+|200|City is required|Required field not sent|
+|201|State is required|Required field not sent|
+|202|District is required|Required field not sent|
+|203|Cart item Name is required|Required field not sent|
+|204|Cart item Quantity is required|Required field not sent|
+|205|Cart item type is required|Required field not sent|
+|206|Cart item name length exceeded |Data sent exceeds the field size|
+|207|Cart item description length exceeded |Data sent exceeds the field size|
+|208|Cart item sku length exceeded |Data sent exceeds the field size|
+|209|Shipping addressee sku length exceeded |Data sent exceeds the field size|
+|210|Shipping data cannot be null|Required field not sent|
+|211|WalletKey is invalid|Visa Checkout data invalid|
+|212|Merchant Wallet Configuration not found|Visa Checkout not tied to merchant account|
+|213|Credit Card Number is invalid|Credit card sent is invalid|
+|214|Credit Card Holder Must Have Only Letters|Cardholder must not contain special characters|
+|215|Agency is required in Boleto Credential|Required field not sent|
+|216|Customer IP address is invalid|IP blocked for security reasons|
+|300|MerchantId was not found|&mdash;|
+|301|Request IP is not allowed|&mdash;|
+|302|Sent MerchantOrderId is duplicated|&mdash;|
+|303|Sent OrderId does not exist|&mdash;|
+|304|Customer Identity is required|&mdash;|
+|306|Merchant is blocked|&mdash;|
+|307|Transaction not found|Transaction not found or does not exist in the environment. |
+|308|Transaction not available to capture|Transaction can not be captured - Contact Cielo support |
+|309|Transaction not available to void|Transaction can not be canceled - Contact Cielo support |
+|310|Payment method doest not support this operation|Command sent not supported by the means of payment |
+|311|Refund is not enabled for this merchant|Cancellation after 24 hours not released to the merchant |
+|312|Transaction not available to refund|Recurring transaction not found or not available in the environment |
+|313|Recurrent Payment not found|&mdash;|
+|314|Invalid Integration|&mdash;|
+|315|Can not change NextRecurrency with pending payment|&mdash;|
+|316|Cannot set NextRecurrency to past date|Não é permitido alterada dada da recorrencia para uma data passada|
+|317|Invalid Recurrency Day|&mdash;|
+|318|No transaction found|&mdash;|
+|319|Smart recurrency is not enabled|Recurrence not linked to the Merchant&rsquo;s registration |
+|320|Can not Update Affiliation Because this Recurrency not Affiliation saved|&mdash;|
+|321|Can not set EndDate to before next recurrency.|&mdash;|
+|322|Zero Dollar Auth is not enabled|Zero Dollar not linked to the Merchant&rsquo;s registration |
+|323|Bin Query is not enabled|Bins consultation not linked to the Merchant&rsquo;s registration |</p>
+
+<h2 id="return-codes">Return Codes</h2>
+
+<table><thead>
+<tr>
+<th>Return Codes</th>
+<th>Definition</th>
+<th>Meaning</th>
+<th>Action</th>
+<th>Allows retry</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>00</td>
+<td>Authorized transaction</td>
+<td>Authorization approved</td>
+<td>Authorization approved</td>
+<td>no</td>
 </tr>
 <tr>
-<td>164</td>
-<td>Return Url is invalid</td>
+<td>000</td>
+<td>Authorized transaction</td>
+<td>Authorization approved</td>
+<td>Authorization approved</td>
+<td>no</td>
 </tr>
 <tr>
-<td>166</td>
-<td>AuthorizeNow is required</td>
+<td>01</td>
+<td>Unauthorized transaction - Referred by the issuing bank.</td>
+<td>Unauthorized transaction - Referred by the issuing bank.</td>
+<td>Unauthorized transaction. Contact your issuing bank.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>167</td>
-<td>Antifraud not configured</td>
+<td>02</td>
+<td>Consultation Cielo.Transação said.</td>
+<td>Unauthorized transaction. Referred to by some rule of the bank.</td>
+<td>Unauthorized transaction. Contact your issuing bank.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>168</td>
-<td>Recurrent Payment not found</td>
+<td>03</td>
+<td>Error in registering the property code in the TEF configuration file</td>
+<td>Denied transaction. Invalid establishment.</td>
+<td>Unable to process the transaction.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>169</td>
-<td>Recurrent Payment is not active</td>
+<td>04</td>
+<td>Unauthorized transaction. Card blocked by the issuing bank.</td>
+<td>Unauthorized transaction. Card blocked by the issuing bank.</td>
+<td>Unauthorized transaction. Contact your issuing bank.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>300</td>
-<td>MerchantId was not found</td>
+<td>05</td>
+<td>Unauthorized transaction. Defaulter card (Do not honor).</td>
+<td>Unauthorized transaction. Unable to process the transaction. Issues related to security, default or carrier limit.</td>
+<td>Unauthorized transaction. Contact your issuing bank.</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
 </tr>
 <tr>
-<td>301</td>
-<td>Request IP is not allowed</td>
+<td>06</td>
+<td>Unauthorized transaction. Canceled card.</td>
+<td>Unauthorized transaction. Unable to process the transaction. Card permanently canceled by the issuing bank.</td>
+<td>Unable to process the transaction. Contact your issuing bank.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>302</td>
-<td>Sent MerchantOrderId is duplicated</td>
+<td>07</td>
+<td>Denied transaction. Hold card special condition</td>
+<td>Transaction not authorized by the rules of the issuing bank.</td>
+<td>Unauthorized transaction. Contact your issuing bank</td>
+<td>no</td>
 </tr>
 <tr>
-<td>303</td>
-<td>Sent OrderId does not exist</td>
+<td>08</td>
+<td>Unauthorized transaction. CVV2 Invalid</td>
+<td>Unauthorised Transaction</td>
+<td>Unauthorised Transaction.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>304</td>
-<td>Customer Identity is required</td>
+<td>11</td>
+<td>Transaction authorized for cards issued overseas</td>
+<td>Approved authorization</td>
+<td>Authorization Approved</td>
+<td>no</td>
 </tr>
 <tr>
-<td>306</td>
-<td>Merchant is blocked</td>
+<td>12</td>
+<td>Invalid transaction, card error.</td>
+<td>Unable to process the transaction. Ask the carrier to check the card data and try again.</td>
+<td>Unable to process the transaction. Review the data and try again. If the error persists, please contact your issuing bank.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>307</td>
-<td>Transaction not found</td>
+<td>13</td>
+<td>Invalid transaction amount</td>
+<td>Unauthorised Transaction. Invalid value. Ask the carrier to review the value and try again. If the error persists, contact Cielo</td>
+<td>Transaction not authorized. Invalid value. Do the transaction again confirming the data reported. If the error persists, contact the merchant.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>308</td>
-<td>Transaction not available to capture</td>
+<td>14</td>
+<td>Invalid Card</td>
+<td>Unauthorised Transaction. Invalid card. Try using the Lhum Algorithm (Mod 10) to prevent unauthorized transactions for that reason.</td>
+<td>Unauthorised Transaction. Invalid card. Do the transaction again confirming the data reported.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>309</td>
-<td>Transaction not available to void</td>
+<td>15</td>
+<td>Bank issuer unavailable or nonexistent.</td>
+<td>Unauthorized transaction. Issuing bank not available</td>
+<td>Unable to process the transaction. Contact your issuing bank.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>310</td>
-<td>Payment method doest not support this operation</td>
+<td>19</td>
+<td>Do the transaction again or try again later.</td>
+<td>We could not process the transaction. Do the transaction again or try again later. If the error persists, contact Cielo</td>
+<td>We could not process the transaction. Do the transaction again or try again later. If the error persists contact the merchant</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
 </tr>
 <tr>
-<td>311</td>
-<td>Refund is not enabled for this merchant</td>
+<td>21</td>
+<td>Cancellation not made. Transaction not found.</td>
+<td>We could not process the cancellation. If the error persists, contact Cielo</td>
+<td>We could not process the cancellation. Try again later. If the error persists, contact the merchant.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>312</td>
-<td>Transaction not available to refund</td>
+<td>22</td>
+<td>Invalid installment. Number of invalid installments.</td>
+<td>Could not process the transaction. Number of invalid installments. If the error persists, contact Cielo</td>
+<td>We could not process the transaction. Invalid value. Do the transaction again confirming the reported data. If the error persists, contact the merchant.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>313</td>
-<td>Recurrent Payment not found</td>
+<td>23</td>
+<td>Value of the invalid provision.</td>
+<td>Unable to process the transaction. Value of the invalid provision. If the error persists, contact Cielo</td>
+<td>We could not process the transaction. Value of the invalid provision. Do the transaction again confirming the data reported. If the error persists, contact the merchant.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>314</td>
-<td>Invalid Integration</td>
+<td>24</td>
+<td>Number of invalid installments</td>
+<td>. Unable to process the transaction. Number of invalid installments. If the error persists, contact Cielo</td>
+<td>We could not process the transaction. Number of invalid installments. Do the transaction again confirming the reported data. If the error persists, contact the merchant.</td>
+<td>no</td>
 </tr>
 <tr>
-<td>315</td>
-<td>Can not change NextRecurrency with pending payment</td>
+<td>25</td>
+<td>Authorization application did not send the card number</td>
+<td>Unable to process the transaction. Authorization request did not send the card number. If the error persists, contact Cielo</td>
+<td>We could not process the transaction. Do the transaction again confirming the data reported. If the error persists, contact the merchant</td>
+<td>Yes.; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Archive temporarily unavailable.</td>
+<td>We could not process the transaction. File unavailable. If the error persists, contact Cielo</td>
+<td>We could not process the transaction.Please try again later</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Error issuing bank</td>
+<td>Unauthorised Transaction. Error in issuing bank.</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Unauthorised Transaction. Blocked because of theft</td>
+<td>Unauthorised Transaction. Blocked because of theft</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Limit Exceeded/without balance.</td>
+<td>Unauthorised Transaction. Exceeded limit/no balance.</td>
+<td>Unauthorised Transaction. Contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Card with invalid digit control.</td>
+<td>We could not process the transaction. Card digit invalid control</td>
+<td>Unauthorised Transaction. Do the transaction again confirming data.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Transaction not allowed. Invalid savings card</td>
+<td>Transaction not allowed. Invalid card savings.</td>
+<td>Could not process the transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Expired Card</td>
+<td>Unauthorised Transaction. Expired card</td>
+<td>Unauthorised Transaction. Do the transaction again confirming data.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Unauthorized transaction. Invalid password</td>
+<td>Unauthorised Transaction. Invalid password.</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Transaction not allowed for the card</td>
+<td>Unauthorized transaction. Transaction not allowed for the card.</td>
+<td>Unauthorized transaction. Contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days; Visa recommends aims recommends not retry.</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Transaction not allowed. Invalid payment option</td>
+<td>Transaction not allowed. Invalid payment option. Review if the chosen payment option is enabled in the register</td>
+<td>Unauthorised Transaction. Contact merchant.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Unauthorised Transaction. Suspected fraud</td>
+<td>Transaction not authorized. Suspected fraud</td>
+<td>Transaction not authorized. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Unauthorised Transaction</td>
+<td>Unauthorised Transaction. Try again. If the error persists, the holder should contact the issuing bank.</td>
+<td>We could not process the transaction. Try again later. If the error persists, please contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Visa issuing bank available</td>
+<td>Unauthorised Transaction. Visa issuing bank available</td>
+<td>Unauthorised Transaction. Try again. If the error persists, please contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Unauthorised Transaction. Restricted card to domestic use</td>
+<td>Unauthorized transaction. Restricted card to domestic use</td>
+<td>Unauthorised Transaction.Contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Unauthorised Transaction. Security breach</td>
+<td>Transaction unauthorized. Security breach.</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Unauthorised Transaction. Value below the minimum required by the issuing bank.</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>Unauthorised Transaction. Value below the minimum required by the issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Unauthorised Transaction. Exceeded the number of transactions for the card.</td>
+<td>Transaction not authorized. Exceeded the number of transactions for the card.</td>
+<td>Transaction not authorized.Contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Unauthorised Transaction. Limit Exceeded</td>
+<td>Unauthorised Transaction. Exceeded limit/no balance.</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Password locked. Exceeded card attempts.</td>
+<td>Transaction not authorized</td>
+<td>Your transaction may not be processed. Contact the Issuer of your card.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>76</td>
+<td>Cancellation not made. Issuing bank did not locate the original transaction</td>
+<td>Cancellation not made. Issuing bank did not locate the original transaction</td>
+<td>Cancellation not made. Contact the merchant.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Cancellation not made. It was located the original transaction</td>
+<td>Cancellation not made. It was located the original transaction</td>
+<td>Cancellation not made. Contact the merchant</td>
+<td>No</td>
+</tr>
+<tr>
+<td>78</td>
+<td>Unauthorised Transaction. Blocked card, first use</td>
+<td>Unauthorised Transaction. Card locked first use. Ask your carrier to unlock the card directly with your issuing bank.</td>
+<td>Unauthorised Transaction. Contact your issuing bank and request the unlock card.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Unauthorised Transaction. Divergence on the date of transaction/payment</td>
+<td>Unauthorised Transaction. Transaction date or date of the first invalid payment</td>
+<td>Unauthorised Transaction. Do the transaction again confirming data.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Unauthorised Transaction. Invalid Card</td>
+<td>Unauthorised Transaction. Invalid Card. Ask the carrier to review the data and try again.</td>
+<td>Unauthorised Transaction. Do the transaction again confirming the data. If the error persists, please contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>83</td>
+<td>Unauthorised Transaction. Error in control passwords</td>
+<td>Unauthorized transaction. Error in control passwords</td>
+<td>Unauthorized transaction. Do the transaction again confirming the data. If the error persists, please contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>97</td>
+<td>Not amount allowed for this transaction.</td>
+<td>Unauthorised Transaction. Not allowed value for this transaction.</td>
+<td>Unauthorised Transaction. Not allowed value for this transaction.</td>
+<td>no</td>
+</tr>
+<tr>
+<td>89</td>
+<td>Error in the transaction.</td>
+<td>Transaction not authorized. Error in the transaction. The carrier must try again and if the error persists, contact the issuing bank.</td>
+<td>Unauthorised Transaction. Error in the transaction. Please try again and if the error persists, please contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>91</td>
+<td>Unauthorised Transaction. Issuing bank temporarily unavailable.</td>
+<td>Unauthorised Transaction. Issuing bank temporarily unavailable.</td>
+<td>Unauthorised Transaction. Issuing bank temporarily unavailable.Contact your issuing bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>92</td>
+<td>Unauthorised Transaction. Exceeded communication time</td>
+<td>Unauthorised Transaction. Exceeded communication time</td>
+<td>Unauthorised Transaction. Temporarily unavailable communication. Contact the merchant</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>93</td>
+<td>Unauthorised Transaction. Rule violation - Possible error in the register</td>
+<td>Unauthorised Transaction.Rule violation - Possible error in the record</td>
+<td>Your transaction can not be processed. Contact the merchant.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>96</td>
+<td>Processing failed.</td>
+<td>Unable to process the transaction. Failure Cielo system. If the error persists, contact Cielo</td>
+<td>Your transaction may not be processed, please try again later. If the error persists, contact the merchant</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>98</td>
+<td>System/unavailable communication</td>
+<td>Unauthorised Transaction. Without communication system transmitter. If general, check SITEF, GATEWAY and/or connectivity</td>
+<td>Your Transaction can not be processed, please try again later. If the error persists, contact the merchant</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>99</td>
+<td>System/unavailable communication</td>
+<td>Unauthorised Transaction. Without communication system transmitter. Try later. Can be error in SITEF, please check</td>
+<td>Your transaction may not be processed, please try again later. If the error persists, contact the merchant</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>999</td>
+<td>System/unavailable communication</td>
+<td>Unauthorised Transaction. Without communication system transmitter. Try later. Can be error in SITEF, please check</td>
+<td>Your transaction may not be processed, please try again later. If the error persists, contact the merchant</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>AA</td>
+<td>Timeout</td>
+<td>Timeout in communication with the issuing bank. East carrier to try again, if the error persists is necessary that the carrier contact your issuing bank.</td>
+<td>Time Exceeded in its communication with the issuing bank, try again later. If the error persists, contact your bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>AE</td>
+<td>Try Later</td>
+<td>Timeout in communication with the issuing bank. Guide the carrier to try again, if the error persists is necessary that the carrier contact your issuing bank.</td>
+<td>Time Exceeded in its communication with the issuing bank, please try again later. If the error persists, contact your bank</td>
+<td>Yes; Cielo recommends only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>BM</td>
+<td>Invalid Card</td>
+<td>Unauthorised Transaction. Invalid card. Try using the Lhum Algorithm (Mod 10) to prevent unauthorized transactions for that reason.</td>
+<td>Unauthorised Transaction. Invalid card. Do the transaction again confirming the reported data.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BV</td>
+<td>Expired Card</td>
+<td>Unauthorised Transaction. Overdue card</td>
+<td>Unauthorised Transaction. Check the data and try again.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>DA</td>
+<td>Establishment Invalid 03</td>
+<td>Unauthorised Transaction. Failure to communicate with the issuing bank. Guide the carrier to contact the issuing bank.</td>
+<td>Unauthorised Transaction. Contact the issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>FA</td>
+<td>Denied</td>
+<td>Unauthorised Transaction Amex</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>FC</td>
+<td>Call Amex</td>
+<td>Unauthorized transaction. Guide the carrier to contact the issuing bank.</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>FD</td>
+<td>Transaction denied. Retain special status card</td>
+<td>Transaction not authorized by the rules of the issuing bank.</td>
+<td>Unauthorised Transaction. Contact your issuing bank</td>
+<td>no</td>
+</tr>
+<tr>
+<td>FE</td>
+<td>Unauthorised Transaction. Divergence on the date of transaction / payment</td>
+<td>. Unauthorised Transaction. Transaction date or date of the first invalid payment</td>
+<td>. Unauthorised Transaction. Redo the transaction confirming data.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>FF</td>
+<td>Cancellation OK</td>
+<td>Cancellation Transaction authorized successfully</td>
+<td>Cancellation Transaction authorized successfully</td>
+<td>no</td>
+</tr>
+<tr>
+<td>FG</td>
+<td>CALL AMEX</td>
+<td>Unauthorised Transaction. Orient the carrier to contact AmEx Call Center</td>
+<td>Unauthorised Transaction. Contact AmEx Call Center.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>FG</td>
+<td>Call 08007285090</td>
+<td>Unauthorised Transaction. Guide the carrier to contact AmEx Call Center AmEx</td>
+<td>Unauthorised Transaction. Contact AmEx Call Center</td>
+<td>No</td>
+</tr>
+<tr>
+<td>JB</td>
+<td>Transaction value Invalid</td>
+<td>Unauthorised Transaction. Invalid value. Ask the carrier to review the value and try again. If the error persists, contact Cielo</td>
+<td>Transaction not authorized. Invalid value. Redo the transaction confirming the reported data. If the error persists, contact the merchant.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>KA</td>
+<td>Transaction not allowed. Failure to validate the data.</td>
+<td>Transaction not allowed. There was a failure to validate the data. Ask the carrier to review the data and try again. If the error persists, check the communication between virtual and Cielo shop</td>
+<td>Transaction not allowed. There was a failure to validate the data. review the reported data and try again. If the error persists contact the Online Shop.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>KB</td>
+<td>Transaction not allowed. Selected incorrente option</td>
+<td>Transaction not allowed. Selected the wrong option. Ask the carrier to review the data and try again. If the error persists must be verified communication between shop and Cielo</td>
+<td>Transaction not allowed. Selected the wrong option. Try again. If the error persists contact the Online Shop.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>KE</td>
+<td>Unauthorised Transaction. Failure to validate the data.</td>
+<td>Transaction unauthorized. Failure to validate the data. selected option is not enabled. Check the options available to the carrier.</td>
+<td>Unauthorized transaction. Failure to validate the data. selected option is not enabled. Contact the shop.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>N7</td>
+<td>Unauthorised Transaction. Invalid security code.</td>
+<td>Unauthorised Transaction. Security code is invalid. Orient the carrier correct the data and try again.</td>
+<td>Unauthorised Transaction. Review the data and enter again.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>R1</td>
+<td>Unauthorised Transaction. defaulter card (Do not honor)</td>
+<td>Unauthorised Transaction. Unable to process the transaction. Issues related to security, default or carrier limit</td>
+<td>Unauthorised Transaction. Contact your issuing bank.</td>
+<td>Only 4 times in 16 days.</td>
+</tr>
+<tr>
+<td>U3</td>
+<td>Transaction not allowed. Failure to validate the data.</td>
+<td>Transaction not allowed. There was a failure to validate the data. Ask the carrier to review the data and try again. If the error persists, check the communication between virtual and Cielo shop</td>
+<td>Transaction not allowed. There was a failure to validate the data. review the reported data and try again. If the error persists contact the Online Shop.</td>
+<td>No</td>
 </tr>
 </tbody></table>
 

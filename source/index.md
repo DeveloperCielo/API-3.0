@@ -294,13 +294,14 @@ Para criar uma transação que utilizará cartão de crédito, é necessário en
 {
    "MerchantOrderId":"2014111703",
    "Customer":{
-      "Name":"Comprador Teste"
+      "Name":"Comprador crédito simples"
    },
    "Payment":{
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
-     "CreditCard":{
+     "SoftDescriptor":"123456789ABCD",
+	 "CreditCard":{
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
          "ExpirationDate":"12/2021",
@@ -322,12 +323,13 @@ curl
 {  
    "MerchantOrderId":"2014111703",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador crédito simples"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
+	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
@@ -346,7 +348,7 @@ curl
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
@@ -363,7 +365,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador crédito simples"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -418,7 +420,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador crédito simples"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -471,7 +473,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+|`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -490,7 +492,7 @@ Para criar uma transação que utilizará cartão de crédito, é necessário en
 {  
    "MerchantOrderId":"2014111701",
    "Customer":{  
-      "Name":"Comprador Teste",
+      "Name":"Comprador crédito completo",
       "Email":"compradorteste@teste.com",
       "Birthdate":"1991-01-02",
       "Address":{  
@@ -522,7 +524,8 @@ Para criar uma transação que utilizará cartão de crédito, é necessário en
      "Interest":"ByMerchant",
      "Capture":true,
      "Authenticate":false,
-     "CreditCard":{  
+     "SoftDescriptor":"123456789ABCD",
+	 "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
          "ExpirationDate":"12/2021",
@@ -545,7 +548,7 @@ curl
 {  
    "MerchantOrderId":"2014111701",
    "Customer":{  
-      "Name":"Comprador Teste",
+      "Name":"Comprador crédito completo",
       "Identity":"11225468954",
       "IdentityType":"CPF",
       "Email":"compradorteste@teste.com",
@@ -576,8 +579,8 @@ curl
      "Installments":1,
      "Interest":"ByMerchant",
      "Capture":true,
-     "Authenticate":false,,
-     "SoftDescriptor":"tst",
+     "Authenticate":false,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
@@ -597,7 +600,7 @@ curl
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Customer.Identity`|Texto |14 |Não|Número do RG, CPF ou CNPJ do Cliente.| 
 |`Customer.IdentityType`|Texto|255|Não|Tipo de documento de identificação do comprador (CFP/CNPJ).|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
@@ -639,7 +642,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador crédito completo",
         "Identity":"11225468954",
         "IdentityType":"CPF",
         "Email": "compradorteste@teste.com",
@@ -679,7 +682,7 @@ curl
         "ProofOfSale": "674532",
         "Tid": "0305020554239",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
         "Amount": 15700,
@@ -712,7 +715,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador crédito completo",
         "Identity":"11225468954",
         "IdentityType":"CPF",
         "Email": "compradorteste@teste.com",
@@ -752,7 +755,7 @@ curl
         "ProofOfSale": "674532",
         "Tid": "0305020554239",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
         "Amount": 15700,
@@ -783,7 +786,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+|`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -805,7 +808,7 @@ Para criar uma transação com autenticação que utilizará cartão de crédito
 	"MerchantOrderId":"2014111903",
 	"Customer":
 	{
-		"Name":"Comprador Teste"
+		"Name":"Comprador crédito autenticação"
 	},
 	"Payment":
 	{
@@ -813,6 +816,7 @@ Para criar uma transação com autenticação que utilizará cartão de crédito
 	    "Amount":15700,
 	    "Installments":1,
 	    "Authenticate":true,
+		"SoftDescriptor":"123456789ABCD",
 	    "CreditCard":
 	    {
 		    "CardNumber":"1234123412341231",
@@ -836,7 +840,7 @@ curl
 {  
    "MerchantOrderId":"2014111903",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador crédito autenticação"
    },
    "Payment":{  
       "Type":"CreditCard",
@@ -844,7 +848,7 @@ curl
       "Installments":1,
       "Authenticate":true,
       "ReturnUrl":"http://www.cielo.com.br",
-      "SoftDescriptor":"tst",
+      "SoftDescriptor":"123456789ABCD",
       "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
@@ -863,7 +867,7 @@ curl
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
@@ -882,7 +886,7 @@ curl
 	"MerchantOrderId":"2014111903",
 	"Customer":
 	{
-		"Name":"Comprador Teste"
+		"Name":"Comprador crédito autenticação"
 	},
 	"Payment":
 	{
@@ -901,7 +905,7 @@ curl
 		},
 		"AuthenticationUrl":"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe",
         "Tid": "1006993069257E521001",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
 		"PaymentId":"f2dbd5df-c2ee-482f-ab1b-7fee039108c0",
 		"Type":"CreditCard",
 		"Amount":15700,
@@ -930,7 +934,7 @@ curl
 	"MerchantOrderId":"2014111903",
 	"Customer":
 	{
-		"Name":"Comprador Teste"
+		"Name":"Comprador crédito autenticação"
 	},
 	"Payment":
 	{
@@ -949,7 +953,7 @@ curl
 		},
 		"AuthenticationUrl":"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe",
         "Tid": "1006993069257E521001",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
 		"PaymentId":"f2dbd5df-c2ee-482f-ab1b-7fee039108c0",
 		"Type":"CreditCard",
 		"Amount":15700,
@@ -975,7 +979,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+|`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -994,7 +998,7 @@ Para criar uma venda com cartão de crédito e analise de fraude, é necessário
 {  
    "MerchantOrderId":"201411173454307",
    "Customer":{  
-      "Name":"Comprador accept",
+      "Name":"Comprador crédito AF",
       "Email":"compradorteste@live.com",
       "Birthdate":"1991-01-02",
       "Address":{  
@@ -1023,6 +1027,7 @@ Para criar uma venda com cartão de crédito e analise de fraude, é necessário
      "Country":"BRA",
      "ServiceTaxAmount":0,
      "Installments":1,
+	 "SoftDescriptor":"123456789ABCD",
      "Interest":"ByMerchant",
      "Capture":false,
      "Authenticate":false,
@@ -1105,7 +1110,7 @@ curl
 {  
    "MerchantOrderId":"201411173454307",
    "Customer":{  
-      "Name":"Comprador accept",
+      "Name":"Comprador crédito AF",
       "Email":"compradorteste@live.com",
       "Birthdate":"1991-01-02",
       "Address":{  
@@ -1133,10 +1138,11 @@ curl
      "Country":"BRA",
      "ServiceTaxAmount":0,
      "Installments":1,
+	 "SoftDescriptor":"123456789ABCD",
      "Interest":"ByMerchant",
      "Capture":false,
-     "Authenticate":false,,
-     "SoftDescriptor":"tst",
+     "Authenticate":false,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"4024007197692931",
          "Holder":"Teste accept",
@@ -1212,7 +1218,7 @@ curl
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
 |`Customer.Birthdate`|Date|10|Não|Data de nascimento do Comprador.|
 |`Customer.Address.Street`|Texto|255|Não|Endereço do Comprador.|
@@ -1291,7 +1297,7 @@ curl
 {
     "MerchantOrderId": "201411173454307",
     "Customer": {
-        "Name": "Comprador accept",
+        "Name": "Comprador crédito AF",
         "Email": "compradorteste@live.com",
         "Birthdate": "1991-01-02",
         "Address": {
@@ -1329,7 +1335,7 @@ curl
         "ProofOfSale": "492115",
         "Tid": "10069930692606D31001",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "FraudAnalysis": {
             "Sequence": "AnalyseFirst",
             "SequenceCriteria": "Always",
@@ -1445,7 +1451,7 @@ curl
     {
     "MerchantOrderId": "201411173454307",
     "Customer": {
-        "Name": "Comprador accept",
+        "Name": "Comprador crédito AF",
         "Email": "compradorteste@live.com",
         "Birthdate": "1991-01-02",
         "Address": {
@@ -1483,7 +1489,7 @@ curl
         "ProofOfSale": "492115",
         "Tid": "10069930692606D31001",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "FraudAnalysis": {
             "Sequence": "AnalyseFirst",
             "SequenceCriteria": "Always",
@@ -1597,7 +1603,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+|`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Id`|Indentificação da Transação no Antifraud.|Texto|300|Texto alfanumérico|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -1628,13 +1634,13 @@ Para criar uma venda de cartão de crédito com token do cartão protegido, é n
 {  
    "MerchantOrderId":"2014111706",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador CardToken"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":100,
-     "Installments":1,,
-     "SoftDescriptor":"tst",
+     "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
          "SecurityCode":"262",
@@ -1655,13 +1661,13 @@ curl
 {  
    "MerchantOrderId":"2014111706",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador CardToken"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":100,
-     "Installments":1,,
-     "SoftDescriptor":"tst",
+     "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
          "SecurityCode":"262",
@@ -1678,11 +1684,11 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto | 40 | Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto | 255 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. | Texto | 100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 |Sim|
 |`Payment.Installments`|Número de Parcelas.| Número | 2 |Sim|
-|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador| Texto | 13 |Não|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
 |`Payment.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim quando Authenticate = true|
 |`CreditCard.CardToken`|Token de identificação do Cartão. |Guid |36 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
@@ -1694,7 +1700,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador CardToken"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -1710,7 +1716,7 @@ curl
         "ProofOfSale": "5036294",
         "Tid": "0310025036294",
         "AuthorizationCode": "319285",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
         "Type": "CreditCard",
         "Amount": 100,
@@ -1746,7 +1752,7 @@ curl
         {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador CardToken"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -1762,7 +1768,7 @@ curl
         "ProofOfSale": "5036294",
         "Tid": "0310025036294",
         "AuthorizationCode": "319285",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
         "Type": "CreditCard",
         "Amount": 100,
@@ -1796,7 +1802,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -1954,6 +1960,8 @@ curl
 |`ReturnCode`|Código de retorno da Adquirência. |Texto |32 |Texto alfanumérico 
 |`ReturnMessage`|Mensagem de retorno da Adquirência. |Texto |512 |Texto alfanumérico 
 
+
+
 # Pagamentos com Cartão de Débito
 
 ## Criando uma venda simplificada
@@ -1968,7 +1976,7 @@ Para criar uma venda que utilizará cartão de débito, é necessário fazer um�
 {  
    "MerchantOrderId":"2014121201",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador Cartão de débito"
    },
    "Payment":{  
      "Type":"DebitCard",
@@ -1996,7 +2004,7 @@ curl
 {  
    "MerchantOrderId":"2014121201",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador Cartão de débito"
    },
    "Payment":{  
      "Type":"DebitCard",
@@ -2020,7 +2028,7 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento.|Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.ReturnUrl`|Url de retorno do lojista.|Texto |1024 |Sim|
@@ -2037,7 +2045,7 @@ curl
 {
     "MerchantOrderId": "2014121201",
     "Customer": {
-        "Name": "Paulo Henrique"
+        "Name": "Comprador Cartão de débito"
     },
     "Payment": {
         "DebitCard": {
@@ -2075,7 +2083,7 @@ curl
 {
     "MerchantOrderId": "2014121201",
     "Customer": {
-        "Name": "Paulo Henrique"
+        "Name": "Comprador Cartão de débito"
     },
     "Payment": {
         "DebitCard": {
@@ -2130,7 +2138,7 @@ Para criar uma venda de transferência eletronica, é necessário fazer um POST
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Transferência Eletronica"
     },
     "Payment":
     {  
@@ -2154,7 +2162,7 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Transferência Eletronica"
     },
     "Payment":
     {  
@@ -2173,7 +2181,7 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
@@ -2184,7 +2192,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Transferência Eletronica",
     },
     "Payment": {
         "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
@@ -2214,7 +2222,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Transferência Eletronica",
     },
     "Payment": {
         "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
@@ -2258,7 +2266,7 @@ Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST 
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto"
     },
     "Payment":
     {  
@@ -2281,7 +2289,7 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto"
     },
     "Payment":
     {  
@@ -2299,7 +2307,7 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
@@ -2311,7 +2319,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Boleto",
         "Address": {}
     },
     "Payment":
@@ -2348,7 +2356,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Boleto",
         "Address": {}
     },
     "Payment":
@@ -2401,7 +2409,7 @@ Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST 
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto Completo"
     },
     "Payment":
     {  
@@ -2431,7 +2439,7 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto Completo"
     },
     "Payment":
     {  
@@ -2456,7 +2464,7 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
@@ -2475,7 +2483,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Boleto Completo",
         "Address": {}
     },
     "Payment":
@@ -2516,7 +2524,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Boleto Completo",
         "Address": {}
     },
     "Payment":
@@ -2577,13 +2585,13 @@ Para criar uma venda recorrente cuja a primeira recorrência é autorizada com a
 {  
    "MerchantOrderId":"2014113245231706",
    "Customer":{  
-      "Name":"Comprador accept"
+      "Name":"Comprador rec programada"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"true",
        "EndDate":"2019-12-01",
@@ -2612,13 +2620,13 @@ curl
     {
    "MerchantOrderId":"2014113245231706",
    "Customer":{  
-      "Name":"Comprador accept"
+      "Name":"Comprador rec programada"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"true",
        "EndDate":"2019-12-01",
@@ -2643,11 +2651,11 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
-|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador|Texto |13 |Não|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
 |`Payment.RecurrentPayment.EndDate`|Data para termino da recorrência.|Texto |10 |Não|
 |`Payment.RecurrentPayment.Interval`|Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |Texto |10 |Não|
 |`Payment.RecurrentPayment.AuthorizeNow`|Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.|Booleano |--- |Sim|
@@ -2663,7 +2671,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec programada"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -2682,7 +2690,7 @@ curl
         "ProofOfSale": "3827556",
         "Tid": "0504043827555",
         "AuthorizationCode": "149867",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
         "Type": "CreditCard",
         "Amount": 1500,
@@ -2733,7 +2741,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec programada"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -2752,7 +2760,7 @@ curl
         "ProofOfSale": "3827556",
         "Tid": "0504043827555",
         "AuthorizationCode": "149867",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
         "Type": "CreditCard",
         "Amount": 1500,
@@ -2815,13 +2823,13 @@ Para criar uma venda recorrente cuja a primeira recorrência não será autoriza
 {  
    "MerchantOrderId":"2014113245231706",
    "Customer":{  
-      "Name":"Comprador accept"
+      "Name":"Comprador rec programada"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"false",
        "EndDate":"2019-12-01",
@@ -2851,13 +2859,13 @@ curl
 {  
    "MerchantOrderId":"2014113245231706",
    "Customer":{  
-      "Name":"Comprador accept"
+      "Name":"Comprador rec programada"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"false",
        "EndDate":"2019-12-01",
@@ -2883,7 +2891,7 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0 |Texto |40|Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50|Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Customer.Email`|Email do Comprador. |Texto |255 |Não|
 |`Customer.Birthdate`|Data de nascimento do Comprador. |Date |10 |Não|
 |`Customer.Identity`|Número do RG, CPF ou CNPJ do Cliente. |Texto |14 |Não|
@@ -2910,7 +2918,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec programada"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -2926,7 +2934,7 @@ curl
             "SaveCard": false,
             "Brand": "Visa"
         },
-        "SoftDescriptor": "tst",
+        "SoftDescriptor":"123456789ABCD",
         "Type": "CreditCard",
         "Amount": 1500,
         "Currency": "BRL",
@@ -2957,7 +2965,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec programada"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -2973,7 +2981,7 @@ curl
             "SaveCard": false,
             "Brand": "Visa"
         },
-        "SoftDescriptor": "tst",
+        "SoftDescriptor":"123456789ABCD",
         "Type": "CreditCard",
         "Amount": 1500,
         "Currency": "BRL",
@@ -3008,7 +3016,7 @@ curl
 |`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. |Booleano |--- |true ou false |
 
 
-## Autorizando uma recorrência própria/ não programada
+## Autorizando uma recorrência própria / não programada
 
 Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo. 
 
@@ -3023,13 +3031,13 @@ Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serã
 {  
    "MerchantOrderId":"2014113245231706",
    "Customer":{  
-      "Name":"Comprador accept"
+      "Name":"Comprador rec propria"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
 	 "Recurrent": true,
      "CreditCard":{  
          "CardNumber":"1234123412341231",
@@ -3054,13 +3062,13 @@ curl
     {
    "MerchantOrderId":"2014113245231706",
    "Customer":{  
-      "Name":"Comprador accept"
+      "Name":"Comprador rec propria"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":1500,
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "Recurrent": true,
      "CreditCard":{  
          "CardNumber":"1234123412341231",
@@ -3081,11 +3089,11 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
-|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador|Texto |13 |Não|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
 |`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean |5 |Não|
 |`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
@@ -3099,7 +3107,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec propria"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -3118,7 +3126,7 @@ curl
         "ProofOfSale": "3827556",
         "Tid": "0504043827555",
         "AuthorizationCode": "149867",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
         "Type": "CreditCard",
         "Amount": 1500,
@@ -3164,7 +3172,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec propria"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -3183,7 +3191,7 @@ curl
         "ProofOfSale": "3827556",
         "Tid": "0504043827555",
         "AuthorizationCode": "149867",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
         "Type": "CreditCard",
         "Amount": 1500,
@@ -3387,7 +3395,7 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255|Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Customer.Email`|Email do Comprador. |Texto |255|Não|
 |`Customer.Birthdate`|Data de nascimento do Comprador. |Date |10 |Não|
 |`Customer.Identity`|Número do RG, CPF ou CNPJ do Cliente. |Texto |14 |Não|
@@ -3679,7 +3687,7 @@ Para alterar os dados de pagamento da Recorrência, basta fazer um Put conform
    "Installments":3,
    "Country":"USA",
    "Currency":"BRL",
-   "SoftDescriptor":"test",
+   "SoftDescriptor":"123456789ABCD",
    "CreditCard":{  
       "Brand":"Master",
       "Holder":"Teset card",
@@ -3703,7 +3711,7 @@ curl
    "Installments":3,
    "Country":"USA",
    "Currency":"BRL",
-   "SoftDescriptor":"test",
+   "SoftDescriptor":"123456789ABCD",
    "CreditCard":{  
       "Brand":"Master",
       "Holder":"Teset card",
@@ -3723,7 +3731,7 @@ curl
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
-|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador|Texto |13|Não|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
 |`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16|Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25|Não|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
@@ -3805,6 +3813,253 @@ HTTP Status 200
 ```
 
 Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
+
+
+
+## Renova Facil
+
+O uso desta funcionalidade permite a substituição automática de um cartão vencido . 
+Dessa forma, quando uma transação com marcação de recorrente for submetida para a API e a Cielo identificar que o cartão utilizado foi substituído, sua autorização será negada e serão retornados os dados do novo cartão conforme exemplo.
+
+<aside class="notice"><strong>Atenção:</strong> Necessário solicitar a habilitação desta funcionalidade no cadastro  </aside>
+
+### Requisição
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador Renova facil"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
+     "RecurrentPayment":{
+       "AuthorizeNow":"true",
+       "EndDate":"2019-12-01",
+       "Interval":"SemiAnnual"
+     },
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"03/2019",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+```
+
+```shell
+curl
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+    {
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador Renova facil"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
+     "RecurrentPayment":{
+       "AuthorizeNow":"true",
+       "EndDate":"2019-12-01",
+       "Interval":"SemiAnnual"
+     },
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"03/2019",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no API 3.0. |Guid |6 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
+|`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
+|`Payment.RecurrentPayment.EndDate`|Data para termino da recorrência.|Texto |10 |Não|
+|`Payment.RecurrentPayment.Interval`|Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |Texto |10 |Não|
+|`Payment.RecurrentPayment.AuthorizeNow`|Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.|Booleano |--- |Sim|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
+|`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
+|`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
+|`CreditCard.Brand`|Bandeira do cartão.|Texto |10 |Sim|
+
+### Resposta
+
+```json
+{
+  "MerchantOrderId": "2014113245231706",
+  "Customer": {
+    "Name": "Comprador  Renova facil"
+  },
+  "Payment": {
+    "ServiceTaxAmount": 0,
+    "Installments": 1,
+    "Interest": 0,
+    "Capture": false,
+    "Authenticate": false,
+    "Recurrent": false,
+    "CreditCard": {
+      "CardNumber": "123412******1231",
+      "Holder": "Teste Holder",
+      "ExpirationDate": "03/2019",
+      "SaveCard": false,
+      "Brand": "Visa"
+    },
+    "Tid": "10447480685P4611AQ9B",
+    "ProofOfSale": "087001",
+    "SoftDescriptor": "123456789ABCD",
+    "Provider": "Cielo",
+    "Eci": "0",
+	"NewCard": {
+       "CardNumber": "40000000000000000",
+       "ExpirationDate": "10/2020",
+       "SaveCard": false,
+        "Brand": "Visa"
+    },
+    "VelocityAnalysis": {
+      "Id": "94f06657-c715-45d2-a563-63f7dbb19e08",
+      "ResultMessage": "Accept",
+      "Score": 0
+    },
+    "PaymentId": "94f06657-c715-45d2-a563-63f7dbb19e08",
+    "Type": "CreditCard",
+    "Amount": 1500,
+    "ReceivedDate": "2016-12-26 14:14:21",
+    "Currency": "BRL",
+    "Country": "BRA",
+    "ReturnCode": "KA",
+    "ReturnMessage": "Autorizacao negada",
+    "Status": 3,
+    "RecurrentPayment": {
+      "ReasonCode": 7,
+      "ReasonMessage": "Denied",
+      "EndDate": "2019-12-01",
+      "Interval": 6,
+      "AuthorizeNow": true
+    },
+    "Links": [
+      {
+        "Method": "GET",
+        "Rel": "self",
+        "Href": "https://apiquery.cieloecommerce.cielo.com.br/1/sales/94f06657-c715-45d2-a563-63f7dbb19e08"
+      }
+    ]
+  }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+  "MerchantOrderId": "2014113245231706",
+  "Customer": {
+    "Name": "Comprador  Renova facil"
+  },
+  "Payment": {
+    "ServiceTaxAmount": 0,
+    "Installments": 1,
+    "Interest": 0,
+    "Capture": false,
+    "Authenticate": false,
+    "Recurrent": false,
+    "CreditCard": {
+      "CardNumber": "123412******1231",
+      "Holder": "Teste Holder",
+      "ExpirationDate": "03/2019",
+      "SaveCard": false,
+      "Brand": "Visa"
+    },
+    "Tid": "10447480685P4611AQ9B",
+    "ProofOfSale": "087001",
+    "SoftDescriptor": "123456789ABCD",
+    "Provider": "Cielo",
+    "Eci": "0",
+	"NewCard": {
+       "CardNumber": "40000000000000000",
+       "ExpirationDate": "10/2020",
+       "SaveCard": false,
+        "Brand": "Visa"
+    },
+    "VelocityAnalysis": {
+      "Id": "94f06657-c715-45d2-a563-63f7dbb19e08",
+      "ResultMessage": "Accept",
+      "Score": 0
+    },
+    "PaymentId": "94f06657-c715-45d2-a563-63f7dbb19e08",
+    "Type": "CreditCard",
+    "Amount": 1500,
+    "ReceivedDate": "2016-12-26 14:14:21",
+    "Currency": "BRL",
+    "Country": "BRA",
+    "ReturnCode": "KA",
+    "ReturnMessage": "Autorizacao negada",
+    "Status": 3,
+    "RecurrentPayment": {
+      "ReasonCode": 7,
+      "ReasonMessage": "Denied",
+      "EndDate": "2019-12-01",
+      "Interval": 6,
+      "AuthorizeNow": true
+    },
+    "Links": [
+      {
+        "Method": "GET",
+        "Rel": "self",
+        "Href": "https://apiquery.cieloecommerce.cielo.com.br/1/sales/94f06657-c715-45d2-a563-63f7dbb19e08"
+      }
+    ]
+  }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Formato|
+|-----------|---------|----|-------|-------|
+|`RecurrentPaymentId`|Campo Identificador da próxima recorrência. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`EndDate`|Data do fim da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`Interval`|Intervalo entre as recorrência. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
+|`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. |Booleano |--- |true ou false |
+
+
+
+
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`NewCard.CardNumber`|Novo número do Cartão do Comprador.|Texto |16 |Sim|
+|`NewCard.ExpirationDate`|nova data de validade do cartão.|Texto |7 |Sim|
+|`NewCard.Brand`|Bandeira do cartão.|Texto |10 |Sim|
+|`NewCard.SaveCard`|Identifica se o cartão gerou Cardtoken durante a transação|Booleano |--- |Sim|
 
 # Consultando Vendas
 
@@ -3945,7 +4200,7 @@ curl
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Status`|Status da Transação.|Byte|---|2|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
@@ -4201,7 +4456,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Id`|Indentificação da Transação no Antifraud.|Texto|300|Texto alfanumérico|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -4422,6 +4677,7 @@ Para salvar um cartão, criando seu token, basta enviar uma requisição padrão
      "Interest":"ByMerchant",
      "Capture":true,
      "Authenticate":false,
+	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
@@ -4475,8 +4731,8 @@ curl
      "Installments":1,
      "Interest":"ByMerchant",
      "Capture":true,
-     "Authenticate":false,,
-     "SoftDescriptor":"tst",
+     "Authenticate":false,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
@@ -4496,7 +4752,7 @@ curl
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Customer.Identity`|Texto |14 |Não|Número do RG, CPF ou CNPJ do Cliente.| 
 |`Customer.IdentityType`|Texto|255|Não|Tipo de documento de identificação do comprador (CFP/CNPJ).|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
@@ -4579,7 +4835,7 @@ curl
         "ProofOfSale": "674532",
         "Tid": "0305020554239",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
         "Amount": 15700,
@@ -4653,7 +4909,7 @@ curl
         "ProofOfSale": "674532",
         "Tid": "0305020554239",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
         "Amount": 15700,
@@ -4684,7 +4940,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -4710,7 +4966,7 @@ Para criar uma venda de cartão de crédito com token do cartão protegido, é n
      "Type":"CreditCard",
      "Amount":100,
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
          "SecurityCode":"262",
@@ -4736,8 +4992,8 @@ curl
    "Payment":{  
      "Type":"CreditCard",
      "Amount":100,
-     "Installments":1,,
-     "SoftDescriptor":"tst",
+     "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
          "SecurityCode":"262",
@@ -4754,11 +5010,11 @@ curl
 |`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto | 40 | Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto | 255 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. | Texto | 100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 |Sim|
 |`Payment.Installments`|Número de Parcelas.| Número | 2 |Sim|
-|`Payment.SoftDescriptor`|Texto que será impresso na fatura do portador| Texto | 13 |Não|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
 |`Payment.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim quando Authenticate = true|
 |`CreditCard.CardToken`|Token de identificação do Cartão. |Guid |36 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
@@ -4786,7 +5042,7 @@ curl
         "ProofOfSale": "5036294",
         "Tid": "0310025036294",
         "AuthorizationCode": "319285",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
         "Type": "CreditCard",
         "Amount": 100,
@@ -4838,7 +5094,7 @@ curl
         "ProofOfSale": "5036294",
         "Tid": "0310025036294",
         "AuthorizationCode": "319285",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
         "Type": "CreditCard",
         "Amount": 100,
@@ -4872,7 +5128,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -4905,6 +5161,7 @@ A API 3.0 suporta duas carteiras de pagamento: VisaCheckout e Masterpass.
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
+	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
 			},
@@ -4934,6 +5191,7 @@ curl
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
+	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
 			},
@@ -4952,7 +5210,7 @@ curl
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
@@ -5059,7 +5317,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|
@@ -5085,6 +5343,7 @@ curl
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
+	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
 			},
@@ -5115,6 +5374,7 @@ curl
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
+	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
 			},
@@ -5134,7 +5394,7 @@ curl
 |`MerchantKey`|Texto|40|Sim|Chave Publica para Autenticação Dupla na Cielo.|
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
-|`Customer.Name`|Texto|255|Sim|Nome do Comprador.|
+|`Customer.Name`|Texto|255|Não|Nome do Comprador.|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
@@ -5253,7 +5513,7 @@ curl
 |`ProofOfSale`|Número da autorização, identico ao NSU.|Texto|20|Texto alfanumérico|
 |`Tid`|Id da transação na adquirente.|Texto|40|Texto alfanumérico|
 |`AuthorizationCode`|Código de autorização.|Texto|300|Texto alfanumérico|
-|`SoftDescriptor`|Texto que será impresso na fatura do portador|Texto|13|Texto alfanumérico|
+`SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais|Texto|13|Texto alfanumérico|
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Eletronic Commerce Indicator. Representa o quão segura é uma transação.|Texto|2|Exemplos: 7|
 |`Status`|Status da Transação.|Byte|---|2|

@@ -449,12 +449,13 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111703"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito simples"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
@@ -475,12 +476,13 @@
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111703"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito simples"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:15700,
      <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4551870000000183"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
@@ -534,7 +536,7 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -606,7 +608,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador crédito simples"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -659,7 +661,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador crédito simples"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -739,7 +741,7 @@
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -791,7 +793,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111701"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito completo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Email"</span><span class="p">:</span><span class="s2">"compradorteste@teste.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Address"</span><span class="p">:{</span><span class="w">  
@@ -823,6 +825,7 @@
      </span><span class="s2">"Interest"</span><span class="p">:</span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Capture"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
          </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
@@ -844,7 +847,7 @@
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111701"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>,
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito completo"</span>,
       <span class="s2">"Identity"</span>:<span class="s2">"11225468954"</span>,
       <span class="s2">"IdentityType"</span>:<span class="s2">"CPF"</span>,
       <span class="s2">"Email"</span>:<span class="s2">"compradorteste@teste.com"</span>,
@@ -875,8 +878,8 @@
      <span class="s2">"Installments"</span>:1,
      <span class="s2">"Interest"</span>:<span class="s2">"ByMerchant"</span>,
      <span class="s2">"Capture"</span>:true,
-     <span class="s2">"Authenticate"</span>:false,,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"Authenticate"</span>:false,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4551870000000183"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
@@ -931,7 +934,7 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -1178,7 +1181,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador crédito completo"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Identity"</span><span class="p">:</span><span class="s2">"11225468954"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IdentityType"</span><span class="p">:</span><span class="s2">"CPF"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compradorteste@teste.com"</span><span class="p">,</span><span class="w">
@@ -1218,7 +1221,7 @@
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"674532"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0305020554239"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15700</span><span class="p">,</span><span class="w">
@@ -1249,7 +1252,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador crédito completo"</span>,
         <span class="s2">"Identity"</span>:<span class="s2">"11225468954"</span>,
         <span class="s2">"IdentityType"</span>:<span class="s2">"CPF"</span>,
         <span class="s2">"Email"</span>: <span class="s2">"compradorteste@teste.com"</span>,
@@ -1289,7 +1292,7 @@
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"674532"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0305020554239"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"123456"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 15700,
@@ -1347,7 +1350,7 @@
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -1402,7 +1405,7 @@
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111903"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito autenticação"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1410,6 +1413,7 @@
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
@@ -1431,7 +1435,7 @@
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111903"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito autenticação"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
       <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
@@ -1439,7 +1443,7 @@
       <span class="s2">"Installments"</span>:1,
       <span class="s2">"Authenticate"</span>:true,
       <span class="s2">"ReturnUrl"</span>:<span class="s2">"http://www.cielo.com.br"</span>,
-      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
       <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4551870000000183"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
@@ -1493,7 +1497,7 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -1573,7 +1577,7 @@
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111903"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito autenticação"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1592,7 +1596,7 @@
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"AuthenticationUrl"</span><span class="p">:</span><span class="s2">"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1006993069257E521001"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="s2">"f2dbd5df-c2ee-482f-ab1b-7fee039108c0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
@@ -1619,7 +1623,7 @@
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111903"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito autenticação"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>
@@ -1638,7 +1642,7 @@
         <span class="o">}</span>,
         <span class="s2">"AuthenticationUrl"</span>:<span class="s2">"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"1006993069257E521001"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>:<span class="s2">"f2dbd5df-c2ee-482f-ab1b-7fee039108c0"</span>,
         <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>:15700,
@@ -1691,7 +1695,7 @@
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -1743,7 +1747,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"201411173454307"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador accept"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito AF"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Email"</span><span class="p">:</span><span class="s2">"compradorteste@live.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Address"</span><span class="p">:{</span><span class="w">  
@@ -1772,6 +1776,7 @@
      </span><span class="s2">"Country"</span><span class="p">:</span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Interest"</span><span class="p">:</span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Capture"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1852,7 +1857,7 @@
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"201411173454307"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador accept"</span>,
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito AF"</span>,
       <span class="s2">"Email"</span>:<span class="s2">"compradorteste@live.com"</span>,
       <span class="s2">"Birthdate"</span>:<span class="s2">"1991-01-02"</span>,
       <span class="s2">"Address"</span>:<span class="o">{</span>  
@@ -1880,10 +1885,11 @@
      <span class="s2">"Country"</span>:<span class="s2">"BRA"</span>,
      <span class="s2">"ServiceTaxAmount"</span>:0,
      <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"Interest"</span>:<span class="s2">"ByMerchant"</span>,
      <span class="s2">"Capture"</span>:false,
-     <span class="s2">"Authenticate"</span>:false,,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"Authenticate"</span>:false,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4024007197692931"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste accept"</span>,
@@ -1994,7 +2000,7 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -2500,7 +2506,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201411173454307"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador crédito AF"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compradorteste@live.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2538,7 +2544,7 @@
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"492115"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10069930692606D31001"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FraudAnalysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AnalyseFirst"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"SequenceCriteria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
@@ -2652,7 +2658,7 @@
     <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"201411173454307"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador accept"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador crédito AF"</span>,
         <span class="s2">"Email"</span>: <span class="s2">"compradorteste@live.com"</span>,
         <span class="s2">"Birthdate"</span>: <span class="s2">"1991-01-02"</span>,
         <span class="s2">"Address"</span>: <span class="o">{</span>
@@ -2690,7 +2696,7 @@
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"492115"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"10069930692606D31001"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"123456"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"FraudAnalysis"</span>: <span class="o">{</span>
             <span class="s2">"Sequence"</span>: <span class="s2">"AnalyseFirst"</span>,
             <span class="s2">"SequenceCriteria"</span>: <span class="s2">"Always"</span>,
@@ -2831,7 +2837,7 @@
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -2967,13 +2973,13 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador CardToken"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="err">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
          </span><span class="s2">"CardToken"</span><span class="p">:</span><span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"262"</span><span class="p">,</span><span class="w">
@@ -2992,13 +2998,13 @@
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador CardToken"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:100,
-     <span class="s2">"Installments"</span>:1,,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardToken"</span>:<span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span>,
          <span class="s2">"SecurityCode"</span>:<span class="s2">"262"</span>,
@@ -3050,8 +3056,8 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
 <td>Texto </td>
-<td> 255 </td>
-<td>Sim</td>
+<td>255</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -3076,9 +3082,9 @@
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
-<td> Texto </td>
-<td> 13 </td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
+<td>Texto</td>
+<td>13</td>
 <td>Não</td>
 </tr>
 <tr>
@@ -3115,7 +3121,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador CardToken"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3131,7 +3137,7 @@
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5036294"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0310025036294"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"319285"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
@@ -3165,7 +3171,7 @@
         <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador CardToken"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -3181,7 +3187,7 @@
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"5036294"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0310025036294"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"319285"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 100,
@@ -3242,7 +3248,7 @@
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -3565,7 +3571,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014121201"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Cartão de débito"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"DebitCard"</span><span class="p">,</span><span class="w">
@@ -3591,7 +3597,7 @@
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014121201"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador Cartão de débito"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"DebitCard"</span>,
@@ -3650,8 +3656,8 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
 <td>Texto </td>
-<td>255 </td>
-<td>Sim</td>
+<td>255</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -3722,7 +3728,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014121201"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paulo Henrique"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Cartão de débito"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"DebitCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3758,7 +3764,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014121201"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Paulo Henrique"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Cartão de débito"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"DebitCard"</span>: <span class="o">{</span>
@@ -3855,7 +3861,7 @@
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Transferência Eletronica"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
@@ -3877,7 +3883,7 @@
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>  
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador Transferência Eletronica"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>  
@@ -3931,8 +3937,8 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
 <td>Texto </td>
-<td>255 </td>
-<td>Sim</td>
+<td>255</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -3961,7 +3967,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Transferência Eletronica"</span><span class="p">,</span><span class="w">
     </span><span class="err">}</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}"</span><span class="p">,</span><span class="w">
@@ -3989,7 +3995,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Transferência Eletronica"</span>,
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"Url"</span>: <span class="s2">"https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}"</span>,
@@ -4057,7 +4063,7 @@
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Boleto"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
@@ -4078,7 +4084,7 @@
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>  
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador Boleto"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>  
@@ -4132,7 +4138,7 @@
 <td>Nome do Comprador. </td>
 <td>Texto </td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -4162,7 +4168,7 @@
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Boleto"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
@@ -4197,7 +4203,7 @@
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Boleto"</span>,
         <span class="s2">"Address"</span>: <span class="o">{}</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
@@ -4304,7 +4310,7 @@
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Boleto Completo"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
@@ -4332,7 +4338,7 @@
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>  
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador Boleto Completo"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>  
@@ -4393,7 +4399,7 @@
 <td>Nome do Comprador. </td>
 <td>Texto </td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -4472,7 +4478,7 @@
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Boleto Completo"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
@@ -4511,7 +4517,7 @@
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Boleto Completo"</span>,
         <span class="s2">"Address"</span>: <span class="o">{}</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
@@ -4644,13 +4650,13 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador accept"</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador rec programada"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"RecurrentPayment"</span><span class="p">:{</span><span class="w">
        </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
@@ -4677,13 +4683,13 @@
     <span class="o">{</span>
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014113245231706"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador accept"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador rec programada"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:1500,
      <span class="s2">"Installments"</span>:1,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"RecurrentPayment"</span>:<span class="o">{</span>
        <span class="s2">"AuthorizeNow"</span>:<span class="s2">"true"</span>,
        <span class="s2">"EndDate"</span>:<span class="s2">"2019-12-01"</span>,
@@ -4743,8 +4749,8 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
 <td>Texto </td>
-<td>255 </td>
-<td>Sim</td>
+<td>255</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -4769,9 +4775,9 @@
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
-<td>Texto </td>
-<td>13 </td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
+<td>Texto</td>
+<td>13</td>
 <td>Não</td>
 </tr>
 <tr>
@@ -4836,7 +4842,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador rec programada"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4855,7 +4861,7 @@
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3827556"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0504043827555"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"149867"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"737a8d9a-88fe-4f74-931f-acf81149f4a0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
@@ -4904,7 +4910,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014113245231706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador accept"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador rec programada"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -4923,7 +4929,7 @@
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"3827556"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0504043827555"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"149867"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"737a8d9a-88fe-4f74-931f-acf81149f4a0"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 1500,
@@ -5022,13 +5028,13 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador accept"</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador rec programada"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"RecurrentPayment"</span><span class="p">:{</span><span class="w">
        </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
@@ -5056,13 +5062,13 @@
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014113245231706"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador accept"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador rec programada"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:1500,
      <span class="s2">"Installments"</span>:1,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"RecurrentPayment"</span>:<span class="o">{</span>
        <span class="s2">"AuthorizeNow"</span>:<span class="s2">"false"</span>,
        <span class="s2">"EndDate"</span>:<span class="s2">"2019-12-01"</span>,
@@ -5123,8 +5129,8 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
 <td>Texto </td>
-<td>255 </td>
-<td>Sim</td>
+<td>255</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
@@ -5265,7 +5271,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador rec programada"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5281,7 +5287,7 @@
             </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
@@ -5310,7 +5316,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014113245231706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador accept"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador rec programada"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -5326,7 +5332,7 @@
             <span class="s2">"SaveCard"</span>: <span class="nb">false</span>,
             <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>
         <span class="o">}</span>,
-        <span class="s2">"SoftDescriptor"</span>: <span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 1500,
         <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
@@ -5404,7 +5410,7 @@
 </tr>
 </tbody></table>
 
-<h2 id="autorizando-uma-recorrência-própria/-não-programada">Autorizando uma recorrência própria/ não programada</h2>
+<h2 id="autorizando-uma-recorrência-própria-/-não-programada">Autorizando uma recorrência própria / não programada</h2>
 
 <p>Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo. </p>
 
@@ -5416,13 +5422,13 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador accept"</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador rec propria"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Recurrent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
          </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
@@ -5445,13 +5451,13 @@
     <span class="o">{</span>
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014113245231706"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador accept"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador rec propria"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:1500,
      <span class="s2">"Installments"</span>:1,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"Recurrent"</span>: <span class="nb">true</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"1234123412341231"</span>,
@@ -5507,8 +5513,8 @@
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
 <td>Texto </td>
-<td>255 </td>
-<td>Sim</td>
+<td>255</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -5533,9 +5539,9 @@
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
-<td>Texto </td>
-<td>13 </td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
+<td>Texto</td>
+<td>13</td>
 <td>Não</td>
 </tr>
 <tr>
@@ -5586,7 +5592,7 @@
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador rec propria"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5605,7 +5611,7 @@
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3827556"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0504043827555"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"149867"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"737a8d9a-88fe-4f74-931f-acf81149f4a0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
@@ -5649,7 +5655,7 @@
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014113245231706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador accept"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador rec propria"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -5668,7 +5674,7 @@
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"3827556"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0504043827555"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"149867"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"737a8d9a-88fe-4f74-931f-acf81149f4a0"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 1500,
@@ -5967,7 +5973,7 @@
 <td>Nome do Comprador. </td>
 <td>Texto </td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
@@ -6569,7 +6575,7 @@ entPaymentId}/Amount"</span>
    </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Currency"</span><span class="p">:</span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
       </span><span class="s2">"Brand"</span><span class="p">:</span><span class="s2">"Master"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teset card"</span><span class="p">,</span><span class="w">
@@ -6591,7 +6597,7 @@ entPaymentId}/Amount"</span>
    <span class="s2">"Installments"</span>:3,
    <span class="s2">"Country"</span>:<span class="s2">"USA"</span>,
    <span class="s2">"Currency"</span>:<span class="s2">"BRL"</span>,
-   <span class="s2">"SoftDescriptor"</span>:<span class="s2">"test"</span>,
+   <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
    <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
       <span class="s2">"Brand"</span>:<span class="s2">"Master"</span>,
       <span class="s2">"Holder"</span>:<span class="s2">"Teset card"</span>,
@@ -6662,8 +6668,8 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
-<td>Texto </td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
+<td>Texto</td>
 <td>13</td>
 <td>Não</td>
 </tr>
@@ -6833,6 +6839,419 @@ entPaymentId}/Amount"</span>
 </code></pre>
 
 <p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
+
+<h2 id="renova-facil">Renova Facil</h2>
+
+<p>O uso desta funcionalidade permite a substituição automática de um cartão vencido . 
+Dessa forma, quando uma transação com marcação de recorrente for submetida para a API e a Cielo identificar que o cartão utilizado foi substituído, sua autorização será negada e serão retornados os dados do novo cartão conforme exemplo.</p>
+
+<aside class="notice"><strong>Atenção:</strong> Necessário solicitar a habilitação desta funcionalidade no cadastro  </aside>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">  
+   </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Renova facil"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
+     </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"RecurrentPayment"</span><span class="p">:{</span><span class="w">
+       </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"Interval"</span><span class="p">:</span><span class="s2">"SemiAnnual"</span><span class="w">
+     </span><span class="p">},</span><span class="w">
+     </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
+         </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="s2">"03/2019"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"262"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"Brand"</span><span class="p">:</span><span class="s2">"Visa"</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">curl
+--request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+    <span class="o">{</span>
+   <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014113245231706"</span>,
+   <span class="s2">"Customer"</span>:<span class="o">{</span>  
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador Renova facil"</span>
+   <span class="o">}</span>,
+   <span class="s2">"Payment"</span>:<span class="o">{</span>  
+     <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
+     <span class="s2">"Amount"</span>:1500,
+     <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
+     <span class="s2">"RecurrentPayment"</span>:<span class="o">{</span>
+       <span class="s2">"AuthorizeNow"</span>:<span class="s2">"true"</span>,
+       <span class="s2">"EndDate"</span>:<span class="s2">"2019-12-01"</span>,
+       <span class="s2">"Interval"</span>:<span class="s2">"SemiAnnual"</span>
+     <span class="o">}</span>,
+     <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
+         <span class="s2">"CardNumber"</span>:<span class="s2">"1234123412341231"</span>,
+         <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
+         <span class="s2">"ExpirationDate"</span>:<span class="s2">"03/2019"</span>,
+         <span class="s2">"SecurityCode"</span>:<span class="s2">"262"</span>,
+         <span class="s2">"SaveCard"</span>:<span class="s2">"false"</span>,
+         <span class="s2">"Brand"</span>:<span class="s2">"Visa"</span>
+     <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja no API 3.0. </td>
+<td>Guid </td>
+<td>6 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto </td>
+<td>40 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantOrderId</code></td>
+<td>Numero de identificação do Pedido. </td>
+<td>Texto </td>
+<td>50 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Name</code></td>
+<td>Nome do Comprador. </td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Type</code></td>
+<td>Tipo do Meio de Pagamento. </td>
+<td>Texto </td>
+<td>100 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Amount</code></td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+<td>Número </td>
+<td>15 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Installments</code></td>
+<td>Número de Parcelas.</td>
+<td>Número </td>
+<td>2 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
+<td>Texto</td>
+<td>13</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.RecurrentPayment.EndDate</code></td>
+<td>Data para termino da recorrência.</td>
+<td>Texto </td>
+<td>10 </td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.RecurrentPayment.Interval</code></td>
+<td>Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+<td>Texto </td>
+<td>10 </td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.RecurrentPayment.AuthorizeNow</code></td>
+<td>Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.</td>
+<td>Booleano </td>
+<td>&mdash; </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.CardNumber</code></td>
+<td>Número do Cartão do Comprador.</td>
+<td>Texto </td>
+<td>16 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Holder</code></td>
+<td>Nome do Comprador impresso no cartão.</td>
+<td>Texto </td>
+<td>25 </td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
+<td>Data de validade impresso no cartão.</td>
+<td>Texto </td>
+<td>7 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.SecurityCode</code></td>
+<td>Código de segurança impresso no verso do cartão.</td>
+<td>Texto </td>
+<td>4 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Brand</code></td>
+<td>Bandeira do cartão.</td>
+<td>Texto </td>
+<td>10 </td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador  Renova facil"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Interest"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Capture"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Recurrent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123412******1231"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Holder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03/2019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10447480685P4611AQ9B"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"087001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cielo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Eci"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"NewCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40000000000000000"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"ExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10/2020"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"VelocityAnalysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94f06657-c715-45d2-a563-63f7dbb19e08"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ResultMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accept"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94f06657-c715-45d2-a563-63f7dbb19e08"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReceivedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-26 14:14:21"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Autorizacao negada"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"RecurrentPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denied"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquery.cieloecommerce.cielo.com.br/1/sales/94f06657-c715-45d2-a563-63f7dbb19e08"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+  <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014113245231706"</span>,
+  <span class="s2">"Customer"</span>: <span class="o">{</span>
+    <span class="s2">"Name"</span>: <span class="s2">"Comprador  Renova facil"</span>
+  <span class="o">}</span>,
+  <span class="s2">"Payment"</span>: <span class="o">{</span>
+    <span class="s2">"ServiceTaxAmount"</span>: 0,
+    <span class="s2">"Installments"</span>: 1,
+    <span class="s2">"Interest"</span>: 0,
+    <span class="s2">"Capture"</span>: <span class="nb">false</span>,
+    <span class="s2">"Authenticate"</span>: <span class="nb">false</span>,
+    <span class="s2">"Recurrent"</span>: <span class="nb">false</span>,
+    <span class="s2">"CreditCard"</span>: <span class="o">{</span>
+      <span class="s2">"CardNumber"</span>: <span class="s2">"123412******1231"</span>,
+      <span class="s2">"Holder"</span>: <span class="s2">"Teste Holder"</span>,
+      <span class="s2">"ExpirationDate"</span>: <span class="s2">"03/2019"</span>,
+      <span class="s2">"SaveCard"</span>: <span class="nb">false</span>,
+      <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>
+    <span class="o">}</span>,
+    <span class="s2">"Tid"</span>: <span class="s2">"10447480685P4611AQ9B"</span>,
+    <span class="s2">"ProofOfSale"</span>: <span class="s2">"087001"</span>,
+    <span class="s2">"SoftDescriptor"</span>: <span class="s2">"123456789ABCD"</span>,
+    <span class="s2">"Provider"</span>: <span class="s2">"Cielo"</span>,
+    <span class="s2">"Eci"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"NewCard"</span>: <span class="o">{</span>
+       <span class="s2">"CardNumber"</span>: <span class="s2">"40000000000000000"</span>,
+       <span class="s2">"ExpirationDate"</span>: <span class="s2">"10/2020"</span>,
+       <span class="s2">"SaveCard"</span>: <span class="nb">false</span>,
+        <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>
+    <span class="o">}</span>,
+    <span class="s2">"VelocityAnalysis"</span>: <span class="o">{</span>
+      <span class="s2">"Id"</span>: <span class="s2">"94f06657-c715-45d2-a563-63f7dbb19e08"</span>,
+      <span class="s2">"ResultMessage"</span>: <span class="s2">"Accept"</span>,
+      <span class="s2">"Score"</span>: 0
+    <span class="o">}</span>,
+    <span class="s2">"PaymentId"</span>: <span class="s2">"94f06657-c715-45d2-a563-63f7dbb19e08"</span>,
+    <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
+    <span class="s2">"Amount"</span>: 1500,
+    <span class="s2">"ReceivedDate"</span>: <span class="s2">"2016-12-26 14:14:21"</span>,
+    <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
+    <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>,
+    <span class="s2">"ReturnCode"</span>: <span class="s2">"KA"</span>,
+    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Autorizacao negada"</span>,
+    <span class="s2">"Status"</span>: 3,
+    <span class="s2">"RecurrentPayment"</span>: <span class="o">{</span>
+      <span class="s2">"ReasonCode"</span>: 7,
+      <span class="s2">"ReasonMessage"</span>: <span class="s2">"Denied"</span>,
+      <span class="s2">"EndDate"</span>: <span class="s2">"2019-12-01"</span>,
+      <span class="s2">"Interval"</span>: 6,
+      <span class="s2">"AuthorizeNow"</span>: <span class="nb">true</span>
+    <span class="o">}</span>,
+    <span class="s2">"Links"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+        <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+        <span class="s2">"Href"</span>: <span class="s2">"https://apiquery.cieloecommerce.cielo.com.br/1/sales/94f06657-c715-45d2-a563-63f7dbb19e08"</span>
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">RecurrentPaymentId</code></td>
+<td>Campo Identificador da próxima recorrência. </td>
+<td>Guid </td>
+<td>36 </td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+</tr>
+<tr>
+<td><code class="prettyprint">NextRecurrency</code></td>
+<td>Data da próxima recorrência. </td>
+<td>Texto </td>
+<td>7 </td>
+<td>05/2019 (MM/YYYY) </td>
+</tr>
+<tr>
+<td><code class="prettyprint">EndDate</code></td>
+<td>Data do fim da recorrência. </td>
+<td>Texto </td>
+<td>7 </td>
+<td>05/2019 (MM/YYYY) </td>
+</tr>
+<tr>
+<td><code class="prettyprint">Interval</code></td>
+<td>Intervalo entre as recorrência. </td>
+<td>Texto </td>
+<td>10 </td>
+<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+</tr>
+<tr>
+<td><code class="prettyprint">AuthorizeNow</code></td>
+<td>Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. </td>
+<td>Booleano </td>
+<td>&mdash; </td>
+<td>true ou false </td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">NewCard.CardNumber</code></td>
+<td>Novo número do Cartão do Comprador.</td>
+<td>Texto </td>
+<td>16 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">NewCard.ExpirationDate</code></td>
+<td>nova data de validade do cartão.</td>
+<td>Texto </td>
+<td>7 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">NewCard.Brand</code></td>
+<td>Bandeira do cartão.</td>
+<td>Texto </td>
+<td>10 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">NewCard.SaveCard</code></td>
+<td>Identifica se o cartão gerou Cardtoken durante a transação</td>
+<td>Booleano </td>
+<td>&mdash; </td>
+<td>Sim</td>
+</tr>
+</tbody></table>
 
 <h1 id="consultando-vendas">Consultando Vendas</h1>
 
@@ -7034,7 +7453,7 @@ entPaymentId}/Amount"</span>
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -7440,7 +7859,7 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -7817,6 +8236,7 @@ entPaymentId}/Amount"</span>
      </span><span class="s2">"Interest"</span><span class="p">:</span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Capture"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
          </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
@@ -7869,8 +8289,8 @@ entPaymentId}/Amount"</span>
      <span class="s2">"Installments"</span>:1,
      <span class="s2">"Interest"</span>:<span class="s2">"ByMerchant"</span>,
      <span class="s2">"Capture"</span>:true,
-     <span class="s2">"Authenticate"</span>:false,,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"Authenticate"</span>:false,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4551870000000183"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
@@ -7925,7 +8345,7 @@ entPaymentId}/Amount"</span>
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -8213,7 +8633,7 @@ entPaymentId}/Amount"</span>
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"674532"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0305020554239"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15700</span><span class="p">,</span><span class="w">
@@ -8285,7 +8705,7 @@ entPaymentId}/Amount"</span>
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"674532"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0305020554239"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"123456"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 15700,
@@ -8343,7 +8763,7 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -8408,7 +8828,7 @@ entPaymentId}/Amount"</span>
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
          </span><span class="s2">"CardToken"</span><span class="p">:</span><span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"262"</span><span class="p">,</span><span class="w">
@@ -8432,8 +8852,8 @@ entPaymentId}/Amount"</span>
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:100,
-     <span class="s2">"Installments"</span>:1,,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardToken"</span>:<span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span>,
          <span class="s2">"SecurityCode"</span>:<span class="s2">"262"</span>,
@@ -8485,8 +8905,8 @@ entPaymentId}/Amount"</span>
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
 <td>Texto </td>
-<td> 255 </td>
-<td>Sim</td>
+<td>255</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -8511,9 +8931,9 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
-<td> Texto </td>
-<td> 13 </td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
+<td>Texto</td>
+<td>13</td>
 <td>Não</td>
 </tr>
 <tr>
@@ -8566,7 +8986,7 @@ entPaymentId}/Amount"</span>
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5036294"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0310025036294"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"319285"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
@@ -8616,7 +9036,7 @@ entPaymentId}/Amount"</span>
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"5036294"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0310025036294"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"319285"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 100,
@@ -8677,7 +9097,7 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -8742,6 +9162,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
             </span><span class="err">}</span><span class="p">,</span><span class="w">
@@ -8769,6 +9190,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:15700,
      <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>
          <span class="s2">"SecurityCode"</span>:<span class="s2">"123"</span>,
             <span class="o">}</span>,
@@ -8822,7 +9244,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -8990,7 +9412,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>
@@ -9060,6 +9482,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
             </span><span class="err">}</span><span class="p">,</span><span class="w">
@@ -9088,6 +9511,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:15700,
      <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>
          <span class="s2">"SecurityCode"</span>:<span class="s2">"123"</span>,
             <span class="o">}</span>,
@@ -9142,7 +9566,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Texto</td>
 <td>255</td>
-<td>Sim</td>
+<td>Não</td>
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
@@ -9327,7 +9751,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura do portador</td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
 <td>Texto</td>
 <td>13</td>
 <td>Texto alfanumérico</td>

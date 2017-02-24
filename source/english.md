@@ -844,7 +844,7 @@ curl
 {  
    "MerchantOrderId":"2014111903",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador crédito autenticação"
    },
    "Payment":{  
       "Type":"CreditCard",
@@ -852,7 +852,7 @@ curl
       "Installments":1,
       "Authenticate":true,
       "ReturnUrl":"http://www.cielo.com.br",
-      "SoftDescriptor":"tst",
+      "SoftDescriptor":"123456789ABCD",
       "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
@@ -871,7 +871,7 @@ curl
 |`MerchantKey`|Text|40|Yes|Public key for Cielo Double Authentication.|
 |`RequestId`|Guid|36|No|Request identifier used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
-|`Customer.Name`|Text|255|Yes|Buyer's name.|
+|`Customer.Name`|Text|255|No|Buyer's name.|
 |`Payment.Type`|Text|100|Yes|Payment Method type.|
 |`Payment.Amount`|Number|15|Yes|Order value (to be sent in cents).|
 |`Payment.Provider`|Text|15|---|Payment Method name/NOT REQUIRED FOR CREDIT.|
@@ -890,7 +890,7 @@ curl
 	"MerchantOrderId":"2014111903",
 	"Customer":
 	{
-		"Name":"Comprador Teste"
+		"Name":"Comprador crédito autenticação"
 	},
 	"Payment":
 	{
@@ -909,7 +909,7 @@ curl
 		},
 		"AuthenticationUrl":"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe",
         "Tid": "1006993069257E521001",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
 		"PaymentId":"f2dbd5df-c2ee-482f-ab1b-7fee039108c0",
 		"Type":"CreditCard",
 		"Amount":15700,
@@ -940,7 +940,7 @@ curl
 	"MerchantOrderId":"2014111903",
 	"Customer":
 	{
-		"Name":"Comprador Teste"
+		"Name":"Comprador crédito autenticação"
 	},
 	"Payment":
 	{
@@ -959,7 +959,7 @@ curl
 		},
 		"AuthenticationUrl":"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe",
         "AcquirerTransactionId": "1006993069257E521001",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
 		"PaymentId":"f2dbd5df-c2ee-482f-ab1b-7fee039108c0",
 		"Type":"CreditCard",
 		"Amount":15700,
@@ -987,7 +987,7 @@ curl
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
 |`AcquirerTransactionId`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
-|`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
+|`SoftDescriptor`|Text to be printed on the bank carrier's invoice - Available only for VISA/MASTER - does not allow special characters|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Electronic Commerce Indicator. It is how safe is a transaction.|Text|2|Examples: 7|
 |`ReasonCode`|Reason code of operation.|Byte|-|Number from 1 to 99|
@@ -1010,7 +1010,7 @@ To create a sale with credit card and fraud analysis, it must send a request usi
 {  
    "MerchantOrderId":"201411173454307",
    "Customer":{  
-      "Name":"Comprador accept",
+      "Name":"Comprador crédito AF",
       "Email":"compradorteste@live.com",
       "Birthdate":"1991-01-02",
       "Address":{  
@@ -1040,6 +1040,7 @@ To create a sale with credit card and fraud analysis, it must send a request usi
      "Provider":"Simulado",
      "ServiceTaxAmount":0,
      "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
      "Interest":"ByMerchant",
      "Capture":false,
      "Authenticate":false,
@@ -1122,7 +1123,7 @@ curl
 {  
    "MerchantOrderId":"201411173454307",
    "Customer":{  
-      "Name":"Comprador accept",
+      "Name":"Comprador crédito AF",
       "Email":"compradorteste@live.com",
       "Birthdate":"1991-01-02",
       "Address":{  
@@ -1150,10 +1151,11 @@ curl
      "Country":"BRA",
      "ServiceTaxAmount":0,
      "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
      "Interest":"ByMerchant",
      "Capture":false,
-     "Authenticate":false,,
-     "SoftDescriptor":"tst",
+     "Authenticate":false,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"4024007197692931",
          "Holder":"Teste accept",
@@ -1229,7 +1231,7 @@ curl
 |`MerchantKey`|Text|40|Yes|Public key for Cielo Double Authentication.|
 |`RequestId`|Guid|36|No|Request the identifier used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
-|`Customer.Name`|Text|255|Yes|Buyer's name.|
+|`Customer.Name`|Text|255|No|Buyer's name.|
 |`Customer.Email`|Text|255|No|Email Buyer.|
 |`Customer.Birthdate`|Date|10|No|Purchaser’s date of birth.|
 |`Customer.Address.Street`|Text|255|No|Purchaser's address.|
@@ -1308,7 +1310,7 @@ curl
 {
     "MerchantOrderId": "201411173454307",
     "Customer": {
-        "Name": "Comprador accept",
+        "Name": "Comprador crédito AF",
         "Email": "compradorteste@live.com",
         "Birthdate": "1991-01-02",
         "Address": {
@@ -1346,7 +1348,7 @@ curl
         "ProofOfSale": "492115",
         "AcquirerTransactionId": "10069930692606D31001",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "FraudAnalysis": {
             "Sequence": "AnalyseFirst",
             "SequenceCriteria": "Always",
@@ -1617,7 +1619,7 @@ curl
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
 |`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
-|`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
+|`SoftDescriptor`|Text to be printed on the bank carrier's invoice - Available only for VISA / MASTER - does not allow special characters|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Id`|IDENTIFICATION Transaction in Antifraud.|Text|300|Alphanumeric text|
 |`Status`|Transaction Status.|Byte|-|2|
@@ -1648,13 +1650,13 @@ To create a credit card sale with the secure token card, you must do a POST to t
  {  
     "MerchantOrderId":"2014111706",
     "Customer":{  
-       "Name":"Comprador Teste"
+       "Name":"Comprador CardToken"
     },
     "Payment":{  
       "Type":"CreditCard",
       "Amount":100,
-      "Installments":1,,
-      "SoftDescriptor":"tst",
+      "Installments":1,
+      "SoftDescriptor":"123456789ABCD",
       "CreditCard":{  
           "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
           "SecurityCode":"262",
@@ -1675,13 +1677,13 @@ To create a credit card sale with the secure token card, you must do a POST to t
  {  
     "MerchantOrderId":"2014111706",
     "Customer":{  
-       "Name":"Comprador Teste"
+       "Name":"Comprador CardToken"
     },
     "Payment":{  
       "Type":"CreditCard",
       "Amount":100,
-      "Installments":1,,
-      "SoftDescriptor":"tst",
+      "Installments":1,
+      "SoftDescriptor":"123456789ABCD",
       "CreditCard":{  
           "CardToken":"6e1bf77a-b28b-4660-b14f-455e2a1c95e9",
           "SecurityCode":"262",
@@ -1698,11 +1700,11 @@ To create a credit card sale with the secure token card, you must do a POST to t
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
 |`RequestId`|Request identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|No|
 |`Payment.Type`|Payment Method type.|Text|100|Yes|
 |`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
 |`Payment.Installments`|Number of installments.|Number|2|Yes|
-|`Payment.SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|No|
+|`Payment.SoftDescriptor`|Text to be printed on the bank carrier's invoice - Available only for VISA / MASTER - does not allow special characters|Text|13|No|
 |`Payment.ReturnUrl`|URL where the user is redirected after the end of payment|Text|1024|Yes when Authenticate = true|
 |`CreditCard.CardToken`|Card identification token.|Guid|36|Yes|
 |`CreditCard.SecurityCode`|Security code printed on the back of the card.|Text|4|Yes|
@@ -1714,7 +1716,7 @@ To create a credit card sale with the secure token card, you must do a POST to t
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador CardToken"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -1730,7 +1732,7 @@ To create a credit card sale with the secure token card, you must do a POST to t
         "ProofOfSale": "5036294",
         "Tid": "0310025036294",
         "AuthorizationCode": "319285",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
         "Type": "CreditCard",
         "Amount": 100,
@@ -1766,7 +1768,7 @@ To create a credit card sale with the secure token card, you must do a POST to t
         {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador CardToken"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -1782,7 +1784,7 @@ To create a credit card sale with the secure token card, you must do a POST to t
         "ProofOfSale": "5036294",
         "Tid": "0310025036294",
         "AuthorizationCode": "319285",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8",
         "Type": "CreditCard",
         "Amount": 100,
@@ -1816,7 +1818,7 @@ To create a credit card sale with the secure token card, you must do a POST to t
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
 |`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
-|`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
+|`SoftDescriptor`|Text to be printed on the bank carrier's invoice - Available only for VISA/MASTER - does not allow special characters|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Electronic Commerce Indicator. It is how safe is a transaction.|Text|2|Examples: 7|
 |`Status`|Transaction Status.|Byte|-|2|
@@ -1987,7 +1989,7 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
  {
      "MerchantOrderId": "2014121201",
      "Customer": {
-         "Name": "Paulo Henrique"
+         "Name":"Comprador Cartão de débito"
      },
      "Payment": {
          "DebitCard": {
@@ -2024,8 +2026,8 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
  {
      "MerchantOrderId": "2014121201",
      "Customer": {
-         "Name": "Paulo Henrique"
-     },
+         Comprador Cartão de débito
+     },
      "Payment": {
          "DebitCard": {
              "CardNumber": "453211******3703",
@@ -2065,7 +2067,7 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|No|
 |`Payment.Type`|Payment Method type.|Text|100|Yes|
 |`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
 |`Payment.ReturnUrl`|URL retailer's return.|Text|1024|Yes|
@@ -2082,7 +2084,7 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
  {
      "MerchantOrderId": "2014121201",
      "Customer": {
-         "Name": "Paulo Henrique"
+         "Name": "Comprador Cartão de débito"
      },
      "Payment": {
          "DebitCard": {
@@ -2120,7 +2122,7 @@ To create debit card sale, you must do a POST to the Payment feature as shown. T
  {
      "MerchantOrderId": "2014121201",
      "Customer": {
-         "Name": "Paulo Henrique"
+         "Name": "Comprador Cartão de débito"
      },
      "Payment": {
          "DebitCard": {
@@ -2175,7 +2177,7 @@ To create an electronic transfer in a sale, it must do a POST to the Payment fea
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Transferência Eletronica""
     },
     "Payment":
     {  

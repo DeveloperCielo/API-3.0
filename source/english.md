@@ -2201,7 +2201,7 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Transferência Eletronica""
     },
     "Payment":
     {  
@@ -2220,7 +2220,7 @@ curl
 |`MerchantKey`|Public key for Double Authentication in  Webservice 3.0.|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|No|
 |`Payment.Type`|Payment Method type.|Text|100|Yes|
 |`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
 |`Payment.Provider`|Payment Method name/NOT REQUIRED FOR CREDIT|Text|15|---|
@@ -2231,7 +2231,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Transferência Eletronica",
     },
     "Payment": {
         "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
@@ -2261,7 +2261,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Transferência Eletronica",
     },
     "Payment": {
         "Url": "https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}",
@@ -2305,7 +2305,7 @@ To create a sale with “boleto” payment method, you just need to make a POST 
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto"
     },
     "Payment":
     {  
@@ -2328,7 +2328,7 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto"
     },
     "Payment":
     {  
@@ -2346,7 +2346,7 @@ curl
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|No|
 |`Payment.Type`|Payment Method type.|Text|100|Yes|
 |`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
 |`Payment.Provider`|Payment Method name/NOT REQUIRED FOR CREDIT|Text|15|---|
@@ -2358,7 +2358,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Boleto Completo",
         "Address": {}
     },
     "Payment":
@@ -2395,7 +2395,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Comprador Boleto Completo",
         "Address": {}
     },
     "Payment":
@@ -2448,7 +2448,7 @@ To create a sale with “boleto” payment method, you just need to make a POST 
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto Completo"
     },
     "Payment":
     {  
@@ -2478,7 +2478,7 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste"
+        "Name":"Comprador Boleto Completo"
     },
     "Payment":
     {  
@@ -2503,7 +2503,7 @@ curl
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|No|
 |`Payment.Type`|Payment Method type.|Text|100|Yes|
 |`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
 |`Payment.Provider`|Payment Method’s name.|Text|15|Yes|
@@ -2522,7 +2522,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Comprador rec programada",
         "Address": {}
     },
     "Payment":
@@ -2563,7 +2563,7 @@ curl
     "MerchantOrderId": "2014111706",
     "Customer":
     {
-        "Name": "Comprador Teste",
+        "Name": "Comprador rec programada",
         "Address": {}
     },
     "Payment":
@@ -2631,7 +2631,7 @@ To create a recurring sale whose first recurrence is authorized in the form of c
      "Amount":1500,
      "Provider":"Simulado",
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"true",
        "EndDate":"2019-12-01",
@@ -2667,7 +2667,7 @@ curl
      "Amount":1500,
      "Provider":"Simulado",
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"true",
        "EndDate":"2019-12-01",
@@ -2692,7 +2692,7 @@ curl
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0.|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`MerchantOrderId`|The request identification number.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|No|
 |`Payment.Type`|Payment Method type.|Text|100|Yes|
 |`Payment.Amount`|Order value (to be sent in cents).|Number|15|Yes|
 |`Payment.Installments`|Number of installments.|Number|2|Yes|
@@ -2731,7 +2731,7 @@ curl
         "ProofOfSale": "3827556",
         "Tid": "0504043827555",
         "AuthorizationCode": "149867",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
         "Type": "CreditCard",
         "Amount": 1500,
@@ -2872,7 +2872,7 @@ To create a recurring sale whose first recurrence will not be allowed on the sam
      "Amount":1500,
      "Provider":"Simulado",
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"false",
        "EndDate":"2019-12-01",
@@ -2909,7 +2909,7 @@ curl
      "Amount":1500,
      "Provider":"Simulado",
      "Installments":1,
-     "SoftDescriptor":"tst",
+     "SoftDescriptor":"123456789ABCD",
      "RecurrentPayment":{
        "AuthorizeNow":"false",
        "EndDate":"2019-12-01",
@@ -2935,7 +2935,7 @@ curl
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|Nos|
 |`Customer.Email`|Email Buyer.|Text|255|No|
 |`Customer.Birthdate`|Date of purchaser birth.|Date|10|No|
 |`Customer.Identity`|RG number, CPF or CNPJ Client.|Text|14|No|
@@ -2962,7 +2962,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec programada"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -2978,7 +2978,7 @@ curl
             "SaveCard": false,
             "Brand": "Visa"
         },
-        "SoftDescriptor": "tst",
+        "SoftDescriptor": "123456789ABCD",
         "Type": "CreditCard",
         "Amount": 1500,
         "Currency": "BRL",
@@ -3010,7 +3010,7 @@ curl
 {
     "MerchantOrderId": "2014113245231706",
     "Customer": {
-        "Name": "Comprador accept"
+        "Name": "Comprador rec propria"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -3026,7 +3026,7 @@ curl
             "SaveCard": false,
             "Brand": "Visa"
         },
-        "SoftDescriptor": "tst",
+        "SoftDescriptor": "123456789ABCD",
         "Type": "CreditCard",
         "Amount": 1500,
         "Currency": "BRL",
@@ -3140,7 +3140,7 @@ curl
 |`MerchantKey`|Public key for Double Authentication in Webservice 3.0|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT|Guid|36|No|
 |`RecurrentPaymentId`|Identification number of Recurrence.|Text|50|Yes|
-|`Customer.Name`|Buyer's name.|Text|255|Yes|
+|`Customer.Name`|Buyer's name.|Text|255|No|
 |`Customer.Email`|Email Buyer.|Text|255|No|
 |`Customer.Birthdate`|Date of purchase birth.|Date|10|No|
 |`Customer.Identity`|RG number, CPF or CNPJ Client.|Text|14|No|

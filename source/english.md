@@ -294,13 +294,14 @@ To create a transaction that uses credit card, you must send a request using the
 {
    "MerchantOrderId":"2014111703",
    "Customer":{
-      "Name":"Comprador Teste"
+      "Name":"Comprador Crédito Simples"
    },
    "Payment":{
      "Type":"CreditCard",
      "Amount":15700,
      "Provider":"Simulado",
      "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
@@ -323,12 +324,13 @@ curl
 {  
    "MerchantOrderId":"2014111703",
    "Customer":{  
-      "Name":"Comprador Teste"
+      "Name":"Comprador crédito simples"
    },
    "Payment":{  
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
+     "SoftDescriptor":"123456789ABCD", 
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
@@ -347,7 +349,7 @@ curl
 |`MerchantKey`|Text|40|Yes|Public key for Double Authentication Cielo.|
 |`RequestId`|Guid|36|No|Request identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
-|`Customer.Name`|Text|255|Yes|Buyer's name.|
+|`Customer.Name`|Text|255|No|Buyer's name.|
 |`Payment.Type`|Text|100|Yes|Payment Method type.|
 |`Payment.Amount`|Number|15|Yes|Order value (to be sent in cents).|
 |`Payment.Provider`|Text|15|---|Payment Method name/NOT MANDATORY FOR CREDIT|
@@ -364,7 +366,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador crédito simples"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -419,7 +421,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste"
+        "Name": "Comprador crédito simples"
     },
     "Payment": {
         "ServiceTaxAmount": 0,
@@ -473,7 +475,7 @@ curl
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
 |`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
-|`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
+|`SoftDescriptor`|Text to be printed on the bank carrier invoice - Available only for VISA/MASTER - does not allow special characters|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Electronic Commerce Indicator. It is how safe is a transaction.|Text|2|Examples: 7|
 |`Status`|Transaction Status.|Byte|-|2|
@@ -492,7 +494,7 @@ To create a transaction using a credit card, you must send a request using the P
 {  
    "MerchantOrderId":"2014111701",
    "Customer":{  
-      "Name":"Comprador Teste",
+      "Name":"Comprador crédito completo",
       "Email":"compradorteste@teste.com",
       "Birthdate":"1991-01-02",
       "Address":{  
@@ -525,6 +527,7 @@ To create a transaction using a credit card, you must send a request using the P
      "Interest":"ByMerchant",
      "Capture":true,
      "Authenticate":false,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
@@ -548,7 +551,7 @@ curl
 {  
    "MerchantOrderId":"2014111701",
    "Customer":{  
-      "Name":"Comprador Teste",
+      "Name":"Comprador crédito completo",
       "Identity":"11225468954",
       "IdentityType":"CPF",
       "Email":"compradorteste@teste.com",
@@ -579,8 +582,8 @@ curl
      "Installments":1,
      "Interest":"ByMerchant",
      "Capture":true,
-     "Authenticate":false,,
-     "SoftDescriptor":"tst",
+     "Authenticate":false,
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
@@ -600,7 +603,7 @@ curl
 |`MerchantKey`|Text|40|Yes|Public key for Double Authentication Cielo.|
 |`RequestId`|Guid|36|No|Request identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|The request identification number.|
-|`Customer.Name`|Text|255|Yes|Buyer's name.|
+|`Customer.Name`|Text|255|No|Buyer's name.|
 |`Customer.Identity`|Text|14|No|Identification number (RG, CPF or CNPJ).| 
 |`Customer.IdentityType`|Text|255|No|Type of document identification of buyer (CFP/CNPJ).|
 |`Customer.Email`|Text|255|No|Email Buyer.|
@@ -642,7 +645,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador crédito completo",
         "Identity":"11225468954",
         "IdentityType":"CPF",
         "Email": "compradorteste@teste.com",
@@ -682,7 +685,7 @@ curl
         "ProofOfSale": "674532",
         "Tid": "0305020554239",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
         "Amount": 15700,
@@ -715,7 +718,7 @@ curl
 {
     "MerchantOrderId": "2014111706",
     "Customer": {
-        "Name": "Comprador Teste",
+        "Name": "Comprador crédito completo",
         "Identity":"11225468954",
         "IdentityType":"CPF",
         "Email": "compradorteste@teste.com",
@@ -755,7 +758,7 @@ curl
         "ProofOfSale": "674532",
         "Tid": "0305020554239",
         "AuthorizationCode": "123456",
-        "SoftDescriptor":"tst",
+        "SoftDescriptor":"123456789ABCD",
         "PaymentId": "24bc8366-fc31-4d6c-8555-17049a836a07",
         "Type": "CreditCard",
         "Amount": 15700,
@@ -786,7 +789,7 @@ curl
 |`ProofOfSale`|Sales Receipt number.|Text|20|Alphanumeric text|
 |`Tid`|Transaction id in the acquirer.|Text|40|Alphanumeric text|
 |`AuthorizationCode`|Authorization Code.|Text|300|Alphanumeric text|
-|`SoftDescriptor`|Text to be printed on the carrier's invoice|Text|13|Alphanumeric text|
+|`SoftDescriptor`|Text to be printed on the bank carrier invoice - Available only for VISA/MASTER - does not allow special characters|Text|13|Alphanumeric text|
 |`PaymentId`|Field Application Identifier.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`ECI`|Electronic Commerce Indicator. It is how safe is a transaction.|Text|2|Examples: 7|
 |`Status`|Transaction Status.|Byte|-|2|
@@ -808,7 +811,7 @@ To create a transaction with authentication that uses credit card, you must send
 	"MerchantOrderId":"2014111903",
 	"Customer":
 	{
-		"Name":"Comprador Teste"
+		"Name":"Comprador crédito autenticação"
 	},
 	"Payment":
 	{
@@ -817,6 +820,7 @@ To create a transaction with authentication that uses credit card, you must send
 	    "Provider":"Cielo",
 	    "Installments":1,
 	    "Authenticate":true,
+	    "SoftDescriptor":"123456789ABCD",
 	    "CreditCard":
 	    {
 		    "CardNumber":"1234123412341231",

@@ -449,13 +449,14 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111703"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Crédito Simples"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">
      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
@@ -476,12 +477,13 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111703"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito simples"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
      <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
      <span class="s2">"Amount"</span>:15700,
      <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>, 
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4551870000000183"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
@@ -535,7 +537,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 <td>Buyer&rsquo;s name.</td>
 </tr>
 <tr>
@@ -607,7 +609,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador crédito simples"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -660,7 +662,7 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador crédito simples"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -740,7 +742,7 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Text to be printed on the carrier&rsquo;s invoice</td>
+<td>Text to be printed on the bank carrier invoice - Available only for VISA/MASTER - does not allow special characters</td>
 <td>Text</td>
 <td>13</td>
 <td>Alphanumeric text</td>
@@ -792,7 +794,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111701"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito completo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Email"</span><span class="p">:</span><span class="s2">"compradorteste@teste.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Address"</span><span class="p">:{</span><span class="w">  
@@ -825,6 +827,7 @@ that need to regularly charge for their products/services. It is widely used for
      </span><span class="s2">"Interest"</span><span class="p">:</span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Capture"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
          </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"Holder"</span><span class="p">:</span><span class="s2">"Teste Holder"</span><span class="p">,</span><span class="w">
@@ -846,7 +849,7 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111701"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>,
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito completo"</span>,
       <span class="s2">"Identity"</span>:<span class="s2">"11225468954"</span>,
       <span class="s2">"IdentityType"</span>:<span class="s2">"CPF"</span>,
       <span class="s2">"Email"</span>:<span class="s2">"compradorteste@teste.com"</span>,
@@ -877,8 +880,8 @@ that need to regularly charge for their products/services. It is widely used for
      <span class="s2">"Installments"</span>:1,
      <span class="s2">"Interest"</span>:<span class="s2">"ByMerchant"</span>,
      <span class="s2">"Capture"</span>:true,
-     <span class="s2">"Authenticate"</span>:false,,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"Authenticate"</span>:false,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4551870000000183"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
@@ -933,7 +936,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 <td>Buyer&rsquo;s name.</td>
 </tr>
 <tr>
@@ -1180,7 +1183,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador crédito completo"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Identity"</span><span class="p">:</span><span class="s2">"11225468954"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IdentityType"</span><span class="p">:</span><span class="s2">"CPF"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compradorteste@teste.com"</span><span class="p">,</span><span class="w">
@@ -1220,7 +1223,7 @@ that need to regularly charge for their products/services. It is widely used for
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"674532"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0305020554239"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15700</span><span class="p">,</span><span class="w">
@@ -1251,7 +1254,7 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador crédito completo"</span>,
         <span class="s2">"Identity"</span>:<span class="s2">"11225468954"</span>,
         <span class="s2">"IdentityType"</span>:<span class="s2">"CPF"</span>,
         <span class="s2">"Email"</span>: <span class="s2">"compradorteste@teste.com"</span>,
@@ -1291,7 +1294,7 @@ that need to regularly charge for their products/services. It is widely used for
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"674532"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0305020554239"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"123456"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"24bc8366-fc31-4d6c-8555-17049a836a07"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 15700,
@@ -1349,7 +1352,7 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Text to be printed on the carrier&rsquo;s invoice</td>
+<td>Text to be printed on the bank carrier invoice - Available only for VISA/MASTER - does not allow special characters</td>
 <td>Text</td>
 <td>13</td>
 <td>Alphanumeric text</td>
@@ -1404,7 +1407,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111903"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito autenticação"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1413,6 +1416,7 @@ that need to regularly charge for their products/services. It is widely used for
         </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Cielo"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="s2">"1234123412341231"</span><span class="p">,</span><span class="w">
@@ -1434,7 +1438,7 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111903"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito autenticação"</span>
    <span class="o">}</span>,
    <span class="s2">"Payment"</span>:<span class="o">{</span>  
       <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
@@ -1442,7 +1446,7 @@ that need to regularly charge for their products/services. It is widely used for
       <span class="s2">"Installments"</span>:1,
       <span class="s2">"Authenticate"</span>:true,
       <span class="s2">"ReturnUrl"</span>:<span class="s2">"http://www.cielo.com.br"</span>,
-      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
       <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4551870000000183"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste Holder"</span>,
@@ -1496,7 +1500,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 <td>Buyer&rsquo;s name.</td>
 </tr>
 <tr>
@@ -1576,7 +1580,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111903"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito autenticação"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1595,7 +1599,7 @@ that need to regularly charge for their products/services. It is widely used for
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"AuthenticationUrl"</span><span class="p">:</span><span class="s2">"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1006993069257E521001"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="s2">"f2dbd5df-c2ee-482f-ab1b-7fee039108c0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
@@ -1624,7 +1628,7 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111903"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito autenticação"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>
@@ -1643,7 +1647,7 @@ that need to regularly charge for their products/services. It is widely used for
         <span class="o">}</span>,
         <span class="s2">"AuthenticationUrl"</span>:<span class="s2">"https://xxxxxxxxxxxx.xxxxx.xxx.xx/xxx/xxxxx.xxxx?id=c5158c1c7b475fdb91a7ad7cc094e7fe"</span>,
         <span class="s2">"AcquirerTransactionId"</span>: <span class="s2">"1006993069257E521001"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>:<span class="s2">"f2dbd5df-c2ee-482f-ab1b-7fee039108c0"</span>,
         <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>:15700,
@@ -1698,7 +1702,7 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Text to be printed on the carrier&rsquo;s invoice</td>
+<td>Text to be printed on the bank carrier&rsquo;s invoice - Available only for VISA/MASTER - does not allow special characters</td>
 <td>Text</td>
 <td>13</td>
 <td>Alphanumeric text</td>
@@ -1766,7 +1770,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"201411173454307"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador accept"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador crédito AF"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Email"</span><span class="p">:</span><span class="s2">"compradorteste@live.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Address"</span><span class="p">:{</span><span class="w">  
@@ -1796,6 +1800,7 @@ that need to regularly charge for their products/services. It is widely used for
      </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Interest"</span><span class="p">:</span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Capture"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1876,7 +1881,7 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>  
    <span class="s2">"MerchantOrderId"</span>:<span class="s2">"201411173454307"</span>,
    <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador accept"</span>,
+      <span class="s2">"Name"</span>:<span class="s2">"Comprador crédito AF"</span>,
       <span class="s2">"Email"</span>:<span class="s2">"compradorteste@live.com"</span>,
       <span class="s2">"Birthdate"</span>:<span class="s2">"1991-01-02"</span>,
       <span class="s2">"Address"</span>:<span class="o">{</span>  
@@ -1904,10 +1909,11 @@ that need to regularly charge for their products/services. It is widely used for
      <span class="s2">"Country"</span>:<span class="s2">"BRA"</span>,
      <span class="s2">"ServiceTaxAmount"</span>:0,
      <span class="s2">"Installments"</span>:1,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"Interest"</span>:<span class="s2">"ByMerchant"</span>,
      <span class="s2">"Capture"</span>:false,
-     <span class="s2">"Authenticate"</span>:false,,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"Authenticate"</span>:false,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
          <span class="s2">"CardNumber"</span>:<span class="s2">"4024007197692931"</span>,
          <span class="s2">"Holder"</span>:<span class="s2">"Teste accept"</span>,
@@ -2018,7 +2024,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 <td>Buyer&rsquo;s name.</td>
 </tr>
 <tr>
@@ -2524,7 +2530,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201411173454307"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador crédito AF"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compradorteste@live.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1991-01-02"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2562,7 +2568,7 @@ that need to regularly charge for their products/services. It is widely used for
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"492115"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AcquirerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10069930692606D31001"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FraudAnalysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AnalyseFirst"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"SequenceCriteria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
@@ -2858,7 +2864,7 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Text to be printed on the carrier&rsquo;s invoice</td>
+<td>Text to be printed on the bank carrier&rsquo;s invoice - Available only for VISA / MASTER - does not allow special characters</td>
 <td>Text</td>
 <td>13</td>
 <td>Alphanumeric text</td>
@@ -2994,13 +3000,13 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="w"> </span><span class="p">{</span><span class="w">  
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-       </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+       </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador CardToken"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
       </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="err">,</span><span class="w">
-      </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
           </span><span class="s2">"CardToken"</span><span class="p">:</span><span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"262"</span><span class="p">,</span><span class="w">
@@ -3019,13 +3025,13 @@ that need to regularly charge for their products/services. It is widely used for
  <span class="o">{</span>  
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:<span class="o">{</span>  
-       <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+       <span class="s2">"Name"</span>:<span class="s2">"Comprador CardToken"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:<span class="o">{</span>  
       <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
       <span class="s2">"Amount"</span>:100,
-      <span class="s2">"Installments"</span>:1,,
-      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+      <span class="s2">"Installments"</span>:1,
+      <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
       <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
           <span class="s2">"CardToken"</span>:<span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span>,
           <span class="s2">"SecurityCode"</span>:<span class="s2">"262"</span>,
@@ -3078,7 +3084,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -3103,7 +3109,7 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.SoftDescriptor</code></td>
-<td>Text to be printed on the carrier&rsquo;s invoice</td>
+<td>Text to be printed on the bank carrier&rsquo;s invoice - Available only for VISA / MASTER - does not allow special characters</td>
 <td>Text</td>
 <td>13</td>
 <td>No</td>
@@ -3142,7 +3148,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador CardToken"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3158,7 +3164,7 @@ that need to regularly charge for their products/services. It is widely used for
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5036294"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0310025036294"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"319285"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
@@ -3192,7 +3198,7 @@ that need to regularly charge for their products/services. It is widely used for
         <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador CardToken"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -3208,7 +3214,7 @@ that need to regularly charge for their products/services. It is widely used for
         <span class="s2">"ProofOfSale"</span>: <span class="s2">"5036294"</span>,
         <span class="s2">"Tid"</span>: <span class="s2">"0310025036294"</span>,
         <span class="s2">"AuthorizationCode"</span>: <span class="s2">"319285"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
         <span class="s2">"PaymentId"</span>: <span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 100,
@@ -3269,7 +3275,7 @@ that need to regularly charge for their products/services. It is widely used for
 </tr>
 <tr>
 <td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Text to be printed on the carrier&rsquo;s invoice</td>
+<td>Text to be printed on the bank carrier&rsquo;s invoice - Available only for VISA/MASTER - does not allow special characters</td>
 <td>Text</td>
 <td>13</td>
 <td>Alphanumeric text</td>
@@ -3585,7 +3591,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="w"> </span><span class="p">{</span><span class="w">
      </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014121201"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paulo Henrique"</span><span class="w">
+         </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Cartão de débito"</span><span class="w">
      </span><span class="p">},</span><span class="w">
      </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
          </span><span class="s2">"DebitCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3621,8 +3627,8 @@ that need to regularly charge for their products/services. It is widely used for
  <span class="o">{</span>
      <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014121201"</span>,
      <span class="s2">"Customer"</span>: <span class="o">{</span>
-         <span class="s2">"Name"</span>: <span class="s2">"Paulo Henrique"</span>
-     <span class="o">}</span>,
+         Comprador Cartão de débito
+     <span class="o">}</span>,
      <span class="s2">"Payment"</span>: <span class="o">{</span>
          <span class="s2">"DebitCard"</span>: <span class="o">{</span>
              <span class="s2">"CardNumber"</span>: <span class="s2">"453211******3703"</span>,
@@ -3698,7 +3704,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -3769,7 +3775,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="w"> </span><span class="p">{</span><span class="w">
      </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014121201"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paulo Henrique"</span><span class="w">
+         </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Cartão de débito"</span><span class="w">
      </span><span class="p">},</span><span class="w">
      </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
          </span><span class="s2">"DebitCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3805,7 +3811,7 @@ that need to regularly charge for their products/services. It is widely used for
  <span class="o">{</span>
      <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014121201"</span>,
      <span class="s2">"Customer"</span>: <span class="o">{</span>
-         <span class="s2">"Name"</span>: <span class="s2">"Paulo Henrique"</span>
+         <span class="s2">"Name"</span>: <span class="s2">"Comprador Cartão de débito"</span>
      <span class="o">}</span>,
      <span class="s2">"Payment"</span>: <span class="o">{</span>
          <span class="s2">"DebitCard"</span>: <span class="o">{</span>
@@ -3902,14 +3908,14 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
-    </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"EletronicTransfer"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Bradesco"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ReturnUrl"</span><span class="p">:</span><span class="s2">"http://www.cielo.com.br"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Transferência Eletronica""
+    },
+    "</span><span class="err">Payment</span><span class="s2">":
+    {  
+        "</span><span class="err">Type</span><span class="s2">":"</span><span class="err">EletronicTransfer</span><span class="s2">",
+        "</span><span class="err">Amount</span><span class="s2">":15700,
+        "</span><span class="err">Provider</span><span class="s2">":"</span><span class="err">Bradesco</span><span class="s2">",
+        "</span><span class="err">ReturnUrl</span><span class="s2">":"</span><span class="err">http://www.cielo.com.br"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3924,18 +3930,18 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>  
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
-    <span class="o">}</span>,
-    <span class="s2">"Payment"</span>:
-    <span class="o">{</span>  
-        <span class="s2">"Type"</span>:<span class="s2">"EletronicTransfer"</span>,
-        <span class="s2">"Amount"</span>:15700,
-        <span class="s2">"Provider"</span>:<span class="s2">"Bradesco"</span>,
-        <span class="s2">"ReturnUrl"</span>:<span class="s2">"http://www.cielo.com.br"</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador Transferência Eletronica""
+    },
+    "</span>Payment<span class="s2">":
+    {  
+        "</span>Type<span class="s2">":"</span>EletronicTransfer<span class="s2">",
+        "</span>Amount<span class="s2">":15700,
+        "</span>Provider<span class="s2">":"</span>Bradesco<span class="s2">",
+        "</span>ReturnUrl<span class="s2">":"</span>http://www.cielo.com.br<span class="s2">"
+    }
+}
 --verbose
-</code></pre>
+</span></code></pre>
 
 <table><thead>
 <tr>
@@ -3979,7 +3985,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -4008,7 +4014,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Transferência Eletronica"</span><span class="p">,</span><span class="w">
     </span><span class="err">}</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}"</span><span class="p">,</span><span class="w">
@@ -4036,7 +4042,7 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Transferência Eletronica"</span>,
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"Url"</span>: <span class="s2">"https://xxx.xxxxxxx.xxx.xx/post/EletronicTransfer/Redirect/{PaymentId}"</span>,
@@ -4104,7 +4110,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Boleto"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
@@ -4125,7 +4131,7 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>  
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador Boleto"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>  
@@ -4179,7 +4185,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -4209,7 +4215,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boleto Completo"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
@@ -4244,7 +4250,7 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador Boleto Completo"</span>,
         <span class="s2">"Address"</span>: <span class="o">{}</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
@@ -4351,7 +4357,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Boleto Completo"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
@@ -4379,7 +4385,7 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>  
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador Boleto Completo"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>  
@@ -4440,7 +4446,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -4519,7 +4525,7 @@ that need to regularly charge for their products/services. It is widely used for
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Teste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador rec programada"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
@@ -4558,7 +4564,7 @@ that need to regularly charge for their products/services. It is widely used for
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador rec programada"</span>,
         <span class="s2">"Address"</span>: <span class="o">{}</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
@@ -4698,7 +4704,7 @@ that need to regularly charge for their products/services. It is widely used for
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"RecurrentPayment"</span><span class="p">:{</span><span class="w">
        </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
@@ -4732,7 +4738,7 @@ that need to regularly charge for their products/services. It is widely used for
      <span class="s2">"Amount"</span>:1500,
      <span class="s2">"Provider"</span>:<span class="s2">"Simulado"</span>,
      <span class="s2">"Installments"</span>:1,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"RecurrentPayment"</span>:<span class="o">{</span>
        <span class="s2">"AuthorizeNow"</span>:<span class="s2">"true"</span>,
        <span class="s2">"EndDate"</span>:<span class="s2">"2019-12-01"</span>,
@@ -4793,7 +4799,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -4904,7 +4910,7 @@ that need to regularly charge for their products/services. It is widely used for
         </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3827556"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0504043827555"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"149867"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"737a8d9a-88fe-4f74-931f-acf81149f4a0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
@@ -5079,7 +5085,7 @@ that need to regularly charge for their products/services. It is widely used for
      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"RecurrentPayment"</span><span class="p">:{</span><span class="w">
        </span><span class="s2">"AuthorizeNow"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
        </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
@@ -5114,7 +5120,7 @@ that need to regularly charge for their products/services. It is widely used for
      <span class="s2">"Amount"</span>:1500,
      <span class="s2">"Provider"</span>:<span class="s2">"Simulado"</span>,
      <span class="s2">"Installments"</span>:1,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"tst"</span>,
+     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
      <span class="s2">"RecurrentPayment"</span>:<span class="o">{</span>
        <span class="s2">"AuthorizeNow"</span>:<span class="s2">"false"</span>,
        <span class="s2">"EndDate"</span>:<span class="s2">"2019-12-01"</span>,
@@ -5176,7 +5182,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>Nos</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
@@ -5317,7 +5323,7 @@ that need to regularly charge for their products/services. It is widely used for
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014113245231706"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador rec programada"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5333,7 +5339,7 @@ that need to regularly charge for their products/services. It is widely used for
             </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
@@ -5363,7 +5369,7 @@ that need to regularly charge for their products/services. It is widely used for
 <span class="o">{</span>
     <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014113245231706"</span>,
     <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador accept"</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Comprador rec propria"</span>
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>: <span class="o">{</span>
         <span class="s2">"ServiceTaxAmount"</span>: 0,
@@ -5379,7 +5385,7 @@ that need to regularly charge for their products/services. It is widely used for
             <span class="s2">"SaveCard"</span>: <span class="nb">false</span>,
             <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>
         <span class="o">}</span>,
-        <span class="s2">"SoftDescriptor"</span>: <span class="s2">"tst"</span>,
+        <span class="s2">"SoftDescriptor"</span>: <span class="s2">"123456789ABCD"</span>,
         <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
         <span class="s2">"Amount"</span>: 1500,
         <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
@@ -5569,7 +5575,7 @@ that need to regularly charge for their products/services. It is widely used for
 <td>Buyer&rsquo;s name.</td>
 <td>Text</td>
 <td>255</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>

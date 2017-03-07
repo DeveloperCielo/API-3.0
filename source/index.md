@@ -5727,14 +5727,13 @@ curl
 
 ## Configurações da Afiliação.
 
-Alguns tipos de transação exigem que sua Afiliação esteja configurada corretamente junto a Cielo. Sugerimos que por padrão valide com nossa central de atendimento se sua afiliação está apta a transacionar em algum dos cenários abaixo:
+Alguns tipos de transação exigem que sua Afiliação esteja configurada corretamente junto a Cielo. Sugerimos valide com nossa central de atendimento se sua afiliação está apta a transacionar para as situações abaixo:
 
 |Cenário|
 |-------|
 |Recorrência|
 |Transação sem CVV|
-|Parcelamento superior a 12x |
-|Personalização da validade de uma transação |
+|Validade da Autorização diferenciada|
 
 ## Lista de Providers
 

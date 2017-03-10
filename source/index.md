@@ -306,7 +306,7 @@ Para criar uma transação que utilizará cartão de crédito, é necessário en
 	 "CreditCard":{
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "Brand":"Visa"
      }
@@ -335,7 +335,7 @@ curl
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "Brand":"Visa"
      }
@@ -378,7 +378,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -433,7 +433,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -530,7 +530,7 @@ Para criar uma transação que utilizará cartão de crédito, é necessário en
 	 "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -586,7 +586,7 @@ curl
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -677,7 +677,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -750,7 +750,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -819,11 +819,12 @@ Para criar uma transação com autenticação que utilizará cartão de crédito
 	    "Installments":1,
 	    "Authenticate":true,
 		"SoftDescriptor":"123456789ABCD",
+		"ReturnUrl":"https://www.cielo.com.br",
 	    "CreditCard":
 	    {
 		    "CardNumber":"1234123412341231",
 		    "Holder":"Teste Holder",
-		    "ExpirationDate":"12/2015",
+		    "ExpirationDate":"12/2030",
 		    "SecurityCode":"123",
 		    "Brand":"Visa"
 	    }
@@ -854,7 +855,7 @@ curl
       "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2015",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "Brand":"Visa"
       }
@@ -901,7 +902,7 @@ curl
 		{
 			"CardNumber":"123412******1112",
 			"Holder":"Teste Holder",
-			"ExpirationDate":"12/2015",
+			"ExpirationDate":"12/2030",
 			"SaveCard":false,
 			"Brand":"Visa"
 		},
@@ -949,7 +950,7 @@ curl
 		{
 			"CardNumber":"123412******1112",
 			"Holder":"Teste Holder",
-			"ExpirationDate":"12/2015",
+			"ExpirationDate":"12/2030",
 			"SaveCard":false,
 			"Brand":"Visa"
 		},
@@ -1036,7 +1037,7 @@ Para criar uma venda com cartão de crédito e analise de fraude, é necessário
      "CreditCard":{  
          "CardNumber":"4024007197692931",
          "Holder":"Teste accept",
-         "ExpirationDate":"12/2015",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"023",
          "Brand":"Visa"
      },
@@ -1148,7 +1149,7 @@ curl
      "CreditCard":{  
          "CardNumber":"4024007197692931",
          "Holder":"Teste accept",
-         "ExpirationDate":"12/2015",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"023",
          "Brand":"Visa"
      },
@@ -1330,7 +1331,7 @@ curl
         "CreditCard": {
             "CardNumber": "402400******2931",
             "Holder": "Teste accept",
-            "ExpirationDate": "12/2015",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -1484,7 +1485,7 @@ curl
         "CreditCard": {
             "CardNumber": "402400******2931",
             "Holder": "Teste accept",
-            "ExpirationDate": "12/2015",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -1894,11 +1895,14 @@ curl
 
 ## Cancelando uma venda
 
-Para cancelar uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
+Para cancelar uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment. É possível realizar o cancelamento via PaymentID ou MerchantOrderId (numero do pedido).
+
+<aside class="notice"><strong>Atenção:</strong> O cancelamento por MerchantOrderId afeta sempre a transação mais nova, ou seja, caso haja pedidos com o numero do pedido duplicado, somente o mais atual será cancelado. O pedido anterior não poderá ser cancelado por esse método</aside>
+
 
 ### Requisição
 
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=xxx</span></aside>
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId ou MerchantOrderId}/void?amount=xxx</span></aside>
 
 ```json
 ```
@@ -1987,7 +1991,7 @@ Para criar uma venda que utilizará cartão de débito, é necessário fazer um�
      "DebitCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "Brand":"Visa"
      }
@@ -2015,7 +2019,7 @@ curl
      "DebitCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "Brand":"Visa"
      }
@@ -2053,7 +2057,7 @@ curl
         "DebitCard": {
             "CardNumber": "453211******3703",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2015",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -2091,7 +2095,7 @@ curl
         "DebitCard": {
             "CardNumber": "453211******3703",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2015",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -2255,7 +2259,7 @@ curl
 
 # Pagamentos com Boleto
 
-## Criando uma venda simplificada
+## Criando uma venda de Boleto
 
 Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.
 
@@ -2268,167 +2272,35 @@ Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST 
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Boleto"
+        "Name":"Comprador Teste Boleto",
+        "Identity": "1234567890",
+        "Address":
+        {
+          "ZipCode" : "22750012",
+          "Country": "BRA",
+          "State" : "RJ",
+          "City": "Rio de Janeiro",
+          "District": "Centro",
+          "Street": "Av Marechal Camara",
+          "Number":"160"
+        }
+      
     },
     "Payment":
     {  
         "Type":"Boleto",
         "Amount":15700,
-        "Provider":"Bradesco"
-    }
-}
-```
-
-```shell
-curl
---request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
---header "Content-Type: application/json"
---header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---header "MerchantKey: 0123456789012345678901234567890123456789"
---header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---data-binary
-{  
-    "MerchantOrderId":"2014111706",
-    "Customer":
-    {  
-        "Name":"Comprador Boleto"
-    },
-    "Payment":
-    {  
-        "Type":"Boleto",
-        "Amount":15700,
-        "Provider":"Bradesco"
-    }
-}
---verbose
-```
-
-|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
-|-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
-|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
-|`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
-|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
-|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
-|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
-
-### Resposta
-
-```json
-{
-    "MerchantOrderId": "2014111706",
-    "Customer":
-    {
-        "Name": "Comprador Boleto",
-        "Address": {}
-    },
-    "Payment":
-    {
-        "ExpirationDate": "2014-12-25",
-        "Url": "https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
-        "Number": "1000000012-8",
-        "BarCodeNumber": "00091628800000157000494250100000001200656560",
-        "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
-        "Address": "Av. Marechal Câmara, 160",
-        "PaymentId": "8464a692-b4bd-41e7-8003-1611a2b8ef2d",
-        "Type": "Boleto",
-        "Amount": 15700,
-        "Country": "BRA",
-        "Provider": "Bradesco",
-        "ExtraDataCollection": [],
-        "Status": 1,
-        "Links": [
-            {
-                "Method": "GET",
-                "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
-            }
-        ]
-    }
-}
-```
-
-```shell
---header "Content-Type: application/json"
---header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---data-binary
-{
-    "MerchantOrderId": "2014111706",
-    "Customer":
-    {
-        "Name": "Comprador Boleto",
-        "Address": {}
-    },
-    "Payment":
-    {
-        "ExpirationDate": "2014-12-25",
-        "Url": "https://apisandbox.cieloecommerce.cielo.com.br/post/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d",
-        "Number": "1000000012-8",
-        "BarCodeNumber": "00091628800000157000494250100000001200656560",
-        "DigitableLine": "00090.49420 50100.000004 12006.565605 1 62880000015700",
-        "Address": "Av. Marechal Câmara, 160",
-        "PaymentId": "8464a692-b4bd-41e7-8003-1611a2b8ef2d",
-        "Type": "Boleto",
-        "Amount": 15700,
-        "Country": "BRA",
-        "Provider": "Bradesco",
-        "ExtraDataCollection": [],
-        "Status": 1,
-        "Links": [
-            {
-                "Method": "GET",
-                "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
-            }
-        ]
-    }
-}
-```
-
-|Propriedade|Descrição|Tipo|Tamanho|Formato|
-|-----------|---------|----|-------|-------|
-|`PaymentId`|Campo Identificador do Pedido. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
-|`ExpirationDate`|Data de expiração. |Texto |10 |2014-12-25 |
-|`Url`|Url do Boleto gerado. |string |256 |https://.../pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d |
-|`Number`|"NossoNumero" gerado. |Texto|50 |1000000012-8 |
-|`BarCodeNumber`|Representação numérica do código de barras. |Texto |44 |00091628800000157000494250100000001200656560 |
-|`DigitableLine`|Linha digitável. |Texto |256 |00090.49420 50100.000004 12006.565605 1 62880000015700 |
-|`Address`|Endereço do Loja. |Texto |256 |Av. Teste, 160 |
-|`Status`|Status da Transação. |Byte |--- |1|
-
-## Criando uma venda completa de Boleto
-
-Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.
-
-### Requisição
-
-<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
-
-```json
-{  
-    "MerchantOrderId":"2014111706",
-    "Customer":
-    {  
-        "Name":"Comprador Boleto Completo"
-    },
-    "Payment":
-    {  
-        "Type":"Boleto",
-        "Amount":15700,
-        "Provider":"Bradesco",
+        "Provider":"Cielo",
         "Address": "Rua Teste",
         "BoletoNumber": "123",
         "Assignor": "Empresa Teste",
         "Demonstrative": "Desmonstrative Teste",
-        "ExpirationDate": "2015-01-05",
+        "ExpirationDate": "5/1/2015",
         "Identification": "11884926754",
         "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia."
     }
 }
 ```
-
 ```shell
 curl
 --request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
@@ -2441,18 +2313,30 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Boleto Completo"
+        "Name":"Comprador Teste",
+        "Identity": "1234567890",
+        "Address":
+        {
+          "ZipCode" : "22750012",
+          "Country": "BRA",
+          "State" : "RJ",
+          "City": "Rio de Janeiro",
+          "District": "Centro",
+          "Street": "Av Marechal Camara",
+          "Number":"160"
+        }
+        
     },
     "Payment":
     {  
         "Type":"Boleto",
         "Amount":15700,
-        "Provider":"Bradesco",
+        "Provider":"Cielo",
         "Address": "Rua Teste",
         "BoletoNumber": "123",
         "Assignor": "Empresa Teste",
         "Demonstrative": "Desmonstrative Teste",
-        "ExpirationDate": "2015-01-05",
+        "ExpirationDate": "5/1/2015",
         "Identification": "11884926754",
         "Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia."
     }
@@ -2467,9 +2351,16 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Address.ZipCode`|CEP do endereço do Comprador. |Texto |9 |Sim||
+|`Customer.Address.Country`|Pais do endereço do Comprador. |Texto |35 |Sim||
+|`Customer.Address.State`|Estado do endereço do Comprador. |Texto |2 |Sim||
+|`Customer.Address.City`|Cidade do endereço do Comprador. |Texto |50 |Sim|
+|`Customer.Address.District`|Bairro do Comprador. |Texto |50 |Sim|
+|`Customer.Address.Street`|Endereço do Comprador. |Texto |255 |Sim|
+|`Customer.Address.Number`|Número do endereço do Comprador. |Texto |15|Sim|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
+|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |Sim|
 |`Payment.Adress`|Endereço do Cedente.|Texto |255|Não|
 |`Payment.BoletoNumber`|Número do Boleto ("NossoNumero").|Texto |50 |Não|
 |`Payment.Assignor`|Nome do Cedente.|Texto |200|Não|
@@ -2486,7 +2377,16 @@ curl
     "Customer":
     {
         "Name": "Comprador Boleto Completo",
-        "Address": {}
+        "Address": 
+		{
+		"Street": "Av Marechal Camara",
+		"Number": "160",
+		"ZipCode": "22750012",
+		"City": "Rio de Janeiro",
+		"State": "RJ",
+		"Country": "BRA",
+		"District": "Centro"
+		}
     },
     "Payment":
     {
@@ -2573,6 +2473,7 @@ curl
 |`Identification`|Documento de identificação do Cedente. |Texto |14 |CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -) |
 |`Status`|Status da Transação. |Byte |--- |1|
 
+
 # Pagamentos Recorrentes
 
 ## Autorizando a primeira recorrência programada
@@ -2604,7 +2505,7 @@ Para criar uma venda recorrente cuja a primeira recorrência é autorizada com a
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -2639,7 +2540,7 @@ curl
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -2687,7 +2588,7 @@ curl
         "CreditCard": {
             "CardNumber": "123412******1231",
             "Holder": "Teste Holder",
-            "ExpirationDate": "03/2019",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -2757,7 +2658,7 @@ curl
         "CreditCard": {
             "CardNumber": "123412******1231",
             "Holder": "Teste Holder",
-            "ExpirationDate": "03/2019",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -2810,8 +2711,8 @@ curl
 |Propriedade|Descrição|Tipo|Tamanho|Formato|
 |-----------|---------|----|-------|-------|
 |`RecurrentPaymentId`|Campo Identificador da próxima recorrência. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
-|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`EndDate`|Data do fim da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`EndDate`|Data do fim da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
 |`Interval`|Intervalo entre as recorrência. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
 |`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. |Booleano |--- |true ou false |
 
@@ -2843,7 +2744,7 @@ Para criar uma venda recorrente cuja a primeira recorrência não será autoriza
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -2879,7 +2780,7 @@ curl
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -2934,7 +2835,7 @@ curl
         "CreditCard": {
             "CardNumber": "123412******1231",
             "Holder": "Teste Holder",
-            "ExpirationDate": "03/2019",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -2981,7 +2882,7 @@ curl
         "CreditCard": {
             "CardNumber": "123412******1231",
             "Holder": "Teste Holder",
-            "ExpirationDate": "03/2019",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -3013,9 +2914,9 @@ curl
 |Propriedade|Descrição|Tipo|Tamanho|Formato|
 |-----------|---------|----|-------|-------|
 |`RecurrentPaymentId`|Campo Identificador da próxima recorrência. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
-|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`StartDate`|Data do inicio da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`EndDate`|Data do fim da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`StartDate`|Data do inicio da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`EndDate`|Data do fim da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
 |`Interval`|Intervalo entre as recorrência. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
 |`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. |Booleano |--- |true ou false |
 
@@ -3046,7 +2947,7 @@ Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serã
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -3077,7 +2978,7 @@ curl
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -3123,7 +3024,7 @@ curl
         "CreditCard": {
             "CardNumber": "123412******1231",
             "Holder": "Teste Holder",
-            "ExpirationDate": "03/2019",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -3188,7 +3089,7 @@ curl
         "CreditCard": {
             "CardNumber": "123412******1231",
             "Holder": "Teste Holder",
-            "ExpirationDate": "03/2019",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -3313,9 +3214,9 @@ curl
 |Propriedade|Descrição|Tipo|Tamanho|Formato|
 |-----------|---------|----|-------|-------|
 |`RecurrentPaymentId`|Campo Identificador da próxima recorrência. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
-|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`StartDate`|Data do inicio da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`EndDate`|Data do fim da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`StartDate`|Data do inicio da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`EndDate`|Data do fim da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
 |`Interval`|Intervalo entre as recorrência. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
 
 
@@ -3696,7 +3597,7 @@ Para alterar os dados de pagamento da Recorrência, basta fazer um Put conform
       "Brand":"Master",
       "Holder":"Teset card",
       "CardNumber":"1234123412341232",
-      "ExpirationDate":"05/2019"
+      "ExpirationDate":"12/2030"
    }
 }
 ```
@@ -3720,7 +3621,7 @@ curl
       "Brand":"Master",
       "Holder":"Teset card",
       "CardNumber":"1234123412341232",
-      "ExpirationDate":"05/2019"
+      "ExpirationDate":"12/2030"
    }
 }
 --verbose
@@ -3850,7 +3751,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -3885,7 +3786,7 @@ curl
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"03/2019",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"262",
          "SaveCard":"false",
          "Brand":"Visa"
@@ -3933,7 +3834,7 @@ curl
     "CreditCard": {
       "CardNumber": "123412******1231",
       "Holder": "Teste Holder",
-      "ExpirationDate": "03/2019",
+      "ExpirationDate": "12/2030",
       "SaveCard": false,
       "Brand": "Visa"
     },
@@ -3999,7 +3900,7 @@ curl
     "CreditCard": {
       "CardNumber": "123412******1231",
       "Holder": "Teste Holder",
-      "ExpirationDate": "03/2019",
+      "ExpirationDate": "12/2030",
       "SaveCard": false,
       "Brand": "Visa"
     },
@@ -4049,8 +3950,8 @@ curl
 |Propriedade|Descrição|Tipo|Tamanho|Formato|
 |-----------|---------|----|-------|-------|
 |`RecurrentPaymentId`|Campo Identificador da próxima recorrência. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
-|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`EndDate`|Data do fim da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`EndDate`|Data do fim da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
 |`Interval`|Intervalo entre as recorrência. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
 |`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. |Booleano |--- |true ou false |
 
@@ -4111,7 +4012,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -4164,7 +4065,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -4337,7 +4238,7 @@ curl
         "CreditCard": {
             "CardNumber": "402400******2931",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2015",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -4411,7 +4312,7 @@ curl
         "CreditCard": {
             "CardNumber": "402400******2931",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2015",
+            "ExpirationDate": "12/2030",
             "SaveCard": false,
             "Brand": "Visa"
         },
@@ -4550,9 +4451,9 @@ curl
 |Propriedade|Descrição|Tipo|Tamanho|Formato|
 |-----------|---------|----|-------|-------|
 |`RecurrentPaymentId`|Campo Identificador da próxima recorrência. |Guid |36 |xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
-|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`StartDate`|Data do inicio da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
-|`EndDate`|Data do fim da recorrência. |Texto |7 |05/2019 (MM/YYYY) |
+|`NextRecurrency`|Data da próxima recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`StartDate`|Data do inicio da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
+|`EndDate`|Data do fim da recorrência. |Texto |7 |12/2030 (MM/YYYY) |
 |`Interval`|Intervalo entre as recorrência. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
 
 
@@ -4577,7 +4478,7 @@ Para salvar um cartão sem autoriza-lo, basta realizar um posto com os dados do 
     "CustomerName": "Comprador Teste Cielo",
     "CardNumber":"4532117080573700",
     "Holder":"Comprador T Cielo",
-    "ExpirationDate":"12/2018",
+    "ExpirationDate":"12/2030",
     "Brand":"Visa"
 }
 ```
@@ -4593,7 +4494,7 @@ curl
     "CustomerName": "Comprador Teste Cielo",
     "CardNumber":"4532117080573700",
     "Holder":"Comprador T Cielo",
-    "ExpirationDate":"12/2018",
+    "ExpirationDate":"12/2030",
     "Brand":"Visa"
 }
 --verbose
@@ -4685,7 +4586,7 @@ Para salvar um cartão, criando seu token, basta enviar uma requisição padrão
      "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "SaveCard":"true",
          "Brand":"Visa"
@@ -4740,7 +4641,7 @@ curl
      "CreditCard":{  
          "CardNumber":"4551870000000183",
          "Holder":"Teste Holder",
-         "ExpirationDate":"12/2021",
+         "ExpirationDate":"12/2030",
          "SecurityCode":"123",
          "SaveCard":"true",
          "Brand":"Visa"
@@ -4831,7 +4732,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": true,
 			"CardToken": "d37bf475-307d-47be-b50a-8dcc38c5056c",
             "Brand": "Visa"
@@ -4905,7 +4806,7 @@ curl
         "CreditCard": {
             "CardNumber": "455187******0183",
             "Holder": "Teste Holder",
-            "ExpirationDate": "12/2021",
+            "ExpirationDate": "12/2030",
             "SaveCard": true,
 			"CardToken": "d37bf475-307d-47be-b50a-8dcc38c5056c"
             "Brand": "Visa"
@@ -5727,13 +5628,13 @@ curl
 
 ## Configurações da Afiliação.
 
-Alguns tipos de transação exigem que sua Afiliação esteja configurada corretamente junto a Cielo. Sugerimos valide com nossa central de atendimento se sua afiliação está apta a transacionar para as situações abaixo:
+Alguns tipos de transação exigem que sua Afiliação esteja configurada corretamente junto a Cielo. Sugerimos que por padrão valide com nossa central de atendimento se sua afiliação está apta a transacionar em algum dos cenários abaixo:
 
 |Cenário|
 |-------|
 |Recorrência|
 |Transação sem CVV|
-|Validade da Autorização diferenciada|
+|Personalização da validade de uma transação |
 
 ## Lista de Providers
 

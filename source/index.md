@@ -5246,6 +5246,11 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 
 A API 3.0 suporta duas carteiras de pagamento: VisaCheckout e Masterpass.
 
+<aside class="notice"><strong>Atenção:</strong> Quando o nó “Wallet” for enviado na requisição, o nó “CreditCard” passa a ser opcional.</aside>
+
+<aside class="notice"><strong>Atenção:</strong> Para o cartão de débito, quando for enviado na requisição o nó “Wallet”, será necessário o nó “DebitCard” contendo a “ReturnUrl”.</aside>
+
+
 ## Como realizar transação com VisaCheckout
 
 ### Requisição
@@ -5995,6 +6000,8 @@ Códigos retornados pelo autorizador e que descrevem a autorização ou não da 
 
 O Webservice 3.0 permite que uma Url de notificação seja cadastrada para receber todos os Responses transacionais.
 Basta entrar em contato com o HelpDesk Cielo e informar a URL de notificação a ser utilizada.
+
+O Conteudo enviado é o mesmo enviado como "response" para cada transação
 
 <aside class="notice"><strong>Atenção:</strong> A Url de notificação deve ser estática</aside>
 

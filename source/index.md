@@ -351,6 +351,7 @@ curl
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
@@ -603,6 +604,7 @@ curl
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Customer.Identity`|Texto |14 |Não|Número do RG, CPF ou CNPJ do Cliente.| 
 |`Customer.IdentityType`|Texto|255|Não|Tipo de documento de identificação do comprador (CFP/CNPJ).|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
@@ -871,6 +873,7 @@ curl
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
@@ -1222,6 +1225,7 @@ curl
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
 |`Customer.Birthdate`|Date|10|Não|Data de nascimento do Comprador.|
 |`Customer.Address.Street`|Texto|255|Não|Endereço do Comprador.|
@@ -1273,7 +1277,7 @@ curl
 |`FraudAnalysis.Items.Quantity`|Número|15|Não|Quantidade do produto a ser adquirido.|
 |`FraudAnalysis.Items.Sku`|Texto|255|Não|Código comerciante identificador do produto.|
 |`FraudAnalysis.Items.UnitPrice`|Número|15|Não|Preço unitário do produto.|
-|`FraudAnalysis.Items.Risk`|Texto|6|Não|Nível do risco do produto.|
+|`FraudAnalysis.Items.Risk`|Texto|6|Não|Nível do risco do produto (LOW/NORMAL/HIGH)|
 |`FraudAnalysis.Items.TimeHedge`|Texto||Não|Nível de importância da hora do dia do pedido do cliente.|
 |`FraudAnalysis.Items.Type`|Texto||Não|Tipo do produto.|
 |`FraudAnalysis.Items.VelocityHedge`|Texto|6|Não|Nível de importância de frequência de compra do cliente.|
@@ -1688,6 +1692,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. | Texto | 100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 |Sim|
 |`Payment.Installments`|Número de Parcelas.| Número | 2 |Sim|
@@ -2035,6 +2040,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento.|Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.ReturnUrl`|Url de retorno do lojista.|Texto |1024 |Sim|
@@ -2188,6 +2194,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
@@ -2351,6 +2358,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja(NEW | EXISTING) - Utilizado pela análise de fraude|Texto |255|Não
 |`Customer.Address.ZipCode`|CEP do endereço do Comprador. |Texto |9 |Sim||
 |`Customer.Address.Country`|Pais do endereço do Comprador. |Texto |35 |Sim||
 |`Customer.Address.State`|Estado do endereço do Comprador. |Texto |2 |Sim||
@@ -2797,6 +2805,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50|Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Customer.Email`|Email do Comprador. |Texto |255 |Não|
 |`Customer.Birthdate`|Data de nascimento do Comprador. |Date |10 |Não|
 |`Customer.Identity`|Número do RG, CPF ou CNPJ do Cliente. |Texto |14 |Não|
@@ -3134,6 +3143,24 @@ curl
 }
 ```
 
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Identificador da loja no API 3.0. |Guid |6 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
+|`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
+|`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
+|`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
+|`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean |5 |Não|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
+|`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
+|`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
+|`CreditCard.Brand`|Bandeira do cartão.|Texto |10 |Sim|
+
 ## Consultando uma venda Recorrente
 
 Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.
@@ -3301,6 +3328,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Customer.Email`|Email do Comprador. |Texto |255|Não|
 |`Customer.Birthdate`|Data de nascimento do Comprador. |Date |10 |Não|
 |`Customer.Identity`|Número do RG, CPF ou CNPJ do Cliente. |Texto |14 |Não|
@@ -3506,8 +3534,7 @@ Para modificar o valor da recorrência, basta fazer um Put conforme o exemplo.
 
 ```shell
 curl
---request POST "https://apisandbox.braspag.com.br/v2/RecurrentPayment/{Recurr
-entPaymentId}/Amount"
+--request POST "https://apisandbox.braspag.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Amount"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3803,6 +3830,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
@@ -4106,6 +4134,7 @@ curl
 |`PaymentId`|Campo Identificador do Pedido.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Status`|Status da Transação.|Byte|---|2|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
@@ -4658,6 +4687,7 @@ curl
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Customer.Identity`|Texto |14 |Não|Número do RG, CPF ou CNPJ do Cliente.| 
 |`Customer.IdentityType`|Texto|255|Não|Tipo de documento de identificação do comprador (CFP/CNPJ).|
 |`Customer.Email`|Texto|255|Não|Email do Comprador.|
@@ -4916,6 +4946,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. | Texto | 100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 |Sim|
 |`Payment.Installments`|Número de Parcelas.| Número | 2 |Sim|
@@ -5108,6 +5139,7 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. | Texto | 100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 |Sim|
 |`Payment.Installments`|Número de Parcelas.| Número | 2 |Sim|
@@ -5250,6 +5282,7 @@ A API 3.0 suporta duas carteiras de pagamento: VisaCheckout e Masterpass.
 
 <aside class="notice"><strong>Atenção:</strong> Para o cartão de débito, quando for enviado na requisição o nó “Wallet”, será necessário o nó “DebitCard” contendo a “ReturnUrl”.</aside>
 
+<aside class="notice"><strong>Atenção:</strong>  Para Visa Chekcout, o nó Wallet pode ser enviado apenas com o "Type", assim marcado a transação com sendo da carteira. Nesse contexto, o cartão de crédito deve ser enviado. </aside>
 
 ## Como realizar transação com VisaCheckout
 
@@ -5317,9 +5350,11 @@ curl
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
+|`Payment.ReturnUrl`|Texto|1024|---|Obrigatório para cartão de débito|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
 |`Wallet.Type`|Texto|255|Sim|indica qual o tipo de carteira: "VisaCheckout" ou "Masterpass"|
 |`Wallet.Walletkey`|Texto|255|---|Chave criptografica enviada pelo VisaCheckout. Obrigatoria se TYPE =  "Visa Checkout"|
@@ -5501,6 +5536,7 @@ curl
 |`RequestId`|Guid|36|Não|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.|
 |`MerchantOrderId`|Texto|50|Sim|Numero de identificação do Pedido.|
 |`Customer.Name`|Texto|255|Não|Nome do Comprador.|
+|`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|

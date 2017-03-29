@@ -3534,8 +3534,7 @@ Para modificar o valor da recorrência, basta fazer um Put conforme o exemplo.
 
 ```shell
 curl
---request POST "https://apisandbox.braspag.com.br/v2/RecurrentPayment/{Recurr
-entPaymentId}/Amount"
+--request POST "https://apisandbox.braspag.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Amount"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"

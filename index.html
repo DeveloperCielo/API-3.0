@@ -542,6 +542,13 @@
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
@@ -938,6 +945,13 @@
 <td>255</td>
 <td>Não</td>
 <td>Nome do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
@@ -1504,6 +1518,13 @@
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
@@ -2007,6 +2028,13 @@
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Customer.Email</code></td>
 <td>Texto</td>
 <td>255</td>
@@ -2368,7 +2396,7 @@
 <td>Texto</td>
 <td>6</td>
 <td>Não</td>
-<td>Nível do risco do produto.</td>
+<td>Nível do risco do produto (LOW/NORMAL/HIGH)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.TimeHedge</code></td>
@@ -3063,6 +3091,13 @@
 <td>Não</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td> Texto </td>
@@ -3665,6 +3700,13 @@
 <td>Não</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento.</td>
 <td>Texto </td>
@@ -3946,6 +3988,13 @@
 <td>Não</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td>Texto </td>
@@ -4182,6 +4231,13 @@
 <td>Texto </td>
 <td>255</td>
 <td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja(NEW</td>
+<td>EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.ZipCode</code></td>
@@ -4975,6 +5031,13 @@
 <td>Não</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Customer.Email</code></td>
 <td>Email do Comprador. </td>
 <td>Texto </td>
@@ -5554,6 +5617,122 @@
 <span class="o">}</span>
 </code></pre>
 
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja no API 3.0. </td>
+<td>Guid </td>
+<td>6 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto </td>
+<td>40 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantOrderId</code></td>
+<td>Numero de identificação do Pedido. </td>
+<td>Texto </td>
+<td>50 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Name</code></td>
+<td>Nome do Comprador. </td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Type</code></td>
+<td>Tipo do Meio de Pagamento. </td>
+<td>Texto </td>
+<td>100 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Amount</code></td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+<td>Número </td>
+<td>15 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Installments</code></td>
+<td>Número de Parcelas.</td>
+<td>Número </td>
+<td>2 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
+<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
+<td>Texto</td>
+<td>13</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Recurrent</code></td>
+<td>marcação de uma transação de recorrencia não programada</td>
+<td>boolean </td>
+<td>5 </td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.CardNumber</code></td>
+<td>Número do Cartão do Comprador.</td>
+<td>Texto </td>
+<td>16 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Holder</code></td>
+<td>Nome do Comprador impresso no cartão.</td>
+<td>Texto </td>
+<td>25 </td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
+<td>Data de validade impresso no cartão.</td>
+<td>Texto </td>
+<td>7 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.SecurityCode</code></td>
+<td>Código de segurança impresso no verso do cartão.</td>
+<td>Texto </td>
+<td>4 </td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Brand</code></td>
+<td>Bandeira do cartão.</td>
+<td>Texto </td>
+<td>10 </td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
 <h2 id="consultando-uma-venda-recorrente">Consultando uma venda Recorrente</h2>
 
 <p>Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.</p>
@@ -5813,6 +5992,13 @@
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Nome do Comprador. </td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
 <td>Texto </td>
 <td>255</td>
 <td>Não</td>
@@ -6265,8 +6451,7 @@
 <pre><code class="highlight json"><span class="mi">156</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://apisandbox.braspag.com.br/v2/RecurrentPayment/{Recurr
-entPaymentId}/Amount"</span>
+--request POST <span class="s2">"https://apisandbox.braspag.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Amount"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6798,6 +6983,13 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Não</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td>Texto </td>
@@ -7297,6 +7489,13 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>255</td>
 <td>Não</td>
 <td>Nome do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -8191,6 +8390,13 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
 <td>Texto </td>
 <td>14 </td>
@@ -8751,6 +8957,13 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Não</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td> Texto </td>
@@ -9092,6 +9305,13 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Não</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento. </td>
 <td> Texto </td>
@@ -9321,6 +9541,8 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 
 <aside class="notice"><strong>Atenção:</strong> Para o cartão de débito, quando for enviado na requisição o nó “Wallet”, será necessário o nó “DebitCard” contendo a “ReturnUrl”.</aside>
 
+<aside class="notice"><strong>Atenção:</strong>  Para Visa Chekcout, o nó Wallet pode ser enviado apenas com o &ldquo;Type&rdquo;, assim marcado a transação com sendo da carteira. Nesse contexto, o cartão de crédito deve ser enviado. </aside>
+
 <h2 id="como-realizar-transação-com-visacheckout">Como realizar transação com VisaCheckout</h2>
 
 <h3 id="requisição">Requisição</h3>
@@ -9339,12 +9561,13 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
             </span><span class="err">}</span><span class="p">,</span><span class="w">
-          </span><span class="err">}</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Wallet"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"VisaCheckout"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"WalletKey"</span><span class="p">:</span><span class="s2">"1140814777695873901"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
      </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 
 </span></code></pre>
 <pre><code class="highlight shell">curl
@@ -9367,12 +9590,13 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>
          <span class="s2">"SecurityCode"</span>:<span class="s2">"123"</span>,
             <span class="o">}</span>,
-          <span class="o">}</span>,
      <span class="s2">"Wallet"</span>:<span class="o">{</span>
          <span class="s2">"Type"</span>:<span class="s2">"VisaCheckout"</span>,
          <span class="s2">"WalletKey"</span>:<span class="s2">"1140814777695873901"</span>
+        <span class="o">}</span>
      <span class="o">}</span>
 <span class="o">}</span>
+
 --verbose
 </code></pre>
 
@@ -9421,6 +9645,13 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 <td>Nome do Comprador.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Texto</td>
 <td>100</td>
@@ -9440,6 +9671,13 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 <td>2</td>
 <td>Sim</td>
 <td>Número de Parcelas.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
+<td>Texto</td>
+<td>1024</td>
+<td>&mdash;</td>
+<td>Obrigatório para cartão de débito</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
@@ -9741,6 +9979,13 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 <td>255</td>
 <td>Não</td>
 <td>Nome do Comprador.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Texto</td>
+<td>255</td>
+<td>Não</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>

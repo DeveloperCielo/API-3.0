@@ -5300,16 +5300,17 @@ A API 3.0 suporta duas carteiras de pagamento: VisaCheckout e Masterpass.
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
-	 "SoftDescriptor":"123456789ABCD",
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	      },
+            },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
-     }
+		}
+	 }
 }
+
 
 ```
 
@@ -5330,16 +5331,17 @@ curl
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
-	 "SoftDescriptor":"123456789ABCD",
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	      },
+            },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
-     }
+		}
+	 }
 }
+
 --verbose
 ```
 

@@ -5271,11 +5271,11 @@ API 3.0 supports two payment wallets: VisaCheckout and Masterpass.
      "CreditCard":{
          "SecurityCode":"123",
 			},
-	      },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
      }
+   }
 }
 
 ```
@@ -5301,11 +5301,11 @@ curl
      "CreditCard":{
          "SecurityCode":"123",
 			},
-	      },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
      }
+   }
 }
 --verbose
 ```
@@ -5453,12 +5453,12 @@ curl
      "CreditCard":{
          "SecurityCode":"123",
 			},
-	},
      "Wallet":{
          "Type":"MasterPass",
          "AdditionalData":{
                "CaptureCode": "103"}
      }
+   }
 }
 
 ```
@@ -5484,12 +5484,12 @@ curl
      "CreditCard":{
          "SecurityCode":"123",
 			},
-	},
      "Wallet":{
          "Type":"MasterPass",
          "AdditionalData":{
                "CaptureCode": "103"}
      }
+   }
 }
 --verbose
 ```

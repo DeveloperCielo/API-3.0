@@ -277,7 +277,7 @@ Para que você possa disfrutar de todos os recursos disponíveis em nossa API, �
 
 * **Autorização**: A autorização (ou pré-autorização) é a principal operação no eCommerce, pois através dela é que uma venda pode ser concretizada. A pré-autorização apenas sensibiliza o limite do cliente, mas ainda não gera cobrança para o consumidor.
 * **Captura**: Ao realizar uma pré-autorização, é necessário a confirmação desta para que a cobrança seja efetivada ao portador do cartão. Através desta operação que se efetiva uma pré-autorização, podendo esta ser executada, em normalmente, em até 5 dias após a data da pré-autorização.
-* **Cancelamento**: O cancelamento é necessário quando, por algum motivo, não se quer mais efetivar uma venda. 
+* **Cancelamento**: O cancelamento é necessário quando, por algum motivo, não se quer mais efetivar uma venda.
 * **Autenticação**: O processo de autenticação possibilita realizar uma venda a qual passará pelo processo de autenticação do banco emissor do cartão, assim trazendo mais segurança para a venda e transferindo para o banco, o risco de fraude.
 * **Cartão protegido**: É uma plataforma que permite o armazenamento seguro de dados sensíveis de cartão de crédito. Estes dados são transformados em um código criptografrado chamado de "token”, que poderá ser armazenado em banco de dados. Com a plataforma, a loja poderá oferecer recursos como "Compra com 1 clique” e "Retentativa de envio de transação”, sempre preservando a integridade e a confidencialidade das informações.
 * **Antifraude**: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.
@@ -1268,29 +1268,29 @@ curl
 |`FraudAnalysis.Browser.Type`|Texto|40|Não|Nome do browser utilizado pelo comprador.|
 |`FraudAnalysis.Cart.IsGift`|Booleano|---|Não|Booleano que indica se o pedido é para presente ou não.|
 |`FraudAnalysis.Cart.ReturnsAccepted`|Booleano|---|Não|Booleano que define se devoluções são aceitas para o pedido.|
-|`FraudAnalysis.Items.GiftCategory`|Texto|9|Não|Campo que avaliará os endereços de cobrança e entrega para difrentes cidades, estados ou países.[Valores](###FraudAnalysis.Items.GiftCategory:)|
-|`FraudAnalysis.Items.HostHedge`|Texto||Não|Nível de importância do e-mail e endereços IP dos clientes em risco de pontuação.[Valores](###FraudAnalysis.Items.HostHedge:)|
-|`FraudAnalysis.Items.NonSensicalHedge`|Texto|6|Não|Nível dos testes realizados sobre os dados do comprador com pedidos recebidos sem sentido.[Valores](###FraudAnalysis.Items.NonSensicalHedge:)|
-|`FraudAnalysis.Items.ObscenitiesHedge`|Texto|6|Não|Nível de obscenidade dos pedidos recebedidos.[Valores](###FraudAnalysis.Items.ObscenitiesHedge:) |
-|`FraudAnalysis.Items.PhoneHedge`|Texto|6|Não|Nível dos testes realizados com os números de telefones.[Valores](###FraudAnalysis.Items.PhoneHedge:) |
+|`FraudAnalysis.Items.GiftCategory`|Texto|9|Não|Campo que avaliará os endereços de cobrança e entrega para difrentes cidades, estados ou países.[Valores](#fraudanalysis.items.giftcategory)|
+|`FraudAnalysis.Items.HostHedge`|Texto||Não|Nível de importância do e-mail e endereços IP dos clientes em risco de pontuação.[Valores](#fraudanalysis.items.hosthedge)|
+|`FraudAnalysis.Items.NonSensicalHedge`|Texto|6|Não|Nível dos testes realizados sobre os dados do comprador com pedidos recebidos sem sentido.[Valores](#fraudanalysis.items.nonsensicalhedge)|
+|`FraudAnalysis.Items.ObscenitiesHedge`|Texto|6|Não|Nível de obscenidade dos pedidos recebedidos.[Valores](#fraudanalysis.items.obscenitieshedge) |
+|`FraudAnalysis.Items.PhoneHedge`|Texto|6|Não|Nível dos testes realizados com os números de telefones.[Valores](#fraudanalysis.items.phonehedge) |
 |`FraudAnalysis.Items.Name`|Texto|255|Não|Nome do Produto.|
 |`FraudAnalysis.Items.Quantity`|Número|15|Não|Quantidade do produto a ser adquirido.|
 |`FraudAnalysis.Items.Sku`|Texto|255|Não|Código comerciante identificador do produto.|
 |`FraudAnalysis.Items.UnitPrice`|Número|15|Não|Preço unitário do produto.|
-|`FraudAnalysis.Items.Risk`|Texto|6|Não|Nível do risco do produto.[Valores](###FraudAnalysis.Items.Risk:)|
-|`FraudAnalysis.Items.TimeHedge`|Texto||Não|Nível de importância da hora do dia do pedido do cliente.[Valores](###FraudAnalysis.Items.TimeHedge:)|
-|`FraudAnalysis.Items.Type`|Texto||Não|Tipo do produto.[Valores](###FraudAnalysis.Items.Type:)|
-|`FraudAnalysis.Items.VelocityHedge`|Texto|6|Não|Nível de importância de frequência de compra do cliente.[Valores](###FraudAnalysis.Items.VelocityHedge:)|
+|`FraudAnalysis.Items.Risk`|Texto|6|Não|Nível do risco do produto.[Valores](#fraudanalysis.items.risk)|
+|`FraudAnalysis.Items.TimeHedge`|Texto||Não|Nível de importância da hora do dia do pedido do cliente.[Valores](#fraudanalysis.items.timehedge)|
+|`FraudAnalysis.Items.Type`|Texto||Não|Tipo do produto.[Valores](#fraudanalysis.items.type)|
+|`FraudAnalysis.Items.VelocityHedge`|Texto|6|Não|Nível de importância de frequência de compra do cliente.[Valores](#fraudanalysis.items.velocityhedge)|
 |`FraudAnalysis.Items.Passenger.Email`|Texto|255|Não|Email do Passageiro.|
 |`FraudAnalysis.Items.Passenger.Identity`|Texto|32|Não|Id do passageiro a quem o bilheite foi emitido.|
 |`FraudAnalysis.Items.Passenger.Name`|Texto|120|Não|Nome do passageiro.|
-|`FraudAnalysis.Items.Passenger.Rating`|Texto||Não|Classificação do Passageiro.[Valores](###FraudAnalysis.Items.Passenger.Rating:)|
+|`FraudAnalysis.Items.Passenger.Rating`|Texto||Não|Classificação do Passageiro.[Valores](#fraudanalysis.items.passenger.rating)|
 |`FraudAnalysis.Items.Passenger.Phone`|Texto|15|Não|Número do telefone do passageiro. Para pedidos fora do U.S., a CyberSource recomenda que inclua o código do país.|
 |`FraudAnalysis.Items.Passenger.Status`|Texto|32|Não|Classificação da empresa aérea. Pode-se usar valores como Gold ou Platina.|
 |`FraudAnalysis.MerchantDefinedFields.Id`|Texto|---|Não|Id das informações adicionais a serem enviadas.|
 |`FraudAnalysis.MerchantDefinedFields.Value`|Texto|255|Não|Valor das informações adicionais a serem enviadas.|
 |`FraudAnalysis.Shipping.Addressee`|Texto|255|Não|Nome do destinatário da entrega.|
-|`FraudAnalysis.Shipping.Method`|Texto||Não|Tipo de serviço de entrega do produto.[Valores](###FraudAnalysis.Shipping.Method:)|
+|`FraudAnalysis.Shipping.Method`|Texto||Não|Tipo de serviço de entrega do produto.[Valores](#fraudanalysis.items.method)|
 |`FraudAnalysis.Shipping.Phone`|Texto|15|Não|Telefone do destinatário da entrega.|
 |`FraudAnalysis.Travel.DepartureTime`|DateTime|23|Não|Data, hora e minuto de partida do vôo.|
 |`FraudAnalysis.Travel.JourneyType`|Texto|32|Não|Tipo de viagem.|
@@ -2291,7 +2291,7 @@ Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST 
           "Street": "Av Marechal Camara",
           "Number":"160"
         }
-      
+
     },
     "Payment":
     {  
@@ -2332,7 +2332,7 @@ curl
           "Street": "Av Marechal Camara",
           "Number":"160"
         }
-        
+
     },
     "Payment":
     {  
@@ -2385,7 +2385,7 @@ curl
     "Customer":
     {
         "Name": "Comprador Boleto Completo",
-        "Address": 
+        "Address":
 		{
 		"Street": "Av Marechal Camara",
 		"Number": "160",
@@ -2932,7 +2932,7 @@ curl
 
 ## Autorizando uma recorrência própria / não programada
 
-Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo. 
+Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo.
 
 <aside class="notice"><strong>Atenção:</strong> Nessa modalidade de recorrencia, cabe ao lojista a inteligencia de realizar transações no mesmo formato de acordo com intervalo que desejar. A API não realizará transações automaticamente.</aside>
 
@@ -3750,7 +3750,7 @@ Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os có
 
 ## Renova Facil
 
-O uso desta funcionalidade permite a substituição automática de um cartão vencido . 
+O uso desta funcionalidade permite a substituição automática de um cartão vencido .
 Dessa forma, quando uma transação com marcação de recorrente for submetida para a API e a Cielo identificar que o cartão utilizado foi substituído, sua autorização será negada e serão retornados os dados do novo cartão conforme exemplo.
 
 <aside class="notice"><strong>Atenção:</strong> Necessário solicitar a habilitação desta funcionalidade no cadastro  </aside>
@@ -4544,7 +4544,7 @@ curl
   "Links": {
     "Method": "GET",
     "Rel": "self",
-    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"} 
+    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"}
 }
 ```
 ```shell
@@ -4556,7 +4556,7 @@ curl
   "Links": {
     "Method": "GET",
     "Rel": "self",
-    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"} 
+    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"}
 }
 ```
 
@@ -6043,11 +6043,9 @@ O Conteudo enviado é o mesmo enviado como "response" para cada transação
 
 <aside class="notice"><strong>Atenção:</strong> A Url de notificação deve ser estática</aside>
 
+## Valores da Análise de Fraude
 
-## Valores AF
-
-
-### FraudAnalysis.Items.GiftCategory:
+### FraudAnalysis.Items.GiftCategory
 
 |Campo|Descrição|
 |-----|---------|
@@ -6055,38 +6053,34 @@ O Conteudo enviado é o mesmo enviado como "response" para cada transação
 |No|Em caso de divergência entre endereços de cobrança e entrega, marca com risco alto. |
 |Off|Ignora a análise de risco para endereços divergentes.|
 
-
-### FraudAnalysis.Items.HostHedge: 
+### FraudAnalysis.Items.HostHedge
 
 |Campo|Descrição|
 |-----|---------|
-|Low|Baixa importância do e-mail e endereço IP na análise de risco.| 
-|Normal|Média importância do e-mail e endereço IP na análise de risco.| 
+|Low|Baixa importância do e-mail e endereço IP na análise de risco.|
+|Normal|Média importância do e-mail e endereço IP na análise de risco.|
 |High|Alta importância do e-mail e endereço IP na análise de risco.|
 |Off|E-mail e endereço IP não afetam a análise de risco.|
 
-
-### FraudAnalysis.Items.NonSensicalHedge: 
+### FraudAnalysis.Items.NonSensicalHedge
 
 |Campo|Descrição|
 |-----|---------|
 |Low|Baixa importância da verificação feita sobre o pedido do comprador, na análise de risco.|  
 |Normal|Média importância da verificação feita sobre o pedido do comprador, na análise de risco.|
-|High|Alta importância da verificação feita sobre o pedido do comprador, na análise de risco.| 
+|High|Alta importância da verificação feita sobre o pedido do comprador, na análise de risco.|
 |Off|Verificação do pedido do comprador não afeta a análise de risco.|
 
-
-### FraudAnalysis.Items.ObscenitiesHedge: 
+### FraudAnalysis.Items.ObscenitiesHedge
 
 |Campo|Descrição|
 |-----|---------|
-|Low|Baixa importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.| 
+|Low|Baixa importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
 |Normal|Média importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
 |High|Alta importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
 |Off|Verificação de obscenidade no pedido do comprador não afeta a análise de risco.|
 
-
-### FraudAnalysis.Items.PhoneHedge: 
+### FraudAnalysis.Items.PhoneHedge
 
 |Campo|Descrição|
 |-----|---------|
@@ -6095,8 +6089,7 @@ O Conteudo enviado é o mesmo enviado como "response" para cada transação
 |High|Alta importância nos testes realizados com números de telefone.|
 |Off|Testes de números de telefone não afetam a análise de risco.|
 
-
-### FraudAnalysis.Items.Risk: 
+### FraudAnalysis.Items.Risk
 
 |Campo|Descrição|
 |-----|---------|
@@ -6104,29 +6097,23 @@ O Conteudo enviado é o mesmo enviado como "response" para cada transação
 |Normal|O produto tem um histórico de chargebacks considerado normal.|
 |High|O produto tem um histórico de chargebacks acima da média.|
 
-
-
-### FraudAnalysis.Items.TimeHedge:  
+### FraudAnalysis.Items.TimeHedge
 
 |Campo|Descrição|
 |-----|---------|
-|Low|Baixa importância no horário do dia em que foi feita a compra, para a análise de risco.| 
-|Normal|Média importância no horário do dia em que foi feita a compra, para a análise de risco.| 
+|Low|Baixa importância no horário do dia em que foi feita a compra, para a análise de risco.|
+|Normal|Média importância no horário do dia em que foi feita a compra, para a análise de risco.|
 |High|Alta importância no horário do dia em que foi feita a compra, para a análise de risco.|
 |Off|O horário da compra não afeta a análise de risco.|
 
-
-
-### FraudAnalysis.Items.Type: 
+### FraudAnalysis.Items.Type
 
 |Campo|Descrição|
 |-----|---------|
 |CN|Comprador particular|
 |CP|Comprador de negócios|
 
-
-
-### FraudAnalysis.Items.VelocityHedge: 
+### FraudAnalysis.Items.VelocityHedge
 
 |Campo|Descrição|
 |-----|---------|
@@ -6135,9 +6122,7 @@ O Conteudo enviado é o mesmo enviado como "response" para cada transação
 |High|Alta importância no número de compras realizadas pelo cliente nos últimos 15 minutos.|
 |Off|A frequência de compras realizadas pelo cliente não afeta a análise de fraude.|
 
-
-
-### FraudAnalysis.Items.Passenger.Rating: 
+### FraudAnalysis.Items.Passenger.Rating
 
 |Campo|Descrição|
 |-----|---------|
@@ -6149,19 +6134,15 @@ O Conteudo enviado é o mesmo enviado como "response" para cada transação
 |SeniorCitizen|Passageiro idoso.|
 |Military|Passageiro militar.|
 
-### FraudAnalysis.Shipping.Method: 
+### FraudAnalysis.Shipping.Method
 
 |Campo|
 |-----|
 |None|
-|SameDay| 
+|SameDay|
 |OneDay|
 |TwoDay|
 |ThreeDay|
 |LowCost|
 |Pickup|
 |Other|
-
-
-
-

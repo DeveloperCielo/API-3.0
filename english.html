@@ -433,9 +433,9 @@
 <ul>
 <li><strong>Authorization</strong>: The authorization (or pre-authorization) is the main operation in eCommerce, because through it is that a sale can be realized. Pre-authorization only sensitizes the client&rsquo;s limit, but does not yet generate charge for the consumer.</li>
 <li><strong>Capture</strong>: When making a pre-authorization, it is necessary to confirm it, so that the charge is effected to the card carrier. Through this operation a pre-authorization is effected, and it can be executed normally within 5 days after the pre-authorization date.</li>
-<li><strong>Cancellation</strong>: The cancellation is necessary when, for some reason, a sale will not be effected anymore. </li>
+<li><strong>Cancellation</strong>: The cancellation is necessary when, for some reason, a sale will not be effected anymore.</li>
 <li><strong>Authentication</strong>: The authentication process makes it possible to effective a sale, which will pass through the authentication process of the card issuing bank, thus providing more security for the sale and transferring the risk of fraud to the bank.</li>
-<li><strong>Protected Card</strong>: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “Buy with 1 click” and “Rettry transaction sending”, always preserving integrity and confidentiality of information.</li>
+<li><strong>Protected Card</strong>: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “One-click buy” and “Retry Transaction”, always preserving integrity and confidentiality of information.</li>
 <li><strong>Antifraude</strong>: It is a fraud prevention platform that provides a detailed risk analysis of online purchases. Each transaction is submitted to more than 260 rules, besides the specific rules of each segment, and generate a risk recommendation in approximately two seconds. This process is completely transparent to the card carrier. According to the pre-established criteria, the order can be automatically accepted, rejected or sent to manual analysis.</li>
 <li><strong>Recurrent</strong>: The Smart Recurrence is an indispensable resource for establishments that need to regularly charge for their products/services.
 It is widely used for magazine subscriptions, monthly fees, software licenses, among others. The merchants will count with differentiated resources to model their charging according to their business, as all parameterization is configurable, such as: periodicity, start and end date, number of attempts, interval between them, among others.</li>
@@ -4310,7 +4310,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Boleto Completo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> 
+        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w">
         </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Marechal Camara"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160"</span><span class="p">,</span><span class="w">
@@ -5254,7 +5254,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 
 <h2 id="authorizing-an-own-/-unscheduled-recurrence">Authorizing an own / unscheduled recurrence</h2>
 
-<p>To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example. </p>
+<p>To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example.</p>
 
 <aside class="notice"><strong>Warning:</strong> In this recurrence mode, it is up to the merchant&rsquo;s intelligence to carry out transactions in the same format according to the desired interval. API will not perform transactions automatically.</aside>
 
@@ -6684,7 +6684,7 @@ entPaymentId}/Amount"</span>
 
 <h2 id="renews-easy">Renews Easy</h2>
 
-<p>Using this feature allows automatic replacement of an expired card . 
+<p>Using this feature allows automatic replacement of an expired card .
 Thus, when a transaction with recurring markup is submitted to the API and Cielo identifies that the used card has been replaced, its authorization will be denied and the new card data will be returned according to the example.</p>
 
 <aside class="notice"><strong>Warning:</strong> It is necessary requesting to enable this feature in the register  </aside>
@@ -7917,7 +7917,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 
 <h2 id="what-is-tokenization-of-cards:">What is Tokenization of Cards:</h2>
 
-<p>It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “Buy with 1 click” and “Retry of transaction sending”, always preserving the integrity and the confidentiality of the information.</p>
+<p>It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “One-click buy” and “Retry Transaction”, always preserving the integrity and the confidentiality of the information.</p>
 
 <h2 id="creating-a-tokenized-card">Creating a Tokenized Card</h2>
 
@@ -8003,7 +8003,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
   </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="p">}</span><span class="w"> 
+    </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
@@ -8014,7 +8014,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
   <span class="s2">"Links"</span>: <span class="o">{</span>
     <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
     <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-    <span class="s2">"Href"</span>: <span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="o">}</span> 
+    <span class="s2">"Href"</span>: <span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 

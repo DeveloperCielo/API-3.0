@@ -1268,29 +1268,29 @@ curl
 |`FraudAnalysis.Browser.Type`|Texto|40|Não|Nome do browser utilizado pelo comprador.|
 |`FraudAnalysis.Cart.IsGift`|Booleano|---|Não|Booleano que indica se o pedido é para presente ou não.|
 |`FraudAnalysis.Cart.ReturnsAccepted`|Booleano|---|Não|Booleano que define se devoluções são aceitas para o pedido.|
-|`FraudAnalysis.Items.GiftCategory`|Texto|9|Não|Campo que avaliará os endereços de cobrança e entrega para difrentes cidades, estados ou países.|
-|`FraudAnalysis.Items.HostHedge`|Texto||Não|Nível de importância do e-mail e endereços IP dos clientes em risco de pontuação.|
-|`FraudAnalysis.Items.NonSensicalHedge`|Texto|6|Não|Nível dos testes realizados sobre os dados do comprador com pedidos recebidos sem sentido.|
-|`FraudAnalysis.Items.ObscenitiesHedge`|Texto|6|Não|Nível de obscenidade dos pedidos recebedidos.|
-|`FraudAnalysis.Items.PhoneHedge`|Texto|6|Não|Nível dos testes realizados com os números de telefones.|
+|`FraudAnalysis.Items.GiftCategory`|Texto|9|Não|Campo que avaliará os endereços de cobrança e entrega para difrentes cidades, estados ou países.[Valores](###FraudAnalysis.Items.GiftCategory:)|
+|`FraudAnalysis.Items.HostHedge`|Texto||Não|Nível de importância do e-mail e endereços IP dos clientes em risco de pontuação.[Valores](###FraudAnalysis.Items.HostHedge:)|
+|`FraudAnalysis.Items.NonSensicalHedge`|Texto|6|Não|Nível dos testes realizados sobre os dados do comprador com pedidos recebidos sem sentido.[Valores](###FraudAnalysis.Items.NonSensicalHedge:)|
+|`FraudAnalysis.Items.ObscenitiesHedge`|Texto|6|Não|Nível de obscenidade dos pedidos recebedidos.[Valores](###FraudAnalysis.Items.ObscenitiesHedge:) |
+|`FraudAnalysis.Items.PhoneHedge`|Texto|6|Não|Nível dos testes realizados com os números de telefones.[Valores](###FraudAnalysis.Items.PhoneHedge:) |
 |`FraudAnalysis.Items.Name`|Texto|255|Não|Nome do Produto.|
 |`FraudAnalysis.Items.Quantity`|Número|15|Não|Quantidade do produto a ser adquirido.|
 |`FraudAnalysis.Items.Sku`|Texto|255|Não|Código comerciante identificador do produto.|
 |`FraudAnalysis.Items.UnitPrice`|Número|15|Não|Preço unitário do produto.|
-|`FraudAnalysis.Items.Risk`|Texto|6|Não|Nível do risco do produto (LOW/NORMAL/HIGH)|
-|`FraudAnalysis.Items.TimeHedge`|Texto||Não|Nível de importância da hora do dia do pedido do cliente.|
-|`FraudAnalysis.Items.Type`|Texto||Não|Tipo do produto.|
-|`FraudAnalysis.Items.VelocityHedge`|Texto|6|Não|Nível de importância de frequência de compra do cliente.|
+|`FraudAnalysis.Items.Risk`|Texto|6|Não|Nível do risco do produto.[Valores](###FraudAnalysis.Items.Risk:)|
+|`FraudAnalysis.Items.TimeHedge`|Texto||Não|Nível de importância da hora do dia do pedido do cliente.[Valores](###FraudAnalysis.Items.TimeHedge:)|
+|`FraudAnalysis.Items.Type`|Texto||Não|Tipo do produto.[Valores](###FraudAnalysis.Items.Type:)|
+|`FraudAnalysis.Items.VelocityHedge`|Texto|6|Não|Nível de importância de frequência de compra do cliente.[Valores](###FraudAnalysis.Items.VelocityHedge:)|
 |`FraudAnalysis.Items.Passenger.Email`|Texto|255|Não|Email do Passageiro.|
 |`FraudAnalysis.Items.Passenger.Identity`|Texto|32|Não|Id do passageiro a quem o bilheite foi emitido.|
 |`FraudAnalysis.Items.Passenger.Name`|Texto|120|Não|Nome do passageiro.|
-|`FraudAnalysis.Items.Passenger.Rating`|Texto||Não|Classificação do Passageiro.|
+|`FraudAnalysis.Items.Passenger.Rating`|Texto||Não|Classificação do Passageiro.[Valores](###FraudAnalysis.Items.Passenger.Rating:)|
 |`FraudAnalysis.Items.Passenger.Phone`|Texto|15|Não|Número do telefone do passageiro. Para pedidos fora do U.S., a CyberSource recomenda que inclua o código do país.|
 |`FraudAnalysis.Items.Passenger.Status`|Texto|32|Não|Classificação da empresa aérea. Pode-se usar valores como Gold ou Platina.|
 |`FraudAnalysis.MerchantDefinedFields.Id`|Texto|---|Não|Id das informações adicionais a serem enviadas.|
 |`FraudAnalysis.MerchantDefinedFields.Value`|Texto|255|Não|Valor das informações adicionais a serem enviadas.|
 |`FraudAnalysis.Shipping.Addressee`|Texto|255|Não|Nome do destinatário da entrega.|
-|`FraudAnalysis.Shipping.Method`|Texto||Não|Tipo de serviço de entrega do produto.|
+|`FraudAnalysis.Shipping.Method`|Texto||Não|Tipo de serviço de entrega do produto.[Valores](###FraudAnalysis.Shipping.Method:)|
 |`FraudAnalysis.Shipping.Phone`|Texto|15|Não|Telefone do destinatário da entrega.|
 |`FraudAnalysis.Travel.DepartureTime`|DateTime|23|Não|Data, hora e minuto de partida do vôo.|
 |`FraudAnalysis.Travel.JourneyType`|Texto|32|Não|Tipo de viagem.|
@@ -6042,4 +6042,126 @@ Basta entrar em contato com o HelpDesk Cielo e informar a URL de notificação a
 O Conteudo enviado é o mesmo enviado como "response" para cada transação
 
 <aside class="notice"><strong>Atenção:</strong> A Url de notificação deve ser estática</aside>
+
+
+## Valores AF
+
+
+### FraudAnalysis.Items.GiftCategory:
+
+|Campo|Descrição|
+|-----|---------|
+|Yes|Em caso de divergência entre endereços de cobrança e entrega, marca com risco pequeno.|
+|No|Em caso de divergência entre endereços de cobrança e entrega, marca com risco alto. |
+|Off|Ignora a análise de risco para endereços divergentes.|
+
+
+### FraudAnalysis.Items.HostHedge: 
+
+|Campo|Descrição|
+|-----|---------|
+|Low|Baixa importância do e-mail e endereço IP na análise de risco.| 
+|Normal|Média importância do e-mail e endereço IP na análise de risco.| 
+|High|Alta importância do e-mail e endereço IP na análise de risco.|
+|Off|E-mail e endereço IP não afetam a análise de risco.|
+
+
+### FraudAnalysis.Items.NonSensicalHedge: 
+
+|Campo|Descrição|
+|-----|---------|
+|Low|Baixa importância da verificação feita sobre o pedido do comprador, na análise de risco.|  
+|Normal|Média importância da verificação feita sobre o pedido do comprador, na análise de risco.|
+|High|Alta importância da verificação feita sobre o pedido do comprador, na análise de risco.| 
+|Off|Verificação do pedido do comprador não afeta a análise de risco.|
+
+
+### FraudAnalysis.Items.ObscenitiesHedge: 
+
+|Campo|Descrição|
+|-----|---------|
+|Low|Baixa importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.| 
+|Normal|Média importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
+|High|Alta importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
+|Off|Verificação de obscenidade no pedido do comprador não afeta a análise de risco.|
+
+
+### FraudAnalysis.Items.PhoneHedge: 
+
+|Campo|Descrição|
+|-----|---------|
+|Low|Baixa importância nos testes realizados com números de telefone.|
+|Normal|Média importância nos testes realizados com números de telefone.|
+|High|Alta importância nos testes realizados com números de telefone.|
+|Off|Testes de números de telefone não afetam a análise de risco.|
+
+
+### FraudAnalysis.Items.Risk: 
+
+|Campo|Descrição|
+|-----|---------|
+|Low|O produto tem um histórico de poucos chargebacks.|
+|Normal|O produto tem um histórico de chargebacks considerado normal.|
+|High|O produto tem um histórico de chargebacks acima da média.|
+
+
+
+### FraudAnalysis.Items.TimeHedge:  
+
+|Campo|Descrição|
+|-----|---------|
+|Low|Baixa importância no horário do dia em que foi feita a compra, para a análise de risco.| 
+|Normal|Média importância no horário do dia em que foi feita a compra, para a análise de risco.| 
+|High|Alta importância no horário do dia em que foi feita a compra, para a análise de risco.|
+|Off|O horário da compra não afeta a análise de risco.|
+
+
+
+### FraudAnalysis.Items.Type: 
+
+|Campo|Descrição|
+|-----|---------|
+|CN|Comprador particular|
+|CP|Comprador de negócios|
+
+
+
+### FraudAnalysis.Items.VelocityHedge: 
+
+|Campo|Descrição|
+|-----|---------|
+|Low|Baixa importância no número de compras realizadas pelo cliente nos últimos 15 minutos.|
+|Normal|Média importância no número de compras realizadas pelo cliente nos últimos 15 minutos.|
+|High|Alta importância no número de compras realizadas pelo cliente nos últimos 15 minutos.|
+|Off|A frequência de compras realizadas pelo cliente não afeta a análise de fraude.|
+
+
+
+### FraudAnalysis.Items.Passenger.Rating: 
+
+|Campo|Descrição|
+|-----|---------|
+|Adult|Passageiro adulto.|
+|Child|Passageiro criança.|
+|Infant|Passageiro infantil.|
+|Youth|Passageiro adolescente.|
+|Student|Passageiro estudante.|
+|SeniorCitizen|Passageiro idoso.|
+|Military|Passageiro militar.|
+
+### FraudAnalysis.Shipping.Method: 
+
+|Campo|
+|-----|
+|None|
+|SameDay| 
+|OneDay|
+|TwoDay|
+|ThreeDay|
+|LowCost|
+|Pickup|
+|Other|
+
+
+
 

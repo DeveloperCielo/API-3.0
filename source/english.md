@@ -5270,12 +5270,12 @@ API 3.0 supports two payment wallets: VisaCheckout and Masterpass.
 	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	      },
+     },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
      }
+   }
 }
 
 ```
@@ -5300,12 +5300,12 @@ curl
 	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	      },
+    },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
      }
+   }
 }
 --verbose
 ```
@@ -5452,13 +5452,13 @@ curl
 	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	},
+     },
      "Wallet":{
          "Type":"MasterPass",
          "AdditionalData":{
                "CaptureCode": "103"}
      }
+   }
 }
 
 ```
@@ -5483,13 +5483,13 @@ curl
 	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	},
+     },
      "Wallet":{
          "Type":"MasterPass",
          "AdditionalData":{
                "CaptureCode": "103"}
      }
+   }
 }
 --verbose
 ```

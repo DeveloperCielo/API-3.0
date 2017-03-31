@@ -277,9 +277,9 @@ For you to enjoy all the features available in our API, it is important that you
 
 * **Authorization**: The authorization (or pre-authorization) is the main operation in eCommerce, because through it is that a sale can be realized. Pre-authorization only sensitizes the client's limit, but does not yet generate charge for the consumer.
 * **Capture**: When making a pre-authorization, it is necessary to confirm it, so that the charge is effected to the card carrier. Through this operation a pre-authorization is effected, and it can be executed normally within 5 days after the pre-authorization date.
-* **Cancellation**: The cancellation is necessary when, for some reason, a sale will not be effected anymore. 
+* **Cancellation**: The cancellation is necessary when, for some reason, a sale will not be effected anymore.
 * **Authentication**: The authentication process makes it possible to effective a sale, which will pass through the authentication process of the card issuing bank, thus providing more security for the sale and transferring the risk of fraud to the bank.
-* **Protected Card**: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “Buy with 1 click” and “Rettry transaction sending”, always preserving integrity and confidentiality of information.
+* **Protected Card**: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “One-click buy” and “Retry Transaction”, always preserving integrity and confidentiality of information.
 * **Antifraude**: It is a fraud prevention platform that provides a detailed risk analysis of online purchases. Each transaction is submitted to more than 260 rules, besides the specific rules of each segment, and generate a risk recommendation in approximately two seconds. This process is completely transparent to the card carrier. According to the pre-established criteria, the order can be automatically accepted, rejected or sent to manual analysis.
 * **Recurrent**: The Smart Recurrence is an indispensable resource for establishments that need to regularly charge for their products/services.
 It is widely used for magazine subscriptions, monthly fees, software licenses, among others. The merchants will count with differentiated resources to model their charging according to their business, as all parameterization is configurable, such as: periodicity, start and end date, number of attempts, interval between them, among others.
@@ -2284,7 +2284,7 @@ To create a sale whose form of payment is bank slip, just make a POST according 
           "Street": "Av Marechal Camara",
           "Number":"160"
         }
-      
+
     },
     "Payment":
     {  
@@ -2325,7 +2325,7 @@ curl
           "Street": "Av Marechal Camara",
           "Number":"160"
         }
-        
+
     },
     "Payment":
     {  
@@ -2377,7 +2377,7 @@ curl
     "Customer":
     {
         "Name": "Comprador Boleto Completo",
-        "Address": 
+        "Address":
 		{
 		"Street": "Av Marechal Camara",
 		"Number": "160",
@@ -2923,7 +2923,7 @@ curl
 
 ## Authorizing an own / unscheduled recurrence
 
-To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example. 
+To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example.
 
 <aside class="notice"><strong>Warning:</strong> In this recurrence mode, it is up to the merchant's intelligence to carry out transactions in the same format according to the desired interval. API will not perform transactions automatically.</aside>
 
@@ -3723,7 +3723,7 @@ See the Attachment [HTTP Status Code](#http-status-code) to the list with all HT
 
 ## Renews Easy
 
-Using this feature allows automatic replacement of an expired card . 
+Using this feature allows automatic replacement of an expired card .
 Thus, when a transaction with recurring markup is submitted to the API and Cielo identifies that the used card has been replaced, its authorization will be denied and the new card data will be returned according to the example.
 
 <aside class="notice"><strong>Warning:</strong> It is necessary requesting to enable this feature in the register  </aside>
@@ -4461,7 +4461,7 @@ curl
 
 ## What is Tokenization of Cards:
 
-It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “Buy with 1 click” and “Retry of transaction sending”, always preserving the integrity and the confidentiality of the information.
+It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “One-click buy” and “Retry Transaction”, always preserving the integrity and the confidentiality of the information.
 
 
 
@@ -4515,7 +4515,7 @@ curl
   "Links": {
     "Method": "GET",
     "Rel": "self",
-    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"} 
+    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"}
 }
 ```
 ```shell
@@ -4527,7 +4527,7 @@ curl
   "Links": {
     "Method": "GET",
     "Rel": "self",
-    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"} 
+    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"}
 }
 ```
 
@@ -6004,4 +6004,3 @@ Just contact Cielo HelpDesk and inform the notification URL to be used.
 The Content sent is the same one sent as "response" for each transaction
 
 <aside class="notice"><strong>Warning:</strong> Notification Url must be static</aside>
-

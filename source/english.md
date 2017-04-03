@@ -277,9 +277,9 @@ For you to enjoy all the features available in our API, it is important that you
 
 * **Authorization**: The authorization (or pre-authorization) is the main operation in eCommerce, because through it is that a sale can be realized. Pre-authorization only sensitizes the client's limit, but does not yet generate charge for the consumer.
 * **Capture**: When making a pre-authorization, it is necessary to confirm it, so that the charge is effected to the card carrier. Through this operation a pre-authorization is effected, and it can be executed normally within 5 days after the pre-authorization date.
-* **Cancellation**: The cancellation is necessary when, for some reason, a sale will not be effected anymore.
+* **Cancellation**: The cancellation is necessary when, for some reason, a sale will not be effected anymore. 
 * **Authentication**: The authentication process makes it possible to effective a sale, which will pass through the authentication process of the card issuing bank, thus providing more security for the sale and transferring the risk of fraud to the bank.
-* **Protected Card**: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “One-click buy” and “Retry Transaction”, always preserving integrity and confidentiality of information.
+* **Protected Card**: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “One click buy” and “Retry Transaction”, always preserving integrity and confidentiality of information.
 * **Antifraude**: It is a fraud prevention platform that provides a detailed risk analysis of online purchases. Each transaction is submitted to more than 260 rules, besides the specific rules of each segment, and generate a risk recommendation in approximately two seconds. This process is completely transparent to the card carrier. According to the pre-established criteria, the order can be automatically accepted, rejected or sent to manual analysis.
 * **Recurrent**: The Smart Recurrence is an indispensable resource for establishments that need to regularly charge for their products/services.
 It is widely used for magazine subscriptions, monthly fees, software licenses, among others. The merchants will count with differentiated resources to model their charging according to their business, as all parameterization is configurable, such as: periodicity, start and end date, number of attempts, interval between them, among others.
@@ -351,6 +351,7 @@ curl
 |`RequestId`|Guid|36|No|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|Order identifier number.|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Payment.Type`|Text|100|Yes|Type of Payment Method.|
 |`Payment.Amount`|Number|15|Yes|Order amount (to be sent in cents).|
 |`Payment.Provider`|Text|15|---|Name of Payment Method/NOT MANDATORY FOR CREDIT.|
@@ -603,6 +604,7 @@ curl
 |`RequestId`|Guid|36|No|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|Order identifier number.|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Customer.Identity`|Text |14 |No|Client RG, CPF or CNPJ number.| 
 |`Customer.IdentityType`|Text|255|No|Type of buyer identification document (CFP/CNPJ).|
 |`Customer.Email`|Text|255|No|Buyer Email.|
@@ -871,6 +873,7 @@ curl
 |`RequestId`|Guid|36|No|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|Order identifier number.|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Payment.Type`|Text|100|Yes|Payment Method Type.|
 |`Payment.Amount`|Number|15|Yes|Order amount (to be sent in cents).|
 |`Payment.Provider`|Text|15|---|Name of Payment Method/NOT MANDATORY FOR CREDIT.|
@@ -1222,6 +1225,7 @@ curl
 |`RequestId`|Guid|36|No|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|Order identifier number.|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Customer.Email`|Text|255|No|Buyer Email.|
 |`Customer.Birthdate`|Date|10|No|Buyer date of birth.|
 |`Customer.Address.Street`|Text|255|No|Buyer address.|
@@ -1264,29 +1268,29 @@ curl
 |`FraudAnalysis.Browser.Type`|Text|40|No|Browser name used by the buyer.|
 |`FraudAnalysis.Cart.IsGift`|Boolean|---|No|Boolean that indicates whether the order is a gift or not.|
 |`FraudAnalysis.Cart.ReturnsAccepted`|Boolean|---|No|Boolean that defines whether returns are accepted for this order.|
-|`FraudAnalysis.Items.GiftCategory`|Text|9|No|Field that will evaluate the billing and delivery addresses for different cities, states or countries.|
-|`FraudAnalysis.Items.HostHedge`|Text||No|Level of importance of email and IP addresses of clients at scoring risk.|
-|`FraudAnalysis.Items.NonSensicalHedge`|Text|6|No|Level of testing performed on buyer data with meaningless received orders.|
-|`FraudAnalysis.Items.ObscenitiesHedge`|Text|6|No|Level of obscenity of received orders.|
-|`FraudAnalysis.Items.PhoneHedge`|Text|6|No|Level of tests performed with telephone numbers.|
+|`FraudAnalysis.Items.GiftCategory`|Text|9|No|Field that will evaluate the billing and delivery addresses for different cities, states or countries.[Values](#fraudanalysis.items.giftcategory)|
+|`FraudAnalysis.Items.HostHedge`|Text||No|Level of importance of email and IP addresses of clients at scoring risk.[Values](#fraudanalysis.items.hosthedge)|
+|`FraudAnalysis.Items.NonSensicalHedge`|Text|6|No|Level of testing performed on buyer data with meaningless received orders.[Values](#fraudanalysis.items.nonsensicalhedge)|
+|`FraudAnalysis.Items.ObscenitiesHedge`|Text|6|No|Level of obscenity of received orders.[Values](#fraudanalysis.items.obscenitieshedge) |
+|`FraudAnalysis.Items.PhoneHedge`|Text|6|No|Level of tests performed with telephone numbers.[Values](#fraudanalysis.items.phonehedge) |
 |`FraudAnalysis.Items.Name`|Text|255|No|Product name.|
 |`FraudAnalysis.Items.Quantity`|Number|15|No|Quantity of product to be acquired.|
 |`FraudAnalysis.Items.Sku`|Text|255|No|Product identifier merchant code.|
 |`FraudAnalysis.Items.UnitPrice`|Number|15|No|Unit price of the product.|
-|`FraudAnalysis.Items.Risk`|Text|6|No|Product risk level.|
-|`FraudAnalysis.Items.TimeHedge`|Text||No|Level of importance of client order day time.|
-|`FraudAnalysis.Items.Type`|Text||No|Product type.|
-|`FraudAnalysis.Items.VelocityHedge`|Text|6|No|Level of importance of client purchase frequency.|
+|`FraudAnalysis.Items.Risk`|Text|6|No|Product risk level.[Values](#fraudanalysis.items.risk)|
+|`FraudAnalysis.Items.TimeHedge`|Text||No|Level of importance of client order day time.[Values](#fraudanalysis.items.timehedge)|
+|`FraudAnalysis.Items.Type`|Text||No|Product type.[Values](#fraudanalysis.items.type)|
+|`FraudAnalysis.Items.VelocityHedge`|Text|6|No|Level of importance of client purchase frequency.|[Values](#fraudanalysis.items.velocityhedge)|
 |`FraudAnalysis.Items.Passenger.Email`|Text|255|No|Passenger email.|
 |`FraudAnalysis.Items.Passenger.Identity`|Text|32|No|Id of the passenger to whom the ticket was issued.|
 |`FraudAnalysis.Items.Passenger.Name`|Text|120|No|Passenger name.|
-|`FraudAnalysis.Items.Passenger.Rating`|Text||No|Passenger classification.|
+|`FraudAnalysis.Items.Passenger.Rating`|Text||No|Passenger classification.[Values](#fraudanalysis.items.passenger.rating)|
 |`FraudAnalysis.Items.Passenger.Phone`|Text|15|No|Passenger phone number. For orders outside the U.S., CyberSource recommends including the country code.|
 |`FraudAnalysis.Items.Passenger.Status`|Text|32|No|Classification of the Airline. Can be used values such as Gold or Platinum.|
 |`FraudAnalysis.MerchantDefinedFields.Id`|Text|---|No|Id of the additional information to be sent.|
 |`FraudAnalysis.MerchantDefinedFields.Value`|Text|255|No|Value of additional information to be sent.|
 |`FraudAnalysis.Shipping.Addressee`|Text|255|No|Delivery recipient name.|
-|`FraudAnalysis.Shipping.Method`|Text||No|Type of product delivery service.|
+|`FraudAnalysis.Shipping.Method`|Text||No|Type of product delivery service.[Values](#fraudanalysis.items.method)|
 |`FraudAnalysis.Shipping.Phone`|Text|15|No|Delivery recipient phone number.|
 |`FraudAnalysis.Travel.DepartureTime`|DateTime|23|No|Date, hour and minute of flight departure.|
 |`FraudAnalysis.Travel.JourneyType`|Text|32|No|Type of the trip.|
@@ -1688,6 +1692,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`MerchantOrderId`|Order identifier number. | Text | 50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis|Text |255|No|
 |`Payment.Type`|Payment Method Type. | Text | 100 |Yes|
 |`Payment.Amount`|Order amount (to be sent in cents).| Number | 15 |Yes|
 |`Payment.Installments`|Number of Installments.| Number | 2 |Yes|
@@ -2035,6 +2040,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`MerchantOrderId`|Order identifier number. |Text |50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis|Text |255|No|
 |`Payment.Type`|Payment Method Type.|Text |100 |Yes|
 |`Payment.Amount`|Order Amount (to be sent in cents).|Number |15 |Yes|
 |`Payment.ReturnUrl`|Merchant return Url.|Text |1024 |Yes|
@@ -2188,6 +2194,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`MerchantOrderId`|Order identifier number. |Text |50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis|Text |255|No|
 |`Payment.Type`|Payment Method Type. |Text |100 |Yes|
 |`Payment.Amount`|Order Amount (to be sent in cents).|Number |15 |Yes|
 |`Payment.Provider`|Name of Payment Method/NOT MANDATORY FOR CREDIT.|Text |15 |---|
@@ -2284,7 +2291,7 @@ To create a sale whose form of payment is bank slip, just make a POST according 
           "Street": "Av Marechal Camara",
           "Number":"160"
         }
-
+      
     },
     "Payment":
     {  
@@ -2325,7 +2332,7 @@ curl
           "Street": "Av Marechal Camara",
           "Number":"160"
         }
-
+        
     },
     "Payment":
     {  
@@ -2351,6 +2358,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`MerchantOrderId`|Order identifier number. |Text |50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store(NEW / EXISTING) - Utilized by fraud analysis|Text |255|No
 |`Customer.Address.ZipCode`|Buyer address zip code. |Text |9 |Yes||
 |`Customer.Address.Country`|Country of buyer address. |Text |35 |Yes||
 |`Customer.Address.State`|State of buyer address. |Text |2 |Yes||
@@ -2377,7 +2385,7 @@ curl
     "Customer":
     {
         "Name": "Comprador Boleto Completo",
-        "Address":
+        "Address": 
 		{
 		"Street": "Av Marechal Camara",
 		"Number": "160",
@@ -2797,6 +2805,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`RecurrentPaymentId`|Recurrence Identification number. |Text |50|Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis|Text |255|No|
 |`Customer.Email`|Buyer Email. |Text |255 |No|
 |`Customer.Birthdate`|Buyer date of birth. |Date |10 |No|
 |`Customer.Identity`|Client RG, CPF or CNPJ number. |Text |14 |No|
@@ -2923,7 +2932,7 @@ curl
 
 ## Authorizing an own / unscheduled recurrence
 
-To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example.
+To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example. 
 
 <aside class="notice"><strong>Warning:</strong> In this recurrence mode, it is up to the merchant's intelligence to carry out transactions in the same format according to the desired interval. API will not perform transactions automatically.</aside>
 
@@ -3134,6 +3143,24 @@ curl
 }
 ```
 
+|Property|Description|Type|Size|Required|
+|-----------|---------|----|-------|-----------|
+|`MerchantId`|Store identifier in API 3.0. |Guid |6 |Yes|
+|`MerchantKey`|Public Key for Dual Authentication in API 3.0.|Text |40 |Yes|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
+|`MerchantOrderId`|Order identifier number. |Text |50 |Yes|
+|`Customer.Name`|Buyer name. |Text |255|No|
+|`Payment.Type`|Payment Method Type. |Text |100 |Yes|
+|`Payment.Amount`|Order amount (to be sent in cents).|Number |15 |Yes|
+|`Payment.Installments`|Number of Installments.|Number |2 |Yes|
+|`Payment.SoftDescriptor`|Text to be printed on the carrier's bank invoice - Available only for VISA/MASTER - does not allow special characters|Text|13|No|
+|`Payment.Recurrent`|marking an unscheduled recurrence transaction|boolean |5 |No|
+|`CreditCard.CardNumber`|Buyer Card number.|Text |16 |Yes|
+|`CreditCard.Holder`|Buyer name printed on  card.|Text |25 |No|
+|`CreditCard.ExpirationDate`|Expiry date printed on card.|Text |7 |Yes|
+|`CreditCard.SecurityCode`|Security code printed on back of card.|Text |4 |Yes|
+|`CreditCard.Brand`|Card issuer.|Text |10 |Yes|
+
 ## Consulting a Recurrent sale
 
 To check a credit card Recurrence, it is necessary to make a GET as the example.
@@ -3301,6 +3328,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`RecurrentPaymentId`|Recurrence identification number. |Text |50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis|Text |255|No|
 |`Customer.Email`|Buyer Email. |Text |255|No|
 |`Customer.Birthdate`|Buyer date of birth. |Date |10 |No|
 |`Customer.Identity`|Client RG, CPF or CNPJ number. |Text |14 |No|
@@ -3440,7 +3468,7 @@ curl
 |`MerchantKey`|Public Key for Dual Authentication in API 3.0. |Text |40 |Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`RecurrentPaymentId`|Recurrence identification number. |Text |50 |Yes|
-|`Interval`|Recurrence interval. <ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul>|Número |2 |Sim|
+|`Interval`|Recurrence interval. <ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul>|Number |2 |Yes|
 
 ### Response
 
@@ -3454,7 +3482,7 @@ See the Attachment [HTTP Status Code](#http-status-code) to the list with all HT
 
 To modify the recurrence day, simply make a Put as the example.
 
-<aside class="notice"><strong>Rule:</strong> If the new informed day is after the current day, we will update the recurrence day with effect on the next recurrence Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 10, the next recurrence date will be 05/10. If the new reported day is before the current day, we will update the recurrence day, but this will only take effect after the next recurrence is successfully performed. Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 3, the date of the next recurrence will remain on 05/25, and after it runs, the next date will be scheduled for 06/03. If the new reported day is before the current day, but the next recurrence is in another month, we will update the recurrence day with effect on the next recurrence. Ex.: Today is day 5, and the next recurrence is 09/25. When I upgrade to day 3, the next recurrence date will be 09/03</aside>
+<aside class="notice"><strong>Rule:</strong> If the new informed day is after the current day, we will update the recurrence day with effect on the next recurrence Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 10, the next recurrence date will be 05/10. If the new reported day is before the current day, we will update the recurrence day, but this will only take effect after the next recurrence is successfully performed. Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 3, the date of the next recurrence will remain on 05/25, and after it runs, the next recurrence will be scheduled for 06/03. If the new reported day is before the current day, but the next recurrence is in another month, we will update the recurrence day with effect on the next recurrence. Ex.: Today is day 5, and the next recurrence is 09/25. When I upgrade to day 3, the next recurrence date will be 09/03</aside>
 
 ### Request
 
@@ -3506,8 +3534,7 @@ To modify the recurrence value, simply make a Put as the example.
 
 ```shell
 curl
---request POST "https://apisandbox.braspag.com.br/v2/RecurrentPayment/{Recurr
-entPaymentId}/Amount"
+--request POST "https://apisandbox.braspag.com.br/v2/RecurrentPayment/{RecurrentPaymentId}/Amount"
 --header "Content-Type: application/json"
 --header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --header "MerchantKey: 0123456789012345678901234567890123456789"
@@ -3520,7 +3547,7 @@ entPaymentId}/Amount"
 |Property|Description|Type|Size|Required|
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Store identifier in API 3.0.|Guid|36|Yes|
-|`MerchantKey`|ublic Key for Dual Authentication in API 3.0.|Text|40|Yes|
+|`MerchantKey`|Public Key for Dual Authentication in API 3.0.|Text|40|Yes|
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`RecurrentPaymentId`|Recurrence Identification number.|Text|50|Yes|
 |`Payment.Amount`|Order value in cents: 156 equals $1.56|Number|15|Yes|
@@ -3674,7 +3701,7 @@ curl
 |-----------|---------|----|-------|-----------|
 |`MerchantId`|Store identifier in API 3.0. |Guid |36 |Yes|
 |`MerchantKey`|Public Key for Dual Authentication in API 3.0. |Text |40 |Yes|
-|`RequestId`|IRequest Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
+|`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`RecurrentPaymentId`|Recurrence identification number. |Text |50 |Yes|
 
 ### Response
@@ -3687,7 +3714,7 @@ See the Attachment [HTTP Status Code](#http-status-code) to the list with all HT
 
 ## Rehabilitating a Recurrent Order
 
-To Rehabilitate a recurring order, just makke a Put as the example.
+To Rehabilitate a recurrent order, just make a Put as the example.
 
 ### Request
 
@@ -3723,7 +3750,7 @@ See the Attachment [HTTP Status Code](#http-status-code) to the list with all HT
 
 ## Renews Easy
 
-Using this feature allows automatic replacement of an expired card .
+Using this feature allows automatic replacement of an expired card . 
 Thus, when a transaction with recurring markup is submitted to the API and Cielo identifies that the used card has been replaced, its authorization will be denied and the new card data will be returned according to the example.
 
 <aside class="notice"><strong>Warning:</strong> It is necessary requesting to enable this feature in the register  </aside>
@@ -3803,6 +3830,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`MerchantOrderId`|Order Identification number. |Text |50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis|Text |255|No|
 |`Payment.Type`|Payment Method Type. |Text |100 |Yes|
 |`Payment.Amount`|Order amount (to be sent in cents).|Number |15 |Yes|
 |`Payment.Installments`|Number of Installments.|Number |2 |Yes|
@@ -3961,10 +3989,10 @@ curl
 
 |Property|Description|Type|Size|Required|
 |-----------|---------|----|-------|-----------|
-|`NewCard.CardNumber`New Buyer Card number.|Text |16 |Yes|
+|`NewCard.CardNumber`|New Buyer Card number.|Text |16 |Yes|
 |`NewCard.ExpirationDate`|new expiry date of the card.|Text |7 |Yes|
 |`NewCard.Brand`|Card issuer.|Text |10 |Yes|
-|`NewCard.SaveCard`|Identifies whether the card generated Cardtoken during the transactiono|Boolean |--- |Yes|
+|`NewCard.SaveCard`|Identifies whether the card generated Cardtoken during the transaction|Boolean |--- |Yes|
 
 # Consulting Sales
 
@@ -4106,6 +4134,7 @@ curl
 |`PaymentId`|Order Identifier Field.|Guid|36|xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx|
 |`Status`|Transaction status.|Byte|---|2|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Payment.Type`|Text|100|Yes|Payment Method Type.|
 |`Payment.Amount`|Number|15|Yes|Order amount (to be sent in cents).|
 |`Payment.Provider`|Text|15|---|Name of Payment Method/NOT MANDATORY FOR CREDI.|
@@ -4366,10 +4395,10 @@ curl
 |`Id`|Transaction identification in Antifraud.|Text|300|Alphanumeric text|
 |`Status`|Transaction status.|Byte|---|2|
 |`FraudAnalysis.ReasonCode`|Analysis result.|Byte|---|Number:<br /><ul><li>100 - Successful operation.</li><li>101 -The order is missing one or more required fields. Possible action: See the fields that are missing on the list AntiFraudResponse.MissingFieldCollection. Resend the order with complete information.</li><li>102 - One or more order fields contain invalid data. Possible action: See the invalid fields on the list AntiFraudResponse.InvalidFieldCollection. Resend the order with the correct information.</li><li>150 General system failure. Possible action: Wait a few minutes and try resending the order.</li><li>151 - The order was received, but a time-out occurred on the server. This error does not include time-out between the client and the server. Possible action: Wait a few minutes and try resending the order.</li><li>152 The order was received, but a time-out occurred. Possible action: Wait a few minutes and resend the order.</li><li>202 – Fraud Prevention declined the order because the card has expired. You can also receive this code if the expiry date does not match the date on file of the issuing bank. If the payment processor allows the issuance of credits for expired cards, CyberSource does not limit this functionality. Possible action: Request a card or other form of payment.</li><li>231 The account number is invalid. Possible action: Request a card or other form of payment.</li><li>234 - There is a problem with the merchant configuration. Possible action: Do not send the order. Contact Client Support to correct the setup problem.</li><li>400 The fraud score goes beyond its limit. Possible action: Review the client's order.</li><li>480 The order has been marked for review by the Decision Manager.</li><li>481 - The order was rejected by the Decision Manager</li></ul>|
-|`FraudAnalysis.FactorCode`|Combination of codes that indicate the order's score. Codes are concatenated using the ^ character.|Text|100|Ex: B^D^R^Z<br /><ul><li>A - Excessive address change. Client changed billing address two or more times in the last six months.</li><li>B - Card BIN or risky authorization. Risk factors are related to credit card BIN and/or card authorization checks.</li><li>C - High number of credit cards. The client has used more than six credit card numbers in the last six months.</li><li>D - Impact of email address. The client uses a free email provider or the email address is risky.</li><li>E - Positive list. The client is on your positive list.</li><li>F - Negative list. The account number, address, email address or IP address for this purpose appears on your negative list.</li><li>G - Geolocation inconsistencies. Client email domain, phone number, billing address, shipping address or IP address is suspec.</li><li>H - Excessive name changes. The client has changed the name two or more times in the last six months.</li><li>I - Internet inconsistencies. The IP address and email domain are not consistent with the billing address.</li><li>N - Meaningless entry. Client name and address fields contain meaningless words or language.</li><li>O - Obscenities. Client data contains obscene words.</li><li>P - Morphing identity. Multiple values of an identity element are linked to a value of a different identity element. For example, multiple phone numbers are linked to a single account number.</li><li>Q - Phone inconsistencies. Client's phone number is suspect.</li><li>R - Risky order. The transaction, the client and the merchant show correlated high-risk information.</li><li>T - Cobertura Time. Time Coverage. The customer is attempting a purchase out of the expected time.</li><li>U - Unverifiable address. The billing address or delivery address can not be verified.</li><li>V - Velocity. The account number was used many times in the last 15 minutes.</li><li>W - Marked as suspect. The billing address or delivery address is similar to an address previously marked as suspicious.</li><li>Y - The address, city, state or country of the billing and delivery addresses do not correlate.</li><li>Z - Invalid value. Because the request contains an unexpected value, a default value has been replaced. Although the transaction can still be processed, examine the order carefully to detect anomalies.</li></ul>|
+|`FraudAnalysis.FactorCode`|Combination of codes that indicate the order's score. Codes are concatenated using the ^ character.|Text|100|Ex: B^D^R^Z<br /><ul><li>A - Excessive address change. Client changed billing address two or more times in the last six months.</li><li>B - Card BIN or risky authorization. Risk factors are related to credit card BIN and/or card authorization checks.</li><li>C - High number of credit cards. The client has used more than six credit card numbers in the last six months.</li><li>D - Impact of email address. The client uses a free email provider or the email address is risky.</li><li>E - Positive list. The client is on your positive list.</li><li>F - Negative list. The account number, address, email address or IP address for this purpose appears on your negative list.</li><li>G - Geolocation inconsistencies. Client email domain, phone number, billing address, shipping address or IP address is suspect.</li><li>H - Excessive name changes. The client has changed the name two or more times in the last six months.</li><li>I - Internet inconsistencies. The IP address and email domain are not consistent with the billing address.</li><li>N - Meaningless entry. Client name and address fields contain meaningless words or language.</li><li>O - Obscenities. Client data contains obscene words.</li><li>P - Morphing identity. Multiple values of an identity element are linked to a value of a different identity element. For example, multiple phone numbers are linked to a single account number.</li><li>Q - Phone inconsistencies. Client's phone number is suspect.</li><li>R - Risky order. The transaction, the client and the merchant show correlated high-risk information.</li><li>T - Time Coverage. The customer is attempting a purchase out of the expected time.</li><li>U - Unverifiable address. The billing address or delivery address can not be verified.</li><li>V - Velocity. The account number was used many times in the last 15 minutes.</li><li>W - Marked as suspect. The billing address or delivery address is similar to an address previously marked as suspicious.</li><li>Y - The address, city, state or country of the billing and delivery addresses do not correlate.</li><li>Z - Invalid value. Because the request contains an unexpected value, a default value has been replaced. Although the transaction can still be processed, examine the order carefully to detect anomalies.</li></ul>|
 |`FraudAnalysis.Score`|Total score calculated for the order.|Number|---|Número|
 |`ReturnCode`|Return code of Acquiring.|Text|32|Alphanumeric text|
-|`ReturnMessage`|Return message of Acquiring.|Texto|512|Alphanumeric text|
+|`ReturnMessage`|Return message of Acquiring.|Text|512|Alphanumeric text|
 
 ## Consulting a Recurrent sale
 
@@ -4454,14 +4483,14 @@ curl
 |`NextRecurrency`|Next recurrence date. |Text |7 |12/2030 (MM/YYYY) |
 |`StartDate`|Recurrence start date. |Text |7 |12/2030 (MM/YYYY) |
 |`EndDate`|Recurrence end date. |Text |7 |12/2030 (MM/YYYY) |
-|`Interval`|Interval between recurrences. |Texto |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
+|`Interval`|Interval between recurrences. |Text |10 |<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |
 
 
 # Tokenization of cards
 
 ## What is Tokenization of Cards:
 
-It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “One-click buy” and “Retry Transaction”, always preserving the integrity and the confidentiality of the information.
+It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “One click buy” and “Retry Transaction”, always preserving the integrity and the confidentiality of the information.
 
 
 
@@ -4515,7 +4544,7 @@ curl
   "Links": {
     "Method": "GET",
     "Rel": "self",
-    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"}
+    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"} 
 }
 ```
 ```shell
@@ -4527,7 +4556,7 @@ curl
   "Links": {
     "Method": "GET",
     "Rel": "self",
-    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"}
+    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"} 
 }
 ```
 
@@ -4539,7 +4568,7 @@ curl
 
 ## Creating a Tokenized Card during an authorization
 
-To save a card by creating your token, simply send a standard request of sales creation, SaveCard sent as "true". The response will return the card Token.
+To save a card by creating its token, simply send a standard request of sales creation, SaveCard sent as "true". The response will return the card Token.
 
 
 ### Request
@@ -4658,6 +4687,7 @@ curl
 |`RequestId`|Guid|36|No|Request identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|Order identifier number.|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Customer.Identity`|Text |14 |No|Client RG, CPF or CNPJ number.| 
 |`Customer.IdentityType`|Text|255|No|Type of buyer identification document (CFP/CNPJ).|
 |`Customer.Email`|Text|255|No|Buyer Email.|
@@ -4916,6 +4946,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`MerchantOrderId`|Order identification number. | Text | 50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Payment Method Type. | Text | 100 |Yes|
 |`Payment.Amount`|Order amount (to be sent in cents).| Number | 15 |Yes|
 |`Payment.Installments`|Number of Installments.| Number | 2 |Yes|
@@ -5108,6 +5139,7 @@ curl
 |`RequestId`|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT | Guid | 36 |No|
 |`MerchantOrderId`|Order identification number. | Text | 50 |Yes|
 |`Customer.Name`|Buyer name. |Text |255|No|
+|`Customer.Status`|Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis|Text |255|No|
 |`Payment.Type`|Payment Method Type. | Text | 100 |Yes|
 |`Payment.Amount`|Order amount (to be sent in cents).| Number | 15 |Yes|
 |`Payment.Installments`|Number of Installments.| Number | 2 |Yes|
@@ -5250,6 +5282,7 @@ API 3.0 supports two payment wallets: VisaCheckout and Masterpass.
 
 <aside class="notice"><strong>Warning:</strong> For the debit card, when the “Wallet” node is sent in the request, the “DebitCard” node containing the “ReturnUrl” is going to be necessary.</aside>
 
+<aside class="notice"><strong>Warning:</strong>  For Visa Checkout, the Wallet node can be sent only with the "Type", thus marking the transaction as being from the wallet. In this context, the credit card must be sent. </aside>
 
 ## How to carry out a transaction with VisaCheckout
 
@@ -5270,13 +5303,14 @@ API 3.0 supports two payment wallets: VisaCheckout and Masterpass.
 	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	      },
+            },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
-     }
+		}
+	 }
 }
+
 
 ```
 
@@ -5297,16 +5331,17 @@ curl
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
-	 "SoftDescriptor":"123456789ABCD",
+     "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
          "SecurityCode":"123",
-			},
-	      },
+            },
      "Wallet":{
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
-     }
+		}
+	 }
 }
+
 --verbose
 ```
 
@@ -5317,9 +5352,11 @@ curl
 |`RequestId`|Guid|36|No|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|Order identification number.|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Payment.Type`|Text|100|Yes|Payment Method Type.|
 |`Payment.Amount`|Number|15|Yes|Order amount (to be sent in cents).|
 |`Payment.Installments`|Number|2|Yes|Number of Installments.|
+|`Payment.ReturnUrl`|Text|1024|---|Mandatory for debit card|
 |`CreditCard.SecurityCode`|Text|4|No|Security code printed on back of card - See Attachment.|
 |`Wallet.Type`|Text|255|Yes|indicates the type of wallet: "VisaCheckout" or "Masterpass"|
 |`Wallet.Walletkey`|Text|255|---|Cryptographic key sent by VisaCheckout. Mandatory if TYPE =  "Visa Checkout"|
@@ -5501,6 +5538,7 @@ curl
 |`RequestId`|Guid|36|No|Request Identifier, used when the merchant uses different servers for each GET/POST/PUT.|
 |`MerchantOrderId`|Text|50|Yes|Order identification number.|
 |`Customer.Name`|Text|255|No|Buyer name.|
+|`Customer.Status`|Text|255|No|Buyer register status in store (NEW / EXISTING)|
 |`Payment.Type`|Text|100|Yes|Payment Method Type.|
 |`Payment.Amount`|Number|15|Yes|Order amount (to be sent in cents).|
 |`Payment.Installments`|Number|2|Yes|Number of Installments.|
@@ -5633,7 +5671,7 @@ curl
 
 ## Affiliate Settings.
 
-Some types of transactions require that their Affiliation is properly set up with Cielo. By default, we suggest that you validate with our service center if your affiliation is able to transact in any of the situations below:
+Some transaction types require that their Affiliation is properly set up with Cielo. By default, we suggest that you validate with our service center if your affiliation is able to transact in any of the situations below:
 
 |Scenario|
 |-------|
@@ -5714,9 +5752,9 @@ The table below lists all possible codes to be sent in the MerchantDefinedData p
 | 31 | Number of exchanges of Credit cards | Number of times the buyer has exchanged the credit card to make the order payment | Number |
 | 32 | Pasted or typed email | Values: "Typed", "Pasted" Report whether the email address was typed or pasted into the field | String |
 | 33 | Pasted or typed card number | Values: "Typed", "Pasted" Report whether the credit card number was typed or pasted into the field | String |
-| 34 | Confirmed email | If there is an email confirmation routine for account activation. Values: "YES". If not, do not send the MDD | String |
+| 34 | Confirmed email | If there is an email confirmation routine for account activation. Values: "YES". If it's negative, do not send the MDD | String |
 | 35 | Type of client (local/tourist) | Values: "Local", "Tourist". Do not send the MDD in the case of not having this information | String |
-| 36 | Use gift card at purchase ($) | Report if was used Gift Card (Gift Card) at purchase. Values: "YES". If not, do not send the MDD | String |
+| 36 | Use gift card at purchase ($) | Report if was used Gift Card (Gift Card) at purchase. Values: "YES". If it's negative, do not send the MDD | String |
 | 37 | Shipping Method | Values: "Sedex", "Sedex 10", "1 Day", "2 Days", "Motorcycle courier", "On the Same Day", etc. If there is no shipping, do not send the MDD | String |
 | 38 | Caller ID Number | Report the identified phone number, with the area code | String |
 | 39 | (reserved) |
@@ -6004,3 +6042,107 @@ Just contact Cielo HelpDesk and inform the notification URL to be used.
 The Content sent is the same one sent as "response" for each transaction
 
 <aside class="notice"><strong>Warning:</strong> Notification Url must be static</aside>
+
+## Fraud Analysis Values
+
+### FraudAnalysis.Items.GiftCategory
+
+|Field|Description |
+|-----|---------|
+|Yes|In case of divergence between billing and delivery addresses, mark with small risk.|
+|No|In case of divergence between billing and delivery addresses, mark with high risk. |
+|Off|Ignores risk analysis for divergent addresses.|
+
+### FraudAnalysis.Items.HostHedge
+
+|Field|Description |
+|-----|---------|
+|Low|Low importance of e-mail and IP address in risk analysis.|
+|Normal|Normal importance of e-mail and IP address in risk analysis.|
+|High|High importance of e-mail and IP address in risk analysis.|
+|Off|E-mail and IP address do not affect risk analysis.|
+
+### FraudAnalysis.Items.NonSensicalHedge
+
+|Field|Description |
+|-----|---------|
+|Low|Low importance of the verification made on the buyer's order, in risk analysis.|  
+|Normal|Normal importance of the verification made on the buyer's order, in risk analysis.|
+|High|High importance of the verification made on the buyer's order, in risk analysis.|
+|Off|Verification of buyer's order does not affect risk analysis.|
+
+### FraudAnalysis.Items.ObscenitiesHedge
+
+|Field|Description|
+|-----|---------|
+|Low|Low importance of obscenity  verification of buyer's order, in risk analysis.|
+|Normal|Normal importance of obscenity  verification of buyer's order, in risk analysis.|
+|High|High importance of obscenity  verification of buyer's order, in risk analysis.|
+|Off|Obscenity verification of buyer's order does not affect risk analysis.|
+
+### FraudAnalysis.Items.PhoneHedge
+
+|Field|Description|
+|-----|---------|
+|Low|Low importance on tests performed with telephone numbers.|
+|Normal|Normal importance on tests performed with telephone numbers.|
+|High|High importance on tests performed with telephone numbers.|
+|Off|Phone number tests do not affect risk analysis.|
+
+### FraudAnalysis.Items.Risk
+
+|Field|Description|
+|-----|---------|
+|Low|The product has a history of few chargebacks.|
+|Normal|The product has a history of chargebacks considered normal.|
+|High|The product has a history of chargebacks above average.|
+
+### FraudAnalysis.Items.TimeHedge
+
+|Field|Description|
+|-----|---------|
+|Low|Low importance in the time of day when the purchase was made, for the risk analysis.|
+|Normal|Normal importance in the time of day when the purchase was made, for the risk analysis.|
+|High|High importance in the time of day when the purchase was made, for the risk analysis.|
+|Off|Purchase time does not affect risk analysis.|
+
+### FraudAnalysis.Items.Type
+
+|Field|Description|
+|-----|---------|
+|CN|Private buyer|
+|CP|Business buyer|
+
+### FraudAnalysis.Items.VelocityHedge
+
+|Field|Description|
+|-----|---------|
+|Low|Low importance in the number of purchases made by the client in the last 15 minutes.|
+|Normal|Normal importance in the number of purchases made by the client in the last 15 minutes.|
+|High|High importance in the number of purchases made by the client in the last 15 minutes.|
+|Off|The frequency of purchases made by the client does not affect the fraud analysis.|
+
+### FraudAnalysis.Items.Passenger.Rating
+
+|Field|Description|
+|-----|---------|
+|Adult|Adult passenger.|
+|Child|Child passenger.|
+|Infant|Infant passenger.|
+|Youth|Teenage passenger.|
+|Student|Student passenger.|
+|SeniorCitizen|Elderly passenger.|
+|Military|Military passenger.|
+
+### FraudAnalysis.Shipping.Method
+
+|Field|
+|-----|
+|None|
+|SameDay|
+|OneDay|
+|TwoDay|
+|ThreeDay|
+|LowCost|
+|Pickup|
+|Other|

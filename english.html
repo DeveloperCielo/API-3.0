@@ -433,9 +433,9 @@
 <ul>
 <li><strong>Authorization</strong>: The authorization (or pre-authorization) is the main operation in eCommerce, because through it is that a sale can be realized. Pre-authorization only sensitizes the client&rsquo;s limit, but does not yet generate charge for the consumer.</li>
 <li><strong>Capture</strong>: When making a pre-authorization, it is necessary to confirm it, so that the charge is effected to the card carrier. Through this operation a pre-authorization is effected, and it can be executed normally within 5 days after the pre-authorization date.</li>
-<li><strong>Cancellation</strong>: The cancellation is necessary when, for some reason, a sale will not be effected anymore.</li>
+<li><strong>Cancellation</strong>: The cancellation is necessary when, for some reason, a sale will not be effected anymore. </li>
 <li><strong>Authentication</strong>: The authentication process makes it possible to effective a sale, which will pass through the authentication process of the card issuing bank, thus providing more security for the sale and transferring the risk of fraud to the bank.</li>
-<li><strong>Protected Card</strong>: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “One-click buy” and “Retry Transaction”, always preserving integrity and confidentiality of information.</li>
+<li><strong>Protected Card</strong>: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “One click buy” and “Retry Transaction”, always preserving integrity and confidentiality of information.</li>
 <li><strong>Antifraude</strong>: It is a fraud prevention platform that provides a detailed risk analysis of online purchases. Each transaction is submitted to more than 260 rules, besides the specific rules of each segment, and generate a risk recommendation in approximately two seconds. This process is completely transparent to the card carrier. According to the pre-established criteria, the order can be automatically accepted, rejected or sent to manual analysis.</li>
 <li><strong>Recurrent</strong>: The Smart Recurrence is an indispensable resource for establishments that need to regularly charge for their products/services.
 It is widely used for magazine subscriptions, monthly fees, software licenses, among others. The merchants will count with differentiated resources to model their charging according to their business, as all parameterization is configurable, such as: periodicity, start and end date, number of attempts, interval between them, among others.</li>
@@ -540,6 +540,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>255</td>
 <td>No</td>
 <td>Buyer name.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -938,6 +945,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>255</td>
 <td>No</td>
 <td>Buyer name.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
@@ -1504,6 +1518,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>Buyer name.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Text</td>
 <td>100</td>
@@ -2007,6 +2028,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>Buyer name.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Customer.Email</code></td>
 <td>Text</td>
 <td>255</td>
@@ -2305,35 +2333,35 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>Text</td>
 <td>9</td>
 <td>No</td>
-<td>Field that will evaluate the billing and delivery addresses for different cities, states or countries.</td>
+<td>Field that will evaluate the billing and delivery addresses for different cities, states or countries.<a href="#fraudanalysis.items.giftcategory">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.HostHedge</code></td>
 <td>Text</td>
 <td></td>
 <td>No</td>
-<td>Level of importance of email and IP addresses of clients at scoring risk.</td>
+<td>Level of importance of email and IP addresses of clients at scoring risk.<a href="#fraudanalysis.items.hosthedge">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.NonSensicalHedge</code></td>
 <td>Text</td>
 <td>6</td>
 <td>No</td>
-<td>Level of testing performed on buyer data with meaningless received orders.</td>
+<td>Level of testing performed on buyer data with meaningless received orders.<a href="#fraudanalysis.items.nonsensicalhedge">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.ObscenitiesHedge</code></td>
 <td>Text</td>
 <td>6</td>
 <td>No</td>
-<td>Level of obscenity of received orders.</td>
+<td>Level of obscenity of received orders.<a href="#fraudanalysis.items.obscenitieshedge">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.PhoneHedge</code></td>
 <td>Text</td>
 <td>6</td>
 <td>No</td>
-<td>Level of tests performed with telephone numbers.</td>
+<td>Level of tests performed with telephone numbers.<a href="#fraudanalysis.items.phonehedge">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.Name</code></td>
@@ -2368,21 +2396,21 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>Text</td>
 <td>6</td>
 <td>No</td>
-<td>Product risk level.</td>
+<td>Product risk level.<a href="#fraudanalysis.items.risk">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.TimeHedge</code></td>
 <td>Text</td>
 <td></td>
 <td>No</td>
-<td>Level of importance of client order day time.</td>
+<td>Level of importance of client order day time.<a href="#fraudanalysis.items.timehedge">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.Type</code></td>
 <td>Text</td>
 <td></td>
 <td>No</td>
-<td>Product type.</td>
+<td>Product type.<a href="#fraudanalysis.items.type">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.VelocityHedge</code></td>
@@ -2417,7 +2445,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>Text</td>
 <td></td>
 <td>No</td>
-<td>Passenger classification.</td>
+<td>Passenger classification.<a href="#fraudanalysis.items.passenger.rating">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Items.Passenger.Phone</code></td>
@@ -2459,7 +2487,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>Text</td>
 <td></td>
 <td>No</td>
-<td>Type of product delivery service.</td>
+<td>Type of product delivery service.<a href="#fraudanalysis.items.method">Values</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Shipping.Phone</code></td>
@@ -3058,6 +3086,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Buyer name. </td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis</td>
 <td>Text </td>
 <td>255</td>
 <td>No</td>
@@ -3665,6 +3700,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>No</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis</td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method Type.</td>
 <td>Text </td>
@@ -3946,6 +3988,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>No</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis</td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method Type. </td>
 <td>Text </td>
@@ -4184,6 +4233,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>No</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store(NEW / EXISTING) - Utilized by fraud analysis</td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Customer.Address.ZipCode</code></td>
 <td>Buyer address zip code. </td>
 <td>Text </td>
@@ -4310,7 +4366,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Boleto Completo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w">
+        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> 
         </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Marechal Camara"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160"</span><span class="p">,</span><span class="w">
@@ -4975,6 +5031,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <td>No</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis</td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Customer.Email</code></td>
 <td>Buyer Email. </td>
 <td>Text </td>
@@ -5254,7 +5317,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 
 <h2 id="authorizing-an-own-/-unscheduled-recurrence">Authorizing an own / unscheduled recurrence</h2>
 
-<p>To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example.</p>
+<p>To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example. </p>
 
 <aside class="notice"><strong>Warning:</strong> In this recurrence mode, it is up to the merchant&rsquo;s intelligence to carry out transactions in the same format according to the desired interval. API will not perform transactions automatically.</aside>
 
@@ -5554,6 +5617,122 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <span class="o">}</span>
 </code></pre>
 
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Type</th>
+<th>Size</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Store identifier in API 3.0. </td>
+<td>Guid </td>
+<td>6 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Public Key for Dual Authentication in API 3.0.</td>
+<td>Text </td>
+<td>40 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT </td>
+<td> Guid </td>
+<td> 36 </td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantOrderId</code></td>
+<td>Order identifier number. </td>
+<td>Text </td>
+<td>50 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Name</code></td>
+<td>Buyer name. </td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Type</code></td>
+<td>Payment Method Type. </td>
+<td>Text </td>
+<td>100 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Amount</code></td>
+<td>Order amount (to be sent in cents).</td>
+<td>Number </td>
+<td>15 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Installments</code></td>
+<td>Number of Installments.</td>
+<td>Number </td>
+<td>2 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
+<td>Text to be printed on the carrier&rsquo;s bank invoice - Available only for VISA/MASTER - does not allow special characters</td>
+<td>Text</td>
+<td>13</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.Recurrent</code></td>
+<td>marking an unscheduled recurrence transaction</td>
+<td>boolean </td>
+<td>5 </td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.CardNumber</code></td>
+<td>Buyer Card number.</td>
+<td>Text </td>
+<td>16 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Holder</code></td>
+<td>Buyer name printed on  card.</td>
+<td>Text </td>
+<td>25 </td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
+<td>Expiry date printed on card.</td>
+<td>Text </td>
+<td>7 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.SecurityCode</code></td>
+<td>Security code printed on back of card.</td>
+<td>Text </td>
+<td>4 </td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CreditCard.Brand</code></td>
+<td>Card issuer.</td>
+<td>Text </td>
+<td>10 </td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
 <h2 id="consulting-a-recurrent-sale">Consulting a Recurrent sale</h2>
 
 <p>To check a credit card Recurrence, it is necessary to make a GET as the example.</p>
@@ -5813,6 +5992,13 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Buyer name. </td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis</td>
 <td>Text </td>
 <td>255</td>
 <td>No</td>
@@ -6169,9 +6355,9 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <tr>
 <td><code class="prettyprint">Interval</code></td>
 <td>Recurrence interval. <ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
-<td>Número </td>
+<td>Number </td>
 <td>2 </td>
-<td>Sim</td>
+<td>Yes</td>
 </tr>
 </tbody></table>
 
@@ -6185,7 +6371,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 
 <p>To modify the recurrence day, simply make a Put as the example.</p>
 
-<aside class="notice"><strong>Rule:</strong> If the new informed day is after the current day, we will update the recurrence day with effect on the next recurrence Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 10, the next recurrence date will be 05/10. If the new reported day is before the current day, we will update the recurrence day, but this will only take effect after the next recurrence is successfully performed. Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 3, the date of the next recurrence will remain on 05/25, and after it runs, the next date will be scheduled for 06/03. If the new reported day is before the current day, but the next recurrence is in another month, we will update the recurrence day with effect on the next recurrence. Ex.: Today is day 5, and the next recurrence is 09/25. When I upgrade to day 3, the next recurrence date will be 09/03</aside>
+<aside class="notice"><strong>Rule:</strong> If the new informed day is after the current day, we will update the recurrence day with effect on the next recurrence Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 10, the next recurrence date will be 05/10. If the new reported day is before the current day, we will update the recurrence day, but this will only take effect after the next recurrence is successfully performed. Ex.: Today is day 5 and the next recurrence is on 05/25. When I upgrade to day 3, the date of the next recurrence will remain on 05/25, and after it runs, the next recurrence will be scheduled for 06/03. If the new reported day is before the current day, but the next recurrence is in another month, we will update the recurrence day with effect on the next recurrence. Ex.: Today is day 5, and the next recurrence is 09/25. When I upgrade to day 3, the next recurrence date will be 09/03</aside>
 
 <h3 id="request">Request</h3>
 
@@ -6265,8 +6451,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 <pre><code class="highlight json"><span class="mi">156</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">curl
---request POST <span class="s2">"https://apisandbox.braspag.com.br/v2/RecurrentPayment/{Recurr
-entPaymentId}/Amount"</span>
+--request POST <span class="s2">"https://apisandbox.braspag.com.br/v2/RecurrentPayment/{RecurrentPaymentId}/Amount"</span>
 --header <span class="s2">"Content-Type: application/json"</span>
 --header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
@@ -6294,7 +6479,7 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>ublic Key for Dual Authentication in API 3.0.</td>
+<td>Public Key for Dual Authentication in API 3.0.</td>
 <td>Text</td>
 <td>40</td>
 <td>Yes</td>
@@ -6600,7 +6785,7 @@ entPaymentId}/Amount"</span>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>IRequest Identifier, used when the merchant uses different servers for each GET/POST/PUT </td>
+<td>Request Identifier, used when the merchant uses different servers for each GET/POST/PUT </td>
 <td> Guid </td>
 <td> 36 </td>
 <td>No</td>
@@ -6622,7 +6807,7 @@ entPaymentId}/Amount"</span>
 
 <h2 id="rehabilitating-a-recurrent-order">Rehabilitating a Recurrent Order</h2>
 
-<p>To Rehabilitate a recurring order, just makke a Put as the example.</p>
+<p>To Rehabilitate a recurrent order, just make a Put as the example.</p>
 
 <h3 id="request">Request</h3>
 
@@ -6684,7 +6869,7 @@ entPaymentId}/Amount"</span>
 
 <h2 id="renews-easy">Renews Easy</h2>
 
-<p>Using this feature allows automatic replacement of an expired card .
+<p>Using this feature allows automatic replacement of an expired card . 
 Thus, when a transaction with recurring markup is submitted to the API and Cielo identifies that the used card has been replaced, its authorization will be denied and the new card data will be returned according to the example.</p>
 
 <aside class="notice"><strong>Warning:</strong> It is necessary requesting to enable this feature in the register  </aside>
@@ -6793,6 +6978,13 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
 <td>Buyer name. </td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis</td>
 <td>Text </td>
 <td>255</td>
 <td>No</td>
@@ -7066,11 +7258,11 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">NewCard.CardNumber</code>New Buyer Card number.</td>
+<td><code class="prettyprint">NewCard.CardNumber</code></td>
+<td>New Buyer Card number.</td>
 <td>Text </td>
 <td>16 </td>
 <td>Yes</td>
-<td></td>
 </tr>
 <tr>
 <td><code class="prettyprint">NewCard.ExpirationDate</code></td>
@@ -7088,7 +7280,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 </tr>
 <tr>
 <td><code class="prettyprint">NewCard.SaveCard</code></td>
-<td>Identifies whether the card generated Cardtoken during the transactiono</td>
+<td>Identifies whether the card generated Cardtoken during the transaction</td>
 <td>Boolean </td>
 <td>&mdash; </td>
 <td>Yes</td>
@@ -7297,6 +7489,13 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <td>255</td>
 <td>No</td>
 <td>Buyer name.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -7739,7 +7938,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <td>Combination of codes that indicate the order&rsquo;s score. Codes are concatenated using the ^ character.</td>
 <td>Text</td>
 <td>100</td>
-<td>Ex: B^D^R^Z<br /><ul><li>A - Excessive address change. Client changed billing address two or more times in the last six months.</li><li>B - Card BIN or risky authorization. Risk factors are related to credit card BIN and/or card authorization checks.</li><li>C - High number of credit cards. The client has used more than six credit card numbers in the last six months.</li><li>D - Impact of email address. The client uses a free email provider or the email address is risky.</li><li>E - Positive list. The client is on your positive list.</li><li>F - Negative list. The account number, address, email address or IP address for this purpose appears on your negative list.</li><li>G - Geolocation inconsistencies. Client email domain, phone number, billing address, shipping address or IP address is suspec.</li><li>H - Excessive name changes. The client has changed the name two or more times in the last six months.</li><li>I - Internet inconsistencies. The IP address and email domain are not consistent with the billing address.</li><li>N - Meaningless entry. Client name and address fields contain meaningless words or language.</li><li>O - Obscenities. Client data contains obscene words.</li><li>P - Morphing identity. Multiple values of an identity element are linked to a value of a different identity element. For example, multiple phone numbers are linked to a single account number.</li><li>Q - Phone inconsistencies. Client&rsquo;s phone number is suspect.</li><li>R - Risky order. The transaction, the client and the merchant show correlated high-risk information.</li><li>T - Cobertura Time. Time Coverage. The customer is attempting a purchase out of the expected time.</li><li>U - Unverifiable address. The billing address or delivery address can not be verified.</li><li>V - Velocity. The account number was used many times in the last 15 minutes.</li><li>W - Marked as suspect. The billing address or delivery address is similar to an address previously marked as suspicious.</li><li>Y - The address, city, state or country of the billing and delivery addresses do not correlate.</li><li>Z - Invalid value. Because the request contains an unexpected value, a default value has been replaced. Although the transaction can still be processed, examine the order carefully to detect anomalies.</li></ul></td>
+<td>Ex: B^D^R^Z<br /><ul><li>A - Excessive address change. Client changed billing address two or more times in the last six months.</li><li>B - Card BIN or risky authorization. Risk factors are related to credit card BIN and/or card authorization checks.</li><li>C - High number of credit cards. The client has used more than six credit card numbers in the last six months.</li><li>D - Impact of email address. The client uses a free email provider or the email address is risky.</li><li>E - Positive list. The client is on your positive list.</li><li>F - Negative list. The account number, address, email address or IP address for this purpose appears on your negative list.</li><li>G - Geolocation inconsistencies. Client email domain, phone number, billing address, shipping address or IP address is suspect.</li><li>H - Excessive name changes. The client has changed the name two or more times in the last six months.</li><li>I - Internet inconsistencies. The IP address and email domain are not consistent with the billing address.</li><li>N - Meaningless entry. Client name and address fields contain meaningless words or language.</li><li>O - Obscenities. Client data contains obscene words.</li><li>P - Morphing identity. Multiple values of an identity element are linked to a value of a different identity element. For example, multiple phone numbers are linked to a single account number.</li><li>Q - Phone inconsistencies. Client&rsquo;s phone number is suspect.</li><li>R - Risky order. The transaction, the client and the merchant show correlated high-risk information.</li><li>T - Time Coverage. The customer is attempting a purchase out of the expected time.</li><li>U - Unverifiable address. The billing address or delivery address can not be verified.</li><li>V - Velocity. The account number was used many times in the last 15 minutes.</li><li>W - Marked as suspect. The billing address or delivery address is similar to an address previously marked as suspicious.</li><li>Y - The address, city, state or country of the billing and delivery addresses do not correlate.</li><li>Z - Invalid value. Because the request contains an unexpected value, a default value has been replaced. Although the transaction can still be processed, examine the order carefully to detect anomalies.</li></ul></td>
 </tr>
 <tr>
 <td><code class="prettyprint">FraudAnalysis.Score</code></td>
@@ -7758,7 +7957,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <tr>
 <td><code class="prettyprint">ReturnMessage</code></td>
 <td>Return message of Acquiring.</td>
-<td>Texto</td>
+<td>Text</td>
 <td>512</td>
 <td>Alphanumeric text</td>
 </tr>
@@ -7907,7 +8106,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <tr>
 <td><code class="prettyprint">Interval</code></td>
 <td>Interval between recurrences. </td>
-<td>Texto </td>
+<td>Text </td>
 <td>10 </td>
 <td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
 </tr>
@@ -7917,7 +8116,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 
 <h2 id="what-is-tokenization-of-cards:">What is Tokenization of Cards:</h2>
 
-<p>It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “One-click buy” and “Retry Transaction”, always preserving the integrity and the confidentiality of the information.</p>
+<p>It is a platform that allows secure storage of sensitive credit card data. This data is transformed into an encrypted code called “token”, which can be stored in a database. With the platform, the store will be able to offer features like “One click buy” and “Retry Transaction”, always preserving the integrity and the confidentiality of the information.</p>
 
 <h2 id="creating-a-tokenized-card">Creating a Tokenized Card</h2>
 
@@ -8003,7 +8202,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
   </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="p">}</span><span class="w">
+    </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="p">}</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
@@ -8014,7 +8213,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
   <span class="s2">"Links"</span>: <span class="o">{</span>
     <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
     <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-    <span class="s2">"Href"</span>: <span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="o">}</span>
+    <span class="s2">"Href"</span>: <span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="o">}</span> 
 <span class="o">}</span>
 </code></pre>
 
@@ -8038,7 +8237,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 
 <h2 id="creating-a-tokenized-card-during-an-authorization">Creating a Tokenized Card during an authorization</h2>
 
-<p>To save a card by creating your token, simply send a standard request of sales creation, SaveCard sent as &ldquo;true&rdquo;. The response will return the card Token.</p>
+<p>To save a card by creating its token, simply send a standard request of sales creation, SaveCard sent as &ldquo;true&rdquo;. The response will return the card Token.</p>
 
 <h3 id="request">Request</h3>
 
@@ -8189,6 +8388,13 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <td>255</td>
 <td>No</td>
 <td>Buyer name.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
@@ -8751,6 +8957,13 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <td>No</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto </td>
+<td>255</td>
+<td>Não</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method Type. </td>
 <td> Text </td>
@@ -9092,6 +9305,13 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
 <td>No</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Buyer register status in store (NEW / EXISTING) - Utilized by fraud analysis</td>
+<td>Text </td>
+<td>255</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Payment Method Type. </td>
 <td> Text </td>
@@ -9321,6 +9541,8 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
 
 <aside class="notice"><strong>Warning:</strong> For the debit card, when the “Wallet” node is sent in the request, the “DebitCard” node containing the “ReturnUrl” is going to be necessary.</aside>
 
+<aside class="notice"><strong>Warning:</strong>  For Visa Checkout, the Wallet node can be sent only with the &ldquo;Type&rdquo;, thus marking the transaction as being from the wallet. In this context, the credit card must be sent. </aside>
+
 <h2 id="how-to-carry-out-a-transaction-with-visacheckout">How to carry out a transaction with VisaCheckout</h2>
 
 <h3 id="request">Request</h3>
@@ -9339,12 +9561,13 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
             </span><span class="err">}</span><span class="p">,</span><span class="w">
-          </span><span class="err">}</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Wallet"</span><span class="p">:{</span><span class="w">
          </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"VisaCheckout"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"WalletKey"</span><span class="p">:</span><span class="s2">"1140814777695873901"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
      </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 
 </span></code></pre>
 <pre><code class="highlight shell">curl
@@ -9367,12 +9590,13 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
      <span class="s2">"CreditCard"</span>:<span class="o">{</span>
          <span class="s2">"SecurityCode"</span>:<span class="s2">"123"</span>,
             <span class="o">}</span>,
-          <span class="o">}</span>,
      <span class="s2">"Wallet"</span>:<span class="o">{</span>
          <span class="s2">"Type"</span>:<span class="s2">"VisaCheckout"</span>,
          <span class="s2">"WalletKey"</span>:<span class="s2">"1140814777695873901"</span>
+        <span class="o">}</span>
      <span class="o">}</span>
 <span class="o">}</span>
+
 --verbose
 </code></pre>
 
@@ -9421,6 +9645,13 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
 <td>Buyer name.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Text</td>
 <td>100</td>
@@ -9440,6 +9671,13 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
 <td>2</td>
 <td>Yes</td>
 <td>Number of Installments.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.ReturnUrl</code></td>
+<td>Text</td>
+<td>1024</td>
+<td>&mdash;</td>
+<td>Mandatory for debit card</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
@@ -9743,6 +9981,13 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
 <td>Buyer name.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">Customer.Status</code></td>
+<td>Text</td>
+<td>255</td>
+<td>No</td>
+<td>Buyer register status in store (NEW / EXISTING)</td>
+</tr>
+<tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Text</td>
 <td>100</td>
@@ -9984,7 +10229,7 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
 
 <h2 id="affiliate-settings.">Affiliate Settings.</h2>
 
-<p>Some types of transactions require that their Affiliation is properly set up with Cielo. By default, we suggest that you validate with our service center if your affiliation is able to transact in any of the situations below:</p>
+<p>Some transaction types require that their Affiliation is properly set up with Cielo. By default, we suggest that you validate with our service center if your affiliation is able to transact in any of the situations below:</p>
 
 <table><thead>
 <tr>
@@ -10335,7 +10580,7 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
 <tr>
 <td>34</td>
 <td>Confirmed email</td>
-<td>If there is an email confirmation routine for account activation. Values: &ldquo;YES&rdquo;. If not, do not send the MDD</td>
+<td>If there is an email confirmation routine for account activation. Values: &ldquo;YES&rdquo;. If it&rsquo;s negative, do not send the MDD</td>
 <td>String</td>
 </tr>
 <tr>
@@ -10347,7 +10592,7 @@ To use wallets in API 3.0, the merchant must have the wallets integrated at thei
 <tr>
 <td>36</td>
 <td>Use gift card at purchase ($)</td>
-<td>Report if was used Gift Card (Gift Card) at purchase. Values: &ldquo;YES&rdquo;. If not, do not send the MDD</td>
+<td>Report if was used Gift Card (Gift Card) at purchase. Values: &ldquo;YES&rdquo;. If it&rsquo;s negative, do not send the MDD</td>
 <td>String</td>
 </tr>
 <tr>
@@ -11909,6 +12154,297 @@ Just contact Cielo HelpDesk and inform the notification URL to be used.</p>
 <p>The Content sent is the same one sent as &ldquo;response&rdquo; for each transaction</p>
 
 <aside class="notice"><strong>Warning:</strong> Notification Url must be static</aside>
+
+<h2 id="fraud-analysis-values">Fraud Analysis Values</h2>
+
+<h3 id="fraudanalysis.items.giftcategory">FraudAnalysis.Items.GiftCategory</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Yes</td>
+<td>In case of divergence between billing and delivery addresses, mark with small risk.</td>
+</tr>
+<tr>
+<td>No</td>
+<td>In case of divergence between billing and delivery addresses, mark with high risk.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>Ignores risk analysis for divergent addresses.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.hosthedge">FraudAnalysis.Items.HostHedge</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Low</td>
+<td>Low importance of e-mail and IP address in risk analysis.</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>Normal importance of e-mail and IP address in risk analysis.</td>
+</tr>
+<tr>
+<td>High</td>
+<td>High importance of e-mail and IP address in risk analysis.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>E-mail and IP address do not affect risk analysis.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.nonsensicalhedge">FraudAnalysis.Items.NonSensicalHedge</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Low</td>
+<td>Low importance of the verification made on the buyer&rsquo;s order, in risk analysis.</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>Normal importance of the verification made on the buyer&rsquo;s order, in risk analysis.</td>
+</tr>
+<tr>
+<td>High</td>
+<td>High importance of the verification made on the buyer&rsquo;s order, in risk analysis.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>Verification of buyer&rsquo;s order does not affect risk analysis.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.obscenitieshedge">FraudAnalysis.Items.ObscenitiesHedge</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Low</td>
+<td>Low importance of obscenity  verification of buyer&rsquo;s order, in risk analysis.</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>Normal importance of obscenity  verification of buyer&rsquo;s order, in risk analysis.</td>
+</tr>
+<tr>
+<td>High</td>
+<td>High importance of obscenity  verification of buyer&rsquo;s order, in risk analysis.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>Obscenity verification of buyer&rsquo;s order does not affect risk analysis.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.phonehedge">FraudAnalysis.Items.PhoneHedge</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Low</td>
+<td>Low importance on tests performed with telephone numbers.</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>Normal importance on tests performed with telephone numbers.</td>
+</tr>
+<tr>
+<td>High</td>
+<td>High importance on tests performed with telephone numbers.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>Phone number tests do not affect risk analysis.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.risk">FraudAnalysis.Items.Risk</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Low</td>
+<td>The product has a history of few chargebacks.</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>The product has a history of chargebacks considered normal.</td>
+</tr>
+<tr>
+<td>High</td>
+<td>The product has a history of chargebacks above average.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.timehedge">FraudAnalysis.Items.TimeHedge</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Low</td>
+<td>Low importance in the time of day when the purchase was made, for the risk analysis.</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>Normal importance in the time of day when the purchase was made, for the risk analysis.</td>
+</tr>
+<tr>
+<td>High</td>
+<td>High importance in the time of day when the purchase was made, for the risk analysis.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>Purchase time does not affect risk analysis.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.type">FraudAnalysis.Items.Type</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CN</td>
+<td>Private buyer</td>
+</tr>
+<tr>
+<td>CP</td>
+<td>Business buyer</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.velocityhedge">FraudAnalysis.Items.VelocityHedge</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Low</td>
+<td>Low importance in the number of purchases made by the client in the last 15 minutes.</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>Normal importance in the number of purchases made by the client in the last 15 minutes.</td>
+</tr>
+<tr>
+<td>High</td>
+<td>High importance in the number of purchases made by the client in the last 15 minutes.</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>The frequency of purchases made by the client does not affect the fraud analysis.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.items.passenger.rating">FraudAnalysis.Items.Passenger.Rating</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Adult</td>
+<td>Adult passenger.</td>
+</tr>
+<tr>
+<td>Child</td>
+<td>Child passenger.</td>
+</tr>
+<tr>
+<td>Infant</td>
+<td>Infant passenger.</td>
+</tr>
+<tr>
+<td>Youth</td>
+<td>Teenage passenger.</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>Student passenger.</td>
+</tr>
+<tr>
+<td>SeniorCitizen</td>
+<td>Elderly passenger.</td>
+</tr>
+<tr>
+<td>Military</td>
+<td>Military passenger.</td>
+</tr>
+</tbody></table>
+
+<h3 id="fraudanalysis.shipping.method">FraudAnalysis.Shipping.Method</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+</tr>
+<tr>
+<td>SameDay</td>
+</tr>
+<tr>
+<td>OneDay</td>
+</tr>
+<tr>
+<td>TwoDay</td>
+</tr>
+<tr>
+<td>ThreeDay</td>
+</tr>
+<tr>
+<td>LowCost</td>
+</tr>
+<tr>
+<td>Pickup</td>
+</tr>
+<tr>
+<td>Other</td>
+</tr>
+</tbody></table>
 
             </div>
             <div class="dark-box">

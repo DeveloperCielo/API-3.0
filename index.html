@@ -110,15 +110,15 @@
 <p>Ambiente Produção</p>
 
 <ul>
-<li><strong>Requisição de transação</strong>: https://api.cieloecommerce.cielo.com.br/</li>
-<li><strong>Consulta transação</strong>: https://apiquery.cieloecommerce.cielo.com.br/</li>
+<li><strong>Requisição de transação</strong>: https://api.cieloecommerce.cielo.com.br/</li>
+<li><strong>Consulta transação</strong>: https://apiquery.cieloecommerce.cielo.com.br/</li>
 </ul>
 
 <p>Ambiente Sandbox</p>
 
 <ul>
-<li><strong>Requisição de transação</strong>: https://apisandbox.cieloecommerce.cielo.com.br</li>
-<li><strong>Consulta transação</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br</li>
+<li><strong>Requisição de transação</strong>: https://apisandbox.cieloecommerce.cielo.com.br</li>
+<li><strong>Consulta transação</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br</li>
 </ul>
 
 <p>Para executar uma operação, combine a URL base do ambiente com a URL da operação desejada e envie utilizando o verbo HTTP conforme descrito na operação.</p>
@@ -351,8 +351,8 @@
 <li>Endpoints transacionais</li>
 </ol>
 
-<p>* <strong>Requisição</strong>: https://apisandbox.cieloecommerce.cielo.com.br
-    * <strong>Consulta</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br/</p>
+<p>* <strong>Requisição</strong>: https://apisandbox.cieloecommerce.cielo.com.br
+    * <strong>Consulta</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br/</p>
 
 <p>Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o <a href="https://cadastrosandbox.cieloecommerce.cielo.com.br/">Cadastro do Sandbox</a> e criar uma conta de testes. Ao fim do cadastro você receberá um <code class="prettyprint">MerchantId</code> e um <code class="prettyprint">MerchantKey</code>, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.</p>
 
@@ -431,13 +431,13 @@
 <p>Para que você possa disfrutar de todos os recursos disponíveis em nossa API, é importante que antes você conheça os conceitos envolvidos no processamento de uma transação de cartão de crédito.</p>
 
 <ul>
-<li><strong>Autorização</strong>: A autorização (ou pré-autorização) é a principal operação no eCommerce, pois através dela é que uma venda pode ser concretizada. A pré-autorização apenas sensibiliza o limite do cliente, mas ainda não gera cobrança para o consumidor.</li>
-<li><strong>Captura</strong>: Ao realizar uma pré-autorização, é necessário a confirmação desta para que a cobrança seja efetivada ao portador do cartão. Através desta operação que se efetiva uma pré-autorização, podendo esta ser executada, em normalmente, em até 5 dias após a data da pré-autorização.</li>
-<li><strong>Cancelamento</strong>: O cancelamento é necessário quando, por algum motivo, não se quer mais efetivar uma venda.</li>
-<li><strong>Autenticação</strong>: O processo de autenticação possibilita realizar uma venda a qual passará pelo processo de autenticação do banco emissor do cartão, assim trazendo mais segurança para a venda e transferindo para o banco, o risco de fraude.</li>
-<li><strong>Cartão protegido</strong>: É uma plataforma que permite o armazenamento seguro de dados sensíveis de cartão de crédito. Estes dados são transformados em um código criptografrado chamado de &ldquo;token”, que poderá ser armazenado em banco de dados. Com a plataforma, a loja poderá oferecer recursos como &quot;Compra com 1 clique” e &quot;Retentativa de envio de transação”, sempre preservando a integridade e a confidencialidade das informações.</li>
-<li><strong>Antifraude</strong>: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.</li>
-<li><strong>Recorrente</strong>: A Recorrência Inteligente é um recurso indispensável para estabelicimentos que precisam cobrar regularmente por seus produtos/serviços.
+<li><strong>Autorização</strong>: A autorização (ou pré-autorização) é a principal operação no eCommerce, pois através dela é que uma venda pode ser concretizada. A pré-autorização apenas sensibiliza o limite do cliente, mas ainda não gera cobrança para o consumidor.</li>
+<li><strong>Captura</strong>: Ao realizar uma pré-autorização, é necessário a confirmação desta para que a cobrança seja efetivada ao portador do cartão. Através desta operação que se efetiva uma pré-autorização, podendo esta ser executada, em normalmente, em até 5 dias após a data da pré-autorização.</li>
+<li><strong>Cancelamento</strong>: O cancelamento é necessário quando, por algum motivo, não se quer mais efetivar uma venda.</li>
+<li><strong>Autenticação</strong>: O processo de autenticação possibilita realizar uma venda a qual passará pelo processo de autenticação do banco emissor do cartão, assim trazendo mais segurança para a venda e transferindo para o banco, o risco de fraude.</li>
+<li><strong>Cartão protegido</strong>: É uma plataforma que permite o armazenamento seguro de dados sensíveis de cartão de crédito. Estes dados são transformados em um código criptografrado chamado de &ldquo;token”, que poderá ser armazenado em banco de dados. Com a plataforma, a loja poderá oferecer recursos como &quot;Compra com 1 clique” e &quot;Retentativa de envio de transação”, sempre preservando a integridade e a confidencialidade das informações.</li>
+<li><strong>Antifraude</strong>: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.</li>
+<li><strong>Recorrente</strong>: A Recorrência Inteligente é um recurso indispensável para estabelicimentos que precisam cobrar regularmente por seus produtos/serviços.
 É muito utilizado para assinaturas de revistas, mensalidades, licenças de software, entre outros. Os lojistas contarão com recursos diferenciados para modelar sua cobrança de acordo com o seu negócio, pois toda parametrização é configurável, tais como: periodicidade, data de início e fim, quantidade de tentativas, intervalo entre elas, entre outros.</li>
 </ul>
 
@@ -546,7 +546,7 @@
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -951,12 +951,12 @@
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
-<td>Texto </td>
-<td>14 </td>
+<td>Texto</td>
+<td>14</td>
 <td>Não</td>
 <td>Número do RG, CPF ou CNPJ do Cliente.</td>
 </tr>
@@ -1522,7 +1522,7 @@
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -2032,7 +2032,7 @@
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
@@ -2955,7 +2955,7 @@
 <td>Sequência de códigos que indicam que existe uma excessiva alteração de identidades do comprador. Os códigos são concatenados usando o caractere ^.</td>
 <td>Texto</td>
 <td>255</td>
-<td>Ex: <br /><ul><li>MORPH-B - O mesmo endereço de cobrança tem sido utilizado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-C - O mesmo número de conta tem sido utilizado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-E - O mesmo endereço de e-mail tem sido utilizado várias vezes com identidades de clientes múltiplos. MORPH-I O mesmo endereço IP tem sido utilizado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-P - O mesmo número de telefone tem sido usado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-S - O mesmo endereço de entrega tem sido utilizado várias vezes com identidades de clientes múltiplos.</li></ul></td>
+<td>Ex: <br /><ul><li>MORPH-B - O mesmo endereço de cobrança tem sido utilizado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-C - O mesmo número de conta tem sido utilizado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-E - O mesmo endereço de e-mail tem sido utilizado várias vezes com identidades de clientes múltiplos. MORPH-I O mesmo endereço IP tem sido utilizado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-P - O mesmo número de telefone tem sido usado várias vezes com identidades de clientes múltiplos.</li><li>MORPH-S - O mesmo endereço de entrega tem sido utilizado várias vezes com identidades de clientes múltiplos.</li></ul></td>
 </tr>
 <tr>
 <td><code class="prettyprint">IpRoutingMethod</code></td>
@@ -2996,7 +2996,7 @@
 
 <h2 id="criando-uma-venda-com-card-token">Criando uma venda com Card Token</h2>
 
-<p>Para criar uma venda de cartão de crédito com token do cartão protegido, é necessário fazer um POST para o recurso Payment conforme o exemplo.</p>
+<p>Para criar uma venda de cartão de crédito com token do cartão protegido, é necessário fazer um POST para o recurso Payment conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -3057,65 +3057,65 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td> 40 </td>
-<td> Sim</td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td> Texto </td>
-<td> 50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td> Texto </td>
-<td> 100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td> Número </td>
-<td> 15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td> Número </td>
-<td> 2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -3128,29 +3128,29 @@
 <tr>
 <td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URI para onde o usuário será redirecionado após o fim do pagamento</td>
-<td>Texto </td>
-<td>1024 </td>
+<td>Texto</td>
+<td>1024</td>
 <td>Sim quando Authenticate = true</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardToken</code></td>
-<td>Token de identificação do Cartão. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Token de identificação do Cartão.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -3330,7 +3330,7 @@
 
 <h2 id="capturando-uma-venda">Capturando uma venda</h2>
 
-<p>Para captura uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.</p>
+<p>Para captura uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -3356,45 +3356,45 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td> Guid </td>
-<td> 36 </td>
-<td> Sim</td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td> Texto </td>
-<td> 40 </td>
-<td> Sim</td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido. </td>
-<td> Guid </td>
-<td> 36 </td>
-<td> Sim</td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td> Número </td>
-<td> 15 </td>
-<td> Não</td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ServiceTaxAmount</code></td>
 <td>Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.</td>
-<td> Número </td>
-<td> 15 </td>
-<td> Não</td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
 </tr>
 </tbody></table>
 
@@ -3450,36 +3450,40 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Status</code></td>
-<td>Status da Transação. </td>
-<td> Byte </td>
-<td> &mdash; </td>
-<td> 2</td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da adquirente. </td>
-<td> Texto </td>
-<td> 32 </td>
-<td> Texto alfanumérico </td>
+<td>Código de retorno da adquirente.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ReturnMessage</code></td>
-<td>Mensagem de retorno da adquirente. </td>
-<td> Texto </td>
-<td> 512 </td>
-<td> Texto alfanumérico </td>
+<td>Mensagem de retorno da adquirente.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
 </tr>
 </tbody></table>
 
 <h2 id="cancelando-uma-venda">Cancelando uma venda</h2>
 
-<p>Para cancelar uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment. É possível realizar o cancelamento via PaymentID ou MerchantOrderId (numero do pedido).</p>
+<p>Para cancelar uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment. É possível realizar o cancelamento via PaymentID ou MerchantOrderId (numero do pedido).</p>
 
 <aside class="notice"><strong>Atenção:</strong> O cancelamento por MerchantOrderId afeta sempre a transação mais nova, ou seja, caso haja pedidos com o numero do pedido duplicado, somente o mais atual será cancelado. O pedido anterior não poderá ser cancelado por esse método</aside>
 
 <h3 id="requisição">Requisição</h3>
 
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId ou MerchantOrderId}/void?amount=xxx</span></aside>
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=xxx</span></aside>
+
+<p>ou</p>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/OrderId/{MerchantOrderId}/void?amount=xxx</span></aside>
 <pre><code class="highlight json"></code></pre>
 <pre><code class="highlight shell">curl
 --request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=xxx"</span>
@@ -3501,37 +3505,37 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Não</td>
 </tr>
 </tbody></table>
@@ -3578,24 +3582,24 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Status</code></td>
-<td>Status da Transação. </td>
-<td>Byte </td>
-<td>&mdash; </td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
 <td>10</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da Adquirência. </td>
-<td>Texto </td>
-<td>32 </td>
-<td>Texto alfanumérico </td>
+<td>Código de retorno da Adquirência.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ReturnMessage</code></td>
-<td>Mensagem de retorno da Adquirência. </td>
-<td>Texto </td>
-<td>512 </td>
-<td>Texto alfanumérico </td>
+<td>Mensagem de retorno da Adquirência.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
 </tr>
 </tbody></table>
 
@@ -3603,7 +3607,7 @@
 
 <h2 id="criando-uma-venda-simplificada">Criando uma venda simplificada</h2>
 
-<p>Para criar uma venda que utilizará cartão de débito, é necessário fazer um POST para o recurso Payment conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.</p>
+<p>Para criar uma venda que utilizará cartão de débito, é necessário fazer um POST para o recurso Payment conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -3666,107 +3670,107 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
 <td>Tipo do Meio de Pagamento.</td>
-<td>Texto </td>
-<td>100 </td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>Url de retorno do lojista.</td>
-<td>Texto </td>
-<td>1024 </td>
+<td>Texto</td>
+<td>1024</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URI para onde o usuário será redirecionado após o fim do pagamento</td>
-<td>Texto </td>
-<td>1024 </td>
+<td>Texto</td>
+<td>1024</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
-<td>Texto </td>
-<td>16 </td>
+<td>Texto</td>
+<td>16</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Holder</code></td>
 <td>Nome do Comprador impresso no cartão.</td>
-<td>Texto </td>
-<td>25 </td>
+<td>Texto</td>
+<td>25</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
 <td>Data de validade impresso no cartão.</td>
-<td>Texto </td>
-<td>7 </td>
+<td>Texto</td>
+<td>7</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
-<td>Bandeira do cartão. </td>
-<td>Texto </td>
-<td>10 </td>
+<td>Bandeira do cartão.</td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -3853,45 +3857,45 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">AuthenticationUrl</code></td>
-<td>URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Débito. </td>
-<td>Texto </td>
-<td>56 </td>
-<td>Url de Autenticação </td>
+<td>URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Débito.</td>
+<td>Texto</td>
+<td>56</td>
+<td>Url de Autenticação</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Tid</code></td>
-<td>Id da transação na adquirente. </td>
-<td>Texto </td>
-<td>40 </td>
-<td>Texto alfanumérico </td>
+<td>Id da transação na adquirente.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Texto alfanumérico</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ReturnUrl</code></td>
 <td>Url de retorno do lojista. URL para onde o lojista vai ser redirecionado no final do fluxo.</td>
-<td>Texto </td>
-<td>1024 </td>
-<td>http://www.urllogista.com.br </td>
+<td>Texto</td>
+<td>1024</td>
+<td>http://www.urllogista.com.br</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Status</code></td>
-<td>Status da Transação. </td>
-<td>Byte </td>
-<td>&mdash; </td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
 <td>0</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da Adquirência. </td>
-<td>Texto </td>
-<td>32 </td>
-<td>Texto alfanumérico </td>
+<td>Código de retorno da Adquirência.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
 </tr>
 </tbody></table>
 
@@ -3899,7 +3903,7 @@
 
 <h2 id="criando-uma-venda-simplificada">Criando uma venda simplificada</h2>
 
-<p>Para criar uma venda de transferência eletronica, é necessário fazer um POST para o recurso Payment conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.</p>
+<p>Para criar uma venda de transferência eletronica, é necessário fazer um POST para o recurso Payment conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -3954,65 +3958,65 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td>Texto </td>
-<td>100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Provider</code></td>
 <td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
-<td>Texto </td>
-<td>15 </td>
+<td>Texto</td>
+<td>15</td>
 <td>&mdash;</td>
 </tr>
 </tbody></table>
@@ -4083,23 +4087,23 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Url</code></td>
-<td>URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Transferência Eletronica. </td>
-<td>Texto </td>
-<td>256 </td>
-<td>Url de Autenticação </td>
+<td>URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Transferência Eletronica.</td>
+<td>Texto</td>
+<td>256</td>
+<td>Url de Autenticação</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Status</code></td>
-<td>Status da Transação. </td>
-<td>Byte </td>
-<td>&mdash; </td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
 <td>0</td>
 </tr>
 </tbody></table>
@@ -4108,7 +4112,7 @@
 
 <h2 id="criando-uma-venda-de-boleto">Criando uma venda de Boleto</h2>
 
-<p>Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.</p>
+<p>Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -4199,162 +4203,162 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja(NEW</td>
+<td>Status de cadastro do comprador na loja(NEW</td>
 <td>EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>255</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.ZipCode</code></td>
-<td>CEP do endereço do Comprador. </td>
-<td>Texto </td>
-<td>9 </td>
+<td>CEP do endereço do Comprador.</td>
+<td>Texto</td>
+<td>9</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Country</code></td>
-<td>Pais do endereço do Comprador. </td>
-<td>Texto </td>
-<td>35 </td>
+<td>Pais do endereço do Comprador.</td>
+<td>Texto</td>
+<td>35</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.State</code></td>
-<td>Estado do endereço do Comprador. </td>
-<td>Texto </td>
-<td>2 </td>
+<td>Estado do endereço do Comprador.</td>
+<td>Texto</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.City</code></td>
-<td>Cidade do endereço do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Cidade do endereço do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.District</code></td>
-<td>Bairro do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Bairro do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Street</code></td>
-<td>Endereço do Comprador. </td>
-<td>Texto </td>
-<td>255 </td>
+<td>Endereço do Comprador.</td>
+<td>Texto</td>
+<td>255</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Number</code></td>
-<td>Número do endereço do Comprador. </td>
-<td>Texto </td>
+<td>Número do endereço do Comprador.</td>
+<td>Texto</td>
 <td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td>Texto </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
 <td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Provider</code></td>
 <td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
-<td>Texto </td>
-<td>15 </td>
+<td>Texto</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Adress</code></td>
 <td>Endereço do Cedente.</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.BoletoNumber</code></td>
 <td>Número do Boleto (&quot;NossoNumero&rdquo;).</td>
-<td>Texto </td>
-<td>50 </td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Assignor</code></td>
 <td>Nome do Cedente.</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>200</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Demonstrative</code></td>
 <td>Texto de Demonstrativo.</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>450</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ExpirationDate</code></td>
 <td>Data de expiração do Boleto.</td>
-<td>Date </td>
-<td>10 </td>
+<td>Date</td>
+<td>10</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Identification</code></td>
 <td>Documento de identificação do Cedente.</td>
-<td>Texto </td>
-<td>14 </td>
+<td>Texto</td>
+<td>14</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Instructions</code></td>
 <td>Instruções do Boleto.</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>450</td>
 <td>Não</td>
 </tr>
@@ -4457,79 +4461,79 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Instructions</code></td>
-<td>Instruções do Boleto. </td>
-<td>Texto </td>
-<td>450 </td>
-<td>Ex: Aceitar somente até a data de vencimento, após essa data juros de 1% dia. </td>
+<td>Instruções do Boleto.</td>
+<td>Texto</td>
+<td>450</td>
+<td>Ex: Aceitar somente até a data de vencimento, após essa data juros de 1% dia.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">ExpirationDate</code></td>
-<td>Data de expiração. </td>
-<td>Texto </td>
-<td>10 </td>
-<td>2014-12-25 </td>
+<td>Data de expiração.</td>
+<td>Texto</td>
+<td>10</td>
+<td>2014-12-25</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Url</code></td>
-<td>Url do Boleto gerado. </td>
-<td>string </td>
-<td>256 </td>
-<td>Ex:https://&hellip;/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d </td>
+<td>Url do Boleto gerado.</td>
+<td>string</td>
+<td>256</td>
+<td>Ex:https://&hellip;/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Number</code></td>
-<td>&ldquo;NossoNumero&rdquo; gerado. </td>
+<td>&ldquo;NossoNumero&rdquo; gerado.</td>
 <td>Texto</td>
-<td>50 </td>
-<td>Ex: 1000000012-8 </td>
+<td>50</td>
+<td>Ex: 1000000012-8</td>
 </tr>
 <tr>
 <td><code class="prettyprint">BarCodeNumber</code></td>
-<td>Representação numérica do código de barras. </td>
-<td>Texto </td>
-<td>44 </td>
-<td>Ex: 00091628800000157000494250100000001200656560 </td>
+<td>Representação numérica do código de barras.</td>
+<td>Texto</td>
+<td>44</td>
+<td>Ex: 00091628800000157000494250100000001200656560</td>
 </tr>
 <tr>
 <td><code class="prettyprint">DigitableLine</code></td>
-<td>Linha digitável. </td>
-<td>Texto </td>
-<td>256 </td>
-<td>Ex: 00090.49420 50100.000004 12006.565605 1 62880000015700 </td>
+<td>Linha digitável.</td>
+<td>Texto</td>
+<td>256</td>
+<td>Ex: 00090.49420 50100.000004 12006.565605 1 62880000015700</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Assignor</code></td>
-<td>Nome do Cedente. </td>
-<td>Texto </td>
-<td>256 </td>
-<td>Ex: Loja Teste </td>
+<td>Nome do Cedente.</td>
+<td>Texto</td>
+<td>256</td>
+<td>Ex: Loja Teste</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Address</code></td>
-<td>Endereço do Cedente. </td>
-<td>Texto </td>
-<td>256 </td>
-<td>Ex: Av. Teste, 160 </td>
+<td>Endereço do Cedente.</td>
+<td>Texto</td>
+<td>256</td>
+<td>Ex: Av. Teste, 160</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Identification</code></td>
-<td>Documento de identificação do Cedente. </td>
-<td>Texto </td>
-<td>14 </td>
-<td>CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -) </td>
+<td>Documento de identificação do Cedente.</td>
+<td>Texto</td>
+<td>14</td>
+<td>CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Status</code></td>
-<td>Status da Transação. </td>
-<td>Byte </td>
-<td>&mdash; </td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
 <td>1</td>
 </tr>
 </tbody></table>
@@ -4538,7 +4542,7 @@
 
 <h2 id="autorizando-a-primeira-recorrência-programada">Autorizando a primeira recorrência programada</h2>
 
-<p>Para criar uma venda recorrente cuja a primeira recorrência é autorizada com a forma de pagamento cartão de crédito, basta fazer um POST conforme o exemplo.</p>
+<p>Para criar uma venda recorrente cuja a primeira recorrência é autorizada com a forma de pagamento cartão de crédito, basta fazer um POST conforme o exemplo.</p>
 
 <aside class="notice"><strong>Atenção:</strong> Nessa modalidade de recorrência, a primeira transação deve ser capturada. Todas as transções posteriores serão capturadas automaticamente.</aside>
 
@@ -4617,58 +4621,58 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>6 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>6</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
 <td>Chave Publica para Autenticação Dupla no API 3.0.</td>
-<td>Texto </td>
-<td>40 </td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td>Texto </td>
-<td>100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td>Número </td>
-<td>2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -4681,57 +4685,57 @@
 <tr>
 <td><code class="prettyprint">Payment.RecurrentPayment.EndDate</code></td>
 <td>Data para termino da recorrência.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.RecurrentPayment.Interval</code></td>
-<td>Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
-<td>Texto </td>
-<td>10 </td>
+<td>Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
+<td>Texto</td>
+<td>10</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.RecurrentPayment.AuthorizeNow</code></td>
 <td>Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.</td>
-<td>Booleano </td>
-<td>&mdash; </td>
+<td>Booleano</td>
+<td>&mdash;</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
-<td>Texto </td>
-<td>16 </td>
+<td>Texto</td>
+<td>16</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Holder</code></td>
 <td>Nome do Comprador impresso no cartão.</td>
-<td>Texto </td>
-<td>25 </td>
+<td>Texto</td>
+<td>25</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
 <td>Data de validade impresso no cartão.</td>
-<td>Texto </td>
-<td>7 </td>
+<td>Texto</td>
+<td>7</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -4881,44 +4885,44 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Campo Identificador da próxima recorrência. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador da próxima recorrência.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NextRecurrency</code></td>
-<td>Data da próxima recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data da próxima recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">EndDate</code></td>
-<td>Data do fim da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do fim da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Interval</code></td>
-<td>Intervalo entre as recorrência. </td>
-<td>Texto </td>
-<td>10 </td>
-<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+<td>Intervalo entre as recorrência.</td>
+<td>Texto</td>
+<td>10</td>
+<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
 </tr>
 <tr>
 <td><code class="prettyprint">AuthorizeNow</code></td>
-<td>Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. </td>
-<td>Booleano </td>
-<td>&mdash; </td>
-<td>true ou false </td>
+<td>Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não.</td>
+<td>Booleano</td>
+<td>&mdash;</td>
+<td>true ou false</td>
 </tr>
 </tbody></table>
 
 <h2 id="agendamento-de-uma-recorrência-programada-de-crédito">Agendamento de uma recorrência programada de crédito</h2>
 
-<p>Para criar uma venda recorrente cuja a primeira recorrência não será autorizada na mesma data com a forma de pagamento cartão de crédito, basta fazer um POST conforme o exemplo.</p>
+<p>Para criar uma venda recorrente cuja a primeira recorrência não será autorizada na mesma data com a forma de pagamento cartão de crédito, basta fazer um POST conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -4997,176 +5001,176 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0 </td>
-<td>Guid </td>
+<td>Identificador da loja no API 3.0</td>
+<td>Guid</td>
 <td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0 </td>
-<td>Texto </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0</td>
+<td>Texto</td>
 <td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
 <td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
-<td>Email do Comprador. </td>
-<td>Texto </td>
-<td>255 </td>
+<td>Email do Comprador.</td>
+<td>Texto</td>
+<td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Birthdate</code></td>
-<td>Data de nascimento do Comprador. </td>
-<td>Date </td>
-<td>10 </td>
+<td>Data de nascimento do Comprador.</td>
+<td>Date</td>
+<td>10</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
-<td>Número do RG, CPF ou CNPJ do Cliente. </td>
-<td>Texto </td>
-<td>14 </td>
+<td>Número do RG, CPF ou CNPJ do Cliente.</td>
+<td>Texto</td>
+<td>14</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Street</code></td>
-<td>Endereço do Comprador. </td>
-<td>Texto </td>
+<td>Endereço do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Number</code></td>
-<td>Número do endereço do Comprador. </td>
-<td>Texto </td>
-<td>15 </td>
+<td>Número do endereço do Comprador.</td>
+<td>Texto</td>
+<td>15</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Complement</code></td>
 <td>Complemento do endereço do Comprador.</td>
-<td>Texto </td>
-<td>50 </td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.ZipCode</code></td>
-<td>CEP do endereço do Comprador. </td>
-<td>Texto </td>
-<td>9 </td>
+<td>CEP do endereço do Comprador.</td>
+<td>Texto</td>
+<td>9</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.City</code></td>
-<td>Cidade do endereço do Comprador. </td>
-<td>Texto </td>
+<td>Cidade do endereço do Comprador.</td>
+<td>Texto</td>
 <td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.State</code></td>
-<td>Estado do endereço do Comprador. </td>
-<td>Texto </td>
-<td>2 </td>
+<td>Estado do endereço do Comprador.</td>
+<td>Texto</td>
+<td>2</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Country</code></td>
-<td>Pais do endereço do Comprador. </td>
-<td>Texto </td>
+<td>Pais do endereço do Comprador.</td>
+<td>Texto</td>
 <td>35</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.District</code></td>
-<td>Bairro do Comprador. </td>
-<td>Texto </td>
+<td>Bairro do Comprador.</td>
+<td>Texto</td>
 <td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Street</code></td>
-<td>Endereço do Comprador. </td>
-<td>Texto </td>
-<td>255 </td>
+<td>Endereço do Comprador.</td>
+<td>Texto</td>
+<td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Number</code></td>
-<td>Número do endereço do Comprador. </td>
-<td>Texto </td>
-<td>15 </td>
+<td>Número do endereço do Comprador.</td>
+<td>Texto</td>
+<td>15</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Complement</code></td>
-<td>Complemento do endereço do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Complemento do endereço do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.ZipCode</code></td>
-<td>CEP do endereço do Comprador. </td>
-<td>Texto </td>
-<td>9 </td>
+<td>CEP do endereço do Comprador.</td>
+<td>Texto</td>
+<td>9</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.City</code></td>
-<td>Cidade do endereço do Comprador. </td>
-<td>Texto </td>
+<td>Cidade do endereço do Comprador.</td>
+<td>Texto</td>
 <td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.State</code></td>
-<td>Estado do endereço do Comprador. </td>
-<td>Texto </td>
-<td>2 </td>
+<td>Estado do endereço do Comprador.</td>
+<td>Texto</td>
+<td>2</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Country</code></td>
-<td>Pais do endereço do Comprador. </td>
-<td>Texto </td>
+<td>Pais do endereço do Comprador.</td>
+<td>Texto</td>
 <td>35</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.District</code></td>
-<td>Bairro do Comprador. </td>
-<td>Texto </td>
+<td>Bairro do Comprador.</td>
+<td>Texto</td>
 <td>50</td>
 <td>Não</td>
 </tr>
@@ -5273,51 +5277,51 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Campo Identificador da próxima recorrência. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador da próxima recorrência.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NextRecurrency</code></td>
-<td>Data da próxima recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data da próxima recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">StartDate</code></td>
-<td>Data do inicio da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do inicio da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">EndDate</code></td>
-<td>Data do fim da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do fim da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Interval</code></td>
-<td>Intervalo entre as recorrência. </td>
-<td>Texto </td>
-<td>10 </td>
-<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+<td>Intervalo entre as recorrência.</td>
+<td>Texto</td>
+<td>10</td>
+<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
 </tr>
 <tr>
 <td><code class="prettyprint">AuthorizeNow</code></td>
-<td>Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. </td>
-<td>Booleano </td>
-<td>&mdash; </td>
-<td>true ou false </td>
+<td>Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não.</td>
+<td>Booleano</td>
+<td>&mdash;</td>
+<td>true ou false</td>
 </tr>
 </tbody></table>
 
 <h2 id="autorizando-uma-recorrência-própria-/-não-programada">Autorizando uma recorrência própria / não programada</h2>
 
-<p>Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo.</p>
+<p>Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo.</p>
 
 <aside class="notice"><strong>Atenção:</strong> Nessa modalidade de recorrencia, cabe ao lojista a inteligencia de realizar transações no mesmo formato de acordo com intervalo que desejar. A API não realizará transações automaticamente.</aside>
 
@@ -5388,58 +5392,58 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>6 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>6</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
 <td>Chave Publica para Autenticação Dupla no API 3.0.</td>
-<td>Texto </td>
-<td>40 </td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td>Texto </td>
-<td>100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td>Número </td>
-<td>2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -5452,43 +5456,43 @@
 <tr>
 <td><code class="prettyprint">Payment.Recurrent</code></td>
 <td>marcação de uma transação de recorrencia não programada</td>
-<td>boolean </td>
-<td>5 </td>
+<td>boolean</td>
+<td>5</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
-<td>Texto </td>
-<td>16 </td>
+<td>Texto</td>
+<td>16</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Holder</code></td>
 <td>Nome do Comprador impresso no cartão.</td>
-<td>Texto </td>
-<td>25 </td>
+<td>Texto</td>
+<td>25</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
 <td>Data de validade impresso no cartão.</td>
-<td>Texto </td>
-<td>7 </td>
+<td>Texto</td>
+<td>7</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -5628,58 +5632,58 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>6 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>6</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
 <td>Chave Publica para Autenticação Dupla no API 3.0.</td>
-<td>Texto </td>
-<td>40 </td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td>Texto </td>
-<td>100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td>Número </td>
-<td>2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -5692,50 +5696,50 @@
 <tr>
 <td><code class="prettyprint">Payment.Recurrent</code></td>
 <td>marcação de uma transação de recorrencia não programada</td>
-<td>boolean </td>
-<td>5 </td>
+<td>boolean</td>
+<td>5</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
-<td>Texto </td>
-<td>16 </td>
+<td>Texto</td>
+<td>16</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Holder</code></td>
 <td>Nome do Comprador impresso no cartão.</td>
-<td>Texto </td>
-<td>25 </td>
+<td>Texto</td>
+<td>25</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
 <td>Data de validade impresso no cartão.</td>
-<td>Texto </td>
-<td>7 </td>
+<td>Texto</td>
+<td>7</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
 
 <h2 id="consultando-uma-venda-recorrente">Consultando uma venda Recorrente</h2>
 
-<p>Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.</p>
+<p>Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -5761,30 +5765,30 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Campo Identificador da Recorrência. </td>
-<td>Texto </td>
-<td>36 </td>
+<td>Campo Identificador da Recorrência.</td>
+<td>Texto</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -5847,44 +5851,44 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Campo Identificador da próxima recorrência. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador da próxima recorrência.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NextRecurrency</code></td>
-<td>Data da próxima recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data da próxima recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">StartDate</code></td>
-<td>Data do inicio da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do inicio da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">EndDate</code></td>
-<td>Data do fim da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do fim da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Interval</code></td>
-<td>Intervalo entre as recorrência. </td>
-<td>Texto </td>
-<td>10 </td>
-<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+<td>Intervalo entre as recorrência.</td>
+<td>Texto</td>
+<td>10</td>
+<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
 </tr>
 </tbody></table>
 
 <h2 id="modificando-dados-do-comprador">Modificando dados do comprador</h2>
 
-<p>Para alterar os dados do comprador da Recorrência, basta fazer um Put conforme o exemplo.</p>
+<p>Para alterar os dados do comprador da Recorrência, basta fazer um Put conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -5963,65 +5967,65 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0 </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
 <td>Chave Publica para Autenticação Dupla no API 3.0</td>
-<td>Texto </td>
-<td>40 </td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Email</code></td>
-<td>Email do Comprador. </td>
-<td>Texto </td>
+<td>Email do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Birthdate</code></td>
-<td>Data de nascimento do Comprador. </td>
-<td>Date </td>
-<td>10 </td>
+<td>Data de nascimento do Comprador.</td>
+<td>Date</td>
+<td>10</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
-<td>Número do RG, CPF ou CNPJ do Cliente. </td>
-<td>Texto </td>
-<td>14 </td>
+<td>Número do RG, CPF ou CNPJ do Cliente.</td>
+<td>Texto</td>
+<td>14</td>
 <td>Não</td>
 </tr>
 <tr>
@@ -6033,114 +6037,114 @@
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Street</code></td>
-<td>Endereço do Comprador. </td>
-<td>Texto </td>
-<td>255 </td>
+<td>Endereço do Comprador.</td>
+<td>Texto</td>
+<td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Number</code></td>
-<td>Número do endereço do Comprador. </td>
-<td>Texto </td>
-<td>15 </td>
+<td>Número do endereço do Comprador.</td>
+<td>Texto</td>
+<td>15</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Complement</code></td>
 <td>Complemento do endereço do Comprador.</td>
-<td>Texto </td>
-<td>50 </td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.ZipCode</code></td>
-<td>CEP do endereço do Comprador. </td>
-<td>Texto </td>
-<td>9 </td>
+<td>CEP do endereço do Comprador.</td>
+<td>Texto</td>
+<td>9</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.City</code></td>
-<td>Cidade do endereço do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Cidade do endereço do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.State</code></td>
-<td>Estado do endereço do Comprador. </td>
-<td>Texto </td>
-<td>2 </td>
+<td>Estado do endereço do Comprador.</td>
+<td>Texto</td>
+<td>2</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.Country</code></td>
-<td>Pais do endereço do Comprador. </td>
-<td>Texto </td>
-<td>35 </td>
+<td>Pais do endereço do Comprador.</td>
+<td>Texto</td>
+<td>35</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Address.District</code></td>
-<td>Bairro do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Bairro do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Street</code></td>
-<td>Endereço do Comprador. </td>
-<td>Texto </td>
-<td>255 </td>
+<td>Endereço do Comprador.</td>
+<td>Texto</td>
+<td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Number</code></td>
-<td>Número do endereço do Comprador. </td>
-<td>Texto </td>
-<td>15 </td>
+<td>Número do endereço do Comprador.</td>
+<td>Texto</td>
+<td>15</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Complement</code></td>
-<td>Complemento do endereço do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Complemento do endereço do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.ZipCode</code></td>
-<td>CEP do endereço do Comprador. </td>
-<td>Texto </td>
-<td>9 </td>
+<td>CEP do endereço do Comprador.</td>
+<td>Texto</td>
+<td>9</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.City</code></td>
-<td>Cidade do endereço do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Cidade do endereço do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.State</code></td>
-<td>Estado do endereço do Comprador. </td>
-<td>Texto </td>
-<td>2 </td>
+<td>Estado do endereço do Comprador.</td>
+<td>Texto</td>
+<td>2</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.Country</code></td>
-<td>Pais do endereço do Comprador. </td>
-<td>Texto </td>
-<td>35 </td>
+<td>Pais do endereço do Comprador.</td>
+<td>Texto</td>
+<td>35</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.DeliveryAddress.District</code></td>
-<td>Bairro do Comprador. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Bairro do Comprador.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Não</td>
 </tr>
 </tbody></table>
@@ -6153,7 +6157,7 @@
 
 <h2 id="modificando-data-final-da-recorrência">Modificando data final da Recorrência</h2>
 
-<p>Para alterar a data final da Recorrência, basta fazer um Put conforme o exemplo.</p>
+<p>Para alterar a data final da Recorrência, basta fazer um Put conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -6182,109 +6186,37 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">EndDate</code></td>
 <td>Data para termino da recorrência.</td>
-<td>Texto </td>
-<td>10 </td>
-<td>Sim</td>
-</tr>
-</tbody></table>
-
-<h3 id="resposta">Resposta</h3>
-<pre><code class="highlight shell">HTTP Status 200
-</code></pre>
-
-<p>Veja o Anexo <a href="#http-status-code">HTTP Status Code</a> para a lista com todos os códigos de status HTTP possivelmente retornados pela API.</p>
-
-<h2 id="modificando-número-de-parcelas-da-recorrência">Modificando número de parcelas da Recorrência</h2>
-
-<p>Para alterar o número de parcelas da Recorrência, basta fazer um Put conforme o exemplo.</p>
-
-<h3 id="requisição">Requisição</h3>
-
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/RecurrentPayment/{RecurrentPaymentId}/Installments</span></aside>
-<pre><code class="highlight json"><span class="mi">3</span><span class="w">
-</span></code></pre>
-<pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}/Installments"</span>
---header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---data-binary
-3
---verbose
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Installments</code></td>
-<td>Número de Parcelas.</td>
-<td>Número </td>
-<td>2 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -6297,7 +6229,7 @@
 
 <h2 id="modificando-intevalo-da-recorrência">Modificando intevalo da Recorrência</h2>
 
-<p>Para alterar o Intervalo da Recorrência, basta fazer um Put conforme o exemplo.</p>
+<p>Para alterar o Intervalo da Recorrência, basta fazer um Put conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -6326,37 +6258,37 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Interval</code></td>
-<td>Intervalo da recorrência. <ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
-<td>Número </td>
-<td>2 </td>
+<td>Intervalo da recorrência. <ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -6369,7 +6301,7 @@
 
 <h2 id="modificar-dia-da-recorrência">Modificar dia da Recorrência</h2>
 
-<p>Para modificar o dia da recorrência, basta fazer um Put conforme o exemplo.</p>
+<p>Para modificar o dia da recorrência, basta fazer um Put conforme o exemplo.</p>
 
 <aside class="notice"><strong>Regra:</strong> Se o novo dia informado for depois do dia atual, iremos atualizar o dia da recorrência com efeito na próxima recorrência Ex.: Hoje é dia 5, e a próxima recorrência é dia 25/05. Quando eu atualizar para o dia 10, a data da próxima recorrência será dia10/05. Se o novo dia informado for antes do dia atual, iremos atualizar o dia da recorrência, porém este só terá efeito depois que a próxima recorrência for executada com sucesso. Ex.: Hoje é dia 5, e a próxima recorrência é dia 25/05. Quando eu atualizar para o dia 3, a data da próxima recorrência permanecerá dia 25/05, e após ela ser executada, a próxima será agendada para o dia 03/06. Se o novo dia informado for antes do dia atual, mas a próxima recorrência for em outro mês, iremos atualizar o dia da recorrência com efeito na próxima recorrência. Ex.: Hoje é dia 5, e a próxima recorrência é dia 25/09. Quando eu atualizar para o dia 3, a data da próxima recorrência será 03/09</aside>
 
@@ -6400,37 +6332,37 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrencyDay</code></td>
 <td>Dia da Recorrência.</td>
-<td>Número </td>
-<td>2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -6486,9 +6418,9 @@
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
@@ -6517,7 +6449,7 @@
 
 <h2 id="modificando-data-do-próximo-pagamento">Modificando data do próximo Pagamento</h2>
 
-<p>Para alterar a data do próximo Pagamento, basta fazer um Put conforme o exemplo.</p>
+<p>Para alterar a data do próximo Pagamento, basta fazer um Put conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -6546,37 +6478,37 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NextPaymentDate</code></td>
 <td>Data de pagamento da próxima recorrência.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -6589,7 +6521,7 @@
 
 <h2 id="modificando-dados-do-pagamento-da-recorrência">Modificando dados do Pagamento da Recorrência</h2>
 
-<p>Para alterar os dados de pagamento da Recorrência, basta fazer um Put conforme o exemplo.</p>
+<p>Para alterar os dados de pagamento da Recorrência, basta fazer um Put conforme o exemplo.</p>
 
 <aside class="notice"><strong>Atenção:</strong> Essa alteração afeta a todos os dados do nó Payment. Então para manter os dados anteriores você deve informar os campos que não vão sofre alterações com os mesmos valores que já estavam salvos.</aside>
 
@@ -6646,51 +6578,51 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td>Texto </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
 <td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td>Número </td>
-<td>2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -6703,35 +6635,35 @@
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>16</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Holder</code></td>
 <td>Nome do Comprador impresso no cartão.</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>25</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
 <td>Data de validade impresso no cartão.</td>
-<td>Texto </td>
-<td>7 </td>
+<td>Texto</td>
+<td>7</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
+<td>Texto</td>
 <td>10</td>
 <td>Sim</td>
 </tr>
@@ -6745,7 +6677,7 @@
 
 <h2 id="desabilitando-um-pedido-recorrente">Desabilitando um Pedido Recorrente</h2>
 
-<p>Para desabilitar um pedido recorrente, basta fazer um Put conforme o exemplo.</p>
+<p>Para desabilitar um pedido recorrente, basta fazer um Put conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -6771,30 +6703,30 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -6807,7 +6739,7 @@
 
 <h2 id="reabilitando-um-pedido-recorrente">Reabilitando um Pedido Recorrente</h2>
 
-<p>Para Reabilitar um pedido recorrente, basta fazer um Put conforme o exemplo.</p>
+<p>Para Reabilitar um pedido recorrente, basta fazer um Put conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -6833,30 +6765,30 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Numero de identificação da Recorrência. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação da Recorrência.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -6949,65 +6881,65 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>6 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>6</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
 <td>Chave Publica para Autenticação Dupla no API 3.0.</td>
-<td>Texto </td>
-<td>40 </td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td>Texto </td>
-<td>50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td>Texto </td>
-<td>100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número </td>
-<td>15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td>Número </td>
-<td>2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -7020,57 +6952,57 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <tr>
 <td><code class="prettyprint">Payment.RecurrentPayment.EndDate</code></td>
 <td>Data para termino da recorrência.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.RecurrentPayment.Interval</code></td>
-<td>Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
-<td>Texto </td>
-<td>10 </td>
+<td>Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
+<td>Texto</td>
+<td>10</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.RecurrentPayment.AuthorizeNow</code></td>
 <td>Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.</td>
-<td>Booleano </td>
-<td>&mdash; </td>
+<td>Booleano</td>
+<td>&mdash;</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
-<td>Texto </td>
-<td>16 </td>
+<td>Texto</td>
+<td>16</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Holder</code></td>
 <td>Nome do Comprador impresso no cartão.</td>
-<td>Texto </td>
-<td>25 </td>
+<td>Texto</td>
+<td>25</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.ExpirationDate</code></td>
 <td>Data de validade impresso no cartão.</td>
-<td>Texto </td>
-<td>7 </td>
+<td>Texto</td>
+<td>7</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -7213,38 +7145,38 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Campo Identificador da próxima recorrência. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador da próxima recorrência.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NextRecurrency</code></td>
-<td>Data da próxima recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data da próxima recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">EndDate</code></td>
-<td>Data do fim da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do fim da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Interval</code></td>
-<td>Intervalo entre as recorrência. </td>
-<td>Texto </td>
-<td>10 </td>
-<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+<td>Intervalo entre as recorrência.</td>
+<td>Texto</td>
+<td>10</td>
+<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
 </tr>
 <tr>
 <td><code class="prettyprint">AuthorizeNow</code></td>
-<td>Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não. </td>
-<td>Booleano </td>
-<td>&mdash; </td>
-<td>true ou false </td>
+<td>Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não.</td>
+<td>Booleano</td>
+<td>&mdash;</td>
+<td>true ou false</td>
 </tr>
 </tbody></table>
 
@@ -7260,29 +7192,29 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <tr>
 <td><code class="prettyprint">NewCard.CardNumber</code></td>
 <td>Novo número do Cartão do Comprador.</td>
-<td>Texto </td>
-<td>16 </td>
+<td>Texto</td>
+<td>16</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NewCard.ExpirationDate</code></td>
 <td>nova data de validade do cartão.</td>
-<td>Texto </td>
-<td>7 </td>
+<td>Texto</td>
+<td>7</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NewCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NewCard.SaveCard</code></td>
 <td>Identifica se o cartão gerou Cardtoken durante a transação</td>
-<td>Booleano </td>
-<td>&mdash; </td>
+<td>Booleano</td>
+<td>&mdash;</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -7291,7 +7223,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 
 <h2 id="consultando-uma-venda">Consultando uma venda</h2>
 
-<p>Para consultar uma venda de cartão de crédito, é necessário fazer um GET para o recurso Payment conforme o exemplo.</p>
+<p>Para consultar uma venda de cartão de crédito, é necessário fazer um GET para o recurso Payment conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -7317,30 +7249,30 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Numero de identificação do Pagamento. </td>
-<td>Texto </td>
-<td>36 </td>
+<td>Numero de identificação do Pagamento.</td>
+<td>Texto</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -7495,7 +7427,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -7564,9 +7496,9 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 
 <h2 id="consultando-uma-venda-pelo-identificador-da-loja">Consultando uma venda pelo identificador da loja</h2>
 
-<p>Não é possível consultar diretamente uma pagamento pelo identificador enviado pela loja (MerchantOrderId), mas é possível obter todos os PaymentIds associados ao identificador.</p>
+<p>Não é possível consultar diretamente uma pagamento pelo identificador enviado pela loja (MerchantOrderId), mas é possível obter todos os PaymentIds associados ao identificador.</p>
 
-<p>Para consultar uma venda pelo identificador da loja, é necessário fazer um GET para o recuso sales conforme o exemplo.</p>
+<p>Para consultar uma venda pelo identificador da loja, é necessário fazer um GET para o recuso sales conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -7592,30 +7524,30 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Campo Identificador do Pedido na Loja. </td>
-<td>Texto </td>
-<td>36 </td>
+<td>Campo Identificador do Pedido na Loja.</td>
+<td>Texto</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -7671,7 +7603,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 
 <h2 id="consultando-uma-venda-com-analise-de-fraude">Consultando uma venda com Analise de Fraude</h2>
 
-<p>Para consultar uma venda de cartão de crédito com antifraud, é necessário fazer um GET para o recurso Payment conforme o exemplo.</p>
+<p>Para consultar uma venda de cartão de crédito com antifraud, é necessário fazer um GET para o recurso Payment conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -7697,30 +7629,30 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">PaymentId</code></td>
-<td>Numero de identificação do Pagamento. </td>
-<td>Texto </td>
-<td>36 </td>
+<td>Numero de identificação do Pagamento.</td>
+<td>Texto</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -7965,7 +7897,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 
 <h2 id="consultando-uma-venda-recorrente">Consultando uma venda Recorrente</h2>
 
-<p>Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.</p>
+<p>Para consultar uma Recorrência de cartão de crédito, é necessário fazer um GET conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -7991,30 +7923,30 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td>40 </td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Campo Identificador da Recorrência. </td>
-<td>Texto </td>
-<td>36 </td>
+<td>Campo Identificador da Recorrência.</td>
+<td>Texto</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -8077,38 +8009,38 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Campo Identificador da próxima recorrência. </td>
-<td>Guid </td>
-<td>36 </td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx </td>
+<td>Campo Identificador da próxima recorrência.</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 <tr>
 <td><code class="prettyprint">NextRecurrency</code></td>
-<td>Data da próxima recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data da próxima recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">StartDate</code></td>
-<td>Data do inicio da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do inicio da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">EndDate</code></td>
-<td>Data do fim da recorrência. </td>
-<td>Texto </td>
-<td>7 </td>
-<td>12/2030 (MM/YYYY) </td>
+<td>Data do fim da recorrência.</td>
+<td>Texto</td>
+<td>7</td>
+<td>12/2030 (MM/YYYY)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Interval</code></td>
-<td>Intervalo entre as recorrência. </td>
-<td>Texto </td>
-<td>10 </td>
-<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> </td>
+<td>Intervalo entre as recorrência.</td>
+<td>Texto</td>
+<td>10</td>
+<td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
 </tr>
 </tbody></table>
 
@@ -8228,9 +8160,9 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">Cardtoken</code></td>
-<td>Token de identificação do Cartão. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Token de identificação do Cartão.</td>
+<td>Guid</td>
+<td>36</td>
 <td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 </tbody></table>
@@ -8394,12 +8326,12 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Identity</code></td>
-<td>Texto </td>
-<td>14 </td>
+<td>Texto</td>
+<td>14</td>
 <td>Não</td>
 <td>Número do RG, CPF ou CNPJ do Cliente.</td>
 </tr>
@@ -8853,16 +8785,16 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </tr>
 <tr>
 <td><code class="prettyprint">Cardtoken</code></td>
-<td>Token de identificação do Cartão. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Token de identificação do Cartão.</td>
+<td>Guid</td>
+<td>36</td>
 <td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
 </tr>
 </tbody></table>
 
 <h2 id="criando-uma-venda-com-cartão-tokenizado">Criando uma venda com Cartão Tokenizado</h2>
 
-<p>Para criar uma venda de cartão de crédito com token do cartão protegido, é necessário fazer um POST para o recurso Payment conforme o exemplo.</p>
+<p>Para criar uma venda de cartão de crédito com token do cartão protegido, é necessário fazer um POST para o recurso Payment conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -8923,65 +8855,65 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td> 40 </td>
-<td> Sim</td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td> Texto </td>
-<td> 50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td> Texto </td>
-<td> 100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td> Número </td>
-<td> 15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td> Número </td>
-<td> 2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -8994,29 +8926,29 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <tr>
 <td><code class="prettyprint">Payment.ReturnUrl</code></td>
 <td>URI para onde o usuário será redirecionado após o fim do pagamento</td>
-<td>Texto </td>
-<td>1024 </td>
+<td>Texto</td>
+<td>1024</td>
 <td>Sim quando Authenticate = true</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardToken</code></td>
-<td>Token de identificação do Cartão. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Token de identificação do Cartão.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.SecurityCode</code></td>
 <td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto </td>
-<td>4 </td>
+<td>Texto</td>
+<td>4</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -9196,7 +9128,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 
 <h2 id="criando-uma-venda-com-cartão-tokenizado-na-1.5">Criando uma venda com Cartão Tokenizado na 1.5</h2>
 
-<p>Para criar uma venda de cartão de crédito com token do webservice 1.5, é necessário fazer um POST para o recurso Payment conforme o exemplo.</p>
+<p>Para criar uma venda de cartão de crédito com token do webservice 1.5, é necessário fazer um POST para o recurso Payment conforme o exemplo.</p>
 
 <p>Para uso em Sandbox, é possivel simular transações autorizadas ou negadas via tokens de teste:</p>
 
@@ -9271,79 +9203,79 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja no API 3.0. </td>
-<td>Guid </td>
-<td>36 </td>
+<td>Identificador da loja no API 3.0.</td>
+<td>Guid</td>
+<td>36</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla no API 3.0. </td>
-<td>Texto </td>
-<td> 40 </td>
-<td> Sim</td>
+<td>Chave Publica para Autenticação Dupla no API 3.0.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT </td>
-<td> Guid </td>
-<td> 36 </td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido. </td>
-<td> Texto </td>
-<td> 50 </td>
+<td>Numero de identificação do Pedido.</td>
+<td>Texto</td>
+<td>50</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador. </td>
-<td>Texto </td>
+<td>Nome do Comprador.</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto </td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
+<td>Texto</td>
 <td>255</td>
 <td>Não</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento. </td>
-<td> Texto </td>
-<td> 100 </td>
+<td>Tipo do Meio de Pagamento.</td>
+<td>Texto</td>
+<td>100</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Amount</code></td>
 <td>Valor do Pedido (ser enviado em centavos).</td>
-<td> Número </td>
-<td> 15 </td>
+<td>Número</td>
+<td>15</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número de Parcelas.</td>
-<td> Número </td>
-<td> 2 </td>
+<td>Número</td>
+<td>2</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardToken</code></td>
-<td>Token de identificação do Cartão. </td>
-<td>Guid </td>
-<td>300 </td>
+<td>Token de identificação do Cartão.</td>
+<td>Guid</td>
+<td>300</td>
 <td>Sim</td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.Brand</code></td>
 <td>Bandeira do cartão.</td>
-<td>Texto </td>
-<td>10 </td>
+<td>Texto</td>
+<td>10</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -9649,7 +9581,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>
@@ -9985,7 +9917,7 @@ Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integ
 <td>Texto</td>
 <td>255</td>
 <td>Não</td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
+<td>Status de cadastro do comprador na loja (NEW / EXISTING)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Type</code></td>

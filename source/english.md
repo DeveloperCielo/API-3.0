@@ -116,9 +116,10 @@ Normally, the browser automatically updates the Certificate. If it does not and 
 
 Save the three files below into a new folder, or into a folder that can be easily remembered, as it will be used later:
 
-* [Root Certificate](./attachment/Raiz.crt)
-* [Intermediate Certificate](./attachment/Intermediaria.crt)
-* [E-Commerce Cielo Certificate](./attachment/cieloecommerce.cielo.com.br.crt)
+* [Root Certificate](./attachment/Root.crt)
+* [Intermediate 1](./attachment/Intermediate1.crt)
+* [Intermediate 2](./attachment/Intermediate2.crt)
+* [Server Certificate](./attachment/ServerCertificate.crt)
 
 #### Step 2:
 

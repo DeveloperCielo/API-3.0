@@ -116,9 +116,10 @@ Normalmente, o browser faz a atualização do Certificado automaticamente, caso 
 
 Salvar os três arquivos abaixo em uma pasta nova, ou que relembre facilmente, pois será utilizada posteriormente:
 
-* [Certificado Raiz](./attachment/Raiz.crt)
-* [Certificado Intermediária](./attachment/Intermediaria.crt)
-* [Certificado E-Commerce Cielo](./attachment/cieloecommerce.cielo.com.br.crt)
+* [Certificado Raiz](./attachment/Root.crt)
+* [Certificado Intermediária 1](./attachment/Intermediate1.crt)
+* [Certificado Intermediária 2](./attachment/Intermediate2.crt)
+* [Certificado E-Commerce Cielo](./attachment/ServerCertificate.crt)
 
 #### 2o Passo:
 

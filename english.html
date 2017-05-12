@@ -192,12 +192,11 @@
 <p>Just install the following three files in the server Trustedstore. Cielo does not offer support to the installation of the Certificate. If you are unsure about how to install the EV Certificate, then you should contact your server vendor support.</p>
 
 <ul>
-<li><a href="attachment/Raiz.crt">Root Certificate</a></li>
-<li><a href="attachment/Intermediaria.crt">Intermediate Certificate</a></li>
-<li><a href="attachment/cieloecommerce.cielo.com.br.crt">E-Commerce Cielo Certificate</a></li>
+<li><a href="attachment/Root.crt">Root Certificate</a></li>
+<li><a href="attachment/Intermediate1.crt">Intermediate 1</a></li>
+<li><a href="attachment/Intermediate2.crt">Intermediate 2</a></li>
+<li><a href="attachment/ServerCertificate.crt">Server Certificate</a></li>
 </ul>
-
-<aside class="notice">If your server is a Linux distribution and you have familiarity and ssh access, then the <a href="./attachment/cielo.sh">Linux Installer - cielo.sh</a> may help you with the installation. <strong>Only use the installer if you know what you are doing</strong>. When in doubt, contact your server vendor support.</aside>
 
 <h2 id="step-by-step-for-installation">Step-by-Step for Installation</h2>
 
@@ -216,9 +215,9 @@
 <p>Save the three files below into a new folder, or into a folder that can be easily remembered, as it will be used later:</p>
 
 <ul>
-<li><a href="attachment/Raiz.crt">Root Certificate</a></li>
-<li><a href="attachment/Intermediaria.crt">Intermediate Certificate</a></li>
-<li><a href="attachment/cieloecommerce.cielo.com.br.crt">E-Commerce Cielo Certificate</a></li>
+<li><a href="./attachment/Raiz.crt">Root Certificate</a></li>
+<li><a href="./attachment/Intermediaria.crt">Intermediate Certificate</a></li>
+<li><a href="./attachment/cieloecommerce.cielo.com.br.crt">E-Commerce Cielo Certificate</a></li>
 </ul>
 
 <h4 id="step-2:">Step 2:</h4>
@@ -433,7 +432,7 @@
 <ul>
 <li><strong>Authorization</strong>: The authorization (or pre-authorization) is the main operation in eCommerce, because through it is that a sale can be realized. Pre-authorization only sensitizes the client&rsquo;s limit, but does not yet generate charge for the consumer.</li>
 <li><strong>Capture</strong>: When making a pre-authorization, it is necessary to confirm it, so that the charge is effected to the card carrier. Through this operation a pre-authorization is effected, and it can be executed normally within 5 days after the pre-authorization date.</li>
-<li><strong>Cancellation</strong>: The cancellation is necessary when, for some reason, a sale will not be effected anymore. </li>
+<li><strong>Cancellation</strong>: The cancellation is necessary when, for some reason, a sale will not be effected anymore.</li>
 <li><strong>Authentication</strong>: The authentication process makes it possible to effective a sale, which will pass through the authentication process of the card issuing bank, thus providing more security for the sale and transferring the risk of fraud to the bank.</li>
 <li><strong>Protected Card</strong>: It is a platform that allows secure storage of credit card sensitive data. This data are transformed into an encrypted code called a “token”, which can be stored in a database. With the platform, the store can offer features like “One click buy” and “Retry Transaction”, always preserving integrity and confidentiality of information.</li>
 <li><strong>Antifraude</strong>: It is a fraud prevention platform that provides a detailed risk analysis of online purchases. Each transaction is submitted to more than 260 rules, besides the specific rules of each segment, and generate a risk recommendation in approximately two seconds. This process is completely transparent to the card carrier. According to the pre-established criteria, the order can be automatically accepted, rejected or sent to manual analysis.</li>
@@ -4366,7 +4365,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
     </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador Boleto Completo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> 
+        </span><span class="s2">"Address"</span><span class="p">:</span><span class="w">
         </span><span class="p">{</span><span class="w">
         </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Marechal Camara"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160"</span><span class="p">,</span><span class="w">
@@ -5317,7 +5316,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 
 <h2 id="authorizing-an-own-/-unscheduled-recurrence">Authorizing an own / unscheduled recurrence</h2>
 
-<p>To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example. </p>
+<p>To create a recurrent sale whose recurrence process and interval will be performed by the store itself, just make a POST as the example.</p>
 
 <aside class="notice"><strong>Warning:</strong> In this recurrence mode, it is up to the merchant&rsquo;s intelligence to carry out transactions in the same format according to the desired interval. API will not perform transactions automatically.</aside>
 
@@ -6869,7 +6868,7 @@ It is widely used for magazine subscriptions, monthly fees, software licenses, a
 
 <h2 id="renews-easy">Renews Easy</h2>
 
-<p>Using this feature allows automatic replacement of an expired card . 
+<p>Using this feature allows automatic replacement of an expired card .
 Thus, when a transaction with recurring markup is submitted to the API and Cielo identifies that the used card has been replaced, its authorization will be denied and the new card data will be returned according to the example.</p>
 
 <aside class="notice"><strong>Warning:</strong> It is necessary requesting to enable this feature in the register  </aside>
@@ -8202,7 +8201,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
   </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="p">}</span><span class="w"> 
+    </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
@@ -8213,7 +8212,7 @@ Thus, when a transaction with recurring markup is submitted to the API and Cielo
   <span class="s2">"Links"</span>: <span class="o">{</span>
     <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
     <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-    <span class="s2">"Href"</span>: <span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="o">}</span> 
+    <span class="s2">"Href"</span>: <span class="s2">"https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"</span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 

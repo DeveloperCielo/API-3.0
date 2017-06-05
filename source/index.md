@@ -1,5 +1,5 @@
 ---
-title: Integração API 3.0
+title: Integração API Cielo eCommerce
 
 language_tabs:
   - json: JSON
@@ -14,13 +14,13 @@ toc_footers:
 search: true
 ---
 
-# Integração API 3.0
+# Integração API Cielo eCommerce
 
-O objetivo desta documentação é orientar o desenvolvedor sobre como integrar com o API 3.0 da Cielo, descrevendo as funcionalidades, os métodos a serem utilizados, listando informações a serem enviadas e recebidas, e provendo exemplos.
+O objetivo desta documentação é orientar o desenvolvedor sobre como integrar com a API Cielo eCommerce da Cielo, descrevendo as funcionalidades, os métodos a serem utilizados, listando informações a serem enviadas e recebidas, e provendo exemplos.
 
 O mecanismo de integração com o Cielo eCommerce é simples, de modo que apenas conhecimentos intermediários em linguagem de programação para Web, requisições HTTP/HTTPS e manipulação de arquivos JSON, são necessários para implantar a solução Cielo eCommerce com sucesso.
 
-Nesse manual você encontrará a referência sobre todas as operações disponíveis na API REST do API 3.0. Estas operações devem ser executadas utilizando sua chave específica (Merchant ID e Merchant Key) nos respectivos endpoints dos ambientes:
+Nesse manual você encontrará a referência sobre todas as operações disponíveis na API REST da API Cielo eCommerce. Estas operações devem ser executadas utilizando sua chave específica (Merchant ID e Merchant Key) nos respectivos endpoints dos ambientes:
 
 Ambiente Produção
 
@@ -217,7 +217,7 @@ Para todo pedido de compra, a meta é efetivá-la em uma venda. Uma venda com ca
 
 ## Características da solução
 
-A solução API 3.0 da plataforma Cielo eCommerce foi desenvolvida com a tecnologia REST, que é padrão de mercado e independe da tecnologia utilizada por nossos clientes. Dessa forma, é possível integrar-se utilizando as mais variadas linguagens de programação, tais como: ASP, ASP. Net, Java, PHP, Ruby, Python, etc.
+A solução API Cielo eCommerce da plataforma Cielo eCommerce foi desenvolvida com a tecnologia REST, que é padrão de mercado e independe da tecnologia utilizada por nossos clientes. Dessa forma, é possível integrar-se utilizando as mais variadas linguagens de programação, tais como: ASP, ASP. Net, Java, PHP, Ruby, Python, etc.
 
 Entre outras características, os atributos que mais se destacam na plataforma Cielo eCommerce:
 
@@ -1687,8 +1687,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto | 40 | Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto | 40 | Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -1840,8 +1840,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. | Guid | 36 | Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. | Texto | 40 | Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. | Guid | 36 | Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. | Texto | 40 | Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Campo Identificador do Pedido. | Guid | 36 | Sim|
 |`Amount`|Valor do Pedido (ser enviado em centavos).| Número | 15 | Não|
@@ -1927,8 +1927,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Campo Identificador do Pedido. |Guid |36 |Sim|
 |`Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Não|
@@ -2038,8 +2038,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -2192,8 +2192,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -2356,8 +2356,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -2563,8 +2563,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |6 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |6 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -2803,8 +2803,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0 |Guid |36|Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0 |Texto |40|Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce |Guid |36|Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce |Texto |40|Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50|Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -3002,8 +3002,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |6 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |6 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -3148,8 +3148,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |6 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |6 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -3185,8 +3185,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Campo Identificador da Recorrência. |Texto |36 |Sim|
 
@@ -3326,8 +3326,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0 |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0|Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -3387,8 +3387,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`EndDate`|Data para termino da recorrência.|Texto |10 |Sim|
@@ -3427,8 +3427,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`Interval`|Intervalo da recorrência. <ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul>|Número |2 |Sim|
@@ -3469,8 +3469,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`RecurrencyDay`|Dia da Recorrência.|Número |2 |Sim|
@@ -3509,8 +3509,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0.|Guid|36|Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto|40|Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce.|Guid|36|Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto|40|Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência.|Texto|50|Sim|
 |`Payment.Amount`|Valor do Pedido em centavos: 156 equivale a R$ 1,56|Número|15|Sim|
@@ -3551,8 +3551,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`NextPaymentDate`|Data de pagamento da próxima recorrência.|Texto |10 |Sim|
@@ -3619,8 +3619,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
@@ -3662,8 +3662,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 
@@ -3696,8 +3696,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Numero de identificação da Recorrência. |Texto |50 |Sim|
 
@@ -3788,8 +3788,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |6 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0.|Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |6 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -3980,8 +3980,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Numero de identificação do Pagamento. |Texto |36 |Sim|
 
@@ -4131,8 +4131,8 @@ curls
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Campo Identificador do Pedido na Loja. |Texto |36 |Sim|
 
@@ -4196,8 +4196,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`PaymentId`|Numero de identificação do Pagamento. |Texto |36 |Sim|
 
@@ -4384,8 +4384,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto |40 |Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto |40 |Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`RecurrentPaymentId`|Campo Identificador da Recorrência. |Texto |36 |Sim|
 
@@ -4904,8 +4904,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto | 40 | Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto | 40 | Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -5097,8 +5097,8 @@ curl
 
 |Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
 |-----------|---------|----|-------|-----------|
-|`MerchantId`|Identificador da loja no API 3.0. |Guid |36 |Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla no API 3.0. |Texto | 40 | Sim|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce. |Guid |36 |Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce. |Texto | 40 | Sim|
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. | Texto | 50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
@@ -5237,9 +5237,9 @@ curl
 ## O que são Wallets / Carteiras
 
 São repositorios de cartões e dados de pagamentos para consumidores online. As Carteiras digitais permitem que um consumidor realizar o cadastro de seus dados de pagamento, assim agilizando o processo de compra em lojas habilitadas em suas compras por possuir apenas um cadastro.
-Para utilizar carteiras na API 3.0, o lojista deverá possuir as carteiras integradas em seu checkout. Para maiores informações, sugerimos que entre em contato com o setor tecnico da carteira a qual deseja implementar.
+Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as carteiras integradas em seu checkout. Para maiores informações, sugerimos que entre em contato com o setor tecnico da carteira a qual deseja implementar.
 
-A API 3.0 suporta duas carteiras de pagamento: VisaCheckout e Masterpass.
+A API Cielo eCommerce suporta duas carteiras de pagamento: VisaCheckout e Masterpass.
 
 <aside class="notice"><strong>Atenção:</strong> Quando o nó “Wallet” for enviado na requisição, o nó “CreditCard” passa a ser opcional.</aside>
 

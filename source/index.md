@@ -5999,7 +5999,7 @@ Códigos retornados pelo autorizador e que descrevem a autorização ou não da 
 
 ## URL de notificação
 
-O Webservice 3.0 permite que uma Url de notificação seja cadastrada para receber todos os Responses transacionais.
+A API Cielo ecommerce permite que uma Url de notificação seja cadastrada para receber todos os Responses transacionais.
 Basta entrar em contato com o HelpDesk Cielo e informar a URL de notificação a ser utilizada.
 
 O Conteudo enviado é o mesmo enviado como "response" para cada transação

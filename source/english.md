@@ -5962,7 +5962,7 @@ Codes returned by the authorizer and which describe the authorization or not of 
 |58|Transaction not allowed. Invalid payment option.|Transaction not allowed. Invalid payment option. Review if the chosen payment option is enabled in the register|Unauthorized transaction. Contact your virtual store.|No|
 |59|Unauthorized transaction. Suspected fraud.|Unauthorized transaction. Suspected fraud.|Unauthorized transaction. Contact your issuing bank.|No|
 |60|Unauthorized transaction.|Unauthorized transaction. Try again. If the error persists, the carrier must contact the issuing bank.|The transaction could not be processed. Try again later. If the error persists, contact your issuing bank.|Only 4 times in 16 days.|
-|61|Visa issuing bank unavailable.|Unauthorized transaction. Visa issuing bank unavailable.|Unauthorized transaction. Try again. If the error persists, contact your issuing bank.|Only 4 times in 16 days.|
+|61|Issuing bank unavailable.|Unauthorized transaction. Issuing bank unavailable.|Unauthorized transaction. Try again. If the error persists, contact your issuing bank.|Only 4 times in 16 days.|
 |62|Unauthorized transaction. Card restricted for domestic use|Unauthorized transaction. Card restricted for domestic use.|Unauthorized transaction. Contact your issuing bank.|From the following day, only 4 times in 16 days.|
 |63|Unauthorized transaction. Security breach|Unauthorized transaction. Security breach.|Unauthorized transaction. Contact your issuing bank.|No|
 |64|Unauthorized transaction. Value below the minimum required by the issuing bank.|Unauthorized transaction. Contact your issuing bank.|Unauthorized transaction. Value below the minimum required by the issuing bank.|No|

@@ -5331,7 +5331,7 @@ curl
 {
   "MerchantOrderId": "2014111708",
   "Customer": {
-    "Name": "comprador teste"
+    "Name": "comprador VisaCheckout"
   },
   "Payment": {
     "ServiceTaxAmount": 0,
@@ -5378,7 +5378,7 @@ curl
 {
   "MerchantOrderId": "2014111708",
   "Customer": {
-    "Name": "comprador teste"
+    "Name": "comprador VisaCheckout"
   },
   "Payment": {
     "ServiceTaxAmount": 0,
@@ -5440,25 +5440,27 @@ curl
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
 
 ```json
-{
-   "MerchantOrderId":"2014111703",
-   "Customer":{
-      "Name":"Comprador Teste"
+{  
+   "MerchantOrderId":"2014111708",
+   "Customer":{  
+      "Name":"Comprador MasterPass"     
    },
-   "Payment":{
+   "Payment":{  
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
-	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
-         "SecurityCode":"123",
-			},
-	},
+               "CardNumber": "4532117080573703",
+               "Brand": "Visa",
+         "SecurityCode":"023"
+     },
      "Wallet":{
          "Type":"MasterPass",
          "AdditionalData":{
-               "CaptureCode": "103"}
+               "CaptureCode": "103"
+         }
      }
+   }
 }
 
 ```
@@ -5471,26 +5473,29 @@ curl
 --header "MerchantKey: 0123456789012345678901234567890123456789"
 --header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --data-binary
-{
-   "MerchantOrderId":"2014111703",
-   "Customer":{
-      "Name":"Comprador Teste"
+{  
+   "MerchantOrderId":"2014111708",
+   "Customer":{  
+      "Name":"Comprador MasterPass"     
    },
-   "Payment":{
+   "Payment":{  
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
-	 "SoftDescriptor":"123456789ABCD",
      "CreditCard":{
-         "SecurityCode":"123",
-			},
-	},
+               "CardNumber": "4532117080573703",
+               "Brand": "Visa",
+         "SecurityCode":"023"
+     },
      "Wallet":{
          "Type":"MasterPass",
          "AdditionalData":{
-               "CaptureCode": "103"}
+               "CaptureCode": "103"
+         }
      }
+   }
 }
+
 --verbose
 ```
 
@@ -5505,6 +5510,7 @@ curl
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
+|`CreditCard.CardNumber.`|Texto|16|Sim|Número do Cartão do Comprador|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
 |`Wallet.Type`|Texto|255|Sim|indica qual o tipo de carteira: "VisaCheckout" ou "Masterpass"|
 |`Wallet.AdditionalData`|---|---|---|Instancia para dados extras informados pela MasterPass. Obrigatório apenas se TYPE = "MasterPass"|
@@ -5518,7 +5524,7 @@ curl
 {
   "MerchantOrderId": "2014111708",
   "Customer": {
-    "Name": "comprador teste"
+    "Name": "comprador Masterpass"
   },
   "Payment": {
     "ServiceTaxAmount": 0,
@@ -5570,7 +5576,7 @@ curl
 {
   "MerchantOrderId": "2014111708",
   "Customer": {
-    "Name": "comprador teste"
+    "Name": "comprador Masterpass"
   },
   "Payment": {
     "ServiceTaxAmount": 0,

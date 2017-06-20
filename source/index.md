@@ -34,17 +34,6 @@ Ambiente Sandbox
 
 Para executar uma operação, combine a URL base do ambiente com a URL da operação desejada e envie utilizando o verbo HTTP conforme descrito na operação.
 
-## Suporte Cielo
-
-Após a leitura deste manual, caso ainda persistam dúvidas (técnicas ou não), a Cielo disponibiliza o suporte técnico 24 horas por dia, 7 dias por semana em idiomas (Português e Inglês), nos seguintes contatos:
-
-* +55 4002-9700 – *Capitais e Regiões Metropolitanas*
-* +55 0800-570-1700 – *Demais Localidades*
-* +55 11 2860-1348 – *Internacionais*
-  * Opção 1 – *Suporte técnico;*
-  * Opção 2 – *Credenciamento eCommerce.*
-* Email: [cieloeCommerce@cielo.com.br](mailto:cieloecommerce@cielo.com.br)
-
 ## Glossário
 
 Para facilitar o entendimento, listamos abaixo um pequeno glossário com os principais termos relacionados ao eCommerce, ao mercado de cartões e adquirencia:

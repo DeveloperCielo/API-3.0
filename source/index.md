@@ -5625,39 +5625,36 @@ curl
 |`Capturecode`|Código informado pela MasterPass ao lojista|Texto|255|Sim|
 
 
-# Anexos
 
-## Configurações da Afiliação.
+# Códigos da API
 
-Alguns tipos de transação exigem que sua Afiliação esteja configurada corretamente junto a Cielo. Sugerimos que por padrão valide com nossa central de atendimento se sua afiliação está apta a transacionar em algum dos cenários abaixo:
+## Sobre os códigos
 
-|Cenário|
-|-------|
-|Recorrência|
-|Transação sem CVV|
-|Personalização da validade de uma transação |
+A Api Cielo e-commerce possui 4 tipos de códigos retornados que representam diferentes momentos da transação.
 
-## Lista de Providers
+Abaixo vamos explica-los na ordem em que podem ocorrem:
 
-|Meio de pagamento|Provider|
-|---------------------------|-----------|
-|Boleto|`Bradesco`|
-|Boleto|`BancodoBrasil`|
-|Transferência Eletrônica|`Bradesco`|
-|Transferência Eletrônica|`BancodoBrasil`|
+|Código|Descrição|
+|------|---------|
+|**HTTP Status Code**|São códigos do padrão HTTP. Eles informam se as informações enviadas a API estão de **fato obtendo sucesso ao atingir nossos ENDPOINTs**. Se valores diferentes de 200 ou 201 estejam aparecendo, há algum empecilho com a comunicação com a API<BR><BR> *Retornado no momento da requisição a API* |
+|**Erros da API**|Esses códigos são respostas a **validação do conteúdo dos dados enviados**. Se eles estão sendo exibidos, as chamadas a nossa API foram identificadas e estão sendo validadas. Se esse código for exibido, a requisição contem erros (EX: tamanho/condições/erros de cadastro) que impedem a criação da transação<BR><BR>*Retornado no momento da requisição a API*|
+|**Status**|Depois de criada a transação, esses códigos serão retornados, informando como se encontra a transação no momento (EX: `Autorizada` > `Capturada` > `Cancelada`)<BR><BR>*Retornado no campo `Status` *|
+|**Retorno das Vendas**|Formado por um **código de Retorno** e uma **mensagem**, esses códigos indicam o **motivo** de um determinado `Status` dentro de uma transação. Eles indicam, por exemplo, se uma transação com `status` negada não foi autorizada devido saldo negativo no banco emissor. <BR><BR>*Retornados nos campos `ReturnCode` e `ReturnMessage`*<BR> *Ocorrem somente em Cartões de crédito e Débito* |
 
-## Tipos de meio de pagamento
+**OBS**: No  antigo **Webservice 1.5 Cielo**, o `RetunCode` era considerado como *Status da transação*. Na **API CIELO ECOMMERCE**, o campo `Status` possui códigos próprios, sendo assim, o **campo a ser considerado como base de identificação do status de uma transação**
 
-|Meio de pagamento|Payment.Type|
-|-----------------|------------|
-|Cartão de crédito|`CreditCard`|
-|Cartão de Débito|`DebitCard`|
-|Boleto|`Boleto`|
-|Transferência Eletrônica|`EletronicTransfer`|
+ 
+## HTTP Status Code
 
-## Status - Status de uma transação
+|HTTP Status Code|Descrição|
+|----------------|---------|
+|200|OK|
+|400|Bad Request|
+|404|Resource Not Found|
+|500|Internal Server Error|
 
-Status retornados pela API
+
+## Status
 
 |Código|Status do Pagamento|Meio de pagamento|Descrição|
 |------|-------------------|-----------------|---------|
@@ -5671,67 +5668,6 @@ Status retornados pela API
 |13|Aborted|Todos|Pagamento cancelado por falha no processamento|
 |20|Scheduled|Cartão de crédito|Recorrência agendada|
 
-## Merchant Defined Data
-
-A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro MerchantDefinedData e respectivos tipo de informação que deve ser preenchida.
-
-| ID | Dado | Descrição | Tipo |
-|----|------|-----------|------|
-| 1 | Cliente efetuou Log In | Se o cliente final logou no site para comprar, enviar: o login dele. Se fez compra como visitante, enviar: "Guest". Se a venda foi feita direto por um terceiro, um agente por exemplo, não enviar o campo | String |
-| 2 | Cliente do estabelecimento há: #dias | Quantidade de dias | Número |
-| 3 | Compra Efetuada em (parcelas) | Número de Parcelas | Número |
-| 4 | Canal de Venda | Valores: "Call Center" = portador comprando pelo telefone "Web" = portador comprando pela web "Portal" = um agente fazendo a compra para o cliente "Quiosque" = Compras em quisques "Movel" = Compras feitas em smartphone ou tablets | String |
-| 5 | Código do Cupom/Desconto | Se o comprador for usar cupom, enviar o código do cupom | String |
-| 6 | Última compra efetuada | MM/DD/AAAA | Data |
-| 7 | Afiliação | Nome ou código de revendedor ou intermediador | String |
-| 8 | Tentativas de Compra | Nr de vezes que tentou fazer o pagamento do pedido. Cartões de creditos diferentes tentados e/ou outros meios de pagamentos tentados. Para o mesmo pedido. | Número |
-| 9 | Cliente vai retirar o produto em uma Loja | Valores: "SIM", "NAO" No caso de agência, se vai retirar algum voucher e/ou ticket fisicamente | String |
-| 10 | Pagamento efetuado por 3º | Valores: "SIM", "NAO" Se o pagador está ou não presente na viagem/pacote | String |
-| 11 | Categoria do Hotel | Valores: 1, 2, 3, 4, 5 Quantas estrelas tem o hotel | Número |
-| 12 | Hotel data do Check in | MM/DD/AAAA | Data |
-| 13 | Hotel data do Check out | MM/DD/AAAA | Data |
-| 14 | Viagem/Pacote | Valores: "Nacional", "Internacional", "Nacional/Internacional" | String |
-| 15 | Nome da Cia. Aérea / Locadora de Carro / Hotel | Enviar o nome de cada uma das empresas, separado por "/" | String |
-| 16 | PNR | Enviar o numero do PNR da reserva. Quando houver uma alteração da reserva para este PNR com antecipação da data de voo, é importante fazer uma nova análise de fraude enviando este PNR novamente. | String |
-| 17 | Houve antecipação de reserva? | Valores: "SIM", "NAO" Indicar se houve remarcação do voo para uma data anterior à original. É fundamental o envio também do campo PNR | String |
-| 18 | (reservado) |
-| 19 | (reservado) |
-| 20 | (reservado) |
-| 21 | (reservado) |
-| 22 | (reservado) |
-| 23 | (reservado) |
-| 24 | (reservado) |
-| 25 | (reservado) |
-| 26 | Bin do Cartão de Crédito | Enviar o bin - 6 primeiros digitos do cartão | String |
-| 27 | (reservado) |
-| 28 | (reservado) |
-| 29 | (reservado) |
-| 30 | (reservado) |
-| 31 | Nr de trocas de Cartões de crédito | Nr de vezes que o comprador trocou o cartão de crédito para fazer o pagamento do pedido | Número |
-| 32 | Email colado ou digitado | Valores: "Digitado", "Colado" Informar se o endereço de e-mail foi digitado ou colado no campo | String |
-| 33 | Nr Cartao colado ou digitado | Valores: "Digitado", "Colado" Informar se o nr do cartão de crédito foi digitado ou colado no campo | String |
-| 34 | E-mail confirmado | Se existe rotina de confirmação de e-mail para ativação de conta. Valores: "SIM". Em caso negativo não enviar o MDD | String |
-| 35 | Tipo de cliente (local/turista) | Valores: "Local", "Turista". Não enviar o MDD no caso de não ter essa informação | String |
-| 36 | Utiliza cartao presente na compra ($) | Informar se foi utilizado Cartao Presente (Gift Card) na compra. Valores: "SIM". Em caso negativo não enviar o MDD | String |
-| 37 | Metodo de Envio | Valores: "Sedex", "Sedex 10", "1 Dia", "2 Dias", "Motoboy", "Mesmo Dia", etc. Se não tiver envio, não enviar o MDD | String |
-| 38 | Numero da Bina | Informar o nr de telefone indentificado, com DDD | String |
-| 39 | (reservado) |
-| 40 | (reservado) |
-| 41 a 95 | Campo Livre | Os campos são reservados para envio de dados de lojista, conforme a regra de negócio. | String |
-| 96 | (reservado) |
-| 97 | (reservado) |
-| 98 | (reservado) |
-| 99 | (reservado) |
-| 100 | Documento | Documento (CPG, RG, etc.) | String |
-
-## HTTP Status Code
-
-|HTTP Status Code|Descrição|
-|----------------|---------|
-|200|OK|
-|400|Bad Request|
-|404|Resource Not Found|
-|500|Internal Server Error|
 
 ## Códigos de Erros da API
 
@@ -5882,8 +5818,6 @@ Códigos retornados em caso de erro, identificando o motivo do erro e suas respe
 
 ## Códigos de Retorno das Vendas
 
-Códigos retornados pelo autorizador e que descrevem a autorização ou não da venda e, em caso negativo, os cenários onde o lojista pode retentar enviar a transação.
-
 |Código Resposta|Definição|Significado|Ação|Permite Retentativa|
 |---------------|---------|-----------|----|-------------------|
 |00|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Não|
@@ -5992,14 +5926,118 @@ Códigos retornados pelo autorizador e que descrevem a autorização ou não da 
 |R1|Transação não autorizada. Cartão inadimplente (Do not honor).|Transação não autorizada. Não foi possível processar a transação. Questão relacionada a segurança, inadimplencia ou limite do portador.|Transação não autorizada. Entre em contato com seu banco emissor.|Apenas 4 vezes em 16 dias.|
 |U3|Transação não permitida. Falha na validação dos dados.|Transação não permitida. Houve uma falha na validação dos dados. Solicite ao portador que reveja os dados e tente novamente. Se o erro persistir verifique a comunicação entre loja virtual e Cielo.|Transação não permitida. Houve uma falha na validação dos dados. reveja os dados informados e tente novamente. Se o erro persistir entre em contato com a Loja Virtual.|Não|
 
-## URL de notificação
 
-A API Cielo ecommerce permite que uma Url de notificação seja cadastrada para receber todos os Responses transacionais.
-Basta entrar em contato com o HelpDesk Cielo e informar a URL de notificação a ser utilizada.
 
-O Conteudo enviado é o mesmo enviado como "response" para cada transação
 
-<aside class="notice"><strong>Atenção:</strong> A Url de notificação deve ser estática</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Anexos
+
+## Configurações da Afiliação.
+
+Alguns tipos de transação exigem que sua Afiliação esteja configurada corretamente junto a Cielo. Sugerimos que por padrão valide com nossa central de atendimento se sua afiliação está apta a transacionar em algum dos cenários abaixo:
+
+|Cenário|
+|-------|
+|Recorrência|
+|Transação sem CVV|
+|Personalização da validade de uma transação |
+
+## Lista de Providers
+
+|Meio de pagamento|Provider|
+|---------------------------|-----------|
+|Boleto|`Bradesco`|
+|Boleto|`BancodoBrasil`|
+|Transferência Eletrônica|`Bradesco`|
+|Transferência Eletrônica|`BancodoBrasil`|
+
+## Tipos de meio de pagamento
+
+|Meio de pagamento|Payment.Type|
+|-----------------|------------|
+|Cartão de crédito|`CreditCard`|
+|Cartão de Débito|`DebitCard`|
+|Boleto|`Boleto`|
+|Transferência Eletrônica|`EletronicTransfer`|
+
+## Merchant Defined Data
+
+A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro MerchantDefinedData e respectivos tipo de informação que deve ser preenchida.
+
+| ID | Dado | Descrição | Tipo |
+|----|------|-----------|------|
+| 1 | Cliente efetuou Log In | Se o cliente final logou no site para comprar, enviar: o login dele. Se fez compra como visitante, enviar: "Guest". Se a venda foi feita direto por um terceiro, um agente por exemplo, não enviar o campo | String |
+| 2 | Cliente do estabelecimento há: #dias | Quantidade de dias | Número |
+| 3 | Compra Efetuada em (parcelas) | Número de Parcelas | Número |
+| 4 | Canal de Venda | Valores: "Call Center" = portador comprando pelo telefone "Web" = portador comprando pela web "Portal" = um agente fazendo a compra para o cliente "Quiosque" = Compras em quisques "Movel" = Compras feitas em smartphone ou tablets | String |
+| 5 | Código do Cupom/Desconto | Se o comprador for usar cupom, enviar o código do cupom | String |
+| 6 | Última compra efetuada | MM/DD/AAAA | Data |
+| 7 | Afiliação | Nome ou código de revendedor ou intermediador | String |
+| 8 | Tentativas de Compra | Nr de vezes que tentou fazer o pagamento do pedido. Cartões de creditos diferentes tentados e/ou outros meios de pagamentos tentados. Para o mesmo pedido. | Número |
+| 9 | Cliente vai retirar o produto em uma Loja | Valores: "SIM", "NAO" No caso de agência, se vai retirar algum voucher e/ou ticket fisicamente | String |
+| 10 | Pagamento efetuado por 3º | Valores: "SIM", "NAO" Se o pagador está ou não presente na viagem/pacote | String |
+| 11 | Categoria do Hotel | Valores: 1, 2, 3, 4, 5 Quantas estrelas tem o hotel | Número |
+| 12 | Hotel data do Check in | MM/DD/AAAA | Data |
+| 13 | Hotel data do Check out | MM/DD/AAAA | Data |
+| 14 | Viagem/Pacote | Valores: "Nacional", "Internacional", "Nacional/Internacional" | String |
+| 15 | Nome da Cia. Aérea / Locadora de Carro / Hotel | Enviar o nome de cada uma das empresas, separado por "/" | String |
+| 16 | PNR | Enviar o numero do PNR da reserva. Quando houver uma alteração da reserva para este PNR com antecipação da data de voo, é importante fazer uma nova análise de fraude enviando este PNR novamente. | String |
+| 17 | Houve antecipação de reserva? | Valores: "SIM", "NAO" Indicar se houve remarcação do voo para uma data anterior à original. É fundamental o envio também do campo PNR | String |
+| 18 | (reservado) |
+| 19 | (reservado) |
+| 20 | (reservado) |
+| 21 | (reservado) |
+| 22 | (reservado) |
+| 23 | (reservado) |
+| 24 | (reservado) |
+| 25 | (reservado) |
+| 26 | Bin do Cartão de Crédito | Enviar o bin - 6 primeiros digitos do cartão | String |
+| 27 | (reservado) |
+| 28 | (reservado) |
+| 29 | (reservado) |
+| 30 | (reservado) |
+| 31 | Nr de trocas de Cartões de crédito | Nr de vezes que o comprador trocou o cartão de crédito para fazer o pagamento do pedido | Número |
+| 32 | Email colado ou digitado | Valores: "Digitado", "Colado" Informar se o endereço de e-mail foi digitado ou colado no campo | String |
+| 33 | Nr Cartao colado ou digitado | Valores: "Digitado", "Colado" Informar se o nr do cartão de crédito foi digitado ou colado no campo | String |
+| 34 | E-mail confirmado | Se existe rotina de confirmação de e-mail para ativação de conta. Valores: "SIM". Em caso negativo não enviar o MDD | String |
+| 35 | Tipo de cliente (local/turista) | Valores: "Local", "Turista". Não enviar o MDD no caso de não ter essa informação | String |
+| 36 | Utiliza cartao presente na compra ($) | Informar se foi utilizado Cartao Presente (Gift Card) na compra. Valores: "SIM". Em caso negativo não enviar o MDD | String |
+| 37 | Metodo de Envio | Valores: "Sedex", "Sedex 10", "1 Dia", "2 Dias", "Motoboy", "Mesmo Dia", etc. Se não tiver envio, não enviar o MDD | String |
+| 38 | Numero da Bina | Informar o nr de telefone indentificado, com DDD | String |
+| 39 | (reservado) |
+| 40 | (reservado) |
+| 41 a 95 | Campo Livre | Os campos são reservados para envio de dados de lojista, conforme a regra de negócio. | String |
+| 96 | (reservado) |
+| 97 | (reservado) |
+| 98 | (reservado) |
+| 99 | (reservado) |
+| 100 | Documento | Documento (CPG, RG, etc.) | String |
 
 ## Valores da Análise de Fraude
 

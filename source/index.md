@@ -1258,7 +1258,7 @@ curl
 |`FraudAnalysis.Cart.IsGift`|Booleano|---|Não|Booleano que indica se o pedido é para presente ou não.|
 |`FraudAnalysis.Cart.ReturnsAccepted`|Booleano|---|Não|Booleano que define se devoluções são aceitas para o pedido.|
 |`FraudAnalysis.Items.GiftCategory`|Texto|9|Não|Campo que avaliará os endereços de cobrança e entrega para difrentes cidades, estados ou países.[Valores](#fraudanalysis.items.giftcategory)|
-|`FraudAnalysis.Items.HostHedge`|Texto||Não|Nível de importância do e-mail e endereços IP dos clientes em risco de pontuação.[Valores](#fraudanalysis.items.hosthedge)|
+|`FraudAnalysis.Items.HostHedge`|Texto|Não|Nível de importância do e-mail e endereços IP dos clientes em risco de pontuação.[Valores](#fraudanalysis.items.hosthedge)|
 |`FraudAnalysis.Items.NonSensicalHedge`|Texto|6|Não|Nível dos testes realizados sobre os dados do comprador com pedidos recebidos sem sentido.[Valores](#fraudanalysis.items.nonsensicalhedge)|
 |`FraudAnalysis.Items.ObscenitiesHedge`|Texto|6|Não|Nível de obscenidade dos pedidos recebedidos.[Valores](#fraudanalysis.items.obscenitieshedge) |
 |`FraudAnalysis.Items.PhoneHedge`|Texto|6|Não|Nível dos testes realizados com os números de telefones.[Valores](#fraudanalysis.items.phonehedge) |
@@ -1267,19 +1267,19 @@ curl
 |`FraudAnalysis.Items.Sku`|Texto|255|Não|Código comerciante identificador do produto.|
 |`FraudAnalysis.Items.UnitPrice`|Número|15|Não|Preço unitário do produto.|
 |`FraudAnalysis.Items.Risk`|Texto|6|Não|Nível do risco do produto.[Valores](#fraudanalysis.items.risk)|
-|`FraudAnalysis.Items.TimeHedge`|Texto||Não|Nível de importância da hora do dia do pedido do cliente.[Valores](#fraudanalysis.items.timehedge)|
-|`FraudAnalysis.Items.Type`|Texto||Não|Tipo do produto.[Valores](#fraudanalysis.items.type)|
+|`FraudAnalysis.Items.TimeHedge`|Texto|Não|Nível de importância da hora do dia do pedido do cliente.[Valores](#fraudanalysis.items.timehedge)|
+|`FraudAnalysis.Items.Type`|Texto|Não|Tipo do produto.[Valores](#fraudanalysis.items.type)|
 |`FraudAnalysis.Items.VelocityHedge`|Texto|6|Não|Nível de importância de frequência de compra do cliente.[Valores](#fraudanalysis.items.velocityhedge)|
 |`FraudAnalysis.Items.Passenger.Email`|Texto|255|Não|Email do Passageiro.|
 |`FraudAnalysis.Items.Passenger.Identity`|Texto|32|Não|Id do passageiro a quem o bilheite foi emitido.|
 |`FraudAnalysis.Items.Passenger.Name`|Texto|120|Não|Nome do passageiro.|
-|`FraudAnalysis.Items.Passenger.Rating`|Texto||Não|Classificação do Passageiro.[Valores](#fraudanalysis.items.passenger.rating)|
+|`FraudAnalysis.Items.Passenger.Rating`|Texto|Não|Classificação do Passageiro.[Valores](#fraudanalysis.items.passenger.rating)|
 |`FraudAnalysis.Items.Passenger.Phone`|Texto|15|Não|Número do telefone do passageiro. Para pedidos fora do U.S., a CyberSource recomenda que inclua o código do país.|
 |`FraudAnalysis.Items.Passenger.Status`|Texto|32|Não|Classificação da empresa aérea. Pode-se usar valores como Gold ou Platina.|
 |`FraudAnalysis.MerchantDefinedFields.Id`|Texto|---|Não|Id das informações adicionais a serem enviadas.|
 |`FraudAnalysis.MerchantDefinedFields.Value`|Texto|255|Não|Valor das informações adicionais a serem enviadas.|
 |`FraudAnalysis.Shipping.Addressee`|Texto|255|Não|Nome do destinatário da entrega.|
-|`FraudAnalysis.Shipping.Method`|Texto||Não|Tipo de serviço de entrega do produto.[Valores](#fraudanalysis.items.method)|
+|`FraudAnalysis.Shipping.Method`|Texto|Não|Tipo de serviço de entrega do produto.[Valores](#fraudanalysis.items.method)|
 |`FraudAnalysis.Shipping.Phone`|Texto|15|Não|Telefone do destinatário da entrega.|
 |`FraudAnalysis.Travel.DepartureTime`|DateTime|23|Não|Data, hora e minuto de partida do vôo.|
 |`FraudAnalysis.Travel.JourneyType`|Texto|32|Não|Tipo de viagem.|
@@ -2350,10 +2350,10 @@ curl
 |`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT | Guid | 36 |Não|
 |`MerchantOrderId`|Numero de identificação do Pedido. |Texto |50 |Sim|
 |`Customer.Name`|Nome do Comprador. |Texto |255|Não|
-|`Customer.Status`|Status de cadastro do comprador na loja(NEW | EXISTING) - Utilizado pela análise de fraude|Texto |255|Não
-|`Customer.Address.ZipCode`|CEP do endereço do Comprador. |Texto |9 |Sim||
-|`Customer.Address.Country`|Pais do endereço do Comprador. |Texto |35 |Sim||
-|`Customer.Address.State`|Estado do endereço do Comprador. |Texto |2 |Sim||
+|`Customer.Status`|Status de cadastro do comprador na loja(NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
+|`Customer.Address.ZipCode`|CEP do endereço do Comprador. |Texto |9 |Sim|
+|`Customer.Address.Country`|Pais do endereço do Comprador. |Texto |35 |Sim|
+|`Customer.Address.State`|Estado do endereço do Comprador. |Texto |2 |Sim|
 |`Customer.Address.City`|Cidade do endereço do Comprador. |Texto |50 |Sim|
 |`Customer.Address.District`|Bairro do Comprador. |Texto |50 |Sim|
 |`Customer.Address.Street`|Endereço do Comprador. |Texto |255 |Sim|

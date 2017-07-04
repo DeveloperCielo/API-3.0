@@ -8,6 +8,7 @@ language_tabs:
 toc_footers:
   - <a href='/Guia-de-migracao-1.5x3.0/'>Guia de migração da API 1.5 para a API Cielo eCommerce</a>
   - <a href='/API-3.0-FAQ/'>Respostas para perguntas frequentes</a>
+  - <a href='/Tutorial-Backoffice-3.0/'>Tutorial Backoffice 3.0</a>
   - <a href='/Habilitacao-meios-de-pagamento/'>Manual de Boleto e débito online</a>
   - <a href='/Boas-praticas-de-ecommerce/'>Boas práticas de eCommerce</a>
 
@@ -5643,7 +5644,7 @@ Abaixo vamos explica-los na ordem em que podem ocorrem:
 
 **OBS**: No  antigo **Webservice 1.5 Cielo**, o `RetunCode` era considerado como *Status da transação*. Na **API CIELO ECOMMERCE**, o campo `Status` possui códigos próprios, sendo assim, o **campo a ser considerado como base de identificação do status de uma transação**
 
- 
+
 ## HTTP Status Code
 
 |HTTP Status Code|Descrição|

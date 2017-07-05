@@ -5625,8 +5625,6 @@ curl
 |`Type`|indica qual o tipo de carteira: "VisaCheckout" ou "Masterpass"|Texto|255|Sim|texto alfanumérico|
 |`Capturecode`|Código informado pela MasterPass ao lojista|Texto|255|Sim|
 
-
-
 # Códigos da API
 
 ## Sobre os códigos
@@ -5642,7 +5640,7 @@ Abaixo vamos explica-los na ordem em que podem ocorrem:
 |**Status**|Depois de criada a transação, esses códigos serão retornados, informando como se encontra a transação no momento (EX: `Autorizada` > `Capturada` > `Cancelada`)<BR><BR>*Retornado no campo `Status` *|
 |**Retorno das Vendas**|Formado por um **código de Retorno** e uma **mensagem**, esses códigos indicam o **motivo** de um determinado `Status` dentro de uma transação. Eles indicam, por exemplo, se uma transação com `status` negada não foi autorizada devido saldo negativo no banco emissor. <BR><BR>*Retornados nos campos `ReturnCode` e `ReturnMessage`*<BR> *Ocorrem somente em Cartões de crédito e Débito* |
 
-**OBS**: No  antigo **Webservice 1.5 Cielo**, o `RetunCode` era considerado como *Status da transação*. Na **API CIELO ECOMMERCE**, o campo `Status` possui códigos próprios, sendo assim, o **campo a ser considerado como base de identificação do status de uma transação**
+**OBS**: No  antigo **Webservice 1.5 Cielo**, o `ReturnCode` era considerado como *Status da transação*. Na **API CIELO ECOMMERCE**, o campo `Status` possui códigos próprios, sendo assim, o **campo a ser considerado como base de identificação do status de uma transação**
 
 
 ## HTTP Status Code
@@ -5819,8 +5817,18 @@ Códigos retornados em caso de erro, identificando o motivo do erro e suas respe
 
 ## Códigos de Retorno das Vendas
 
-|Código Resposta|Definição|Significado|Ação|Permite Retentativa|
-|---------------|---------|-----------|----|-------------------|
+| Código Resposta | Definição | Significado | Ação | Permite Retentativa |
+|-----------------|-----------|-------------|------|:-------------------:|
+| 0 | Criada | Transação criada | N/A | Não |
+| 1 | Em andamento | Processamento em andamento | N/A | Não |
+| 2 | Autenticada | Confirmação de autenticação | N/A | Não |
+| 3 | Não Autenticada | Transação não autenticavel | N/A | Não |
+| 4 | Autorizada | Confirmação de autorização | Captura ou Cancelamento | Não |
+| 5 | Não Autorizada | Confirmação de não autorização | N/A | Não |
+| 6 | Capturada | Confirmação de captura |  N/A ou cancelamento | Não |
+| 9 | Cancelada |  Confirmação de cancelamento | N/A | Não |
+| 10 | Em autenticação | Processamento de autenticação | N/A | Não |
+| 12 | Em cancelamento | Processamento para cancelamento | N/A | Não |
 |00|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Não|
 |000|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Não|
 |01|Transação não autorizada. Transação referida.|Transação não autorizada. Referida (suspeita de fraude) pelo banco emissor.|Transação não autorizada. Entre em contato com seu banco emissor.|Não|
@@ -5927,33 +5935,7 @@ Códigos retornados em caso de erro, identificando o motivo do erro e suas respe
 |R1|Transação não autorizada. Cartão inadimplente (Do not honor).|Transação não autorizada. Não foi possível processar a transação. Questão relacionada a segurança, inadimplencia ou limite do portador.|Transação não autorizada. Entre em contato com seu banco emissor.|Apenas 4 vezes em 16 dias.|
 |U3|Transação não permitida. Falha na validação dos dados.|Transação não permitida. Houve uma falha na validação dos dados. Solicite ao portador que reveja os dados e tente novamente. Se o erro persistir verifique a comunicação entre loja virtual e Cielo.|Transação não permitida. Houve uma falha na validação dos dados. reveja os dados informados e tente novamente. Se o erro persistir entre em contato com a Loja Virtual.|Não|
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Atenção**: Existem códigos de retorno semelhantes, porem com significados diferentes como o "**6** - Capturada" e o "**06** - Cartão Cancelado". Esses códigos são apenas informativos do sistema de processamento. **Apenas o campo `STATUS` deve ser considerado como situação atual da transação**
 
 
 

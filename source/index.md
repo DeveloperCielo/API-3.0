@@ -15,7 +15,7 @@ toc_footers:
 search: true
 ---
 
-# Integração API Cielo eCommerce
+# Visão geral API Cielo eCommerce
 
 O objetivo desta documentação é orientar o desenvolvedor sobre como integrar com a API Cielo eCommerce da Cielo, descrevendo as funcionalidades, os métodos a serem utilizados, listando informações a serem enviadas e recebidas, e provendo exemplos.
 
@@ -34,6 +34,27 @@ Ambiente Sandbox
 * **Consulta transação**: https://apiquerysandbox.cieloecommerce.cielo.com.br
 
 Para executar uma operação, combine a URL base do ambiente com a URL da operação desejada e envie utilizando o verbo HTTP conforme descrito na operação.
+
+## Características da solução
+
+A solução API Cielo eCommerce da plataforma Cielo eCommerce foi desenvolvida com a tecnologia REST, que é padrão de mercado e independe da tecnologia utilizada por nossos clientes. Dessa forma, é possível integrar-se utilizando as mais variadas linguagens de programação, tais como: ASP, ASP. Net, Java, PHP, Ruby, Python, etc.
+
+Entre outras características, os atributos que mais se destacam na plataforma Cielo eCommerce:
+
+* **Ausência de aplicativos proprietários**: não é necessário instalar aplicativos no ambiente da loja virtual em nenhuma hipótese.
+* **Simplicidade**: o protocolo utilizado é puramente o HTTPS.
+* **Facilidade de testes**: a plataforma Cielo oferece um ambiente Sandbox publicamente acessível, que permite ao desenvolvedor a criação de uma conta de testes sem a necessidade de credenciamento, facilitando e agilizando o início da integração.
+* **Credenciais**: o tratamento das credenciais do cliente (número de afiliação e chave de acesso) trafega no cabeçalho da requisição HTTP da mensagem.
+* **Segurança**: a troca de informações se dá sempre entre o Servidor da Loja e da Cielo, ou seja, sem o browser do comprador.
+* **Multiplataforma**: a integração é realizada através de Web Service REST.
+
+## Arquitetura
+
+A integração é realizada através de serviços disponibilizados como Web Services. O modelo empregado é bastante simples: Existem duas URLs (endpoint), uma específica operações que causam efeitos colaterais - como autorização, captura e cancelamento de transações, e uma URL específica para operações que não causam efeitos colaterais, como pesquisa de transações. Essas duas URLs receberão as mensagens HTTP através dos métodos POST, GET ou PUT. Cada tipo de mensagem deve ser enviada para um recurso identificado através do path.
+
+* **POST** - O método HTTP POST é utilizado na criação dos recursos ou no envio de informações que serão processadas. Por exemplo, criação de uma transação.
+* **PUT** - O método HTTP PUT é utilizado para atualização de um recurso já existente. Por exemplo, captura ou cancelamento de uma transação previamente autorizada.
+* **GET** - O método HTTP GET é utilizado para consultas de recursos já existentes. Por exemplo, consulta de transações.
 
 ## Glossário
 
@@ -54,6 +75,7 @@ Para facilitar o entendimento, listamos abaixo um pequeno glossário com os prin
 * **TID (Transaction Identifier)**: código composto por 20 caracteres que identificada unicamente uma transação Cielo eCommerce.
 * **Transação**: é o pedido de compra do portador do cartão na Cielo.
 * **VBV (Verified by Visa)**: Programa internacional da Visa que possibilita a autenticação do comprador no momento de uma compra em ambiente eCommerce.
+
 
 # Certificado Extended Validation
 
@@ -197,58 +219,56 @@ Em caso de dúvidas em qualquer etapa ou outras informações técnicas, entre e
 
 Horário de atendimento: 24h por dia, 7 dias por semana.
 
-# Visão Geral
 
-Neste manual será apresentado uma visão geral do Cielo eCommerce e o mecanismo tecnológico no formato de integração REST.
 
-Para todo pedido de compra, a meta é efetivá-la em uma venda. Uma venda com cartão pode ser caracterizado em uma transação **autorizada e capturada**.
 
-<aside class="warning">Uma transação autorizada somente gera o crédito para o lojista se ela for capturada (ou confirmada).</aside>
 
-## Características da solução
 
-A solução API Cielo eCommerce da plataforma Cielo eCommerce foi desenvolvida com a tecnologia REST, que é padrão de mercado e independe da tecnologia utilizada por nossos clientes. Dessa forma, é possível integrar-se utilizando as mais variadas linguagens de programação, tais como: ASP, ASP. Net, Java, PHP, Ruby, Python, etc.
 
-Entre outras características, os atributos que mais se destacam na plataforma Cielo eCommerce:
 
-* **Ausência de aplicativos proprietários**: não é necessário instalar aplicativos no ambiente da loja virtual em nenhuma hipótese.
-* **Simplicidade**: o protocolo utilizado é puramente o HTTPS.
-* **Facilidade de testes**: a plataforma Cielo oferece um ambiente Sandbox publicamente acessível, que permite ao desenvolvedor a criação de uma conta de testes sem a necessidade de credenciamento, facilitando e agilizando o início da integração.
-* **Credenciais**: o tratamento das credenciais do cliente (número de afiliação e chave de acesso) trafega no cabeçalho da requisição HTTP da mensagem.
-* **Segurança**: a troca de informações se dá sempre entre o Servidor da Loja e da Cielo, ou seja, sem o browser do comprador.
-* **Multiplataforma**: a integração é realizada através de Web Service REST.
 
-## Arquitetura
 
-A integração é realizada através de serviços disponibilizados como Web Services. O modelo empregado é bastante simples: Existem duas URLs (endpoint), uma específica operações que causam efeitos colaterais - como autorização, captura e cancelamento de transações, e uma URL específica para operações que não causam efeitos colaterais, como pesquisa de transações. Essas duas URLs receberão as mensagens HTTP através dos métodos POST, GET ou PUT. Cada tipo de mensagem deve ser enviada para um recurso identificado através do path.
 
-* **POST** - O método HTTP POST é utilizado na criação dos recursos ou no envio de informações que serão processadas. Por exemplo, criação de uma transação.
-* **PUT** - O método HTTP PUT é utilizado para atualização de um recurso já existente. Por exemplo, captura ou cancelamento de uma transação previamente autorizada.
-* **GET** - O método HTTP GET é utilizado para consultas de recursos já existentes. Por exemplo, consulta de transações.
 
-## Sandbox
 
+
+# Sandbox e testes
+
+## Sobre o Sandbox
 Para facilitar os testes durante a integração, a Cielo oferece um ambiente Sandbox que é composto por duas áreas:
 
 1. Cadastro de conta de testes
 2. Endpoints transacionais
 
     * **Requisição**: https://apisandbox.cieloecommerce.cielo.com.br
+
     * **Consulta**: https://apiquerysandbox.cieloecommerce.cielo.com.br/
 
-Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o [Cadastro do Sandbox](https://cadastrosandbox.cieloecommerce.cielo.com.br/) e criar uma conta de testes. Ao fim do cadastro você receberá um `MerchantId` e um `MerchantKey`, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.
+**Vantagens de utilizar o Sandbox**
 
-### Meio de Pagamento Simulado
+* Não é necessário uma afiliação para utilizar o Sandbox Cielo.
+* Basta acessar o [**Cadastro do Sandbox**](https://cadastrosandbox.cieloecommerce.cielo.com.br/) criar uma conta.
+* com o cadastro você receberá um `MerchantId` e um `MerchantKey`,que são as credenciais necessarias para os métodos da API
 
-O Simulado é um meio de pagamento que emula a utilizaçao de pagamentos com Cartão de Crétido. Com esse meio de pagamento é possivel simular todos os fluxos de Autorização, Captura e Cancelamento.
 
-Para melhor utilização do Meio de Pagamento Simulado, estamos disponibilizando cartões de testes na tabela abaixo.
+## Cartão de crédito - Sandbox
 
-Os status das transações serão conforme a utilização de cada cartão.
+No sandbox, é necessario utilizar o `Provider` seja utilizado como **SIMULADO**
 
-|Status da Transação|Cartões para realização dos testes|Código de Retorno|Mensagem de Retorno|
-|-------------------|----------------------------------|-----------------|-------------------|
-|Autorizado|0000.0000.0000.0001 / 0000.0000.0000.0004|4|Operação realizada com sucesso|
+O Simulado é uma configuração que emula a utilização de pagamentos com Cartão de Crédito. 
+Com esse meio de pagamento é possível simular os fluxos de:
+
+* Autorização
+* Captura 
+* Cancelamento.
+
+Para melhor utilização do Meio de Pagamento Simulado, estamos disponibilizando **cartões de testes** na tabela abaixo.
+
+**Os `status` das transações são definidos pelos FINAIS de cada cartão, assim como o `ReturnCode` .**
+
+|Status da Transação|Final do Cartão|Código de Retorno|Mensagem de Retorno|
+|-------------------|---------------|:---------------:|-------------------|
+|Autorizado|0000.0000.0000.0001<br>0000.0000.0000.0004|4|Operação realizada com sucesso|
 |Não Autorizado|0000.0000.0000.0002|2|Não Autorizada|
 |Autorização Aleatória|0000.0000.0000.0009|4 / 99|Operation Successful / Time Out|
 |Não Autorizado|0000.0000.0000.0007|77|Cartão Cancelado|
@@ -257,9 +277,35 @@ Os status das transações serão conforme a utilização de cada cartão.
 |Não Autorizado|0000.0000.0000.0003|57|Cartão Expirado|
 |Não Autorizado|0000.0000.0000.0006|99|Time Out|
 
-As informações de Cód.Segurança (CVV) e validade podem ser aleatórias, mantendo o formato - CVV (3 dígitos) Validade (MM/YYYY).
+Exemplo de um Cartão de teste - 4024.0071.5376.3191
 
-<aside class="notice"><strong>Atenção:</strong>O ambiente de sandbox avalia o formato e o final do cartão, caso um cartão real seja enviado, o resultado da operação será idêntico ao descrito na tabela de cartões de teste.</aside>
+As informações de **Cód.Segurança (CVV)** e validade podem ser aleatórias, mantendo o formato - CVV (3 dígitos) Validade (MM/YYYY).
+
+
+<aside class="notice"><strong>Atenção:</strong> O ambiente de **sandbox** avalia o formato e o final do cartão, caso um cartão real seja enviado, o resultado da operação será idêntico ao descrito na tabela de cartões de teste.</aside>
+
+<aside class="notice"><strong>Tokenização:</strong> Transações em ambiente de Sandbox envolvendo tokenização não funcionaram com base nos cartões de teste. Todo cartão salvo no tokenização é tratado como um cartão real, logo ele não é utilizado no processo de simulação</aside>
+
+## Outros meios de pagamento - Sandbox
+
+Outros meios de pagamento não possuem cartões ou dados específicos simulados, como no caso do cartão de crédito.
+Abaixo especificamos qualquer diferença existente:
+
+|Meio de pagamento|Diferenças|
+|-----------------|----------|
+|Boleto|Não há diferenças de integração. |
+|Cartão de débito|O `provider` utilizado deve ser **SIMULADO** <br><br> A URL de redirecionamento para o ambiente do banco será na verdade uma tela para escolher o estado da autenticação|
+|Transferência online|O `provider` utilizado deve ser **SIMULADO** <br><br> A URL de redirecionamento para o ambiente do banco será na verdade uma tela para escolher o estado da autenticação|
+
+
+
+
+
+
+
+
+
+
 
 # Pagamentos com Cartão de Crédito
 
@@ -277,6 +323,8 @@ Para que você possa disfrutar de todos os recursos disponíveis em nossa API, �
 ## Criando uma transação simples
 
 Para criar uma transação que utilizará cartão de crédito, é necessário enviar uma requisição utilizando o método `POST` para o recurso Payment, conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.
+
+<aside class="notice"><strong>Atenção:</strong> Não é possivel realizar uma transação com valor (`Amount`) 0.</aside>
 
 ### Requisição
 
@@ -346,7 +394,7 @@ curl
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
-|`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
+|`CreditCard.CardNumber`|Texto|19|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
@@ -623,7 +671,7 @@ curl
 |`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|
 |`Payment.Capture`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com captura automática.|
 |`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
-|`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
+|`CreditCard.CardNumber`|Texto|19|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
@@ -869,7 +917,7 @@ curl
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
-|`CreditCard.CardNumber.`|Texto|16|Sim|Número do Cartão do Comprador|
+|`CreditCard.CardNumber.`|Texto|19|Sim|Número do Cartão do Comprador|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
@@ -1242,7 +1290,7 @@ curl
 |`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|
 |`Payment.Capture`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com captura automática.|
 |`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
-|`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
+|`CreditCard.CardNumber`|Texto|19|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
@@ -1809,7 +1857,8 @@ curl
 
 ## Capturando uma venda
 
-Para captura uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
+Para captura uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.
+
 
 ### Requisição
 
@@ -1888,6 +1937,20 @@ curl
 |`ReturnCode`|Código de retorno da adquirente. | Texto | 32 | Texto alfanumérico |
 |`ReturnMessage`|Mensagem de retorno da adquirente. | Texto | 512 | Texto alfanumérico |
 
+
+### Captura parcial
+
+A **captura parcial** é o ato de capturar um valor menor que o valor autorizado.Esse modelo de captura pode ocorrer apenas 1 vez por transação. 
+
+**Após a captura, não é possível realizar capturas adicionais no mesmo pedido.**
+
+Métodos de captura parcial:
+
+1. **Via API** - Basta realizar um `POST` enviando o valor a ser capturado.
+2. **Via Backoffice** - Acesse nosso [**Tutorial**](https://developercielo.github.io/Tutorial-Backoffice-3.0/)  para maiores informações
+
+<aside class="notice"><strong>Atenção:</strong> Captura parcial disponível apenas para transações de crédito</aside>
+
 ## Cancelando uma venda
 
 Para cancelar uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment. É possível realizar o cancelamento via PaymentID ou MerchantOrderId (numero do pedido).
@@ -1964,6 +2027,20 @@ curl
 |`ReturnCode`|Código de retorno da Adquirência. |Texto |32 |Texto alfanumérico
 |`ReturnMessage`|Mensagem de retorno da Adquirência. |Texto |512 |Texto alfanumérico
 
+### Cancelamento parcial
+
+O **cancelamento  parcial** é o ato de cancelar um valor menor que o valor total autorizado/capturado. Esse modelo de captura pode ocorrer inumeras vezes, até que o valor total da transação seja cancelado. 
+
+Métodos de cancelamento parcial:
+
+1. **Via API** - Basta realizar um `POST` enviando o valor a ser capturado.
+2. **Via Backoffice** - Acesse nosso [**Tutorial**](https://developercielo.github.io/Tutorial-Backoffice-3.0/)  para maiores informações
+
+<aside class="notice"><strong>Atenção:</strong> Cancelamento parcial disponível apenas para transações de crédito</aside>
+
+
+
+
 
 
 # Pagamentos com Cartão de Débito
@@ -2038,7 +2115,7 @@ curl
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
 |`Payment.ReturnUrl`|Url de retorno do lojista.|Texto |1024 |Sim|
 |`Payment.ReturnUrl`|URI para onde o usuário será redirecionado após o fim do pagamento|Texto |1024 |Sim|
-|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |19 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
@@ -2565,7 +2642,7 @@ curl
 |`Payment.RecurrentPayment.EndDate`|Data para termino da recorrência.|Texto |10 |Não|
 |`Payment.RecurrentPayment.Interval`|Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |Texto |10 |Não|
 |`Payment.RecurrentPayment.AuthorizeNow`|Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.|Booleano |--- |Sim|
-|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |19 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
@@ -3002,7 +3079,7 @@ curl
 |`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
 |`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
 |`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean |5 |Não|
-|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |19 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
@@ -3148,7 +3225,7 @@ curl
 |`Payment.Installments`|Número de Parcelas.|Número |2 |Sim|
 |`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
 |`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean |5 |Não|
-|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |19 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
@@ -3791,7 +3868,7 @@ curl
 |`Payment.RecurrentPayment.EndDate`|Data para termino da recorrência.|Texto |10 |Não|
 |`Payment.RecurrentPayment.Interval`|Intervalo da recorrência.<br /><ul><li>Monthly (Default) </li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul> |Texto |10 |Não|
 |`Payment.RecurrentPayment.AuthorizeNow`|Booleano para saber se a primeira recorrência já vai ser Autorizada ou não.|Booleano |--- |Sim|
-|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |16 |Sim|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto |19 |Sim|
 |`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto |25 |Não|
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto |7 |Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto |4 |Sim|
@@ -4092,7 +4169,7 @@ curl
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
-|`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
+|`CreditCard.CardNumber`|Texto|19|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
@@ -4669,7 +4746,7 @@ curl
 |`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|
 |`Payment.Capture`|Booleano|---|Não (Default false)|Booleano que identifica que a autorização deve ser com captura automática.|
 |`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
-|`CreditCard.CardNumber`|Texto|16|Sim|Número do Cartão do Comprador.|
+|`CreditCard.CardNumber`|Texto|19|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
 |`CreditCard.ExpirationDate`|Texto|7|Sim|Data de validade impresso no cartão.|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
@@ -5500,7 +5577,7 @@ curl
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
-|`CreditCard.CardNumber.`|Texto|16|Sim|Número do Cartão do Comprador|
+|`CreditCard.CardNumber.`|Texto|19|Sim|Número do Cartão do Comprador|
 |`CreditCard.SecurityCode`|Texto|4|Não|Código de segurança impresso no verso do cartão - Ver Anexo.|
 |`Wallet.Type`|Texto|255|Sim|indica qual o tipo de carteira: "VisaCheckout" ou "Masterpass"|
 |`Wallet.AdditionalData`|---|---|---|Instancia para dados extras informados pela MasterPass. Obrigatório apenas se TYPE = "MasterPass"|

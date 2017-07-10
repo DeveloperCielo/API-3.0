@@ -15,7 +15,7 @@ toc_footers:
 search: true
 ---
 
-# Visão geral API Cielo eCommerce
+# Visão geral - API Cielo eCommerce
 
 O objetivo desta documentação é orientar o desenvolvedor sobre como integrar com a API Cielo eCommerce da Cielo, descrevendo as funcionalidades, os métodos a serem utilizados, listando informações a serem enviadas e recebidas, e provendo exemplos.
 
@@ -2340,6 +2340,9 @@ curl
 
 Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.
 
+**OBS:** A API suporta boletos registrados e não registrados, sendo o provider o diferenciador entre eles. Sugerimos que valide com seu banco qual o tipo de boleto suportado por sua carteira.
+
+
 ### Requisição
 
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
@@ -2353,21 +2356,21 @@ Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST co
         "Identity": "1234567890",
         "Address":
         {
+          "Street": "Avenida Marechal Câmara",
+          "Number": "160",	
+          "Complement": "Sala 934",
           "ZipCode" : "22750012",
-          "Country": "BRA",
-          "State" : "RJ",
-          "City": "Rio de Janeiro",
           "District": "Centro",
-          "Street": "Av Marechal Camara",
-          "Number":"160"
+          "City": "Rio de Janeiro",
+          "State" : "RJ",
+          "Country": "BRA"
         }
-
     },
     "Payment":
     {  
         "Type":"Boleto",
         "Amount":15700,
-        "Provider":"Cielo",
+        "Provider":"INCLUIR PROVIDER",
         "Address": "Rua Teste",
         "BoletoNumber": "123",
         "Assignor": "Empresa Teste",
@@ -2390,25 +2393,25 @@ curl
     "MerchantOrderId":"2014111706",
     "Customer":
     {  
-        "Name":"Comprador Teste",
+        "Name":"Comprador Teste Boleto",
         "Identity": "1234567890",
         "Address":
         {
+          "Street": "Avenida Marechal Câmara",
+          "Number": "160",	
+          "Complement": "Sala 934",
           "ZipCode" : "22750012",
-          "Country": "BRA",
-          "State" : "RJ",
-          "City": "Rio de Janeiro",
           "District": "Centro",
-          "Street": "Av Marechal Camara",
-          "Number":"160"
+          "City": "Rio de Janeiro",
+          "State" : "RJ",
+          "Country": "BRA"
         }
-
     },
     "Payment":
     {  
         "Type":"Boleto",
         "Amount":15700,
-        "Provider":"Cielo",
+        "Provider":"INCLUIR PROVIDER",
         "Address": "Rua Teste",
         "BoletoNumber": "123",
         "Assignor": "Empresa Teste",
@@ -2446,6 +2449,7 @@ curl
 |`Payment.ExpirationDate`|Data de expiração do Boleto.|Date |10 |Não|
 |`Payment.Identification`|Documento de identificação do Cedente.|Texto |14 |Não|
 |`Payment.Instructions`|Instruções do Boleto.|Texto |450|Não|
+
 
 ### Resposta
 
@@ -3775,7 +3779,6 @@ HTTP Status 200
 ```
 
 Veja o Anexo [HTTP Status Code](#http-status-code) para a lista com todos os códigos de status HTTP possivelmente retornados pela API.
-
 
 
 ## Renova Facil
@@ -6016,42 +6019,52 @@ Códigos retornados em caso de erro, identificando o motivo do erro e suas respe
 
 
 
+
+
+
+
+
+
+
 # Anexos
 
 ## Configurações da Afiliação.
 
 Alguns tipos de transação exigem que sua Afiliação esteja configurada corretamente junto a Cielo. Sugerimos que por padrão valide com nossa central de atendimento se sua afiliação está apta a transacionar em algum dos cenários abaixo:
 
-|Cenário|
-|-------|
-|Recorrência|
-|Transação sem CVV|
+|Cenário                                     |
+|--------------------------------------------|
+|Recorrência				     |
+|Transação sem CVV 			     |
 |Personalização da validade de uma transação |
 
 ## Lista de Providers
 
-|Meio de pagamento|Provider|
-|---------------------------|-----------|
-|Boleto|`Bradesco`|
-|Boleto|`BancodoBrasil`|
-|Transferência Eletrônica|`Bradesco`|
-|Transferência Eletrônica|`BancodoBrasil`|
+| Meio de pagamento        | Provider                        |
+|--------------------------|---------------------------------|
+| Cartão de Crédito        | `Cielo`                         |
+| Cartão de Dédito         | `Cielo`                         |
+| Boleto - Não registrado  | `Bradesco`  /  `BancodoBrasil`  |
+| Boleto - Registrado      | `Bradesco2` /  `BancodoBrasil2` |
+| Transferência Eletrônica | `Bradesco`  /  `BancodoBrasil`  |
+
 
 ## Tipos de meio de pagamento
 
-|Meio de pagamento|Payment.Type|
-|-----------------|------------|
-|Cartão de crédito|`CreditCard`|
-|Cartão de Débito|`DebitCard`|
-|Boleto|`Boleto`|
-|Transferência Eletrônica|`EletronicTransfer`|
+| MEIO DE PAGAMENTO        | PAYMENT.TYPE      |
+|--------------------------|-------------------|
+| Cartão de crédito        | CreditCard        |
+| Cartão de Débito         | DebitCard         |
+| Boleto                   | Boleto            |
+| Transferência Eletrônica | EletronicTransfer |
+
 
 ## Merchant Defined Data
 
 A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro MerchantDefinedData e respectivos tipo de informação que deve ser preenchida.
 
 | ID | Dado | Descrição | Tipo |
-|----|------|-----------|------|
+|:--:|------|-----------|------|
 | 1 | Cliente efetuou Log In | Se o cliente final logou no site para comprar, enviar: o login dele. Se fez compra como visitante, enviar: "Guest". Se a venda foi feita direto por um terceiro, um agente por exemplo, não enviar o campo | String |
 | 2 | Cliente do estabelecimento há: #dias | Quantidade de dias | Número |
 | 3 | Compra Efetuada em (parcelas) | Número de Parcelas | Número |
@@ -6129,76 +6142,76 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 
 ### FraudAnalysis.Items.ObscenitiesHedge
 
-|Campo|Descrição|
-|-----|---------|
-|Low|Baixa importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
-|Normal|Média importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
-|High|Alta importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.|
-|Off|Verificação de obscenidade no pedido do comprador não afeta a análise de risco.|
+| Campo  | Descrição                                                                                        |
+|--------|--------------------------------------------------------------------------------------------------|
+| Low    | Baixa importância da verificação sobre obscenidades do pedido do comprador, na análise de risco. |
+| Normal | Média importância da verificação sobre obscenidades do pedido do comprador, na análise de risco. |
+| High   | Alta importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.  |
+| Off    | Verificação de obscenidade no pedido do comprador não afeta a análise de risco.                  |
 
 ### FraudAnalysis.Items.PhoneHedge
 
-|Campo|Descrição|
-|-----|---------|
-|Low|Baixa importância nos testes realizados com números de telefone.|
-|Normal|Média importância nos testes realizados com números de telefone.|
-|High|Alta importância nos testes realizados com números de telefone.|
-|Off|Testes de números de telefone não afetam a análise de risco.|
+| Campo  | Descrição                                                        |
+|--------|------------------------------------------------------------------|
+| Low    | Baixa importância nos testes realizados com números de telefone. |
+| Normal | Média importância nos testes realizados com números de telefone. |
+| High   | Alta importância nos testes realizados com números de telefone.  |
+| Off    | Testes de números de telefone não afetam a análise de risco.     |
 
 ### FraudAnalysis.Items.Risk
 
-|Campo|Descrição|
-|-----|---------|
-|Low|O produto tem um histórico de poucos chargebacks.|
-|Normal|O produto tem um histórico de chargebacks considerado normal.|
-|High|O produto tem um histórico de chargebacks acima da média.|
+| Campo  | Descrição                                                     |
+|--------|---------------------------------------------------------------|
+| Low    | O produto tem um histórico de poucos chargebacks.             |
+| Normal | O produto tem um histórico de chargebacks considerado normal. |
+| High   | O produto tem um histórico de chargebacks acima da média.     |
 
 ### FraudAnalysis.Items.TimeHedge
 
-|Campo|Descrição|
-|-----|---------|
-|Low|Baixa importância no horário do dia em que foi feita a compra, para a análise de risco.|
-|Normal|Média importância no horário do dia em que foi feita a compra, para a análise de risco.|
-|High|Alta importância no horário do dia em que foi feita a compra, para a análise de risco.|
-|Off|O horário da compra não afeta a análise de risco.|
+| Campo  | Descrição                                                                               |
+|--------|-----------------------------------------------------------------------------------------|
+| Low    | Baixa importância no horário do dia em que foi feita a compra, para a análise de risco. |
+| Normal | Média importância no horário do dia em que foi feita a compra, para a análise de risco. |
+| High   | Alta importância no horário do dia em que foi feita a compra, para a análise de risco.  |
+| Off    | O horário da compra não afeta a análise de risco.                                       |
 
 ### FraudAnalysis.Items.Type
 
-|Campo|Descrição|
-|-----|---------|
-|CN|Comprador particular|
-|CP|Comprador de negócios|
+| Campo | Descrição             |
+|-------|-----------------------|
+| CN    | Comprador particular  |
+| CP    | Comprador de negócios |
 
 ### FraudAnalysis.Items.VelocityHedge
 
-|Campo|Descrição|
-|-----|---------|
-|Low|Baixa importância no número de compras realizadas pelo cliente nos últimos 15 minutos.|
-|Normal|Média importância no número de compras realizadas pelo cliente nos últimos 15 minutos.|
-|High|Alta importância no número de compras realizadas pelo cliente nos últimos 15 minutos.|
-|Off|A frequência de compras realizadas pelo cliente não afeta a análise de fraude.|
+| Campo  | Descrição                                                                              |
+|--------|----------------------------------------------------------------------------------------|
+| Low    | Baixa importância no número de compras realizadas pelo cliente nos últimos 15 minutos. |
+| Normal | Média importância no número de compras realizadas pelo cliente nos últimos 15 minutos. |
+| High   | Alta importância no número de compras realizadas pelo cliente nos últimos 15 minutos.  |
+| Off    | A frequência de compras realizadas pelo cliente não afeta a análise de fraude.         |
 
 ### FraudAnalysis.Items.Passenger.Rating
 
-|Campo|Descrição|
-|-----|---------|
-|Adult|Passageiro adulto.|
-|Child|Passageiro criança.|
-|Infant|Passageiro infantil.|
-|Youth|Passageiro adolescente.|
-|Student|Passageiro estudante.|
-|SeniorCitizen|Passageiro idoso.|
-|Military|Passageiro militar.|
+| Campo         | Descrição               |
+|---------------|-------------------------|
+| Adult         | Passageiro adulto.      |
+| Child         | Passageiro criança.     |
+| Infant        | Passageiro infantil.    |
+| Youth         | Passageiro adolescente. |
+| Student       | Passageiro estudante.   |
+| SeniorCitizen | Passageiro idoso.       |
+| Military      | Passageiro militar.     |
 
 ### FraudAnalysis.Shipping.Method
 
-|Campo|
-|-----|
-|None|
-|SameDay|
-|OneDay|
-|TwoDay|
+|Campo   |
+|--------|
+|None    |
+|SameDay |
+|OneDay  |
+|TwoDay  |
 |ThreeDay|
-|LowCost|
-|Pickup|
-|Other|
+|LowCost |
+|Pickup  |
+|Other   |

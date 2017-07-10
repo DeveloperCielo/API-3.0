@@ -100,7 +100,7 @@
     <div class="page-wrapper">
         <div class="dark-box"></div>
         <div class="content">
-                <h1 id="integração-api-cielo-ecommerce">Integração API Cielo eCommerce</h1>
+                <h1 id="visão-geral-api-cielo-ecommerce">Visão geral API Cielo eCommerce</h1>
 
 <p>O objetivo desta documentação é orientar o desenvolvedor sobre como integrar com a API Cielo eCommerce da Cielo, descrevendo as funcionalidades, os métodos a serem utilizados, listando informações a serem enviadas e recebidas, e provendo exemplos.</p>
 
@@ -123,6 +123,31 @@
 </ul>
 
 <p>Para executar uma operação, combine a URL base do ambiente com a URL da operação desejada e envie utilizando o verbo HTTP conforme descrito na operação.</p>
+
+<h2 id="características-da-solução">Características da solução</h2>
+
+<p>A solução API Cielo eCommerce da plataforma Cielo eCommerce foi desenvolvida com a tecnologia REST, que é padrão de mercado e independe da tecnologia utilizada por nossos clientes. Dessa forma, é possível integrar-se utilizando as mais variadas linguagens de programação, tais como: ASP, ASP. Net, Java, PHP, Ruby, Python, etc.</p>
+
+<p>Entre outras características, os atributos que mais se destacam na plataforma Cielo eCommerce:</p>
+
+<ul>
+<li><strong>Ausência de aplicativos proprietários</strong>: não é necessário instalar aplicativos no ambiente da loja virtual em nenhuma hipótese.</li>
+<li><strong>Simplicidade</strong>: o protocolo utilizado é puramente o HTTPS.</li>
+<li><strong>Facilidade de testes</strong>: a plataforma Cielo oferece um ambiente Sandbox publicamente acessível, que permite ao desenvolvedor a criação de uma conta de testes sem a necessidade de credenciamento, facilitando e agilizando o início da integração.</li>
+<li><strong>Credenciais</strong>: o tratamento das credenciais do cliente (número de afiliação e chave de acesso) trafega no cabeçalho da requisição HTTP da mensagem.</li>
+<li><strong>Segurança</strong>: a troca de informações se dá sempre entre o Servidor da Loja e da Cielo, ou seja, sem o browser do comprador.</li>
+<li><strong>Multiplataforma</strong>: a integração é realizada através de Web Service REST.</li>
+</ul>
+
+<h2 id="arquitetura">Arquitetura</h2>
+
+<p>A integração é realizada através de serviços disponibilizados como Web Services. O modelo empregado é bastante simples: Existem duas URLs (endpoint), uma específica operações que causam efeitos colaterais - como autorização, captura e cancelamento de transações, e uma URL específica para operações que não causam efeitos colaterais, como pesquisa de transações. Essas duas URLs receberão as mensagens HTTP através dos métodos POST, GET ou PUT. Cada tipo de mensagem deve ser enviada para um recurso identificado através do path.</p>
+
+<ul>
+<li><strong>POST</strong> - O método HTTP POST é utilizado na criação dos recursos ou no envio de informações que serão processadas. Por exemplo, criação de uma transação.</li>
+<li><strong>PUT</strong> - O método HTTP PUT é utilizado para atualização de um recurso já existente. Por exemplo, captura ou cancelamento de uma transação previamente autorizada.</li>
+<li><strong>GET</strong> - O método HTTP GET é utilizado para consultas de recursos já existentes. Por exemplo, consulta de transações.</li>
+</ul>
 
 <h2 id="glossário">Glossário</h2>
 
@@ -294,40 +319,9 @@
 
 <p>Horário de atendimento: 24h por dia, 7 dias por semana.</p>
 
-<h1 id="visão-geral">Visão Geral</h1>
+<h1 id="sandbox-e-testes">Sandbox e testes</h1>
 
-<p>Neste manual será apresentado uma visão geral do Cielo eCommerce e o mecanismo tecnológico no formato de integração REST.</p>
-
-<p>Para todo pedido de compra, a meta é efetivá-la em uma venda. Uma venda com cartão pode ser caracterizado em uma transação <strong>autorizada e capturada</strong>.</p>
-
-<aside class="warning">Uma transação autorizada somente gera o crédito para o lojista se ela for capturada (ou confirmada).</aside>
-
-<h2 id="características-da-solução">Características da solução</h2>
-
-<p>A solução API Cielo eCommerce da plataforma Cielo eCommerce foi desenvolvida com a tecnologia REST, que é padrão de mercado e independe da tecnologia utilizada por nossos clientes. Dessa forma, é possível integrar-se utilizando as mais variadas linguagens de programação, tais como: ASP, ASP. Net, Java, PHP, Ruby, Python, etc.</p>
-
-<p>Entre outras características, os atributos que mais se destacam na plataforma Cielo eCommerce:</p>
-
-<ul>
-<li><strong>Ausência de aplicativos proprietários</strong>: não é necessário instalar aplicativos no ambiente da loja virtual em nenhuma hipótese.</li>
-<li><strong>Simplicidade</strong>: o protocolo utilizado é puramente o HTTPS.</li>
-<li><strong>Facilidade de testes</strong>: a plataforma Cielo oferece um ambiente Sandbox publicamente acessível, que permite ao desenvolvedor a criação de uma conta de testes sem a necessidade de credenciamento, facilitando e agilizando o início da integração.</li>
-<li><strong>Credenciais</strong>: o tratamento das credenciais do cliente (número de afiliação e chave de acesso) trafega no cabeçalho da requisição HTTP da mensagem.</li>
-<li><strong>Segurança</strong>: a troca de informações se dá sempre entre o Servidor da Loja e da Cielo, ou seja, sem o browser do comprador.</li>
-<li><strong>Multiplataforma</strong>: a integração é realizada através de Web Service REST.</li>
-</ul>
-
-<h2 id="arquitetura">Arquitetura</h2>
-
-<p>A integração é realizada através de serviços disponibilizados como Web Services. O modelo empregado é bastante simples: Existem duas URLs (endpoint), uma específica operações que causam efeitos colaterais - como autorização, captura e cancelamento de transações, e uma URL específica para operações que não causam efeitos colaterais, como pesquisa de transações. Essas duas URLs receberão as mensagens HTTP através dos métodos POST, GET ou PUT. Cada tipo de mensagem deve ser enviada para um recurso identificado através do path.</p>
-
-<ul>
-<li><strong>POST</strong> - O método HTTP POST é utilizado na criação dos recursos ou no envio de informações que serão processadas. Por exemplo, criação de uma transação.</li>
-<li><strong>PUT</strong> - O método HTTP PUT é utilizado para atualização de um recurso já existente. Por exemplo, captura ou cancelamento de uma transação previamente autorizada.</li>
-<li><strong>GET</strong> - O método HTTP GET é utilizado para consultas de recursos já existentes. Por exemplo, consulta de transações.</li>
-</ul>
-
-<h2 id="sandbox">Sandbox</h2>
+<h2 id="sobre-o-sandbox">Sobre o Sandbox</h2>
 
 <p>Para facilitar os testes durante a integração, a Cielo oferece um ambiente Sandbox que é composto por duas áreas:</p>
 
@@ -336,80 +330,125 @@
 <li>Endpoints transacionais</li>
 </ol>
 
-<p>* <strong>Requisição</strong>: https://apisandbox.cieloecommerce.cielo.com.br
-    * <strong>Consulta</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br/</p>
+<p>* <strong>Requisição</strong>: https://apisandbox.cieloecommerce.cielo.com.br</p>
 
-<p>Não é necessário uma afiliação para utilizar o Sanbox Cielo. Basta acessar o <a href="https://cadastrosandbox.cieloecommerce.cielo.com.br/">Cadastro do Sandbox</a> e criar uma conta de testes. Ao fim do cadastro você receberá um <code class="prettyprint">MerchantId</code> e um <code class="prettyprint">MerchantKey</code>, que deverão ser utilizados para autenticar todas as requisições feitas para os endpoints da API.</p>
+<p>* <strong>Consulta</strong>: https://apiquerysandbox.cieloecommerce.cielo.com.br/</p>
 
-<h3 id="meio-de-pagamento-simulado">Meio de Pagamento Simulado</h3>
+<p><strong>Vantagens de utilizar o Sandbox</strong></p>
 
-<p>O Simulado é um meio de pagamento que emula a utilizaçao de pagamentos com Cartão de Crétido. Com esse meio de pagamento é possivel simular todos os fluxos de Autorização, Captura e Cancelamento.</p>
+<ul>
+<li>Não é necessário uma afiliação para utilizar o Sandbox Cielo.</li>
+<li>Basta acessar o <a href="https://cadastrosandbox.cieloecommerce.cielo.com.br/"><strong>Cadastro do Sandbox</strong></a> criar uma conta.</li>
+<li>com o cadastro você receberá um <code class="prettyprint">MerchantId</code> e um <code class="prettyprint">MerchantKey</code>,que são as credenciais necessarias para os métodos da API</li>
+</ul>
 
-<p>Para melhor utilização do Meio de Pagamento Simulado, estamos disponibilizando cartões de testes na tabela abaixo.</p>
+<h2 id="cartão-de-crédito---sandbox">Cartão de crédito - Sandbox</h2>
 
-<p>Os status das transações serão conforme a utilização de cada cartão.</p>
+<p>No sandbox, é necessario utilizar o <code class="prettyprint">Provider</code> seja utilizado como <strong>SIMULADO</strong></p>
+
+<p>O Simulado é uma configuração que emula a utilização de pagamentos com Cartão de Crédito. 
+Com esse meio de pagamento é possível simular os fluxos de:</p>
+
+<ul>
+<li>Autorização</li>
+<li>Captura </li>
+<li>Cancelamento.</li>
+</ul>
+
+<p>Para melhor utilização do Meio de Pagamento Simulado, estamos disponibilizando <strong>cartões de testes</strong> na tabela abaixo.</p>
+
+<p><strong>Os <code class="prettyprint">status</code> das transações são definidos pelos FINAIS de cada cartão, assim como o <code class="prettyprint">ReturnCode</code> .</strong></p>
 
 <table><thead>
 <tr>
 <th>Status da Transação</th>
-<th>Cartões para realização dos testes</th>
-<th>Código de Retorno</th>
+<th>Final do Cartão</th>
+<th style="text-align: center">Código de Retorno</th>
 <th>Mensagem de Retorno</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Autorizado</td>
-<td>0000.0000.0000.0001 / 0000.0000.0000.0004</td>
-<td>4</td>
+<td>0000.0000.0000.0001<br>0000.0000.0000.0004</td>
+<td style="text-align: center">4</td>
 <td>Operação realizada com sucesso</td>
 </tr>
 <tr>
 <td>Não Autorizado</td>
 <td>0000.0000.0000.0002</td>
-<td>2</td>
+<td style="text-align: center">2</td>
 <td>Não Autorizada</td>
 </tr>
 <tr>
 <td>Autorização Aleatória</td>
 <td>0000.0000.0000.0009</td>
-<td>4 / 99</td>
+<td style="text-align: center">4 / 99</td>
 <td>Operation Successful / Time Out</td>
 </tr>
 <tr>
 <td>Não Autorizado</td>
 <td>0000.0000.0000.0007</td>
-<td>77</td>
+<td style="text-align: center">77</td>
 <td>Cartão Cancelado</td>
 </tr>
 <tr>
 <td>Não Autorizado</td>
 <td>0000.0000.0000.0008</td>
-<td>70</td>
+<td style="text-align: center">70</td>
 <td>Problemas com o Cartão de Crédito</td>
 </tr>
 <tr>
 <td>Não Autorizado</td>
 <td>0000.0000.0000.0005</td>
-<td>78</td>
+<td style="text-align: center">78</td>
 <td>Cartão Bloqueado</td>
 </tr>
 <tr>
 <td>Não Autorizado</td>
 <td>0000.0000.0000.0003</td>
-<td>57</td>
+<td style="text-align: center">57</td>
 <td>Cartão Expirado</td>
 </tr>
 <tr>
 <td>Não Autorizado</td>
 <td>0000.0000.0000.0006</td>
-<td>99</td>
+<td style="text-align: center">99</td>
 <td>Time Out</td>
 </tr>
 </tbody></table>
 
-<p>As informações de Cód.Segurança (CVV) e validade podem ser aleatórias, mantendo o formato - CVV (3 dígitos) Validade (MM/YYYY).</p>
+<p>Exemplo de um Cartão de teste - 4024.0071.5376.3191</p>
 
-<aside class="notice"><strong>Atenção:</strong>O ambiente de sandbox avalia o formato e o final do cartão, caso um cartão real seja enviado, o resultado da operação será idêntico ao descrito na tabela de cartões de teste.</aside>
+<p>As informações de <strong>Cód.Segurança (CVV)</strong> e validade podem ser aleatórias, mantendo o formato - CVV (3 dígitos) Validade (MM/YYYY).</p>
+
+<aside class="notice"><strong>Atenção:</strong> O ambiente de **sandbox** avalia o formato e o final do cartão, caso um cartão real seja enviado, o resultado da operação será idêntico ao descrito na tabela de cartões de teste.</aside>
+
+<aside class="notice"><strong>Tokenização:</strong> Transações em ambiente de Sandbox envolvendo tokenização não funcionaram com base nos cartões de teste. Todo cartão salvo no tokenização é tratado como um cartão real, logo ele não é utilizado no processo de simulação</aside>
+
+<h2 id="outros-meios-de-pagamento---sandbox">Outros meios de pagamento - Sandbox</h2>
+
+<p>Outros meios de pagamento não possuem cartões ou dados específicos simulados, como no caso do cartão de crédito.
+Abaixo especificamos qualquer diferença existente:</p>
+
+<table><thead>
+<tr>
+<th>Meio de pagamento</th>
+<th>Diferenças</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Boleto</td>
+<td>Não há diferenças de integração.</td>
+</tr>
+<tr>
+<td>Cartão de débito</td>
+<td>O <code class="prettyprint">provider</code> utilizado deve ser <strong>SIMULADO</strong> <br><br> A URL de redirecionamento para o ambiente do banco será na verdade uma tela para escolher o estado da autenticação</td>
+</tr>
+<tr>
+<td>Transferência online</td>
+<td>O <code class="prettyprint">provider</code> utilizado deve ser <strong>SIMULADO</strong> <br><br> A URL de redirecionamento para o ambiente do banco será na verdade uma tela para escolher o estado da autenticação</td>
+</tr>
+</tbody></table>
 
 <h1 id="pagamentos-com-cartão-de-crédito">Pagamentos com Cartão de Crédito</h1>
 
@@ -429,6 +468,8 @@
 <h2 id="criando-uma-transação-simples">Criando uma transação simples</h2>
 
 <p>Para criar uma transação que utilizará cartão de crédito, é necessário enviar uma requisição utilizando o método <code class="prettyprint">POST</code> para o recurso Payment, conforme o exemplo. Esse exemplo contempla o mínimo de campos necessários a serem enviados para a autorização.</p>
+
+<aside class="notice"><strong>Atenção:</strong> Não é possivel realizar uma transação com valor (`Amount`) 0.</aside>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -564,7 +605,7 @@
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 <td>Número do Cartão do Comprador.</td>
 </tr>
@@ -1137,7 +1178,7 @@
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 <td>Número do Cartão do Comprador.</td>
 </tr>
@@ -1547,7 +1588,7 @@
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber.</code></td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 <td>Número do Cartão do Comprador</td>
 </tr>
@@ -2204,7 +2245,7 @@
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 <td>Número do Cartão do Comprador.</td>
 </tr>
@@ -3315,7 +3356,7 @@
 
 <h2 id="capturando-uma-venda">Capturando uma venda</h2>
 
-<p>Para captura uma venda que utilizaou cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.</p>
+<p>Para captura uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -3456,6 +3497,21 @@
 </tr>
 </tbody></table>
 
+<h3 id="captura-parcial">Captura parcial</h3>
+
+<p>A <strong>captura parcial</strong> é o ato de capturar um valor menor que o valor autorizado.Esse modelo de captura pode ocorrer apenas 1 vez por transação. </p>
+
+<p><strong>Após a captura, não é possível realizar capturas adicionais no mesmo pedido.</strong></p>
+
+<p>Métodos de captura parcial:</p>
+
+<ol>
+<li><strong>Via API</strong> - Basta realizar um <code class="prettyprint">POST</code> enviando o valor a ser capturado.</li>
+<li><strong>Via Backoffice</strong> - Acesse nosso <a href="https://developercielo.github.io/Tutorial-Backoffice-3.0/"><strong>Tutorial</strong></a>  para maiores informações</li>
+</ol>
+
+<aside class="notice"><strong>Atenção:</strong> Captura parcial disponível apenas para transações de crédito</aside>
+
 <h2 id="cancelando-uma-venda">Cancelando uma venda</h2>
 
 <p>Para cancelar uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment. É possível realizar o cancelamento via PaymentID ou MerchantOrderId (numero do pedido).</p>
@@ -3587,6 +3643,19 @@
 <td>Texto alfanumérico</td>
 </tr>
 </tbody></table>
+
+<h3 id="cancelamento-parcial">Cancelamento parcial</h3>
+
+<p>O <strong>cancelamento  parcial</strong> é o ato de cancelar um valor menor que o valor total autorizado/capturado. Esse modelo de captura pode ocorrer inumeras vezes, até que o valor total da transação seja cancelado. </p>
+
+<p>Métodos de cancelamento parcial:</p>
+
+<ol>
+<li><strong>Via API</strong> - Basta realizar um <code class="prettyprint">POST</code> enviando o valor a ser capturado.</li>
+<li><strong>Via Backoffice</strong> - Acesse nosso <a href="https://developercielo.github.io/Tutorial-Backoffice-3.0/"><strong>Tutorial</strong></a>  para maiores informações</li>
+</ol>
+
+<aside class="notice"><strong>Atenção:</strong> Cancelamento parcial disponível apenas para transações de crédito</aside>
 
 <h1 id="pagamentos-com-cartão-de-débito">Pagamentos com Cartão de Débito</h1>
 
@@ -3727,7 +3796,7 @@
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -4692,7 +4761,7 @@
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -5449,7 +5518,7 @@
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -5689,7 +5758,7 @@
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -6959,7 +7028,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Número do Cartão do Comprador.</td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 </tr>
 <tr>
@@ -7445,7 +7514,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 <td>Número do Cartão do Comprador.</td>
 </tr>
@@ -8512,7 +8581,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 <td>Número do Cartão do Comprador.</td>
 </tr>
@@ -9933,7 +10002,7 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber.</code></td>
 <td>Texto</td>
-<td>16</td>
+<td>19</td>
 <td>Sim</td>
 <td>Número do Cartão do Comprador</td>
 </tr>

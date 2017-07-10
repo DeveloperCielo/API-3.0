@@ -392,7 +392,7 @@ curl
 |`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Provider`|Texto|15|---|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`CreditCard.CardNumber`|Texto|19|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
@@ -665,7 +665,7 @@ curl
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Currency`|Texto|3|Não|Moeda na qual o pagamento será feito (BRL).|
 |`Payment.Country`|Texto|3|Não|Pais na qual o pagamento será feito.|
-|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Provider`|Texto|15|---|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.ServiceTaxAmount`|Número|15|Não|Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|
@@ -914,7 +914,7 @@ curl
 |`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Provider`|Texto|15|---|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`Payment.Authenticate`|Booleano|---|Não (Default false)|Define se o comprador será direcionado ao Banco emissor para autenticação do cartão|
 |`CreditCard.CardNumber.`|Texto|19|Sim|Número do Cartão do Comprador|
@@ -1284,7 +1284,7 @@ curl
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Currency`|Texto|3|Não|Moeda na qual o pagamento será feito (BRL).|
 |`Payment.Country`|Texto|3|Não|Pais na qual o pagamento será feito.|
-|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Provider`|Texto|15|---|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.ServiceTaxAmount`|Número|15|Não|Não|Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|
@@ -2267,7 +2267,7 @@ curl
 |`Customer.Status`|Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude|Texto |255|Não|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100 |Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
+|`Payment.Provider`|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |---|
 
 ### Resposta
 
@@ -2340,7 +2340,8 @@ curl
 
 Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.
 
-**OBS:** A API suporta boletos registrados e não registrados, sendo o provider o diferenciador entre eles. Sugerimos que valide com seu banco qual o tipo de boleto suportado por sua carteira.
+**OBS:** A API suporta boletos registrados e não registrados, sendo o provider o diferenciador entre eles. Sugerimos que valide com seu banco qual o tipo de boleto suportado por sua carteira. A API Aceita apenas boletos **Bradesco** e **Banco do Brasil**
+
 
 
 ### Requisição
@@ -2441,9 +2442,9 @@ curl
 |`Customer.Address.Number`|Número do endereço do Comprador. |Texto |15|Sim|
 |`Payment.Type`|Tipo do Meio de Pagamento. |Texto |100|Sim|
 |`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número |15 |Sim|
-|`Payment.Provider`|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |Sim|
+|`Payment.Provider`|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|Texto |15 |Sim|
 |`Payment.Adress`|Endereço do Cedente.|Texto |255|Não|
-|`Payment.BoletoNumber`|Número do Boleto ("NossoNumero").|Texto |50 |Não|
+|`Payment.BoletoNumber`|Número do Boleto enviado pelo lojista. Usado para contar boletos emitidos ("NossoNumero").|Texto |50 |Não|
 |`Payment.Assignor`|Nome do Cedente.|Texto |200|Não|
 |`Payment.Demonstrative`|Texto de Demonstrativo.|Texto |450|Não|
 |`Payment.ExpirationDate`|Data de expiração do Boleto.|Date |10 |Não|
@@ -4170,7 +4171,7 @@ curl
 |`Customer.Status`|Texto|255|Não|Status de cadastro do comprador na loja (NEW / EXISTING)|
 |`Payment.Type`|Texto|100|Sim|Tipo do Meio de Pagamento.|
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
-|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Provider`|Texto|15|---|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`CreditCard.CardNumber`|Texto|19|Sim|Número do Cartão do Comprador.|
 |`CreditCard.Holder`|Texto|25|Não|Nome do Comprador impresso no cartão.|
@@ -4743,7 +4744,7 @@ curl
 |`Payment.Amount`|Número|15|Sim|Valor do Pedido (ser enviado em centavos).|
 |`Payment.Currency`|Texto|3|Não|Moeda na qual o pagamento será feito (BRL).|
 |`Payment.Country`|Texto|3|Não|Pais na qual o pagamento será feito.|
-|`Payment.Provider`|Texto|15|---|Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
+|`Payment.Provider`|Texto|15|---|Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.|
 |`Payment.ServiceTaxAmount`|Número|15|Não|Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.|
 |`Payment.Installments`|Número|2|Sim|Número de Parcelas.|
 |`Payment.Interest`|Texto|10|Não|Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).|

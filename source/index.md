@@ -6134,12 +6134,12 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 
 ### FraudAnalysis.Items.NonSensicalHedge
 
-|Campo|Descrição|
-|-----|---------|
-|Low|Baixa importância da verificação feita sobre o pedido do comprador, na análise de risco.|  
-|Normal|Média importância da verificação feita sobre o pedido do comprador, na análise de risco.|
-|High|Alta importância da verificação feita sobre o pedido do comprador, na análise de risco.|
-|Off|Verificação do pedido do comprador não afeta a análise de risco.|
+| Campo  | Descrição                                                                                |
+|--------|------------------------------------------------------------------------------------------|
+| Low    | Baixa importância da verificação feita sobre o pedido do comprador, na análise de risco. |
+| Normal | Média importância da verificação feita sobre o pedido do comprador, na análise de risco. |
+| High   | Alta importância da verificação feita sobre o pedido do comprador, na análise de risco.  |
+| Off    | Verificação do pedido do comprador não afeta a análise de risco.                         |
 
 ### FraudAnalysis.Items.ObscenitiesHedge
 

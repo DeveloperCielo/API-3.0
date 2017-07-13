@@ -5325,24 +5325,24 @@ A API Cielo eCommerce suporta duas carteiras de pagamento: VisaCheckout e Master
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
 
 ```json
-{
+{  
    "MerchantOrderId":"2014111703",
-   "Customer":{
+   "Customer":{  
       "Name":"Comprador Teste"
    },
-   "Payment":{
-     "Type":"CreditCard",
-     "Amount":15700,
-     "Installments":1,
-     "SoftDescriptor":"123456789ABCD",
-     "CreditCard":{
-         "SecurityCode":"123",
-            },
-     "Wallet":{
+   "Payment":{  
+      "Type":"CreditCard",
+      "Amount":15700,
+      "Installments":1,
+      "SoftDescriptor":"123456789ABCD",
+      "CreditCard":{  
+         "SecurityCode":"123"
+      },
+      "Wallet":{  
          "Type":"VisaCheckout",
          "WalletKey":"1140814777695873901"
-		}
-	 }
+      }
+   }
 }
 
 

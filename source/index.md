@@ -6216,3 +6216,53 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 |LowCost |
 |Pickup  |
 |Other   |
+
+## Post de Notificação
+
+O Post de notificação é enviado com base em uma seleção de eventos a ser feita no cadastro da API Cielo E-commerce.
+
+Os eventos passiveis de notificação são:
+
+|Meio de Pagamento|Evento|
+|-----------------|------|
+|Cartão de Crédito/Débito|Captura|
+|Cartão de Crédito/Débito|Cancelamento|
+|Cartão de Crédito/Débito|Sondagem|
+|Boleto|Conciliação|
+|Boleto|Cancelamento Manual|
+|Transferência eletrônica|Confirmadas|
+
+Uma `URL Status Pagamento` deve ser cadastrada pelo Suporte Cielo, para que o POST de notificação seja executado. 
+
+Características da `URL Status Pagamento` 
+
+* Deve ser **estática**
+* Limite de 255  carácteres.
+
+A loja **deverá** enviar como resposta ao `POST` de notificação como: 
+
+* **HTTP Status Code 200 OK**
+
+Caso não seja retornado o **HTTP Status Code 200 OK**,  ocorrerão mais **dois** envios do Post de Notificação. 
+
+```json
+{
+   "RecurrentPaymentId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+   "PaymentId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+   "ChangeType": "2"
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|-----------|---------|----|-------|-----------|
+|`RecurrentPaymentId`|Identificador que representa o pedido Recorrente (aplicável somente para ChangeType 2 ou 4|GUID|36|Não|
+|`PaymentId`|Identificador que representa a transação|GUID|36|Sim|
+|`ChangeType`|Especifica o tipo de notificação. Vide tabela abaixo | Número | 1 |Sim|
+
+|ChangeType|Descrição|
+|----------|---------|
+|1|Mudança de status do pagamento|
+|2|Recorrência criada|
+|3|Mudança de status do Antifraude|
+|4|Mudança de status do pagamento recorrente (Ex. desativação automática)|
+|5|Estorno negado (aplicável para Rede)|

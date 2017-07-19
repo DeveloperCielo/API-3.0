@@ -100,7 +100,7 @@
     <div class="page-wrapper">
         <div class="dark-box"></div>
         <div class="content">
-                <h1 id="visão-geral-api-cielo-ecommerce">Visão geral API Cielo eCommerce</h1>
+                <h1 id="visão-geral---api-cielo-ecommerce">Visão geral - API Cielo eCommerce</h1>
 
 <p>O objetivo desta documentação é orientar o desenvolvedor sobre como integrar com a API Cielo eCommerce da Cielo, descrevendo as funcionalidades, os métodos a serem utilizados, listando informações a serem enviadas e recebidas, e provendo exemplos.</p>
 
@@ -593,7 +593,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -1138,7 +1138,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
@@ -1569,7 +1569,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -2205,7 +2205,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
@@ -4068,7 +4068,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Provider</code></td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
@@ -4168,6 +4168,8 @@ Abaixo especificamos qualquer diferença existente:</p>
 
 <p>Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST conforme o exemplo.</p>
 
+<p><strong>OBS:</strong> A API suporta boletos registrados e não registrados, sendo o provider o diferenciador entre eles. Sugerimos que valide com seu banco qual o tipo de boleto suportado por sua carteira. A API Aceita apenas boletos <strong>Bradesco</strong> e <strong>Banco do Brasil</strong></p>
+
 <h3 id="requisição">Requisição</h3>
 
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
@@ -4179,21 +4181,21 @@ Abaixo especificamos qualquer diferença existente:</p>
         </span><span class="s2">"Identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Marechal Câmara"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160"</span><span class="p">,</span><span class="w">  
+          </span><span class="s2">"Complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sala 934"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ZipCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"22750012"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"State"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"RJ"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rio de Janeiro"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"District"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Centro"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"Street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Marechal Camara"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"Number"</span><span class="p">:</span><span class="s2">"160"</span><span class="w">
+          </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rio de Janeiro"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"State"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"RJ"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">  
         </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"Boleto"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"Cielo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="s2">"INCLUIR PROVIDER"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Teste"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"BoletoNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Assignor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa Teste"</span><span class="p">,</span><span class="w">
@@ -4215,25 +4217,25 @@ Abaixo especificamos qualquer diferença existente:</p>
     <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
     <span class="s2">"Customer"</span>:
     <span class="o">{</span>  
-        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste"</span>,
+        <span class="s2">"Name"</span>:<span class="s2">"Comprador Teste Boleto"</span>,
         <span class="s2">"Identity"</span>: <span class="s2">"1234567890"</span>,
         <span class="s2">"Address"</span>:
         <span class="o">{</span>
+          <span class="s2">"Street"</span>: <span class="s2">"Avenida Marechal Câmara"</span>,
+          <span class="s2">"Number"</span>: <span class="s2">"160"</span>,  
+          <span class="s2">"Complement"</span>: <span class="s2">"Sala 934"</span>,
           <span class="s2">"ZipCode"</span> : <span class="s2">"22750012"</span>,
-          <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>,
-          <span class="s2">"State"</span> : <span class="s2">"RJ"</span>,
-          <span class="s2">"City"</span>: <span class="s2">"Rio de Janeiro"</span>,
           <span class="s2">"District"</span>: <span class="s2">"Centro"</span>,
-          <span class="s2">"Street"</span>: <span class="s2">"Av Marechal Camara"</span>,
-          <span class="s2">"Number"</span>:<span class="s2">"160"</span>
+          <span class="s2">"City"</span>: <span class="s2">"Rio de Janeiro"</span>,
+          <span class="s2">"State"</span> : <span class="s2">"RJ"</span>,
+          <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>
         <span class="o">}</span>
-
     <span class="o">}</span>,
     <span class="s2">"Payment"</span>:
     <span class="o">{</span>  
         <span class="s2">"Type"</span>:<span class="s2">"Boleto"</span>,
         <span class="s2">"Amount"</span>:15700,
-        <span class="s2">"Provider"</span>:<span class="s2">"Cielo"</span>,
+        <span class="s2">"Provider"</span>:<span class="s2">"INCLUIR PROVIDER"</span>,
         <span class="s2">"Address"</span>: <span class="s2">"Rua Teste"</span>,
         <span class="s2">"BoletoNumber"</span>: <span class="s2">"123"</span>,
         <span class="s2">"Assignor"</span>: <span class="s2">"Empresa Teste"</span>,
@@ -4362,7 +4364,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Provider</code></td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto</td>
 <td>15</td>
 <td>Sim</td>
@@ -4376,7 +4378,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.BoletoNumber</code></td>
-<td>Número do Boleto (&quot;NossoNumero&rdquo;).</td>
+<td>Número do Boleto enviado pelo lojista. Usado para contar boletos emitidos (&quot;NossoNumero&rdquo;).</td>
 <td>Texto</td>
 <td>50</td>
 <td>Não</td>
@@ -7502,7 +7504,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -8541,7 +8543,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Nome do Meio de Pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
@@ -9534,24 +9536,24 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 <h3 id="requisição">Requisição</h3>
 
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
+<pre><code class="highlight json"><span class="p">{</span><span class="w">  
    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111703"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">
+   </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
       </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador Teste"</span><span class="w">
    </span><span class="p">},</span><span class="w">
-   </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">
-     </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">
-         </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-            </span><span class="err">}</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Wallet"</span><span class="p">:{</span><span class="w">
+   </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
+      </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">15700</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
+         </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"123"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"Wallet"</span><span class="p">:{</span><span class="w">  
          </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"VisaCheckout"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"WalletKey"</span><span class="p">:</span><span class="s2">"1140814777695873901"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-     </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
@@ -11298,6 +11300,13 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 <td style="text-align: center">Apenas 4 vezes em 16 dias.</td>
 </tr>
 <tr>
+<td>30</td>
+<td>Transação não autorizada. Decline Message</td>
+<td>Não foi possível processar a transação. Solicite ao portador que reveja os dados e tente novamente. Se o erro persistir verifique a comunicação com a Cielo esta sendo feita corretamente</td>
+<td>Não foi possível processar a transação. Reveja os dados e tente novamente. Se o erro persistir, entre em contato com a loja</td>
+<td style="text-align: center">Não</td>
+</tr>
+<tr>
 <td>39</td>
 <td>Transação não autorizada. Erro no banco emissor.</td>
 <td>Transação não autorizada. Erro no banco emissor.</td>
@@ -11878,6 +11887,13 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 <td>Transação não permitida. Houve uma falha na validação dos dados. reveja os dados informados e tente novamente. Se o erro persistir entre em contato com a Loja Virtual.</td>
 <td style="text-align: center">Não</td>
 </tr>
+<tr>
+<td>GD</td>
+<td>Transação não permitida</td>
+<td>Transação não permitida</td>
+<td>Transação não é possível ser processada no estabelecimento. Entre em contato com a Cielo para obter mais detalhes.</td>
+<td style="text-align: center">Transação não permitida. Entre em contato com a loja virtual</td>
+</tr>
 </tbody></table>
 
 <p><strong>Atenção</strong>: Existem códigos de retorno semelhantes, porem com significados diferentes como o &ldquo;<strong>6</strong> - Capturada&rdquo; e o &ldquo;<strong>06</strong> - Cartão Cancelado&rdquo;. Esses códigos são apenas informativos do sistema de processamento. <strong>Apenas o campo <code class="prettyprint">STATUS</code> deve ser considerado como situação atual da transação</strong></p>
@@ -11913,20 +11929,24 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 </tr>
 </thead><tbody>
 <tr>
-<td>Boleto</td>
-<td><code class="prettyprint">Bradesco</code></td>
+<td>Cartão de Crédito</td>
+<td><code class="prettyprint">Cielo</code></td>
 </tr>
 <tr>
-<td>Boleto</td>
-<td><code class="prettyprint">BancodoBrasil</code></td>
+<td>Cartão de Dédito</td>
+<td><code class="prettyprint">Cielo</code></td>
+</tr>
+<tr>
+<td>Boleto - Não registrado</td>
+<td><code class="prettyprint">Bradesco</code>  /  <code class="prettyprint">BancodoBrasil</code></td>
+</tr>
+<tr>
+<td>Boleto - Registrado</td>
+<td><code class="prettyprint">Bradesco2</code> /  <code class="prettyprint">BancodoBrasil2</code></td>
 </tr>
 <tr>
 <td>Transferência Eletrônica</td>
-<td><code class="prettyprint">Bradesco</code></td>
-</tr>
-<tr>
-<td>Transferência Eletrônica</td>
-<td><code class="prettyprint">BancodoBrasil</code></td>
+<td><code class="prettyprint">Bradesco</code>  /  <code class="prettyprint">BancodoBrasil</code></td>
 </tr>
 </tbody></table>
 
@@ -11934,25 +11954,25 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 
 <table><thead>
 <tr>
-<th>Meio de pagamento</th>
-<th>Payment.Type</th>
+<th>MEIO DE PAGAMENTO</th>
+<th>PAYMENT.TYPE</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Cartão de crédito</td>
-<td><code class="prettyprint">CreditCard</code></td>
+<td>CreditCard</td>
 </tr>
 <tr>
 <td>Cartão de Débito</td>
-<td><code class="prettyprint">DebitCard</code></td>
+<td>DebitCard</td>
 </tr>
 <tr>
 <td>Boleto</td>
-<td><code class="prettyprint">Boleto</code></td>
+<td>Boleto</td>
 </tr>
 <tr>
 <td>Transferência Eletrônica</td>
-<td><code class="prettyprint">EletronicTransfer</code></td>
+<td>EletronicTransfer</td>
 </tr>
 </tbody></table>
 
@@ -11962,284 +11982,284 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 
 <table><thead>
 <tr>
-<th>ID</th>
+<th style="text-align: center">ID</th>
 <th>Dado</th>
 <th>Descrição</th>
 <th>Tipo</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>1</td>
+<td style="text-align: center">1</td>
 <td>Cliente efetuou Log In</td>
 <td>Se o cliente final logou no site para comprar, enviar: o login dele. Se fez compra como visitante, enviar: &ldquo;Guest&rdquo;. Se a venda foi feita direto por um terceiro, um agente por exemplo, não enviar o campo</td>
 <td>String</td>
 </tr>
 <tr>
-<td>2</td>
+<td style="text-align: center">2</td>
 <td>Cliente do estabelecimento há: #dias</td>
 <td>Quantidade de dias</td>
 <td>Número</td>
 </tr>
 <tr>
-<td>3</td>
+<td style="text-align: center">3</td>
 <td>Compra Efetuada em (parcelas)</td>
 <td>Número de Parcelas</td>
 <td>Número</td>
 </tr>
 <tr>
-<td>4</td>
+<td style="text-align: center">4</td>
 <td>Canal de Venda</td>
 <td>Valores: &ldquo;Call Center&rdquo; = portador comprando pelo telefone &ldquo;Web&rdquo; = portador comprando pela web &ldquo;Portal&rdquo; = um agente fazendo a compra para o cliente &ldquo;Quiosque&rdquo; = Compras em quisques &ldquo;Movel&rdquo; = Compras feitas em smartphone ou tablets</td>
 <td>String</td>
 </tr>
 <tr>
-<td>5</td>
+<td style="text-align: center">5</td>
 <td>Código do Cupom/Desconto</td>
 <td>Se o comprador for usar cupom, enviar o código do cupom</td>
 <td>String</td>
 </tr>
 <tr>
-<td>6</td>
+<td style="text-align: center">6</td>
 <td>Última compra efetuada</td>
 <td>MM/DD/AAAA</td>
 <td>Data</td>
 </tr>
 <tr>
-<td>7</td>
+<td style="text-align: center">7</td>
 <td>Afiliação</td>
 <td>Nome ou código de revendedor ou intermediador</td>
 <td>String</td>
 </tr>
 <tr>
-<td>8</td>
+<td style="text-align: center">8</td>
 <td>Tentativas de Compra</td>
 <td>Nr de vezes que tentou fazer o pagamento do pedido. Cartões de creditos diferentes tentados e/ou outros meios de pagamentos tentados. Para o mesmo pedido.</td>
 <td>Número</td>
 </tr>
 <tr>
-<td>9</td>
+<td style="text-align: center">9</td>
 <td>Cliente vai retirar o produto em uma Loja</td>
 <td>Valores: &ldquo;SIM&rdquo;, &ldquo;NAO&rdquo; No caso de agência, se vai retirar algum voucher e/ou ticket fisicamente</td>
 <td>String</td>
 </tr>
 <tr>
-<td>10</td>
+<td style="text-align: center">10</td>
 <td>Pagamento efetuado por 3º</td>
 <td>Valores: &ldquo;SIM&rdquo;, &ldquo;NAO&rdquo; Se o pagador está ou não presente na viagem/pacote</td>
 <td>String</td>
 </tr>
 <tr>
-<td>11</td>
+<td style="text-align: center">11</td>
 <td>Categoria do Hotel</td>
 <td>Valores: 1, 2, 3, 4, 5 Quantas estrelas tem o hotel</td>
 <td>Número</td>
 </tr>
 <tr>
-<td>12</td>
+<td style="text-align: center">12</td>
 <td>Hotel data do Check in</td>
 <td>MM/DD/AAAA</td>
 <td>Data</td>
 </tr>
 <tr>
-<td>13</td>
+<td style="text-align: center">13</td>
 <td>Hotel data do Check out</td>
 <td>MM/DD/AAAA</td>
 <td>Data</td>
 </tr>
 <tr>
-<td>14</td>
+<td style="text-align: center">14</td>
 <td>Viagem/Pacote</td>
 <td>Valores: &ldquo;Nacional&rdquo;, &ldquo;Internacional&rdquo;, &ldquo;Nacional/Internacional&rdquo;</td>
 <td>String</td>
 </tr>
 <tr>
-<td>15</td>
+<td style="text-align: center">15</td>
 <td>Nome da Cia. Aérea / Locadora de Carro / Hotel</td>
 <td>Enviar o nome de cada uma das empresas, separado por &ldquo;/&rdquo;</td>
 <td>String</td>
 </tr>
 <tr>
-<td>16</td>
+<td style="text-align: center">16</td>
 <td>PNR</td>
 <td>Enviar o numero do PNR da reserva. Quando houver uma alteração da reserva para este PNR com antecipação da data de voo, é importante fazer uma nova análise de fraude enviando este PNR novamente.</td>
 <td>String</td>
 </tr>
 <tr>
-<td>17</td>
+<td style="text-align: center">17</td>
 <td>Houve antecipação de reserva?</td>
 <td>Valores: &ldquo;SIM&rdquo;, &ldquo;NAO&rdquo; Indicar se houve remarcação do voo para uma data anterior à original. É fundamental o envio também do campo PNR</td>
 <td>String</td>
 </tr>
 <tr>
-<td>18</td>
+<td style="text-align: center">18</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>19</td>
+<td style="text-align: center">19</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>20</td>
+<td style="text-align: center">20</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>21</td>
+<td style="text-align: center">21</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>22</td>
+<td style="text-align: center">22</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>23</td>
+<td style="text-align: center">23</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>24</td>
+<td style="text-align: center">24</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>25</td>
+<td style="text-align: center">25</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>26</td>
+<td style="text-align: center">26</td>
 <td>Bin do Cartão de Crédito</td>
 <td>Enviar o bin - 6 primeiros digitos do cartão</td>
 <td>String</td>
 </tr>
 <tr>
-<td>27</td>
+<td style="text-align: center">27</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>28</td>
+<td style="text-align: center">28</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>29</td>
+<td style="text-align: center">29</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>30</td>
+<td style="text-align: center">30</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>31</td>
+<td style="text-align: center">31</td>
 <td>Nr de trocas de Cartões de crédito</td>
 <td>Nr de vezes que o comprador trocou o cartão de crédito para fazer o pagamento do pedido</td>
 <td>Número</td>
 </tr>
 <tr>
-<td>32</td>
+<td style="text-align: center">32</td>
 <td>Email colado ou digitado</td>
 <td>Valores: &ldquo;Digitado&rdquo;, &ldquo;Colado&rdquo; Informar se o endereço de e-mail foi digitado ou colado no campo</td>
 <td>String</td>
 </tr>
 <tr>
-<td>33</td>
+<td style="text-align: center">33</td>
 <td>Nr Cartao colado ou digitado</td>
 <td>Valores: &ldquo;Digitado&rdquo;, &ldquo;Colado&rdquo; Informar se o nr do cartão de crédito foi digitado ou colado no campo</td>
 <td>String</td>
 </tr>
 <tr>
-<td>34</td>
+<td style="text-align: center">34</td>
 <td>E-mail confirmado</td>
 <td>Se existe rotina de confirmação de e-mail para ativação de conta. Valores: &ldquo;SIM&rdquo;. Em caso negativo não enviar o MDD</td>
 <td>String</td>
 </tr>
 <tr>
-<td>35</td>
+<td style="text-align: center">35</td>
 <td>Tipo de cliente (local/turista)</td>
 <td>Valores: &ldquo;Local&rdquo;, &ldquo;Turista&rdquo;. Não enviar o MDD no caso de não ter essa informação</td>
 <td>String</td>
 </tr>
 <tr>
-<td>36</td>
+<td style="text-align: center">36</td>
 <td>Utiliza cartao presente na compra ($)</td>
 <td>Informar se foi utilizado Cartao Presente (Gift Card) na compra. Valores: &ldquo;SIM&rdquo;. Em caso negativo não enviar o MDD</td>
 <td>String</td>
 </tr>
 <tr>
-<td>37</td>
+<td style="text-align: center">37</td>
 <td>Metodo de Envio</td>
 <td>Valores: &ldquo;Sedex&rdquo;, &ldquo;Sedex 10&rdquo;, &ldquo;1 Dia&rdquo;, &ldquo;2 Dias&rdquo;, &ldquo;Motoboy&rdquo;, &ldquo;Mesmo Dia&rdquo;, etc. Se não tiver envio, não enviar o MDD</td>
 <td>String</td>
 </tr>
 <tr>
-<td>38</td>
+<td style="text-align: center">38</td>
 <td>Numero da Bina</td>
 <td>Informar o nr de telefone indentificado, com DDD</td>
 <td>String</td>
 </tr>
 <tr>
-<td>39</td>
+<td style="text-align: center">39</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>40</td>
+<td style="text-align: center">40</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>41 a 95</td>
+<td style="text-align: center">41 a 95</td>
 <td>Campo Livre</td>
 <td>Os campos são reservados para envio de dados de lojista, conforme a regra de negócio.</td>
 <td>String</td>
 </tr>
 <tr>
-<td>96</td>
+<td style="text-align: center">96</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>97</td>
+<td style="text-align: center">97</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>98</td>
+<td style="text-align: center">98</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>99</td>
+<td style="text-align: center">99</td>
 <td>(reservado)</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>100</td>
+<td style="text-align: center">100</td>
 <td>Documento</td>
 <td>Documento (CPG, RG, etc.)</td>
 <td>String</td>
@@ -12534,6 +12554,127 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 </tr>
 <tr>
 <td>Other</td>
+</tr>
+</tbody></table>
+
+<h2 id="post-de-notificação">Post de Notificação</h2>
+
+<p>O Post de notificação é enviado com base em uma seleção de eventos a ser feita no cadastro da API Cielo E-commerce.</p>
+
+<p>Os eventos passiveis de notificação são:</p>
+
+<table><thead>
+<tr>
+<th>Meio de Pagamento</th>
+<th>Evento</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Cartão de Crédito/Débito</td>
+<td>Captura</td>
+</tr>
+<tr>
+<td>Cartão de Crédito/Débito</td>
+<td>Cancelamento</td>
+</tr>
+<tr>
+<td>Cartão de Crédito/Débito</td>
+<td>Sondagem</td>
+</tr>
+<tr>
+<td>Boleto</td>
+<td>Conciliação</td>
+</tr>
+<tr>
+<td>Boleto</td>
+<td>Cancelamento Manual</td>
+</tr>
+<tr>
+<td>Transferência eletrônica</td>
+<td>Confirmadas</td>
+</tr>
+</tbody></table>
+
+<p>Uma <code class="prettyprint">URL Status Pagamento</code> deve ser cadastrada pelo Suporte Cielo, para que o POST de notificação seja executado. </p>
+
+<p>Características da <code class="prettyprint">URL Status Pagamento</code> </p>
+
+<ul>
+<li>Deve ser <strong>estática</strong></li>
+<li>Limite de 255  carácteres.</li>
+</ul>
+
+<p>A loja <strong>deverá</strong> enviar como resposta ao <code class="prettyprint">POST</code> de notificação como: </p>
+
+<ul>
+<li><strong>HTTP Status Code 200 OK</strong></li>
+</ul>
+
+<p>Caso não seja retornado o <strong>HTTP Status Code 200 OK</strong>,  ocorrerão mais <strong>dois</strong> envios do Post de Notificação. </p>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+   </span><span class="s2">"RecurrentPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"ChangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">RecurrentPaymentId</code></td>
+<td>Identificador que representa o pedido Recorrente (aplicável somente para ChangeType 2 ou 4</td>
+<td>GUID</td>
+<td>36</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Identificador que representa a transação</td>
+<td>GUID</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ChangeType</code></td>
+<td>Especifica o tipo de notificação. Vide tabela abaixo</td>
+<td>Número</td>
+<td>1</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>ChangeType</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Mudança de status do pagamento</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Recorrência criada</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mudança de status do Antifraude</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mudança de status do pagamento recorrente (Ex. desativação automática)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Estorno negado (aplicável para Rede)</td>
 </tr>
 </tbody></table>
 

@@ -593,7 +593,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -1138,7 +1138,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
@@ -1569,7 +1569,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -2205,7 +2205,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
@@ -4068,7 +4068,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Provider</code></td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
@@ -4364,7 +4364,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Provider</code></td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto</td>
 <td>15</td>
 <td>Sim</td>
@@ -7504,7 +7504,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -8543,7 +8543,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
-<td>Define comportamento do meio de pagamento/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
@@ -12604,11 +12604,7 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 <li>Limite de 255  carácteres.</li>
 </ul>
 
-<p>A loja <strong>deverá</strong> enviar como resposta ao <code class="prettyprint">POST</code> de notificação como: </p>
-
-<ul>
-<li><strong>HTTP Status Code 200 OK</strong></li>
-</ul>
+<p>A loja <strong>deverá</strong> retornar como resposta ao notificação: <strong>HTTP Status Code 200 OK</strong></p>
 
 <p>Caso não seja retornado o <strong>HTTP Status Code 200 OK</strong>,  ocorrerão mais <strong>dois</strong> envios do Post de Notificação. </p>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
@@ -12674,7 +12670,7 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 </tr>
 <tr>
 <td>5</td>
-<td>Estorno negado (aplicável para Rede)</td>
+<td>cancelamento negado</td>
 </tr>
 </tbody></table>
 

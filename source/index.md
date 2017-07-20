@@ -77,6 +77,21 @@ Para facilitar o entendimento, listamos abaixo um pequeno glossário com os prin
 * **VBV (Verified by Visa)**: Programa internacional da Visa que possibilita a autenticação do comprador no momento de uma compra em ambiente eCommerce.
 
 
+## Produtos e Bandeiras suportadas
+A versão atual do Webservice Cielo possui suporte às seguintes bandeiras e produtos:
+
+| Bandeira         | Crédito à vista | Crédito parcelado Loja | Débito | Voucher |
+|------------------|-----------------|------------------------|--------|---------|
+| Visa             | Sim             | Sim                    | Sim    | *Não*   |
+| Master Card      | Sim             | Sim                    | Sim    | *Não*   |
+| American Express | Sim             | Sim                    | *Não*  | *Não*   |
+| Elo              | Sim             | Sim                    | *Não*  | *Não*   |
+| Diners Club      | Sim             | Sim                    | *Não*  | *Não*   |
+| Discover         | Sim             | *Não*                  | *Não*  | *Não*   |
+| JCB              | Sim             | Sim                    | *Não*  | *Não*   |
+| Aura             | Sim             | Sim                    | *Não*  | *Não*   |
+
+
 # Certificado Extended Validation
 
 ## O que é Certificado SSL?

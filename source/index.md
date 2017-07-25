@@ -247,7 +247,7 @@ Horário de atendimento: 24h por dia, 7 dias por semana.
 
 
 
-# Sandbox e testes
+# Sandbox e Ferramentas
 
 ## Sobre o Sandbox
 Para facilitar os testes durante a integração, a Cielo oferece um ambiente Sandbox que é composto por duas áreas:
@@ -264,6 +264,16 @@ Para facilitar os testes durante a integração, a Cielo oferece um ambiente San
 * Não é necessário uma afiliação para utilizar o Sandbox Cielo.
 * Basta acessar o [**Cadastro do Sandbox**](https://cadastrosandbox.cieloecommerce.cielo.com.br/) criar uma conta.
 * com o cadastro você receberá um `MerchantId` e um `MerchantKey`,que são as credenciais necessarias para os métodos da API
+
+
+## Ferramenta para Integração: POSTMAN
+
+O **Postman** é um API Client que facilita aos desenvolvedores criar, compartilhar, testar e documentar APIs. Isso é feito, permitindo aos usuários criar e salvar solicitações HTTPs simples e complexas, bem como ler suas respostas.
+
+A Cielo oferece coleções completas de suas integrações via Postamn, o que facilita o processo de integração com a API Cielo.
+
+Sugerimos que desenvolvedores acessem nosso tutorial sobre a ferramenta para compreender melhor todas as vantagens que ela oferece.
+Tutorial: https://developercielo.github.io/Tutorial-Postman
 
 
 ## Cartão de crédito - Sandbox

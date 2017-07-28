@@ -6188,14 +6188,17 @@ Abaixo vamos explica-los na ordem em que podem ocorrem:
 
 ## Status
 
-| Código | Status do Pagamento | Meio de pagamento                                     | Descrição                                             |
-|--------|---------------------|-------------------------------------------------------|-------------------------------------------------------|
-| 0      | NotFinished         | Todos                                                 | Falha ao processar o pagamento                        |
-| 1      | Authorized          | Todos                                                 | Meio de pagamento apto a ser capturado ou pago(Boleto |
-| 2      | PaymentConfirmed    | Todos                                                 | Pagamento confirmado e finalizado                     |
-| 3      | Denied              | Cartão de Crédito e Débito / Transferência eletrônica | -                                                     |
-
-
+|Código|Status do Pagamento|Meio de pagamento|Descrição|
+|------|-------------------|-----------------|---------|
+|0|NotFinished|Todos|Falha ao processar o pagamento|
+|1|Authorized|Todos|Meio de pagamento apto a ser capturado ou pago(Boleto|
+|2|PaymentConfirmed|Todos|Pagamento confirmado e finalizado|
+|3|Denied|Cartão de Crédito e Débito / Transferência eletrônica|
+|10|Voided|Todos|Pagamento cancelado|
+|11|Refunded|Cartão de crédito e Débito|Pagamento Cancelado/Estornado|
+|12|Pending|Cartão de Crédito e Débito / Transferência eletrônica |Esperando retorno da instituição financeira|
+|13|Aborted|Todos|Pagamento cancelado por falha no processamento|
+|20|Scheduled|Cartão de crédito|Recorrência agendada|
 
 ## Códigos de Erros da API
 

@@ -570,6 +570,34 @@ Com esse meio de pagamento é possível simular os fluxos de:</p>
 
 <aside class="notice"><strong>Tokenização:</strong> Transações em ambiente de Sandbox envolvendo tokenização não funcionaram com base nos cartões de teste. Todo cartão salvo no tokenização é tratado como um cartão real, logo ele não é utilizado no processo de simulação</aside>
 
+<h2 id="cartão-de-débito---sandbox">Cartão de débito - Sandbox</h2>
+
+<p>Cartões de débito não possuem cartões ou dados específicos simulados, como no caso do cartão de crédito. </p>
+
+<p>O fluxo transacional do cartão de Débito funciona com o Response da transação retornando uma <em>URL DE AUTENTICAÇÃO</em> . Na tela de autenticação a opção escolhida define o status da transação.</p>
+
+<table><thead>
+<tr>
+<th>Opção</th>
+<th>Status</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Autenticado</td>
+<td>Autorizado</td>
+</tr>
+<tr>
+<td>Não Autenticado</td>
+<td>Negado</td>
+</tr>
+<tr>
+<td>Não usar a URL</td>
+<td>Não Finalizado</td>
+</tr>
+</tbody></table>
+
+<aside class="notice"><strong>Transferência Online:</strong> O mesmo comportamento do Cartão de débito em Sanbox é valido para cartão de débito</aside>
+
 <h2 id="outros-meios-de-pagamento---sandbox">Outros meios de pagamento - Sandbox</h2>
 
 <p>Outros meios de pagamento não possuem cartões ou dados específicos simulados, como no caso do cartão de crédito.
@@ -583,7 +611,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </thead><tbody>
 <tr>
 <td>Boleto</td>
-<td>Não há diferenças de integração.</td>
+<td>Não há validação bancaria. O boleto se comporta como um boleto sem registro</td>
 </tr>
 <tr>
 <td>Cartão de débito</td>
@@ -595,20 +623,164 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 </tbody></table>
 
+<h2 id="post-de-notificação">Post de Notificação</h2>
+
+<p>O Post de notificação é enviado com base em uma seleção de eventos a ser feita no cadastro da API Cielo E-commerce.</p>
+
+<p>Os eventos passiveis de notificação são:</p>
+
+<table><thead>
+<tr>
+<th>Meio de Pagamento</th>
+<th>Evento</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Cartão de Crédito</td>
+<td>Captura</td>
+</tr>
+<tr>
+<td>Cartão de Crédito</td>
+<td>Cancelamento</td>
+</tr>
+<tr>
+<td>Cartão de Crédito</td>
+<td>Sondagem</td>
+</tr>
+<tr>
+<td>Boleto</td>
+<td>Conciliação</td>
+</tr>
+<tr>
+<td>Boleto</td>
+<td>Cancelamento Manual</td>
+</tr>
+<tr>
+<td>Transferência eletrônica</td>
+<td>Confirmadas</td>
+</tr>
+</tbody></table>
+
+<aside class="notice"><strong>Cartão de débito:</strong> Não notificamos transações de Cartão de débito. Sugerimos que seja criada uma URL de RETORNO, onde o comprador será enviado se a transação for finalizada no ambiente do banco. Quando essa URL for acionada, nossa sugestão é quye uym `GET` seja executado, buscando informações do pedido na API Cielo</aside>
+
+<p>Uma <code class="prettyprint">URL Status Pagamento</code> deve ser cadastrada pelo Suporte Cielo, para que o POST de notificação seja executado. </p>
+
+<p>Características da <code class="prettyprint">URL Status Pagamento</code> </p>
+
+<ul>
+<li>Deve ser <strong>estática</strong></li>
+<li>Limite de 255  carácteres.</li>
+</ul>
+
+<p>A loja <strong>deverá</strong> retornar como resposta ao notificação: <strong>HTTP Status Code 200 OK</strong></p>
+
+<p>Caso não seja retornado o <strong>HTTP Status Code 200 OK</strong>,  ocorrerão mais <strong>dois</strong> envios do Post de Notificação. </p>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+   </span><span class="s2">"RecurrentPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"ChangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">RecurrentPaymentId</code></td>
+<td>Identificador que representa o pedido Recorrente (aplicável somente para ChangeType 2 ou 4)</td>
+<td>GUID</td>
+<td>36</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Identificador que representa a transação</td>
+<td>GUID</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ChangeType</code></td>
+<td>Especifica o tipo de notificação. Vide tabela abaixo</td>
+<td>Número</td>
+<td>1</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>ChangeType</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Mudança de status do pagamento</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Recorrência criada</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mudança de status do Antifraude</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mudança de status do pagamento recorrente (Ex. desativação automática)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>cancelamento negado</td>
+</tr>
+</tbody></table>
+
 <h1 id="pagamentos-com-cartão-de-crédito">Pagamentos com Cartão de Crédito</h1>
 
 <p>Para que você possa disfrutar de todos os recursos disponíveis em nossa API, é importante que antes você conheça os conceitos envolvidos no processamento de uma transação de cartão de crédito.</p>
 
-<ul>
-<li><strong>Autorização</strong>: A autorização (ou pré-autorização) é a principal operação no eCommerce, pois através dela é que uma venda pode ser concretizada. A pré-autorização apenas sensibiliza o limite do cliente, mas ainda não gera cobrança para o consumidor.</li>
-<li><strong>Captura</strong>: Ao realizar uma pré-autorização, é necessário a confirmação desta para que a cobrança seja efetivada ao portador do cartão. Através desta operação que se efetiva uma pré-autorização, podendo esta ser executada, em normalmente, em até 5 dias após a data da pré-autorização.</li>
-<li><strong>Cancelamento</strong>: O cancelamento é necessário quando, por algum motivo, não se quer mais efetivar uma venda.</li>
-<li><strong>Autenticação</strong>: O processo de autenticação possibilita realizar uma venda a qual passará pelo processo de autenticação do banco emissor do cartão, assim trazendo mais segurança para a venda e transferindo para o banco, o risco de fraude.</li>
-<li><strong>Cartão protegido</strong>: É uma plataforma que permite o armazenamento seguro de dados sensíveis de cartão de crédito. Estes dados são transformados em um código criptografrado chamado de &ldquo;token”, que poderá ser armazenado em banco de dados. Com a plataforma, a loja poderá oferecer recursos como &quot;Compra com 1 clique” e &quot;Retentativa de envio de transação”, sempre preservando a integridade e a confidencialidade das informações.</li>
-<li><strong>Antifraude</strong>: É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.</li>
-<li><strong>Recorrente</strong>: A Recorrência Inteligente é um recurso indispensável para estabelicimentos que precisam cobrar regularmente por seus produtos/serviços.
-É muito utilizado para assinaturas de revistas, mensalidades, licenças de software, entre outros. Os lojistas contarão com recursos diferenciados para modelar sua cobrança de acordo com o seu negócio, pois toda parametrização é configurável, tais como: periodicidade, data de início e fim, quantidade de tentativas, intervalo entre elas, entre outros.</li>
-</ul>
+<table><thead>
+<tr>
+<th>Conceito</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Autorização</strong></td>
+<td>A autorização (ou pré-autorização) é a principal operação no eCommerce, pois através dela é que uma venda pode ser concretizada. A pré-autorização apenas sensibiliza o limite do cliente, mas ainda não gera cobrança para o consumidor.</td>
+</tr>
+<tr>
+<td><strong>Captura</strong></td>
+<td>Ao realizar uma pré-autorização, é necessário a confirmação desta para que a cobrança seja efetivada ao portador do cartão. Através desta operação que se efetiva uma pré-autorização, podendo esta ser executada, em normalmente, em até 5 dias após a data da pré-autorização.</td>
+</tr>
+<tr>
+<td><strong>Cancelamento</strong></td>
+<td>O cancelamento é necessário quando, por algum motivo, não se quer mais efetivar uma venda.</td>
+</tr>
+<tr>
+<td><strong>Autenticação</strong></td>
+<td>O processo de autenticação possibilita realizar uma venda a qual passará pelo processo de autenticação do banco emissor do cartão, assim trazendo mais segurança para a venda e transferindo para o banco, o risco de fraude.</td>
+</tr>
+<tr>
+<td><strong>Cartão protegido</strong></td>
+<td>É uma plataforma que permite o armazenamento seguro de dados sensíveis de cartão de crédito. Estes dados são transformados em um código criptografrado chamado de &ldquo;token”, que poderá ser armazenado em banco de dados. Com a plataforma, a loja poderá oferecer recursos como &quot;Compra com 1 clique” e &quot;Retentativa de envio de transação”, sempre preservando a integridade e a confidencialidade das informações.</td>
+</tr>
+<tr>
+<td><strong>Antifraude</strong></td>
+<td>É uma plataforma de prevenção à fraude que fornece uma análise de risco detalhada das compras on-line. Cada transação é submetida a mais de 260 regras, além das regras específicas de cada segmento, e geram uma recomendação de risco em aproximadamente dois segundos. Este processo é totalmente transparente para o portador do cartão. De acordo com os critérios preestabelecidos, o pedido pode ser automaticamente aceito, recusado ou encaminhado para análise manual.</td>
+</tr>
+<tr>
+<td><strong>Recorrente</strong></td>
+<td>A Recorrência Inteligente é um recurso indispensável para estabelicimentos que precisam cobrar regularmente por seus produtos/serviços. É muito utilizado para assinaturas de revistas, mensalidades, licenças de software, entre outros. Os lojistas contarão com recursos diferenciados para modelar sua cobrança de acordo com o seu negócio, pois toda parametrização é configurável, tais como: periodicidade, data de início e fim, quantidade de tentativas, intervalo entre elas, entre outros.</td>
+</tr>
+</tbody></table>
 
 <h2 id="criando-uma-transação-simples">Criando uma transação simples</h2>
 
@@ -1290,7 +1462,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Número</td>
 <td>15</td>
 <td>Não</td>
-<td>Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.</td>
+<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -2357,7 +2529,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Número</td>
 <td>15</td>
 <td>Não</td>
-<td>Não</td>
+<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
@@ -3507,7 +3679,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/capture</span></aside>
 <pre><code class="highlight json"><span class="w">
-</span><span class="err">PUT</span><span class="w"> </span><span class="err">"https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/capture</span><span class="w">
+</span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/capture</span><span class="w">
 
 </span></code></pre>
 <pre><code class="highlight shell">curl
@@ -3565,7 +3737,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">ServiceTaxAmount</code></td>
-<td>Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.</td>
+<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
 <td>Número</td>
 <td>15</td>
 <td>Não</td>
@@ -3664,7 +3836,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 
 <aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{paymentId}/capture?amount={Valor}</span></aside>
 <pre><code class="highlight json"><span class="w">
-</span><span class="err">PUT</span><span class="w"> </span><span class="err">"https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">paymentId}/capture?amount=</span><span class="p">{</span><span class="err">Valor}</span><span class="w">
+</span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">paymentId}/capture?amount=</span><span class="p">{</span><span class="err">Valor}</span><span class="w">
 
 </span></code></pre>
 <pre><code class="highlight shell">curl
@@ -3722,7 +3894,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">ServiceTaxAmount</code></td>
-<td>Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.</td>
+<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
 <td>Número</td>
 <td>15</td>
 <td>Não</td>
@@ -3823,6 +3995,10 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto alfanumérico</td>
 </tr>
 </tbody></table>
+
+<aside class="notice"><strong>Captura de Taxa de embarque</strong> Para realizar a captura da *taxa de embarque*, basta adicionar o valor do ServiveTaxAmount a ser capturado</aside>
+<pre><code class="highlight plaintext">https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/capture?amount={Valor}&amp;serviceTaxAmount=xxx
+</code></pre>
 
 <h2 id="cancelando-uma-venda">Cancelando uma venda</h2>
 
@@ -4132,6 +4308,10 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Texto alfanumérico</td>
 </tr>
 </tbody></table>
+
+<aside class="notice"><strong>Cancelamento de Taxa de embarque</strong> Para realizar o cancelamento da *taxa de embarque*, basta adicionar o valor do ServiveTaxAmount a ser cancelado</aside>
+<pre><code class="highlight plaintext">https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/void?amount={Valor}&amp;serviceTaxAmount=xxx
+</code></pre>
 
 <h1 id="pagamentos-com-cartão-de-débito">Pagamentos com Cartão de Débito</h1>
 
@@ -4544,7 +4724,7 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 <tr>
 <td><code class="prettyprint">Payment.Provider</code></td>
-<td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
+<td>Define comportamento do meio de pagamento (<a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a>)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 <td>Texto</td>
 <td>15</td>
 <td>&mdash;</td>
@@ -8282,7 +8462,7 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 
 <p>Para consultar uma Recorrência de cartão de crédito, é necessário fazer um <code class="prettyprint">GET</code>  conforme o exemplo.</p>
 
-<p>**A Consulta da Recorrência tras dados sobre o agendamento e sobre o processo de transações que se repetem. Elas não trazem dados sobre as transações em si. Para isso, deve ser realizado um <code class="prettyprint">GET</code> na transação (Diponivel em &ldquo;Consultanto vendas&rdquo; </p>
+<p>**A Consulta da Recorrência tras dados sobre o agendamento e sobre o processo de transações que se repetem. Elas não retornam dados sobre as transações em si. Para isso, deve ser realizado um <code class="prettyprint">GET</code> na transação (Disponivel em &ldquo;Consultanto vendas</p>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -8338,23 +8518,38 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 
 <h3 id="resposta">Resposta</h3>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador accept"</span><span class="w">
+    </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fulano da Silva"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"RecurrentPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"RecurrentPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6716406f-1cba-4c7a-8054-7e8988032b17"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"NextRecurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-05"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"StartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-05"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-01"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SemiAnnual"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"RecurrentPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30f5c78-fca2-459c-9f3c-9c4b41b09048"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"NextRecurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-07"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"StartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-07"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bimonthly"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CreateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-07T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CurrentRecurrencyTry"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Simulado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"RecurrencyDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SuccessfulRecurrences"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span><span class="w">
+                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/c30f5c78-fca2-459c-9f3c-9c4b41b09048"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"RecurrentTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70948a8-f1dd-4b93-a4ad-90428bcbdb84"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"PaymentNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"TryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8362,23 +8557,38 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 --header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
 --data-binary
 <span class="o">{</span>
-    <span class="s2">"Customer"</span>:
-    <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador accept"</span>
+    <span class="s2">"Customer"</span>: <span class="o">{</span>
+        <span class="s2">"Name"</span>: <span class="s2">"Fulano da Silva"</span>
     <span class="o">}</span>,
     <span class="s2">"RecurrentPayment"</span>: <span class="o">{</span>
-        <span class="s2">"RecurrentPaymentId"</span>: <span class="s2">"6716406f-1cba-4c7a-8054-7e8988032b17"</span>,
-        <span class="s2">"NextRecurrency"</span>: <span class="s2">"2015-11-05"</span>,
-        <span class="s2">"StartDate"</span>: <span class="s2">"2015-05-05"</span>,
-        <span class="s2">"EndDate"</span>: <span class="s2">"2019-12-01"</span>,
-        <span class="s2">"Interval"</span>: <span class="s2">"SemiAnnual"</span>,
+        <span class="s2">"RecurrentPaymentId"</span>: <span class="s2">"c30f5c78-fca2-459c-9f3c-9c4b41b09048"</span>,
+        <span class="s2">"NextRecurrency"</span>: <span class="s2">"2017-06-07"</span>,
+        <span class="s2">"StartDate"</span>: <span class="s2">"2017-04-07"</span>,
+        <span class="s2">"EndDate"</span>: <span class="s2">"2017-02-27"</span>,
+        <span class="s2">"Interval"</span>: <span class="s2">"Bimonthly"</span>,
+        <span class="s2">"Amount"</span>: 15000,
+        <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>,
+        <span class="s2">"CreateDate"</span>: <span class="s2">"2017-04-07T00:00:00"</span>,
+        <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
+        <span class="s2">"CurrentRecurrencyTry"</span>: 1,
+        <span class="s2">"Provider"</span>: <span class="s2">"Simulado"</span>,
+        <span class="s2">"RecurrencyDay"</span>: 7,
+        <span class="s2">"SuccessfulRecurrences"</span>: 0,
         <span class="s2">"Links"</span>: <span class="o">[</span>
             <span class="o">{</span>
                 <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
                 <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"</span>
+                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/c30f5c78-fca2-459c-9f3c-9c4b41b09048"</span>
             <span class="o">}</span>
-        <span class="o">]</span>
+        <span class="o">]</span>,
+        <span class="s2">"RecurrentTransactions"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"PaymentId"</span>: <span class="s2">"f70948a8-f1dd-4b93-a4ad-90428bcbdb84"</span>,
+                <span class="s2">"PaymentNumber"</span>: 0,
+                <span class="s2">"TryNumber"</span>: 1
+            <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"Status"</span>: 1
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
@@ -8427,13 +8637,76 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>10</td>
 <td><ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul></td>
 </tr>
+<tr>
+<td><code class="prettyprint">CurrentRecurrencyTry</code></td>
+<td>Indica o número de tentativa da recorrência atual</td>
+<td>Número</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code class="prettyprint">OrderNumber</code></td>
+<td>Identificado do Pedido na loja</td>
+<td>Texto</td>
+<td>50</td>
+<td>2017051101</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status do pedido recorrente</td>
+<td>Número</td>
+<td>1</td>
+<td><br><em>1</em> - Ativo <br><em>2</em> - Finalizado <br><em>3</em>- Desativada pelo Lojista <br> <em>4</em> - Desativada por numero de retentativas <BR> <em>5</em> - Desativada por cartão de crédito vencido</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RecurrencyDay</code></td>
+<td>O dia da recorrência</td>
+<td>Número</td>
+<td>2</td>
+<td>22</td>
+</tr>
+<tr>
+<td><code class="prettyprint">SuccessfulRecurrences</code></td>
+<td>Quantidade de recorrência realizada com sucesso</td>
+<td>Número</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RecurrentTransactions.RecurrentPaymentId</code></td>
+<td>Id da Recorrência</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RecurrentTransactions.TransactionId</code></td>
+<td>Payment ID da transação gerada na recorrência</td>
+<td>Guid</td>
+<td>36</td>
+<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RecurrentTransactions.PaymentNumber</code></td>
+<td>Número da Recorrência. A primeira é zero</td>
+<td>Número</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RecurrentTransactions.TryNumber</code></td>
+<td>Número da tentativa atual na recorrência específica</td>
+<td>Número</td>
+<td>2</td>
+<td>1</td>
+</tr>
 </tbody></table>
 
 <h1 id="tokenização-de-cartões">Tokenização de cartões</h1>
 
 <h2 id="o-que-é-a-tokenização-de-cartões:">O que é a Tokenização de Cartões:</h2>
 
-<p>É uma plataforma que permite o armazenamento seguro de dados sensíveis de cartão de crédito. Estes dados são transformados em um código criptografrado chamado de “token”, que poderá ser armazenado em banco de dados. Com a plataforma, a loja poderá oferecer recursos como &ldquo;Compra com 1 clique” e &quot;Retentativa de envio de transação”, sempre preservando a integridade e a confidencialidade das informações.</p>
+<p>É uma plataforma que permite o armazenamento seguro de dados sensíveis de cartão de crédito. Estes dados são transformados em um código criptografrado chamado de “token”, que poderá ser armazenado em banco de dados. Com a plataforma, a loja poderá oferecer recursos como &quot;Compra com 1 clique” e &quot;Retentativa de envio de transação”, sempre preservando a integridade e a confidencialidade das informações.</p>
 
 <h2 id="criando-um-cartão-tokenizado">Criando um Cartão Tokenizado</h2>
 
@@ -8875,13 +9148,6 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
-<td>Número</td>
-<td>15</td>
-<td>Não</td>
-<td>Exclusivo para companhias aéreas - Montante do valor da autorização que deve ser destinado à taxa de serviço. Obs.: Esse valor não é adicionado ao valor da autorização.</td>
-</tr>
-<tr>
 <td><code class="prettyprint">Payment.Installments</code></td>
 <td>Número</td>
 <td>2</td>
@@ -8908,6 +9174,13 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 <td>&mdash;</td>
 <td>Não (Default false)</td>
 <td>Define se o comprador será direcionado ao Banco emissor para autenticação do cartão</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Payment.ServiceTaxAmount</code></td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
+<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
 </tr>
 <tr>
 <td><code class="prettyprint">CreditCard.CardNumber</code></td>
@@ -13266,122 +13539,22 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 </tr>
 </tbody></table>
 
-<h2 id="post-de-notificação">Post de Notificação</h2>
+<h2 id="service-tax-amount---taxa-de-embarque">Service Tax Amount - TAXA DE EMBARQUE</h2>
 
-<p>O Post de notificação é enviado com base em uma seleção de eventos a ser feita no cadastro da API Cielo E-commerce.</p>
-
-<p>Os eventos passiveis de notificação são:</p>
-
-<table><thead>
-<tr>
-<th>Meio de Pagamento</th>
-<th>Evento</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Cartão de Crédito/Débito</td>
-<td>Captura</td>
-</tr>
-<tr>
-<td>Cartão de Crédito/Débito</td>
-<td>Cancelamento</td>
-</tr>
-<tr>
-<td>Cartão de Crédito/Débito</td>
-<td>Sondagem</td>
-</tr>
-<tr>
-<td>Boleto</td>
-<td>Conciliação</td>
-</tr>
-<tr>
-<td>Boleto</td>
-<td>Cancelamento Manual</td>
-</tr>
-<tr>
-<td>Transferência eletrônica</td>
-<td>Confirmadas</td>
-</tr>
-</tbody></table>
-
-<p>Uma <code class="prettyprint">URL Status Pagamento</code> deve ser cadastrada pelo Suporte Cielo, para que o POST de notificação seja executado. </p>
-
-<p>Características da <code class="prettyprint">URL Status Pagamento</code> </p>
+<p><strong>A taxa de embarque</strong> (servicetaxamount) é um campo informativo que define o montante do total da transação  que deve ser destinado ao pagamento da taxa à Infraero. O valor da taxa de embarque não é acumulado ao valor da autorização.</p>
 
 <ul>
-<li>Deve ser <strong>estática</strong></li>
-<li>Limite de 255  carácteres.</li>
+<li><em>EX</em>: Em uma venda de passagem aérea de R$ 200,00 com taxa de embarque de R$ 25,00 deve-se enviar o campo <code class="prettyprint">Payment.ServiceTaxAmount</code> como 2500</li>
 </ul>
 
-<p>A loja <strong>deverá</strong> retornar como resposta ao notificação: <strong>HTTP Status Code 200 OK</strong></p>
+<p><strong>Regras</strong> </p>
 
-<p>Caso não seja retornado o <strong>HTTP Status Code 200 OK</strong>,  ocorrerão mais <strong>dois</strong> envios do Post de Notificação. </p>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-   </span><span class="s2">"RecurrentPaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"ChangeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<ul>
+<li>Disponível apenas para as bandeiras Visa, Mastercard e Amex.</li>
+<li>O valor da taxa de embarque não é somado ao valor da autorização, ou seja, é apenas informativo.</li>
+</ul>
 
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">RecurrentPaymentId</code></td>
-<td>Identificador que representa o pedido Recorrente (aplicável somente para ChangeType 2 ou 4</td>
-<td>GUID</td>
-<td>36</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">PaymentId</code></td>
-<td>Identificador que representa a transação</td>
-<td>GUID</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ChangeType</code></td>
-<td>Especifica o tipo de notificação. Vide tabela abaixo</td>
-<td>Número</td>
-<td>1</td>
-<td>Sim</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>ChangeType</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>1</td>
-<td>Mudança de status do pagamento</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Recorrência criada</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Mudança de status do Antifraude</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Mudança de status do pagamento recorrente (Ex. desativação automática)</td>
-</tr>
-<tr>
-<td>5</td>
-<td>cancelamento negado</td>
-</tr>
-</tbody></table>
+<p>Existem regras específicas para a requisição de captura com taxa de embarque, disponíveis no item Captura Total e Parcial.</p>
 
             </div>
             <div class="dark-box">

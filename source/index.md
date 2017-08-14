@@ -6373,17 +6373,30 @@ Abaixo vamos explica-los na ordem em que podem ocorrem:
 
 ## Status
 
-|Código|Status do Pagamento|Meio de pagamento|Descrição|
-|------|-------------------|-----------------|---------|
-|0|NotFinished|Todos|Falha ao processar o pagamento|
-|1|Authorized|Todos|Meio de pagamento apto a ser capturado ou pago(Boleto|
-|2|PaymentConfirmed|Todos|Pagamento confirmado e finalizado|
-|3|Denied|Cartão de Crédito e Débito / Transferência eletrônica|
-|10|Voided|Todos|Pagamento cancelado|
-|11|Refunded|Cartão de crédito e Débito|Pagamento Cancelado/Estornado|
-|12|Pending|Cartão de Crédito e Débito / Transferência eletrônica |Esperando retorno da instituição financeira|
-|13|Aborted|Todos|Pagamento cancelado por falha no processamento|
-|20|Scheduled|Cartão de crédito|Recorrência agendada|
+| Código | Status           | Meio de pagamento | Descrição                                            |
+|--------|------------------|:-----------------:|------------------------------------------------------|
+| 0      | NotFinished      | ALL               | Aguardando atualização de status                     |
+| 1      | Authorized       | ALL               | Pagamento apto a ser capturado ou definido como pago |
+| 2      | PaymentConfirmed | ALL               | Pagamento confirmado e finalizado                    |
+| 3      | Denied           | CC + CD + TF      | Pagamento negado por Autorizador                     |
+| 10     | Voided           | ALL               | Pagamento cancelado                                  |
+| 11     | Refunded         | CC + CD           | Pagamento cancelado após 23:59 do dia de autorização |
+| 12     | Pending          | ALL               | Aguardando Status de instituição financeira          |
+| 13     | Aborted          | ALL               | Pagamento cancelado por falha no processamento       |
+| 20     | Scheduled        | CC                | Recorrência agendada                                 |
+
+-
+
+| Meio de pagamento | Descrição                |
+|:-----------------:|--------------------------|
+| **ALL**           | Todos                    |
+| **CC**            | Cartão de Crédito        |
+| **CD**            | Cartão de Débito         |
+| **TF**            | Transferencia Eletrônica |
+| **BOL**           | Boleto                   |
+
+
+
 
 ## Códigos de Erros da API
 

@@ -3337,982 +3337,6 @@ Abaixo especificamos qualquer diferença existente:</p>
 </tr>
 </tbody></table>
 
-<h2 id="criando-uma-venda-com-card-token">Criando uma venda com Card Token</h2>
-
-<p>Para criar uma venda de cartão de crédito com token do cartão protegido, é necessário fazer um POST para o recurso Payment conforme o exemplo.</p>
-
-<h3 id="requisição">Requisição</h3>
-
-<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">  
-   </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"Customer"</span><span class="p">:{</span><span class="w">  
-      </span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"Comprador CardToken"</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="s2">"Payment"</span><span class="p">:{</span><span class="w">  
-     </span><span class="s2">"Type"</span><span class="p">:</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Amount"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Installments"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"CreditCard"</span><span class="p">:{</span><span class="w">  
-         </span><span class="s2">"CardToken"</span><span class="p">:</span><span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"SecurityCode"</span><span class="p">:</span><span class="s2">"262"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"Brand"</span><span class="p">:</span><span class="s2">"Visa"</span><span class="w">
-     </span><span class="p">}</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre><code class="highlight shell">curl
---request POST <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"</span>
---header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---data-binary
-<span class="o">{</span>  
-   <span class="s2">"MerchantOrderId"</span>:<span class="s2">"2014111706"</span>,
-   <span class="s2">"Customer"</span>:<span class="o">{</span>  
-      <span class="s2">"Name"</span>:<span class="s2">"Comprador CardToken"</span>
-   <span class="o">}</span>,
-   <span class="s2">"Payment"</span>:<span class="o">{</span>  
-     <span class="s2">"Type"</span>:<span class="s2">"CreditCard"</span>,
-     <span class="s2">"Amount"</span>:100,
-     <span class="s2">"Installments"</span>:1,
-     <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
-     <span class="s2">"CreditCard"</span>:<span class="o">{</span>  
-         <span class="s2">"CardToken"</span>:<span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span>,
-         <span class="s2">"SecurityCode"</span>:<span class="s2">"262"</span>,
-         <span class="s2">"Brand"</span>:<span class="s2">"Visa"</span>
-     <span class="o">}</span>
-   <span class="o">}</span>
-<span class="o">}</span>
---verbose
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja na API Cielo eCommerce.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
-<td>Texto</td>
-<td>40</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
-<td>Guid</td>
-<td>36</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">MerchantOrderId</code></td>
-<td>Numero de identificação do Pedido.</td>
-<td>Texto</td>
-<td>50</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Customer.Name</code></td>
-<td>Nome do Comprador.</td>
-<td>Texto</td>
-<td>255</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Customer.Status</code></td>
-<td>Status de cadastro do comprador na loja (NEW / EXISTING) - Utilizado pela análise de fraude</td>
-<td>Texto</td>
-<td>255</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Payment.Type</code></td>
-<td>Tipo do Meio de Pagamento.</td>
-<td>Texto</td>
-<td>100</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Payment.Amount</code></td>
-<td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número</td>
-<td>15</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Payment.Installments</code></td>
-<td>Número de Parcelas.</td>
-<td>Número</td>
-<td>2</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Payment.SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais</td>
-<td>Texto</td>
-<td>13</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Payment.ReturnUrl</code></td>
-<td>URI para onde o usuário será redirecionado após o fim do pagamento</td>
-<td>Texto</td>
-<td>1024</td>
-<td>Sim quando Authenticate = true</td>
-</tr>
-<tr>
-<td><code class="prettyprint">CreditCard.CardToken</code></td>
-<td>Token de identificação do Cartão.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">CreditCard.SecurityCode</code></td>
-<td>Código de segurança impresso no verso do cartão.</td>
-<td>Texto</td>
-<td>4</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">CreditCard.Brand</code></td>
-<td>Bandeira do cartão.</td>
-<td>Texto</td>
-<td>10</td>
-<td>Sim</td>
-</tr>
-</tbody></table>
-
-<h3 id="resposta">Resposta</h3>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"MerchantOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014111706"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprador CardToken"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"ServiceTaxAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ByMerchant"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Capture"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Authenticate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"CreditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"SaveCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"CardToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"ProofOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5036294"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Tid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0310025036294"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"AuthorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"319285"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"SoftDescriptor"</span><span class="p">:</span><span class="s2">"123456789ABCD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"PaymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRA"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ExtraDataCollection"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"capture"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---data-binary
-        <span class="o">{</span>
-    <span class="s2">"MerchantOrderId"</span>: <span class="s2">"2014111706"</span>,
-    <span class="s2">"Customer"</span>: <span class="o">{</span>
-        <span class="s2">"Name"</span>: <span class="s2">"Comprador CardToken"</span>
-    <span class="o">}</span>,
-    <span class="s2">"Payment"</span>: <span class="o">{</span>
-        <span class="s2">"ServiceTaxAmount"</span>: 0,
-        <span class="s2">"Installments"</span>: 1,
-        <span class="s2">"Interest"</span>: <span class="s2">"ByMerchant"</span>,
-        <span class="s2">"Capture"</span>: <span class="nb">false</span>,
-        <span class="s2">"Authenticate"</span>: <span class="nb">false</span>,
-        <span class="s2">"CreditCard"</span>: <span class="o">{</span>
-            <span class="s2">"SaveCard"</span>: <span class="nb">true</span>,
-            <span class="s2">"CardToken"</span>: <span class="s2">"6e1bf77a-b28b-4660-b14f-455e2a1c95e9"</span>,
-            <span class="s2">"Brand"</span>: <span class="s2">"Visa"</span>
-        <span class="o">}</span>,
-        <span class="s2">"ProofOfSale"</span>: <span class="s2">"5036294"</span>,
-        <span class="s2">"Tid"</span>: <span class="s2">"0310025036294"</span>,
-        <span class="s2">"AuthorizationCode"</span>: <span class="s2">"319285"</span>,
-        <span class="s2">"SoftDescriptor"</span>:<span class="s2">"123456789ABCD"</span>,
-        <span class="s2">"PaymentId"</span>: <span class="s2">"c3ec8ec4-1ed5-4f8d-afc3-19b18e5962a8"</span>,
-        <span class="s2">"Type"</span>: <span class="s2">"CreditCard"</span>,
-        <span class="s2">"Amount"</span>: 100,
-        <span class="s2">"Currency"</span>: <span class="s2">"BRL"</span>,
-        <span class="s2">"Country"</span>: <span class="s2">"BRA"</span>,
-        <span class="s2">"ExtraDataCollection"</span>: <span class="o">[]</span>,
-        <span class="s2">"Status"</span>: 1,
-        <span class="s2">"Links"</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
-                <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
-            <span class="o">}</span>,
-            <span class="o">{</span>
-                <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
-                <span class="s2">"Rel"</span>: <span class="s2">"capture"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
-            <span class="o">}</span>,
-            <span class="o">{</span>
-                <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
-                <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-                <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
-            <span class="o">}</span>
-        <span class="o">]</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Formato</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">ProofOfSale</code></td>
-<td>Número da autorização, identico ao NSU.</td>
-<td>Texto</td>
-<td>20</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Tid</code></td>
-<td>Id da transação na adquirente.</td>
-<td>Texto</td>
-<td>40</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">AuthorizationCode</code></td>
-<td>Código de autorização.</td>
-<td>Texto</td>
-<td>300</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">SoftDescriptor</code></td>
-<td>Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais</td>
-<td>Texto</td>
-<td>13</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido.</td>
-<td>Guid</td>
-<td>36</td>
-<td>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ECI</code></td>
-<td>Eletronic Commerce Indicator. Representa o quão segura é uma transação.</td>
-<td>Texto</td>
-<td>2</td>
-<td>Exemplos: 7</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Status</code></td>
-<td>Status da Transação.</td>
-<td>Byte</td>
-<td>&mdash;</td>
-<td>2</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da Adquirência.</td>
-<td>Texto</td>
-<td>32</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnMessage</code></td>
-<td>Mensagem de retorno da Adquirência.</td>
-<td>Texto</td>
-<td>512</td>
-<td>Texto alfanumérico</td>
-</tr>
-</tbody></table>
-
-<h2 id="capturando-uma-venda">Capturando uma venda</h2>
-
-<p>Para captura uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.</p>
-
-<h3 id="requisição">Requisição</h3>
-
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/capture</span></aside>
-<pre><code class="highlight json"><span class="w">
-</span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/capture</span><span class="w">
-
-</span></code></pre>
-<pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
---header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---verbose
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja na API Cielo eCommerce.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
-<td>Texto</td>
-<td>40</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
-<td>Guid</td>
-<td>36</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Amount</code></td>
-<td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número</td>
-<td>15</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ServiceTaxAmount</code></td>
-<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
-<td>Número</td>
-<td>15</td>
-<td>Não</td>
-</tr>
-</tbody></table>
-
-<h3 id="resposta">Resposta</h3>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---data-binary
-<span class="o">{</span>
-    <span class="s2">"Status"</span>: 2,
-    <span class="s2">"ReturnCode"</span>: <span class="s2">"6"</span>,
-    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
-    <span class="s2">"Links"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
-            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
-            <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Formato</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">Status</code></td>
-<td>Status da Transação.</td>
-<td>Byte</td>
-<td>&mdash;</td>
-<td>2</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da adquirente.</td>
-<td>Texto</td>
-<td>32</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnMessage</code></td>
-<td>Mensagem de retorno da adquirente.</td>
-<td>Texto</td>
-<td>512</td>
-<td>Texto alfanumérico</td>
-</tr>
-</tbody></table>
-
-<h3 id="captura-parcial">Captura parcial</h3>
-
-<p>A <strong>captura parcial</strong> é o ato de capturar um valor menor que o valor autorizado.Esse modelo de captura pode ocorrer apenas 1 vez por transação. </p>
-
-<p><strong>Após a captura, não é possível realizar capturas adicionais no mesmo pedido.</strong></p>
-
-<p>Métodos de captura parcial:</p>
-
-<ol>
-<li><strong>Via API</strong> - Basta realizar um <code class="prettyprint">POST</code> enviando o valor a ser capturado.</li>
-<li><strong>Via Backoffice</strong> - Acesse nosso <a href="https://developercielo.github.io/Tutorial//Backoffice-3.0"><strong>Tutorial</strong></a>  para maiores informações</li>
-</ol>
-
-<aside class="notice"><strong>Atenção:</strong> Captura parcial disponível apenas para transações de crédito</aside>
-
-<h3 id="requisição---captura-parcial">Requisição - Captura Parcial</h3>
-
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{paymentId}/capture?amount={Valor}</span></aside>
-<pre><code class="highlight json"><span class="w">
-</span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">paymentId}/capture?amount=</span><span class="p">{</span><span class="err">Valor}</span><span class="w">
-
-</span></code></pre>
-<pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/capture?amount={Valor}"</span>
---header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---verbose
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja na API Cielo eCommerce.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
-<td>Texto</td>
-<td>40</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
-<td>Guid</td>
-<td>36</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Amount</code></td>
-<td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número</td>
-<td>15</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ServiceTaxAmount</code></td>
-<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
-<td>Número</td>
-<td>15</td>
-<td>Não</td>
-</tr>
-</tbody></table>
-
-<h3 id="resposta">Resposta</h3>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ProviderReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ProviderReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3/void"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---data-binary
-<span class="o">{</span>
-    <span class="s2">"Status"</span>: 2,
-    <span class="s2">"ReasonCode"</span>: 0,
-    <span class="s2">"ReasonMessage"</span>: <span class="s2">"Successful"</span>,
-    <span class="s2">"ProviderReturnCode"</span>: <span class="s2">"6"</span>,
-    <span class="s2">"ProviderReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
-    <span class="s2">"ReturnCode"</span>: <span class="s2">"6"</span>,
-    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
-    <span class="s2">"Links"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
-            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
-            <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3/void"</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Formato</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">Status</code></td>
-<td>Status da Transação.</td>
-<td>Byte</td>
-<td>&mdash;</td>
-<td>2</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da adquirente.</td>
-<td>Texto</td>
-<td>32</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnMessage</code></td>
-<td>Mensagem de retorno da adquirente.</td>
-<td>Texto</td>
-<td>512</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ProviderReturnCode</code></td>
-<td>Código de retorno do Provider.</td>
-<td>Texto</td>
-<td>32</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ProviderReturnMessage</code></td>
-<td>Mensagem de retorno do Provider.</td>
-<td>Texto</td>
-<td>512</td>
-<td>Texto alfanumérico</td>
-</tr>
-</tbody></table>
-
-<aside class="notice"><strong>Captura de Taxa de embarque</strong> Para realizar a captura da *taxa de embarque*, basta adicionar o valor do ServiveTaxAmount a ser capturado</aside>
-<pre><code class="highlight plaintext">https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/capture?amount={Valor}&amp;serviceTaxAmount=xxx
-</code></pre>
-
-<h2 id="cancelando-uma-venda">Cancelando uma venda</h2>
-
-<p>Para cancelar uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment. É possível realizar o cancelamento via PaymentID ou MerchantOrderId (numero do pedido).</p>
-
-<aside class="notice"><strong>Atenção:</strong> O cancelamento por MerchantOrderId afeta sempre a transação mais nova, ou seja, caso haja pedidos com o numero do pedido duplicado, somente o mais atual será cancelado. O pedido anterior não poderá ser cancelado por esse método</aside>
-
-<h3 id="requisição">Requisição</h3>
-
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=xxx</span></aside>
-
-<p>ou</p>
-
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/OrderId/{MerchantOrderId}/void?amount=xxx</span></aside>
-<pre><code class="highlight json"><span class="w">
-</span><span class="err">PUT</span><span class="w"> </span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/void</span><span class="w">
-
-
-</span></code></pre>
-<pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
---header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---verbose
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja na API Cielo eCommerce.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
-<td>Texto</td>
-<td>40</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
-<td>Guid</td>
-<td>36</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Amount</code></td>
-<td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número</td>
-<td>15</td>
-<td>Não</td>
-</tr>
-</tbody></table>
-
-<h3 id="resposta">Resposta</h3>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---data-binary
-<span class="o">{</span>
-    <span class="s2">"Status"</span>: 10,
-    <span class="s2">"ReturnCode"</span>: <span class="s2">"9"</span>,
-    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
-    <span class="s2">"Links"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
-            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Formato</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">Status</code></td>
-<td>Status da Transação.</td>
-<td>Byte</td>
-<td>&mdash;</td>
-<td>2</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da adquirente.</td>
-<td>Texto</td>
-<td>32</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnMessage</code></td>
-<td>Mensagem de retorno da adquirente.</td>
-<td>Texto</td>
-<td>512</td>
-<td>Texto alfanumérico</td>
-</tr>
-</tbody></table>
-
-<h3 id="cancelamento-parcial">Cancelamento parcial</h3>
-
-<p>O <strong>cancelamento  parcial</strong> é o ato de cancelar um valor menor que o valor total autorizado/capturado. Esse modelo de captura pode ocorrer inumeras vezes, até que o valor total da transação seja cancelado. </p>
-
-<p>Métodos de cancelamento parcial:</p>
-
-<ol>
-<li><strong>Via API</strong> - Basta realizar um <code class="prettyprint">POST</code> enviando o valor a ser capturado.</li>
-<li><strong>Via Backoffice</strong> - Acesse nosso <a href="https://developercielo.github.io/Tutorial//Backoffice-3.0"><strong>Tutorial</strong></a>  para maiores informações</li>
-</ol>
-
-<aside class="notice"><strong>Atenção:</strong> Cancelamento parcial disponível apenas para transações de crédito *CAPTURADAS*</aside>
-
-<aside class="notice"><strong>Atenção:</strong> O retorno da API soma o total de cancelamentos Parciais, ou seja, se 3 cancelamentos de R$10,00 forem realizados, a API apresentará em seu retorno um total de R$30,00 cancelados</aside>
-
-<h3 id="requisição---cancelamento-parcial">Requisição - cancelamento parcial</h3>
-
-<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=XXX </span></aside>
-<pre><code class="highlight json"><span class="w">
-</span><span class="err">PUT</span><span class="w"> </span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/void?amount=XXX</span><span class="w">
-
-
-</span></code></pre>
-<pre><code class="highlight shell">curl
---request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=XXX"</span>
---header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---verbose
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">MerchantId</code></td>
-<td>Identificador da loja na API Cielo eCommerce.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">MerchantKey</code></td>
-<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
-<td>Texto</td>
-<td>40</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">RequestId</code></td>
-<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
-<td>Guid</td>
-<td>36</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><code class="prettyprint">PaymentId</code></td>
-<td>Campo Identificador do Pedido.</td>
-<td>Guid</td>
-<td>36</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><code class="prettyprint">Amount</code></td>
-<td>Valor do Pedido (ser enviado em centavos).</td>
-<td>Número</td>
-<td>15</td>
-<td>Não</td>
-</tr>
-</tbody></table>
-
-<h3 id="resposta">Resposta</h3>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ProviderReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ProviderReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8/void"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
---header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
---data-binary
-<span class="o">{</span>
-    <span class="s2">"Status"</span>: 2,
-    <span class="s2">"ReasonCode"</span>: 0,
-    <span class="s2">"ReasonMessage"</span>: <span class="s2">"Successful"</span>,
-    <span class="s2">"ProviderReturnCode"</span>: <span class="s2">"0"</span>,
-    <span class="s2">"ProviderReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
-    <span class="s2">"ReturnCode"</span>: <span class="s2">"0"</span>,
-    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
-    <span class="s2">"Links"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
-            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
-            <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
-            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8/void"</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-
-<table><thead>
-<tr>
-<th>Propriedade</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Tamanho</th>
-<th>Formato</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">Status</code></td>
-<td>Status da Transação.</td>
-<td>Byte</td>
-<td>&mdash;</td>
-<td>2</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnCode</code></td>
-<td>Código de retorno da adquirente.</td>
-<td>Texto</td>
-<td>32</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ReturnMessage</code></td>
-<td>Mensagem de retorno da adquirente.</td>
-<td>Texto</td>
-<td>512</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ProviderReturnCode</code></td>
-<td>Código de retorno do Provider.</td>
-<td>Texto</td>
-<td>32</td>
-<td>Texto alfanumérico</td>
-</tr>
-<tr>
-<td><code class="prettyprint">ProviderReturnMessage</code></td>
-<td>Mensagem de retorno do Provider.</td>
-<td>Texto</td>
-<td>512</td>
-<td>Texto alfanumérico</td>
-</tr>
-</tbody></table>
-
-<aside class="notice"><strong>Cancelamento de Taxa de embarque</strong> Para realizar o cancelamento da *taxa de embarque*, basta adicionar o valor do ServiveTaxAmount a ser cancelado</aside>
-<pre><code class="highlight plaintext">https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/void?amount={Valor}&amp;serviceTaxAmount=xxx
-</code></pre>
-
 <h1 id="pagamentos-com-cartão-de-débito">Pagamentos com Cartão de Débito</h1>
 
 <h2 id="criando-uma-venda-simplificada">Criando uma venda simplificada</h2>
@@ -5256,7 +4280,9 @@ Abaixo especificamos qualquer diferença existente:</p>
 
 <p>Para criar uma venda recorrente cuja a primeira recorrência é autorizada com a forma de pagamento cartão de crédito, basta fazer um POST conforme o exemplo.</p>
 
-<aside class="notice"><strong>Atenção:</strong> Nessa modalidade de recorrência, a primeira transação deve ser capturada. Todas as transções posteriores serão capturadas automaticamente.</aside>
+<aside class="notice"><strong>Atenção:</strong> Nessa modalidade de recorrência, a primeira transação deve ser 
+    
+    da. Todas as transções posteriores serão capturadas automaticamente.</aside>
 
 <h3 id="requisição">Requisição</h3>
 
@@ -8702,6 +7728,803 @@ Dessa forma, quando uma transação com marcação de recorrente for submetida p
 </tr>
 </tbody></table>
 
+<h1 id="capturando-uma-venda">Capturando uma venda</h1>
+
+<p>A <strong>Captura</strong> é passo exclusivo para transações de Cartões de Crédito.</p>
+
+<p>Ao realizar uma captura, o lojita confirma que o valor autorizado no cartão poderá ser cobrado pela insituição financeira emissora do cartão.</p>
+
+<p>O que a captura gera:</p>
+
+<ul>
+<li>Ela executa a cobrança do cartão</li>
+<li>Ela inclui o valor da venda na fatura do comprador</li>
+<li>Somente transações capturadas são pagas pela Cielo ao lojista</li>
+</ul>
+
+<aside class="notice"><strong>Atenção:</strong> A captura é um processo com prazo de execução. Verifique em sem cadastro cielo qual o limite habilitado para a sua afiliação. Após esse periodo, não é possivel realiza a Captura da transação</aside>
+
+<h2 id="captura-total">Captura total</h2>
+
+<p>Para captura uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment conforme o exemplo.</p>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/capture</span></aside>
+<pre><code class="highlight json"><span class="w">
+</span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/capture</span><span class="w">
+
+</span></code></pre>
+<pre><code class="highlight shell">curl
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja na API Cielo eCommerce.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Amount</code></td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ServiceTaxAmount</code></td>
+<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"Status"</span>: 2,
+    <span class="s2">"ReturnCode"</span>: <span class="s2">"6"</span>,
+    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"Links"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnCode</code></td>
+<td>Código de retorno da adquirente.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnMessage</code></td>
+<td>Mensagem de retorno da adquirente.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+</tbody></table>
+
+<h2 id="captura-parcial">Captura parcial</h2>
+
+<p>A <strong>captura parcial</strong> é o ato de capturar um valor menor que o valor autorizado.Esse modelo de captura pode ocorrer apenas 1 vez por transação. </p>
+
+<p><strong>Após a captura, não é possível realizar capturas adicionais no mesmo pedido.</strong></p>
+
+<p>Basta realizar um <code class="prettyprint">POST</code> enviando o valor a ser capturado.</p>
+
+<aside class="notice"><strong>Atenção:</strong> Captura parcial disponível apenas para transações de crédito</aside>
+
+<h3 id="requisição---captura-parcial">Requisição - Captura Parcial</h3>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{paymentId}/capture?amount={Valor}</span></aside>
+<pre><code class="highlight json"><span class="w">
+</span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">paymentId}/capture?amount=</span><span class="p">{</span><span class="err">Valor}</span><span class="w">
+
+</span></code></pre>
+<pre><code class="highlight shell">curl
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/capture?amount={Valor}"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja na API Cielo eCommerce.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Amount</code></td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ServiceTaxAmount</code></td>
+<td><a href="https://developercielo.github.io/Webservice-3.0/#anexos">Veja Anexo</a></td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ProviderReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ProviderReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3/void"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"Status"</span>: 2,
+    <span class="s2">"ReasonCode"</span>: 0,
+    <span class="s2">"ReasonMessage"</span>: <span class="s2">"Successful"</span>,
+    <span class="s2">"ProviderReturnCode"</span>: <span class="s2">"6"</span>,
+    <span class="s2">"ProviderReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"ReturnCode"</span>: <span class="s2">"6"</span>,
+    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"Links"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/8b1d43ee-a918-40d2-ba62-e5665e7ccbd3/void"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnCode</code></td>
+<td>Código de retorno da adquirente.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnMessage</code></td>
+<td>Mensagem de retorno da adquirente.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnCode</code></td>
+<td>Código de retorno do Provider.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnMessage</code></td>
+<td>Mensagem de retorno do Provider.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+</tbody></table>
+
+<aside class="notice"><strong>Captura de Taxa de embarque</strong> Para realizar a captura da *taxa de embarque*, basta adicionar o valor do ServiveTaxAmount a ser capturado</aside>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{paymentId}/capture?amount={Valor}&serviceTaxAmount=xxx</span></aside>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ProviderReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ProviderReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8/void"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"Status"</span>: 2,
+    <span class="s2">"ReasonCode"</span>: 0,
+    <span class="s2">"ReasonMessage"</span>: <span class="s2">"Successful"</span>,
+    <span class="s2">"ProviderReturnCode"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"ProviderReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"ReturnCode"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"Links"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8/void"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnCode</code></td>
+<td>Código de retorno da adquirente.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnMessage</code></td>
+<td>Mensagem de retorno da adquirente.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnCode</code></td>
+<td>Código de retorno do Provider.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnMessage</code></td>
+<td>Mensagem de retorno do Provider.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+</tbody></table>
+
+<h2 id="captura-via-backoffice">Captura Via Backoffice</h2>
+
+<p>É possivel realizar tanto a captura total quanto a Captura parcial via O Backoffice Cielo.</p>
+
+<p>Acesse nosso <a href="https://developercielo.github.io/Tutorial//Backoffice-3.0"><strong>Tutorial</strong></a>  para maiores informações</p>
+
+<h1 id="cancelando-uma-venda">Cancelando uma venda</h1>
+
+<p>O processo de cancelamento está disponivel para todos os meios de pagamento oferecidos na API Cielo Ecommerce. </p>
+
+<p>Cada meio de pagamento sofre impactos diferentes quando uma ordem de cancelamento (VOID) é executada.</p>
+
+<table><thead>
+<tr>
+<th>Meio de pagamento</th>
+<th>Descrição</th>
+<th>Prazo</th>
+<th>Participação Cielo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Cartão de crédito</td>
+<td>A Cielo devolve o valor via crédito bancario</td>
+<td>300 dias pós autorização</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Cartão de Débito</td>
+<td>Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista</td>
+<td>300 dias pós autorização</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>Boleto</td>
+<td>Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista</td>
+<td>Definido pelo lojista</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>Transferência Eletrônica</td>
+<td>Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista</td>
+<td>Definido pelo lojista</td>
+<td>Não</td>
+</tr>
+</tbody></table>
+
+<p>OBS: Cancelamentos parciais são disponiveis apenas para Cartão de Crédito.</p>
+
+<h2 id="cancelamento-total">Cancelamento total</h2>
+
+<p>Para cancelar uma venda que utiliza cartão de crédito, é necessário fazer um PUT para o recurso Payment. É possível realizar o cancelamento via PaymentID ou MerchantOrderId (numero do pedido).</p>
+
+<aside class="notice"><strong>Atenção:</strong> O cancelamento por MerchantOrderId afeta sempre a transação mais nova, ou seja, caso haja pedidos com o numero do pedido duplicado, somente o mais atual será cancelado. O pedido anterior não poderá ser cancelado por esse método</aside>
+
+<h3 id="requisição">Requisição</h3>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=xxx</span></aside>
+
+<p>ou</p>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/OrderId/{MerchantOrderId}/void?amount=xxx</span></aside>
+<pre><code class="highlight json"><span class="w">
+</span><span class="err">PUT</span><span class="w"> </span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/void</span><span class="w">
+
+
+</span></code></pre>
+<pre><code class="highlight shell">curl
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja na API Cielo eCommerce.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Amount</code></td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"Status"</span>: 10,
+    <span class="s2">"ReturnCode"</span>: <span class="s2">"9"</span>,
+    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"Links"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnCode</code></td>
+<td>Código de retorno da adquirente.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnMessage</code></td>
+<td>Mensagem de retorno da adquirente.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+</tbody></table>
+
+<h2 id="cancelamento-parcial">Cancelamento parcial</h2>
+
+<p>O <strong>cancelamento  parcial</strong> é o ato de cancelar um valor menor que o valor total autorizado/capturado. Esse modelo de cancelamento pode ocorrer inumeras vezes, até que o valor total da transação seja cancelado. </p>
+
+<p>Basta realizar um <code class="prettyprint">POST</code> enviando o valor a ser cancelado.</p>
+
+<aside class="notice"><strong>Atenção:</strong> Cancelamento parcial disponível apenas para transações de crédito *CAPTURADAS*</aside>
+
+<aside class="notice"><strong>Atenção:</strong> O retorno da API soma o total de cancelamentos Parciais, ou seja, se 3 cancelamentos de R$10,00 forem realizados, a API apresentará em seu retorno um total de R$30,00 cancelados</aside>
+
+<h3 id="requisição---cancelamento-parcial">Requisição - cancelamento parcial</h3>
+
+<aside class="request"><span class="method put">PUT</span> <span class="endpoint">/1/sales/{PaymentId}/void?amount=XXX </span></aside>
+<pre><code class="highlight json"><span class="w">
+</span><span class="err">PUT</span><span class="w"> </span><span class="err">https://apisandbox.cieloecommerce.cielo.com.br/</span><span class="mi">1</span><span class="err">/sales/</span><span class="p">{</span><span class="err">PaymentId}/void?amount=XXX</span><span class="w">
+
+
+</span></code></pre>
+<pre><code class="highlight shell">curl
+--request PUT <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void?amount=XXX"</span>
+--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--header <span class="s2">"MerchantKey: 0123456789012345678901234567890123456789"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--verbose
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">MerchantId</code></td>
+<td>Identificador da loja na API Cielo eCommerce.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MerchantKey</code></td>
+<td>Chave Publica para Autenticação Dupla na API Cielo eCommerce.</td>
+<td>Texto</td>
+<td>40</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RequestId</code></td>
+<td>Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT</td>
+<td>Guid</td>
+<td>36</td>
+<td>Não</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PaymentId</code></td>
+<td>Campo Identificador do Pedido.</td>
+<td>Guid</td>
+<td>36</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Amount</code></td>
+<td>Valor do Pedido (ser enviado em centavos).</td>
+<td>Número</td>
+<td>15</td>
+<td>Não</td>
+</tr>
+</tbody></table>
+
+<h3 id="resposta">Resposta</h3>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReasonCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReasonMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ProviderReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ProviderReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReturnMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"void"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8/void"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre><code class="highlight shell">--header <span class="s2">"Content-Type: application/json"</span>
+--header <span class="s2">"RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span>
+--data-binary
+<span class="o">{</span>
+    <span class="s2">"Status"</span>: 2,
+    <span class="s2">"ReasonCode"</span>: 0,
+    <span class="s2">"ReasonMessage"</span>: <span class="s2">"Successful"</span>,
+    <span class="s2">"ProviderReturnCode"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"ProviderReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"ReturnCode"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"ReturnMessage"</span>: <span class="s2">"Operation Successful"</span>,
+    <span class="s2">"Links"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"GET"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"self"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"Method"</span>: <span class="s2">"PUT"</span>,
+            <span class="s2">"Rel"</span>: <span class="s2">"void"</span>,
+            <span class="s2">"Href"</span>: <span class="s2">"https://apisandbox.cieloecommerce.cielo.com.br/1/sales/4d7be764-0e81-4446-b31e-7eb56bf2c9a8/void"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Propriedade</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Tamanho</th>
+<th>Formato</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">Status</code></td>
+<td>Status da Transação.</td>
+<td>Byte</td>
+<td>&mdash;</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnCode</code></td>
+<td>Código de retorno da adquirente.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReturnMessage</code></td>
+<td>Mensagem de retorno da adquirente.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnCode</code></td>
+<td>Código de retorno do Provider.</td>
+<td>Texto</td>
+<td>32</td>
+<td>Texto alfanumérico</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ProviderReturnMessage</code></td>
+<td>Mensagem de retorno do Provider.</td>
+<td>Texto</td>
+<td>512</td>
+<td>Texto alfanumérico</td>
+</tr>
+</tbody></table>
+
+<aside class="notice"><strong>Cancelamento de Taxa de embarque</strong> Para realizar o cancelamento da *taxa de embarque*, basta adicionar o valor do ServiveTaxAmount a ser cancelado</aside>
+<pre><code class="highlight plaintext">https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/void?amount={Valor}&amp;serviceTaxAmount=xxx
+</code></pre>
+
+<h2 id="cancelamento-via-backoffice">Cancelamento via Backoffice</h2>
+
+<p>É possivel realizar tanto o cancelamento total quanto o Cancelamento parcial via O Backoffice Cielo.</p>
+
+<p>Acesse nosso <a href="https://developercielo.github.io/Tutorial//Backoffice-3.0"><strong>Tutorial</strong></a>  para maiores informações</p>
+
 <h1 id="tokenização-de-cartões">Tokenização de cartões</h1>
 
 <h2 id="o-que-é-a-tokenização-de-cartões:">O que é a Tokenização de Cartões:</h2>
@@ -11272,64 +11095,94 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 <table><thead>
 <tr>
 <th>Código</th>
-<th>Status do Pagamento</th>
-<th>Meio de pagamento</th>
+<th>Status</th>
+<th style="text-align: center">Meio de pagamento</th>
 <th>Descrição</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>0</td>
 <td>NotFinished</td>
-<td>Todos</td>
-<td>Falha ao processar o pagamento</td>
+<td style="text-align: center">ALL</td>
+<td>Aguardando atualização de status</td>
 </tr>
 <tr>
 <td>1</td>
 <td>Authorized</td>
-<td>Todos</td>
-<td>Meio de pagamento apto a ser capturado ou pago(Boleto</td>
+<td style="text-align: center">ALL</td>
+<td>Pagamento apto a ser capturado ou definido como pago</td>
 </tr>
 <tr>
 <td>2</td>
 <td>PaymentConfirmed</td>
-<td>Todos</td>
+<td style="text-align: center">ALL</td>
 <td>Pagamento confirmado e finalizado</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Denied</td>
-<td>Cartão de Crédito e Débito / Transferência eletrônica</td>
-<td></td>
+<td style="text-align: center">CC + CD + TF</td>
+<td>Pagamento negado por Autorizador</td>
 </tr>
 <tr>
 <td>10</td>
 <td>Voided</td>
-<td>Todos</td>
+<td style="text-align: center">ALL</td>
 <td>Pagamento cancelado</td>
 </tr>
 <tr>
 <td>11</td>
 <td>Refunded</td>
-<td>Cartão de crédito e Débito</td>
-<td>Pagamento Cancelado/Estornado</td>
+<td style="text-align: center">CC + CD</td>
+<td>Pagamento cancelado após 23:59 do dia de autorização</td>
 </tr>
 <tr>
 <td>12</td>
 <td>Pending</td>
-<td>Cartão de Crédito e Débito / Transferência eletrônica</td>
-<td>Esperando retorno da instituição financeira</td>
+<td style="text-align: center">ALL</td>
+<td>Aguardando Status de instituição financeira</td>
 </tr>
 <tr>
 <td>13</td>
 <td>Aborted</td>
-<td>Todos</td>
+<td style="text-align: center">ALL</td>
 <td>Pagamento cancelado por falha no processamento</td>
 </tr>
 <tr>
 <td>20</td>
 <td>Scheduled</td>
-<td>Cartão de crédito</td>
+<td style="text-align: center">CC</td>
 <td>Recorrência agendada</td>
+</tr>
+</tbody></table>
+
+<p>-</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Meio de pagamento</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><strong>ALL</strong></td>
+<td>Todos</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>CC</strong></td>
+<td>Cartão de Crédito</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>CD</strong></td>
+<td>Cartão de Débito</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>TF</strong></td>
+<td>Transferencia Eletrônica</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>BOL</strong></td>
+<td>Boleto</td>
 </tr>
 </tbody></table>
 

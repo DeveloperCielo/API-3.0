@@ -1,3 +1,5 @@
+
+
 ---
 title: Integração API Cielo eCommerce
 
@@ -420,6 +422,8 @@ Caso não seja retornado o **HTTP Status Code 200 OK**,  ocorrerão mais **dois*
 | `PaymentId`          | Identificador que representa a transação                                                    | GUID   | 36      | Sim         |
 | `ChangeType`         | Especifica o tipo de notificação. Vide tabela abaixo                                        | Número | 1       | Sim         |
 
+
+
 | ChangeType | Descrição                                                              |
 |------------|------------------------------------------------------------------------|
 | 1          | Mudança de status do pagamento                                         |
@@ -427,22 +431,6 @@ Caso não seja retornado o **HTTP Status Code 200 OK**,  ocorrerão mais **dois*
 | 3          | Mudança de status do Antifraude                                        |
 | 4          | Mudança de status do pagamento recorrente (Ex. desativação automática) |
 | 5          | cancelamento negado                                                    |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -515,18 +503,18 @@ curl
 --header "MerchantKey: 0123456789012345678901234567890123456789"
 --header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 --data-binary
-{  
+{
    "MerchantOrderId":"2014111703",
-   "Customer":{  
+   "Customer":{
       "Name":"Comprador crédito simples"
    },
-   "Payment":{  
+   "Payment":{
      "Type":"CreditCard",
      "Amount":15700,
      "Installments":1,
-	 "SoftDescriptor":"123456789ABCD",
-     "CreditCard":{  
-         "CardNumber":"4551870000000183",
+     "SoftDescriptor":"123456789ABCD",
+	 "CreditCard":{
+         "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
          "ExpirationDate":"12/2030",
          "SecurityCode":"123",
@@ -537,23 +525,24 @@ curl
 --verbose
 ```
 
-| Propriedade                 | Tipo   | Tamanho | Obrigatório | Descrição                                                                                              |
-|-----------------------------|--------|---------|-------------|--------------------------------------------------------------------------------------------------------|
-| `MerchantId`                | Guid   | 36      | Sim         | Identificador da loja na Cielo.                                                                        |
-| `MerchantKey`               | Texto  | 40      | Sim         | Chave Publica para Autenticação Dupla na Cielo.                                                        |
-| `RequestId`                 | Guid   | 36      | Não         | Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT. |
-| `MerchantOrderId`           | Texto  | 50      | Sim         | Numero de identificação do Pedido.                                                                     |
-| `Customer.Name`             | Texto  | 255     | Não         | Nome do Comprador.                                                                                     |
-| `Customer.Status`           | Texto  | 255     | Não         | Status de cadastro do comprador na loja (NEW / EXISTING)                                               |
-| `Payment.Type`              | Texto  | 100     | Sim         | Tipo do Meio de Pagamento.                                                                             |
-| `Payment.Amount`            | Número | 15      | Sim         | Valor do Pedido (ser enviado em centavos).                                                             |
-| `Payment.Provider`          | Texto  | 15      | ---         | Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.                    |
-| `Payment.Installments`      | Número | 2       | Sim         | Número de Parcelas.                                                                                    |
-| `CreditCard.CardNumber`     | Texto  | 19      | Sim         | Número do Cartão do Comprador.                                                                         |
-| `CreditCard.Holder`         | Texto  | 25      | Não         | Nome do Comprador impresso no cartão.                                                                  |
-| `CreditCard.ExpirationDate` | Texto  | 7       | Sim         | Data de validade impresso no cartão.                                                                   |
-| `CreditCard.SecurityCode`   | Texto  | 4       | Não         | Código de segurança impresso no verso do cartão - Ver Anexo.                                           |
-| `CreditCard.Brand`          | Texto  | 10      | Sim         | Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).                      |
+| Propriedade                 | Tipo   | Tamanho | Obrigatório | Descrição                                                                                                               |
+|-----------------------------|--------|---------|-------------|-------------------------------------------------------------------------------------------------------------------------|
+| `MerchantId`                | Guid   | 36      | Sim         | Identificador da loja na Cielo.                                                                                         |
+| `MerchantKey`               | Texto  | 40      | Sim         | Chave Publica para Autenticação Dupla na Cielo.                                                                         |
+| `RequestId`                 | Guid   | 36      | Não         | Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT.                  |
+| `MerchantOrderId`           | Texto  | 50      | Sim         | Numero de identificação do Pedido.                                                                                      |
+| `Customer.Name`             | Texto  | 255     | Não         | Nome do Comprador.                                                                                                      |
+| `Payment.Type`              | Texto  | 100     | Sim         | Tipo do Meio de Pagamento.                                                                                              |
+| `Payment.Amount`            | Número | 15      | Sim         | Valor do Pedido (ser enviado em centavos).                                                                              |
+| `Payment.Installments`      | Número | 2       | Sim         | Número de Parcelas.                                                                                                     |
+| `Payment.SoftDescriptor`    | Texto  | 13      | Não         | Texto impresso na fatura bancaria comprador - Exclusivo para VISA/MASTER - não permite caracteres especiais - Ver Anexo |
+| `CreditCard.CardNumber`     | Texto  | 19      | Sim         | Número do Cartão do Comprador.                                                                                          |
+| `CreditCard.Holder`         | Texto  | 25      | Não         | Nome do Comprador impresso no cartão.                                                                                   |
+| `CreditCard.ExpirationDate` | Texto  | 7       | Sim         | Data de validade impresso no cartão.                                                                                    |
+| `CreditCard.SecurityCode`   | Texto  | 4       | Não         | Código de segurança impresso no verso do cartão - Ver Anexo.                                                            |
+| `CreditCard.Brand`          | Texto  | 10      | Sim         | Bandeira do cartão (Visa / Master / Amex / Elo / Aura / JCB / Diners / Discover).                                       |
+
+
 
 ### Resposta
 
@@ -669,7 +658,7 @@ curl
 | `ProofOfSale`       | Número da autorização, identico ao NSU.                                                                                        | Texto | 20      | Texto alfanumérico                   |
 | `Tid`               | Id da transação na adquirente.                                                                                                 | Texto | 40      | Texto alfanumérico                   |
 | `AuthorizationCode` | Código de autorização.                                                                                                         | Texto | 300     | Texto alfanumérico                   |
-| `SoftDescriptor`    | Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - nao permite caracteres especiais | Texto | 13      | Texto alfanumérico                   |
+| `SoftDescriptor`    | Texto impresso na fatura bancaria comprador - Exclusivo para VISA/MASTER - não permite caracteres especiais - Ver Anexo        | Texto | 13      | Texto alfanumérico                   |
 | `PaymentId`         | Campo Identificador do Pedido.                                                                                                 | Guid  | 36      | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
 | `ECI`               | Eletronic Commerce Indicator. Representa o quão segura é uma transação.                                                        | Texto | 2       | Exemplos: 7                          |
 | `Status`            | Status da Transação.                                                                                                           | Byte  | ---     | 2                                    |
@@ -830,6 +819,7 @@ curl
 | `Payment.Country`                     | Texto    | 3       | Não                 | Pais na qual o pagamento será feito.                                                                   |
 | `Payment.Provider`                    | Texto    | 15      | ---                 | Define comportamento do meio de pagamento (ver Anexo)/NÃO OBRIGATÓRIO PARA CRÉDITO.                    |
 | `Payment.ServiceTaxAmount`            | Número   | 15      | Não                 | [Veja Anexo](https://developercielo.github.io/Webservice-3.0/#anexos)                                  |
+| `Payment.SoftDescriptor`              | Texto    | 13      | Não                 | Texto impresso na fatura bancaria comprador - Exclusivo para VISA/MASTER - não permite caracteres especiais - Ver Anexo        |
 | `Payment.Installments`                | Número   | 2       | Sim                 | Número de Parcelas.                                                                                    |
 | `Payment.Interest`                    | Texto    | 10      | Não                 | Tipo de parcelamento - Loja (ByMerchant) ou Cartão (ByIssuer).                                         |
 | `Payment.Capture`                     | Booleano | ---     | Não (Default false) | Booleano que identifica que a autorização deve ser com captura automática.                             |
@@ -6612,73 +6602,89 @@ Alguns tipos de transação exigem que sua Afiliação esteja configurada corret
 
 A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro MerchantDefinedData e respectivos tipo de informação que deve ser preenchida.
 
+
+
 | ID | Dado | Descrição | Tipo |
 |:--:|------|-----------|------|
 | 1 | Cliente efetuou Log In | Se o cliente final logou no site para comprar, enviar: o login dele. Se fez compra como visitante, enviar: "Guest". Se a venda foi feita direto por um terceiro, um agente por exemplo, não enviar o campo | String |
 | 2 | Cliente do estabelecimento há: #dias | Quantidade de dias | Número |
 | 3 | Compra Efetuada em (parcelas) | Número de Parcelas | Número |
-| 4 | Canal de Venda | Valores: "Call Center" = portador comprando pelo telefone "Web" = portador comprando pela web "Portal" = um agente fazendo a compra para o cliente "Quiosque" = Compras em quisques "Movel" = Compras feitas em smartphone ou tablets | String |
+| 4 | Canal de Venda | Valores: "Call Center" = compra pelo telefone <BR> "Web" = compra pela web <BR> "Portal" = um agente fazendo a compra para o cliente <BR> "Quiosque" = Compras em quisques <BR> "Movel" = Compras feitas em smartphone ou tablets | String |
 | 5 | Código do Cupom/Desconto | Se o comprador for usar cupom, enviar o código do cupom | String |
-| 6 | Última compra efetuada | MM/DD/AAAA | Data |
+| 6 | Última compra efetuada | MM DD AAAA | Data |
 | 7 | Afiliação | Nome ou código de revendedor ou intermediador | String |
-| 8 | Tentativas de Compra | Nr de vezes que tentou fazer o pagamento do pedido. Cartões de creditos diferentes tentados e/ou outros meios de pagamentos tentados. Para o mesmo pedido. | Número |
-| 9 | Cliente vai retirar o produto em uma Loja | Valores: "SIM", "NAO" No caso de agência, se vai retirar algum voucher e/ou ticket fisicamente | String |
-| 10 | Pagamento efetuado por 3º | Valores: "SIM", "NAO" Se o pagador está ou não presente na viagem/pacote | String |
+| 8 | Tentativas de Compra | Nr de vezes que tentou fazer o pagamento do pedido. Cartões de creditos diferentes tentados e-ou outros meios de pagamentos tentados. Para o mesmo pedido. | Número |
+| 9 | Cliente vai retirar o produto em uma Loja | Valores: "SIM", "NAO" No caso de agência, se vai retirar algum voucher e-ou ticket fisicamente | String |
+| 10 | Pagamento efetuado por 3º | Valores: "SIM", "NAO" Se o pagador está ou não presente na viagem ou pacote | String |
 | 11 | Categoria do Hotel | Valores: 1, 2, 3, 4, 5 Quantas estrelas tem o hotel | Número |
-| 12 | Hotel data do Check in | MM/DD/AAAA | Data |
-| 13 | Hotel data do Check out | MM/DD/AAAA | Data |
+| 12 | Hotel data do Check in | MM DD AAAA | Data |
+| 13 | Hotel data do Check out | MM DD AAAA | Data |
 | 14 | Viagem/Pacote | Valores: "Nacional", "Internacional", "Nacional/Internacional" | String |
 | 15 | Nome da Cia. Aérea / Locadora de Carro / Hotel | Enviar o nome de cada uma das empresas, separado por "/" | String |
 | 16 | PNR | Enviar o numero do PNR da reserva. Quando houver uma alteração da reserva para este PNR com antecipação da data de voo, é importante fazer uma nova análise de fraude enviando este PNR novamente. | String |
 | 17 | Houve antecipação de reserva? | Valores: "SIM", "NAO" Indicar se houve remarcação do voo para uma data anterior à original. É fundamental o envio também do campo PNR | String |
-| 18 | (reservado) |
-| 19 | (reservado) |
-| 20 | (reservado) |
-| 21 | (reservado) |
-| 22 | (reservado) |
-| 23 | (reservado) |
-| 24 | (reservado) |
-| 25 | (reservado) |
+| 18 | (reservado) |||
+| 19 | (reservado) |||
+| 20 | (reservado) |||
+| 21 | (reservado) |||
+| 22 | (reservado) |||
+| 23 | (reservado) |||
+| 24 | (reservado) |||
+| 25 | (reservado) |||
 | 26 | Bin do Cartão de Crédito | Enviar o bin - 6 primeiros digitos do cartão | String |
-| 27 | (reservado) |
-| 28 | (reservado) |
-| 29 | (reservado) |
-| 30 | (reservado) |
+| 27 | (reservado) |||
+| 28 | (reservado) |||
+| 29 | (reservado) |||
+| 30 | (reservado) |||
 | 31 | Nr de trocas de Cartões de crédito | Nr de vezes que o comprador trocou o cartão de crédito para fazer o pagamento do pedido | Número |
 | 32 | Email colado ou digitado | Valores: "Digitado", "Colado" Informar se o endereço de e-mail foi digitado ou colado no campo | String |
 | 33 | Nr Cartao colado ou digitado | Valores: "Digitado", "Colado" Informar se o nr do cartão de crédito foi digitado ou colado no campo | String |
 | 34 | E-mail confirmado | Se existe rotina de confirmação de e-mail para ativação de conta. Valores: "SIM". Em caso negativo não enviar o MDD | String |
-| 35 | Tipo de cliente (local/turista) | Valores: "Local", "Turista". Não enviar o MDD no caso de não ter essa informação | String |
+| 35 | Tipo de cliente (local ou turista) | Valores: "Local", "Turista". Não enviar o MDD no caso de não ter essa informação | String |
 | 36 | Utiliza cartao presente na compra ($) | Informar se foi utilizado Cartao Presente (Gift Card) na compra. Valores: "SIM". Em caso negativo não enviar o MDD | String |
 | 37 | Metodo de Envio | Valores: "Sedex", "Sedex 10", "1 Dia", "2 Dias", "Motoboy", "Mesmo Dia", etc. Se não tiver envio, não enviar o MDD | String |
 | 38 | Numero da Bina | Informar o nr de telefone indentificado, com DDD | String |
-| 39 | (reservado) |
-| 40 | (reservado) |
+| 39 | (reservado) |||
+| 40 | (reservado) |||
 | 41 a 95 | Campo Livre | Os campos são reservados para envio de dados de lojista, conforme a regra de negócio. | String |
-| 96 | (reservado) |
-| 97 | (reservado) |
-| 98 | (reservado) |
-| 99 | (reservado) |
+| 96 | (reservado) |||
+| 97 | (reservado) |||
+| 98 | (reservado) |||
+| 99 | (reservado) |||
 | 100 | Documento | Documento (CPG, RG, etc.) | String |
+
+
+
+
+
+
 
 ## Valores da Análise de Fraude
 
 ### FraudAnalysis.Items.GiftCategory
 
-|Campo|Descrição|
-|-----|---------|
-|Yes|Em caso de divergência entre endereços de cobrança e entrega, marca com risco pequeno.|
-|No|Em caso de divergência entre endereços de cobrança e entrega, marca com risco alto. |
-|Off|Ignora a análise de risco para endereços divergentes.|
+| Campo | Descrição                                                                              |
+|-------|----------------------------------------------------------------------------------------|
+| Yes   | Em caso de divergência entre endereços de cobrança e entrega, marca com risco pequeno. |
+| No    | Em caso de divergência entre endereços de cobrança e entrega, marca com risco alto.    |
+| Off   | Ignora a análise de risco para endereços divergentes.                                  |
+
+
+
+
 
 ### FraudAnalysis.Items.HostHedge
 
-|Campo|Descrição|
-|-----|---------|
-|Low|Baixa importância do e-mail e endereço IP na análise de risco.|
-|Normal|Média importância do e-mail e endereço IP na análise de risco.|
-|High|Alta importância do e-mail e endereço IP na análise de risco.|
-|Off|E-mail e endereço IP não afetam a análise de risco.|
+| Campo  | Descrição                                                      |
+|--------|----------------------------------------------------------------|
+| Low    | Baixa importância do e-mail e endereço IP na análise de risco. |
+| Normal | Média importância do e-mail e endereço IP na análise de risco. |
+| High   | Alta importância do e-mail e endereço IP na análise de risco.  |
+| Off    | E-mail e endereço IP não afetam a análise de risco.            |
+
+
+
+
 
 ### FraudAnalysis.Items.NonSensicalHedge
 
@@ -6689,6 +6695,9 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 | High   | Alta importância da verificação feita sobre o pedido do comprador, na análise de risco.  |
 | Off    | Verificação do pedido do comprador não afeta a análise de risco.                         |
 
+
+
+
 ### FraudAnalysis.Items.ObscenitiesHedge
 
 | Campo  | Descrição                                                                                        |
@@ -6697,6 +6706,9 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 | Normal | Média importância da verificação sobre obscenidades do pedido do comprador, na análise de risco. |
 | High   | Alta importância da verificação sobre obscenidades do pedido do comprador, na análise de risco.  |
 | Off    | Verificação de obscenidade no pedido do comprador não afeta a análise de risco.                  |
+
+
+
 
 ### FraudAnalysis.Items.PhoneHedge
 
@@ -6707,6 +6719,8 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 | High   | Alta importância nos testes realizados com números de telefone.  |
 | Off    | Testes de números de telefone não afetam a análise de risco.     |
 
+
+
 ### FraudAnalysis.Items.Risk
 
 | Campo  | Descrição                                                     |
@@ -6714,6 +6728,9 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 | Low    | O produto tem um histórico de poucos chargebacks.             |
 | Normal | O produto tem um histórico de chargebacks considerado normal. |
 | High   | O produto tem um histórico de chargebacks acima da média.     |
+
+
+
 
 ### FraudAnalysis.Items.TimeHedge
 
@@ -6724,12 +6741,17 @@ A tabela abaixo lista todos os códigos possíveis de ser enviados no parâmetro
 | High   | Alta importância no horário do dia em que foi feita a compra, para a análise de risco.  |
 | Off    | O horário da compra não afeta a análise de risco.                                       |
 
+
+
+
 ### FraudAnalysis.Items.Type
 
 | Campo | Descrição             |
 |-------|-----------------------|
 | CN    | Comprador particular  |
 | CP    | Comprador de negócios |
+
+
 
 ### FraudAnalysis.Items.VelocityHedge
 
@@ -6780,5 +6802,15 @@ Existem regras específicas para a requisição de captura com taxa de embarque,
 
 
 
+## Soft Descriptor
+
+Permite que o lojista envie um texto complementar que será impresso na fatura do comprador junto com a identificação do nome da loja que consta no cadastro Cielo.
+
+**Regras** 
+* Tamanho máximo do campo: 13 caracteres.
+* Disponível apenas para as bandeiras Visa e MasterCard. 
+* Não pode conter caracteres especiais.
+
+Para conhecer e/ou alterar o nome da loja que esta cadastrado entre em contato com a central de relacionamento Cielo.
 
 

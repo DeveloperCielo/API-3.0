@@ -331,14 +331,14 @@ Para melhor utilização do Meio de Pagamento Simulado, estamos disponibilizando
 
 | Status da Transação   | Final do Cartão                            | Código de Retorno | Mensagem de Retorno               |
 |-----------------------|--------------------------------------------|:-----------------:|-----------------------------------|
-| Autorizado            | 0000.0000.0000.0001<br>0000.0000.0000.0004 |         4         | Operação realizada com sucesso    |
-| Não Autorizado        | 0000.0000.0000.0002                        |         2         | Não Autorizada                    |
-| Autorização Aleatória | 0000.0000.0000.0009                        |       4 / 99      | Operation Successful / Time Out   |
+| Autorizado            | 0000.0000.0000.0001<br>0000.0000.0000.0004 |         4/6       | Operação realizada com sucesso    |
+| Não Autorizado        | 0000.0000.0000.0002                        |         05        | Não Autorizada                    |
+| Não Autorizado        | 0000.0000.0000.0003                        |         57        | Cartão Expirado                   |
+| Não Autorizado        | 0000.0000.0000.0005                        |         78        | Cartão Bloqueado                  |
+| Não Autorizado        | 0000.0000.0000.0006                        |         99        | Time Out                          |
 | Não Autorizado        | 0000.0000.0000.0007                        |         77        | Cartão Cancelado                  |
 | Não Autorizado        | 0000.0000.0000.0008                        |         70        | Problemas com o Cartão de Crédito |
-| Não Autorizado        | 0000.0000.0000.0005                        |         78        | Cartão Bloqueado                  |
-| Não Autorizado        | 0000.0000.0000.0003                        |         57        | Cartão Expirado                   |
-| Não Autorizado        | 0000.0000.0000.0006                        |         99        | Time Out                          |
+| Autorização Aleatória | 0000.0000.0000.0009                        |         99        | Operation Successful / Time Out   |
 
 Exemplo de um Cartão de teste - 4024.0071.5376.3191
 
@@ -395,7 +395,7 @@ Os eventos passiveis de notificação são:
 | Transferência eletrônica | Confirmadas         |
 
 
-<aside class="notice"><strong>Cartão de débito:</strong> Não notificamos transações de Cartão de débito. Sugerimos que seja criada uma URL de RETORNO, onde o comprador será enviado se a transação for finalizada no ambiente do banco. Quando essa URL for acionada, nossa sugestão é quye uym `GET` seja executado, buscando informações do pedido na API Cielo</aside>
+<aside class="notice"><strong>Cartão de débito:</strong> Não notificamos transações de Cartão de débito. Sugerimos que seja criada uma URL de RETORNO, onde o comprador será enviado se a transação for finalizada no ambiente do banco. Quando essa URL for acionada, nossa sugestão é que um `GET` seja executado, buscando informações do pedido na API Cielo</aside>
 
 
 Uma `URL Status Pagamento` deve ser cadastrada pelo Suporte Cielo, para que o POST de notificação seja executado. 

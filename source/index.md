@@ -6193,16 +6193,6 @@ Códigos retornados em caso de erro, identificando o motivo do erro e suas respe
 
 |Código Resposta|Definição|Significado|Ação|Permite Retentativa|
 |---|---|---|---|---|
-|0|Criada|Transação criada|N/A|Não|
-|1|Em andamento|Processamento em andamento|N/A|Não|
-|2|Autenticada|Confirmação de autenticação|N/A|Não|
-|3|Não Autenticada|Transação não autenticavel|N/A|Não|
-|4|Autorizada|Confirmação de autorização|Captura ou Cancelamento|Não|
-|5|Não Autorizada|Confirmação de não autorização|N/A|Não|
-|6|Capturada|Confirmação de captura|N/A ou cancelamento|Não|
-|9|Cancelada|Confirmação de cancelamento|N/A|Não|
-|10|Em autenticação|Processamento de autenticação|N/A|Não|
-|12|Em cancelamento|Processamento para cancelamento|N/A|Não|
 |00|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Não|
 |000|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Transação autorizada com sucesso.|Não|
 |01|Transação não autorizada. Transação referida.|Transação não autorizada. Referida (suspeita de fraude) pelo banco emissor.|Transação não autorizada. Entre em contato com seu banco emissor.|Não|

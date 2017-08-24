@@ -5594,27 +5594,26 @@ curl
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
 
 ```json
-
 {  
    "MerchantOrderId":"2014111703",
    "Customer":{  
-      "Name":"Comprador Visa Checkout"
+      "Name":"Comprador Teste"
    },
    "Payment":{  
       "Type":"CreditCard",
       "Amount":15700,
       "Installments":1,
       "SoftDescriptor":"123456789ABCD",
+      "Wallet":{  
+    	 "Type":"VisaCheckout"
+	},
       "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
          "ExpirationDate":"12/2030",
          "Brand":"Visa"
-      }
-   },
-   "Wallet":{  
-      "Type":"VisaCheckout"
-   }
+    },
+  },
 }
 ```
 
@@ -5629,23 +5628,23 @@ curl
 {  
    "MerchantOrderId":"2014111703",
    "Customer":{  
-      "Name":"Comprador Visa Checkout"
+      "Name":"Comprador Teste"
    },
    "Payment":{  
       "Type":"CreditCard",
       "Amount":15700,
       "Installments":1,
       "SoftDescriptor":"123456789ABCD",
+      "Wallet":{  
+    	 "Type":"VisaCheckout"
+	},
       "CreditCard":{  
          "CardNumber":"1234123412341231",
          "Holder":"Teste Holder",
          "ExpirationDate":"12/2030",
          "Brand":"Visa"
-      }
-   },
-   "Wallet":{  
-      "Type":"VisaCheckout"
-   }
+    },
+  },
 }
 --verbose
 ```

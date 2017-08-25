@@ -2239,9 +2239,351 @@ curl
 |`Identification`|Documento de identificação do Cedente.|Texto|14|CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -)|
 |`Status`|Status da Transação.|Byte|---|1|
 
+
+
 # Pagamentos Recorrentes
 
-## Autorizando a primeira recorrência programada
+Pagamentos recorrentes são transações que devem se repetir após um determinado periodo de tempo.
+
+São pagamentos normalmente encontrados em **assinaturas**, onde o comprador deseja ser cobrado automaticamente, mas não quer informar novamente os dados do cartão de crédito.
+
+
+## Tipos de recorrências
+
+A API Cielo Ecommerce funciona com dois tipos de Recorrencia que possuem comportamentos diferentes.
+
+* **Recorrência Própria** - Quando a inteligência da repetição e dados do cartão da recorrência ficam sobre responsabilidade do lojista
+* **Recorrência Programada** - Quando a inteligência da repetição e dados do cartão da recorrência ficam sobre responsabilidade da **Cielo**
+
+
+### Recorrência Própria
+
+Nesse modelo, o lojista é responsavel por criar a inteligência necessaria para:
+
+|Inteligência |Descrição |
+|-------------|----------|
+|**Salvar os dados da transação**| A loja precisará armazenar a transação e dados do pagamento|
+|**Criar repetição transacional**| A loja deverá enviar uma nova transação sempre que necessitar de uma Autorização |
+|**Comportamento para transação negada**|Caso uma das transações seja negada, caberá a loja a decisão de "retentar" uma nova autorização|
+
+Em todas as instancias, a recorrencia programada é uma transação padrão para a Cielo, sendo sua unica diferença a necessidade de enviar um a parametro adicional que a define como **Recorrência Própria**
+
+**Paramêtro:** `Payment.Recurrent`= `True`
+
+
+### Recorrência Programada
+
+Nesse modelo, a Cielo é responsavel pela inteligência necessaria para executar uma recorrência de maneira automatica.
+
+A **Recorrência Programada** permite que o lojista crie uma transação base, que ao ser enviada para a API Cielo Ecommerce, será salva e executada seguindo as regras definidas pelo lojista. 
+
+Nesse modelo, a API realiza e permite:
+
+|Vantagens |Descrição |
+|----------|----------|
+|**Salva dados transacionais**| Salva dados da transação, criando assim um modelo de como serão as proximas Recorrências|
+|**Automatiza a recorrência**| Sem atuação da loja, a API cria as transações futuras de acordo com as definições do lojista |
+|**Permite atualização de dados**|Caso necessario, a API permite modificações das informações da transação ou do ciclo de recorrência|
+
+A Recorrencia Programada é formada por uma estrutura transacional simples. O Lojista deverá informa na transação os seguintes dados:
+
+```
+"RecurrentPayment":
+{
+       "AuthorizeNow":"False",
+       "StartDate":"2019-06-01"
+       "EndDate":"2019-12-01",
+       "Interval":"SemiAnnual"
+}
+```
+Onde podemos definir os dados como:
+
+|Paramêtros |Descrição |
+|-----------|----------|
+|`AuthorizeNow`|Define que qual o momento que uma recorrencia será criada. Se for enviado como `True`, ela é criada no momento da autorização, se `False`, a recorrencia ficará suspensaaté a data escolhida para ser iniciada.|
+|`StartDate`|Define a data que transação da Recorrência Programada será autorizada|
+|`EndDate`|Define a data que a Recorrência Programada será encerrada. Se não for enviada, a Recorrência será executada até ser cancelada pelo lojista|
+|`Interval`|Intervalo da recorrência.<br /><ul><li>Monthly - Mensal </li><li>Bimonthly - Bimestral </li><li>Quarterly - Trimestral </li><li>SemiAnnual - Semestral </li><li>Annual - Anual </li></ul>|
+
+Quando uma transação é enviada a API Cielo Ecommerce com o nó de Recorrência Programada, o processo de recorrencia passa a ser efetivo quando a transação é considerada **AUTORIZADA**.
+
+Desse ponto em diante, ela passará a ocorre dentro do intervalo definido pelo lojista.
+
+Caracteristicas importantes da **Recorrência Programada**:
+
+|Informação |Descrição |
+|:---------:|----------|
+|**Criação**|A primeira transação é chamada de **"Transação de agendamento"**, todas as transações posteriores serão cópias dessa primeira transação. Ela não precisa ser capturada para que a recorrencia seja criada, basta ser **AUTORIZADA**|
+|**Captura**|Transações de Recorrência Programada não precisam ser capturadas. Após a primeira transação, todas as transações de recorrencia são capturadas automaticamente pela API|
+|**Identificação**|Transações de Recorrência Programada geram dois tipos de identificação:<br><br>**PAYMENTID**: Identifica 1 transação. É o mesmo identificador das outras transações na API    <br><br>**RECURRENTPAYMENTID**: Identifica Pedido de recorrencia. Um RecurrentPaymentID possui inumeros PaymentID vinculados a ela. Essa é a variavel usada para Cancelar uma Recorrencia Programada |
+|**Consultando**|Para consultar, basta usar um dos dois tipos de identificação:<br><br>**PAYMENTID**: Utilizada para consultar UMA TRANSAÇÃO DENTRO DA RECORRÊNCIA    <br><br>**RECURRENTPAYMENTID**: Utilizado para consultar A RECORRÊNCIA. |
+|**Cancelamento**|Uma Recorrencia Programada pode ser cancelada de duas maneiras: <br><br>**Lojista**: Solicita o cancelamento da recorrencia. Não cancela transações ja finalizadas antes da ordem de cancelamento da recorrência.  <br><br>**Por cartão invalido**: Caso a API identifique que um cartão salvo está invalido (EX: Expirado) a recorrência será cancelada e não se repetirá, até que o lojista atualize o meio de pagamento. <br><br> **OBS:** Cancelamento de transações dentro da recorrência não encerra o agendamento de transações futuras. Somente o Cancelamento usando o **RecurrentPaymentID** encerra agendamentos futuros.
+
+
+
+**Estrutura de um RecurrentPaymentID**
+
+
+![](./images/RECpaymentID.PNG)
+
+
+**Fluxo de uma Recorrência Programada**
+
+
+![](./images/FluxosRECPROG.PNG)
+
+
+
+## Criando uma RECORRÊNCIA PRÓPRIA
+
+Para criar uma venda recorrente cuja o processo de recorrência e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo.
+
+O paramêtro `Payment.Recurrent`deve ser `true`, caso contrario, a transação será negada.
+
+### Requisição
+
+<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
+
+```json
+{  
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador rec propria"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
+	 "Recurrent": true,
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"12/2030",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+```
+
+```shell
+curl
+--request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
+--header "Content-Type: application/json"
+--header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--header "MerchantKey: 0123456789012345678901234567890123456789"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+    {
+   "MerchantOrderId":"2014113245231706",
+   "Customer":{  
+      "Name":"Comprador rec propria"
+   },
+   "Payment":{  
+     "Type":"CreditCard",
+     "Amount":1500,
+     "Installments":1,
+     "SoftDescriptor":"123456789ABCD",
+     "Recurrent": true,
+     "CreditCard":{  
+         "CardNumber":"1234123412341231",
+         "Holder":"Teste Holder",
+         "ExpirationDate":"12/2030",
+         "SecurityCode":"262",
+         "SaveCard":"false",
+         "Brand":"Visa"
+     }
+   }
+}
+--verbose
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|---|---|---|---|---|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce.|Guid|6|Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto|40|Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT|Guid|36|Não|
+|`MerchantOrderId`|Numero de identificação do Pedido.|Texto|50|Sim|
+|`Customer.Name`|Nome do Comprador.|Texto|255|Não|
+|`Payment.Type`|Tipo do Meio de Pagamento.|Texto|100|Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número|15|Sim|
+|`Payment.Installments`|Número de Parcelas.|Número|2|Sim|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
+|`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean|5|Não|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto|19|Sim|
+|`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto|25|Não|
+|`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto|7|Sim|
+|`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto|4|Não|
+|`CreditCard.Brand`|Bandeira do cartão.|Texto|10|Sim|
+
+### Resposta
+
+```json
+{
+    "MerchantOrderId": "2014113245231706",
+    "Customer": {
+        "Name": "Comprador rec propria"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "Recurrent": true,
+        "CreditCard": {
+            "CardNumber": "123412******1231",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2030",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "3827556",
+        "Tid": "0504043827555",
+        "AuthorizationCode": "149867",
+        "SoftDescriptor":"123456789ABCD",
+        "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
+        "Type": "CreditCard",
+        "Amount": 1500,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Simulado",
+        "ExtraDataCollection": [],
+        "Status": 1,
+        "ReturnCode": "4",
+        "ReturnMessage": "Operation Successful",
+        "Link": {
+                "Method": "GET",
+                "Rel": "recurrentPayment",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+            },
+            "AuthorizeNow": true
+        },
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+```shell
+--header "Content-Type: application/json"
+--header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+--data-binary
+{
+    "MerchantOrderId": "2014113245231706",
+    "Customer": {
+        "Name": "Comprador rec propria"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "Recurrent": true,
+        "CreditCard": {
+            "CardNumber": "123412******1231",
+            "Holder": "Teste Holder",
+            "ExpirationDate": "12/2030",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "3827556",
+        "Tid": "0504043827555",
+        "AuthorizationCode": "149867",
+        "SoftDescriptor":"123456789ABCD",
+        "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
+        "Type": "CreditCard",
+        "Amount": 1500,
+        "Currency": "BRL",
+        "Country": "BRA",
+        "ExtraDataCollection": [],
+        "Status": 1,
+        "ReturnCode": "4",
+        "ReturnMessage": "Operation Successful",
+        "Link": {
+                "Method": "GET",
+                "Rel": "recurrentPayment",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
+            },
+            "AuthorizeNow": true
+        },
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
+            }
+        ]
+    }
+}
+```
+
+|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
+|---|---|---|---|---|
+|`MerchantId`|Identificador da loja na API Cielo eCommerce.|Guid|6|Sim|
+|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto|40|Sim|
+|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT|Guid|36|Não|
+|`MerchantOrderId`|Numero de identificação do Pedido.|Texto|50|Sim|
+|`Customer.Name`|Nome do Comprador.|Texto|255|Não|
+|`Payment.Type`|Tipo do Meio de Pagamento.|Texto|100|Sim|
+|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número|15|Sim|
+|`Payment.Installments`|Número de Parcelas.|Número|2|Sim|
+|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
+|`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean|5|Não|
+|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto|19|Sim|
+|`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto|25|Não|
+|`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto|7|Sim|
+|`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto|4|Não|
+|`CreditCard.Brand`|Bandeira do cartão.|Texto|10|Sim|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Criando uma RECORRÊNCIA PROGRAMADA
 
 Para criar uma venda recorrente cuja a primeira recorrência é autorizada com a forma de pagamento cartão de crédito, basta fazer um POST conforme o exemplo.
 
@@ -2483,7 +2825,7 @@ curl
 |`Interval`|Intervalo entre as recorrência.|Texto|10|<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul>|
 |`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não.|Booleano|---|true ou false|
 
-## Agendamento de uma recorrência programada de crédito
+## Agendando uma Recorrência Programada
 
 Para criar uma venda recorrente cuja a primeira recorrência não será autorizada na mesma data com a forma de pagamento cartão de crédito, basta fazer um POST conforme o exemplo.
 
@@ -2584,6 +2926,8 @@ curl
 |`Customer.DeliveryAddress.State`|Estado do endereço do Comprador.|Texto|2|Não|
 |`Customer.DeliveryAddress.Country`|Pais do endereço do Comprador.|Texto|35|Não|
 |`Customer.DeliveryAddress.District`|Bairro do Comprador.|Texto|50|Não|
+
+
 ### Resposta
 
 ```json
@@ -2687,235 +3031,7 @@ curl
 |`Interval`|Intervalo entre as recorrência.|Texto|10|<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul>|
 |`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não.|Booleano|---|true ou false|
 
-## Autorizando uma recorrência própria / não programada
 
-Para criar uma venda recorrente cuja o processo de recorrencia e intervalo serão executados pela propria loja, basta fazer um POST conforme o exemplo.
-
-<aside class="notice"><strong>Atenção:</strong> Nessa modalidade de recorrencia, cabe ao lojista a inteligencia de realizar transações no mesmo formato de acordo com intervalo que desejar. A API não realizará transações automaticamente.</aside>
-
-### Requisição
-
-<aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
-
-```json
-{  
-   "MerchantOrderId":"2014113245231706",
-   "Customer":{  
-      "Name":"Comprador rec propria"
-   },
-   "Payment":{  
-     "Type":"CreditCard",
-     "Amount":1500,
-     "Installments":1,
-     "SoftDescriptor":"123456789ABCD",
-	 "Recurrent": true,
-     "CreditCard":{  
-         "CardNumber":"1234123412341231",
-         "Holder":"Teste Holder",
-         "ExpirationDate":"12/2030",
-         "SecurityCode":"262",
-         "SaveCard":"false",
-         "Brand":"Visa"
-     }
-   }
-}
-```
-
-```shell
-curl
---request POST "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/"
---header "Content-Type: application/json"
---header "MerchantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---header "MerchantKey: 0123456789012345678901234567890123456789"
---header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---data-binary
-    {
-   "MerchantOrderId":"2014113245231706",
-   "Customer":{  
-      "Name":"Comprador rec propria"
-   },
-   "Payment":{  
-     "Type":"CreditCard",
-     "Amount":1500,
-     "Installments":1,
-     "SoftDescriptor":"123456789ABCD",
-     "Recurrent": true,
-     "CreditCard":{  
-         "CardNumber":"1234123412341231",
-         "Holder":"Teste Holder",
-         "ExpirationDate":"12/2030",
-         "SecurityCode":"262",
-         "SaveCard":"false",
-         "Brand":"Visa"
-     }
-   }
-}
---verbose
-```
-
-|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
-|---|---|---|---|---|
-|`MerchantId`|Identificador da loja na API Cielo eCommerce.|Guid|6|Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto|40|Sim|
-|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT|Guid|36|Não|
-|`MerchantOrderId`|Numero de identificação do Pedido.|Texto|50|Sim|
-|`Customer.Name`|Nome do Comprador.|Texto|255|Não|
-|`Payment.Type`|Tipo do Meio de Pagamento.|Texto|100|Sim|
-|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número|15|Sim|
-|`Payment.Installments`|Número de Parcelas.|Número|2|Sim|
-|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
-|`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean|5|Não|
-|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto|19|Sim|
-|`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto|25|Não|
-|`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto|7|Sim|
-|`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto|4|Não|
-|`CreditCard.Brand`|Bandeira do cartão.|Texto|10|Sim|
-
-### Resposta
-
-```json
-{
-    "MerchantOrderId": "2014113245231706",
-    "Customer": {
-        "Name": "Comprador rec propria"
-    },
-    "Payment": {
-        "ServiceTaxAmount": 0,
-        "Installments": 1,
-        "Interest": "ByMerchant",
-        "Capture": false,
-        "Authenticate": false,
-        "Recurrent": true,
-        "CreditCard": {
-            "CardNumber": "123412******1231",
-            "Holder": "Teste Holder",
-            "ExpirationDate": "12/2030",
-            "SaveCard": false,
-            "Brand": "Visa"
-        },
-        "ProofOfSale": "3827556",
-        "Tid": "0504043827555",
-        "AuthorizationCode": "149867",
-        "SoftDescriptor":"123456789ABCD",
-        "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
-        "Type": "CreditCard",
-        "Amount": 1500,
-        "Currency": "BRL",
-        "Country": "BRA",
-        "Provider": "Simulado",
-        "ExtraDataCollection": [],
-        "Status": 1,
-        "ReturnCode": "4",
-        "ReturnMessage": "Operation Successful",
-        "Link": {
-                "Method": "GET",
-                "Rel": "recurrentPayment",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
-            },
-            "AuthorizeNow": true
-        },
-        "Links": [
-            {
-                "Method": "GET",
-                "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
-            },
-            {
-                "Method": "PUT",
-                "Rel": "capture",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
-            },
-            {
-                "Method": "PUT",
-                "Rel": "void",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
-            }
-        ]
-    }
-}
-```
-
-```shell
---header "Content-Type: application/json"
---header "RequestId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
---data-binary
-{
-    "MerchantOrderId": "2014113245231706",
-    "Customer": {
-        "Name": "Comprador rec propria"
-    },
-    "Payment": {
-        "ServiceTaxAmount": 0,
-        "Installments": 1,
-        "Interest": "ByMerchant",
-        "Capture": false,
-        "Authenticate": false,
-        "Recurrent": true,
-        "CreditCard": {
-            "CardNumber": "123412******1231",
-            "Holder": "Teste Holder",
-            "ExpirationDate": "12/2030",
-            "SaveCard": false,
-            "Brand": "Visa"
-        },
-        "ProofOfSale": "3827556",
-        "Tid": "0504043827555",
-        "AuthorizationCode": "149867",
-        "SoftDescriptor":"123456789ABCD",
-        "PaymentId": "737a8d9a-88fe-4f74-931f-acf81149f4a0",
-        "Type": "CreditCard",
-        "Amount": 1500,
-        "Currency": "BRL",
-        "Country": "BRA",
-        "ExtraDataCollection": [],
-        "Status": 1,
-        "ReturnCode": "4",
-        "ReturnMessage": "Operation Successful",
-        "Link": {
-                "Method": "GET",
-                "Rel": "recurrentPayment",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/RecurrentPayment/{RecurrentPaymentId}"
-            },
-            "AuthorizeNow": true
-        },
-        "Links": [
-            {
-                "Method": "GET",
-                "Rel": "self",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}"
-            },
-            {
-                "Method": "PUT",
-                "Rel": "capture",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/capture"
-            },
-            {
-                "Method": "PUT",
-                "Rel": "void",
-                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/{PaymentId}/void"
-            }
-        ]
-    }
-}
-```
-
-|Propriedade|Descrição|Tipo|Tamanho|Obrigatório|
-|---|---|---|---|---|
-|`MerchantId`|Identificador da loja na API Cielo eCommerce.|Guid|6|Sim|
-|`MerchantKey`|Chave Publica para Autenticação Dupla na API Cielo eCommerce.|Texto|40|Sim|
-|`RequestId`|Identificador do Request, utilizado quando o lojista usa diferentes servidores para cada GET/POST/PUT|Guid|36|Não|
-|`MerchantOrderId`|Numero de identificação do Pedido.|Texto|50|Sim|
-|`Customer.Name`|Nome do Comprador.|Texto|255|Não|
-|`Payment.Type`|Tipo do Meio de Pagamento.|Texto|100|Sim|
-|`Payment.Amount`|Valor do Pedido (ser enviado em centavos).|Número|15|Sim|
-|`Payment.Installments`|Número de Parcelas.|Número|2|Sim|
-|`Payment.SoftDescriptor`|Texto que será impresso na fatura bancaria do portador - Disponivel apenas para VISA/MASTER - não permite caracteres especiais|Texto|13|Não|
-|`Payment.Recurrent`|marcação de uma transação de recorrencia não programada|boolean|5|Não|
-|`CreditCard.CardNumber`|Número do Cartão do Comprador.|Texto|19|Sim|
-|`CreditCard.Holder`|Nome do Comprador impresso no cartão.|Texto|25|Não|
-|`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto|7|Sim|
-|`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto|4|Não|
-|`CreditCard.Brand`|Bandeira do cartão.|Texto|10|Sim|
 
 ## Modificando dados do comprador
 

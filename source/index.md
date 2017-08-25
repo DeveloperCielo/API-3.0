@@ -226,16 +226,6 @@ O Certificado poderá ser visualizado na aba padrão “Outras Pessoas” ou na 
 
 Repita o mesmo procedimento para os 3 arquivos enviados.
 
-## Dúvidas
-
-Em caso de dúvidas em qualquer etapa ou outras informações técnicas, entre em contato com o Suporte Web do Cielo e-Commerce nos seguintes canais:
-
-* **Email:** [cieloeCommerce@cielo.com.br](mailto:cieloeCommerce@cielo.com.br)
-* **Capitais:** 4002-9700
-* **Demais Cidades:** 0800 570 1700
-
-Horário de atendimento: 24h por dia, 7 dias por semana.
-
 # Sandbox e Ferramentas
 
 ## Sobre o Sandbox
@@ -6629,4 +6619,14 @@ Permite que o lojista envie um texto complementar que será impresso na fatura d
 * Não pode conter caracteres especiais.
 
 Para conhecer e/ou alterar o nome da loja que esta cadastrado entre em contato com a central de relacionamento Cielo.
+
+# Dúvidas e Suporte
+
+Em caso de dúvidas em qualquer etapa ou outras informações técnicas, entre em contato com o Suporte Web do Cielo e-Commerce nos seguintes canais:
+
+* **Email:** [cieloeCommerce@cielo.com.br](mailto:cieloeCommerce@cielo.com.br)
+* **Capitais:** 4002-9700
+* **Demais Cidades:** 0800 570 1700
+
+Horário de atendimento: 24h por dia, 7 dias por semana.
 

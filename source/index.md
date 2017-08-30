@@ -316,14 +316,19 @@ O Post de notificação é enviado com base em uma seleção de eventos a ser fe
 
 Os eventos passiveis de notificação são:
 
-|Meio de Pagamento|Evento|
-|---|---|
-|Cartão de Crédito|Captura|
-|Cartão de Crédito|Cancelamento|
-|Cartão de Crédito|Sondagem|
-|Boleto|Conciliação|
-|Boleto|Cancelamento Manual|
-|Transferência eletrônica|Confirmadas|
+| Meio de Pagamento        | Evento                                                                   |
+|--------------------------|--------------------------------------------------------------------------|
+| Cartão de Crédito        | Captura                                                                  |
+| Cartão de Crédito        | Cancelamento                                                             |
+| Cartão de Crédito        | Sondagem                                                                 |
+| Boleto                   | Conciliação                                                              |
+| Boleto                   | Cancelamento Manual                                                      |
+| Transferência eletrônica | Confirmadas                                                              |
+| Recorrência              | Desabilitado ao atingir número máximo de tentativas (transações negadas) |
+| Recorrência              | Aguardando conciliação de boleto                                         |
+| Recorrência              | Reabilitação - Após pagamento de boleto                                  |
+| Recorrência              | Finalizado - Data de finalização atingida                                |
+| Recorrência              | Desativação                                                              |
 
 <aside class="notice"><strong>Cartão de débito:</strong> Não notificamos transações de Cartão de débito. Sugerimos que seja criada uma URL de RETORNO, onde o comprador será enviado se a transação for finalizada no ambiente do banco. Quando essa URL for acionada, nossa sugestão é que um `GET` seja executado, buscando informações do pedido na API Cielo</aside>
 

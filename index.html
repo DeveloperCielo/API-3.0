@@ -644,6 +644,26 @@ Abaixo especificamos qualquer diferença existente:</p>
 <td>Transferência eletrônica</td>
 <td>Confirmadas</td>
 </tr>
+<tr>
+<td>Recorrência</td>
+<td>Desabilitado ao atingir número máximo de tentativas (transações negadas)</td>
+</tr>
+<tr>
+<td>Recorrência</td>
+<td>Aguardando conciliação de boleto</td>
+</tr>
+<tr>
+<td>Recorrência</td>
+<td>Reabilitação - Após pagamento de boleto</td>
+</tr>
+<tr>
+<td>Recorrência</td>
+<td>Finalizado - Data de finalização atingida</td>
+</tr>
+<tr>
+<td>Recorrência</td>
+<td>Desativação</td>
+</tr>
 </tbody></table>
 
 <aside class="notice"><strong>Cartão de débito:</strong> Não notificamos transações de Cartão de débito. Sugerimos que seja criada uma URL de RETORNO, onde o comprador será enviado se a transação for finalizada no ambiente do banco. Quando essa URL for acionada, nossa sugestão é que um `GET` seja executado, buscando informações do pedido na API Cielo</aside>
@@ -4402,11 +4422,11 @@ Abaixo especificamos qualquer diferença existente:</p>
 
 <p><strong>Estrutura de um RecurrentPaymentID</strong></p>
 
-<p><img src="images/RECpaymentID.png" /></p>
+<p><img src="images/images/RECpaymentID.PNG" /></p>
 
 <p><strong>Fluxo de uma Recorrência Programada</strong></p>
 
-<p><img src="images/FluxosRECPROG.png" /></p>
+<p><img src="images/images/FluxosRECPROG.PNG" /></p>
 
 <h2 id="criando-uma-recorrÊncia-prÓpria">Criando uma RECORRÊNCIA PRÓPRIA</h2>
 
@@ -10793,6 +10813,9 @@ Para utilizar carteiras na API Cielo eCommerce, o lojista deverá possuir as car
 </tbody></table>
 
 <h2 id="como-realizar-transação-com-masterpass">Como realizar transação com MasterPass</h2>
+
+<p>Para utilizar o Masterpass é necessário entrar em contato diretamente com a Mastercard pelo site: https://masterpass.com/pt-br/ e solicitar as credenciais.
+Mais informações e integração completa, você encontra no link: https://developer.mastercard.com/product/masterpass “ </p>
 
 <h3 id="requisição">Requisição</h3>
 

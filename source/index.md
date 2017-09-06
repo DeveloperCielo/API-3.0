@@ -316,19 +316,19 @@ O Post de notificação é enviado com base em uma seleção de eventos a ser fe
 
 Os eventos passiveis de notificação são:
 
-| Meio de Pagamento        | Evento                                                                   |
-|--------------------------|--------------------------------------------------------------------------|
-| Cartão de Crédito        | Captura                                                                  |
-| Cartão de Crédito        | Cancelamento                                                             |
-| Cartão de Crédito        | Sondagem                                                                 |
-| Boleto                   | Conciliação                                                              |
-| Boleto                   | Cancelamento Manual                                                      |
-| Transferência eletrônica | Confirmadas                                                              |
-| Recorrência              | Desabilitado ao atingir número máximo de tentativas (transações negadas) |
-| Recorrência              | Aguardando conciliação de boleto                                         |
-| Recorrência              | Reabilitação - Após pagamento de boleto                                  |
-| Recorrência              | Finalizado - Data de finalização atingida                                |
-| Recorrência              | Desativação                                                              |
+|Meio de Pagamento|Evento|
+|---|---|
+|Cartão de Crédito|Captura|
+|Cartão de Crédito|Cancelamento|
+|Cartão de Crédito|Sondagem|
+|Boleto|Conciliação|
+|Boleto|Cancelamento Manual|
+|Transferência eletrônica|Confirmadas|
+|Recorrência|Desabilitado ao atingir número máximo de tentativas (transações negadas)|
+|Recorrência|Aguardando conciliação de boleto|
+|Recorrência|Reabilitação - Após pagamento de boleto|
+|Recorrência|Finalizado - Data de finalização atingida|
+|Recorrência|Desativação|
 
 <aside class="notice"><strong>Cartão de débito:</strong> Não notificamos transações de Cartão de débito. Sugerimos que seja criada uma URL de RETORNO, onde o comprador será enviado se a transação for finalizada no ambiente do banco. Quando essa URL for acionada, nossa sugestão é que um `GET` seja executado, buscando informações do pedido na API Cielo</aside>
 
@@ -2234,14 +2234,11 @@ curl
 |`Identification`|Documento de identificação do Cedente.|Texto|14|CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -)|
 |`Status`|Status da Transação.|Byte|---|1|
 
-
-
 # Pagamentos Recorrentes
 
 Pagamentos recorrentes são transações que devem se repetir após um determinado periodo de tempo.
 
 São pagamentos normalmente encontrados em **assinaturas**, onde o comprador deseja ser cobrado automaticamente, mas não quer informar novamente os dados do cartão de crédito.
-
 
 ## Tipos de recorrências
 
@@ -2250,21 +2247,19 @@ A API Cielo Ecommerce funciona com dois tipos de Recorrencia que possuem comport
 * **Recorrência Própria** - Quando a inteligência da repetição e dados do cartão da recorrência ficam sobre responsabilidade do lojista
 * **Recorrência Programada** - Quando a inteligência da repetição e dados do cartão da recorrência ficam sobre responsabilidade da **Cielo**
 
-
 ### Recorrência Própria
 
 Nesse modelo, o lojista é responsavel por criar a inteligência necessaria para:
 
-|Inteligência |Descrição |
-|-------------|----------|
-|**Salvar os dados da transação**| A loja precisará armazenar a transação e dados do pagamento|
-|**Criar repetição transacional**| A loja deverá enviar uma nova transação sempre que necessitar de uma Autorização |
+|Inteligência|Descrição|
+|---|---|
+|**Salvar os dados da transação**|A loja precisará armazenar a transação e dados do pagamento|
+|**Criar repetição transacional**|A loja deverá enviar uma nova transação sempre que necessitar de uma Autorização|
 |**Comportamento para transação negada**|Caso uma das transações seja negada, caberá a loja a decisão de "retentar" uma nova autorização|
 
 Em todas as instancias, a recorrencia programada é uma transação padrão para a Cielo, sendo sua unica diferença a necessidade de enviar um a parametro adicional que a define como **Recorrência Própria**
 
 **Paramêtro:** `Payment.Recurrent`= `True`
-
 
 ### Recorrência Programada
 
@@ -2274,10 +2269,10 @@ A **Recorrência Programada** permite que o lojista crie uma transação base, q
 
 Nesse modelo, a API realiza e permite:
 
-|Vantagens |Descrição |
-|----------|----------|
-|**Salva dados transacionais**| Salva dados da transação, criando assim um modelo de como serão as proximas Recorrências|
-|**Automatiza a recorrência**| Sem atuação da loja, a API cria as transações futuras de acordo com as definições do lojista |
+|Vantagens|Descrição|
+|---|---|
+|**Salva dados transacionais**|Salva dados da transação, criando assim um modelo de como serão as proximas Recorrências|
+|**Automatiza a recorrência**|Sem atuação da loja, a API cria as transações futuras de acordo com as definições do lojista|
 |**Permite atualização de dados**|Caso necessario, a API permite modificações das informações da transação ou do ciclo de recorrência|
 
 A Recorrencia Programada é formada por uma estrutura transacional simples. O Lojista deverá informa na transação os seguintes dados:
@@ -2293,8 +2288,8 @@ A Recorrencia Programada é formada por uma estrutura transacional simples. O Lo
 ```
 Onde podemos definir os dados como:
 
-|Paramêtros |Descrição |
-|-----------|----------|
+|Paramêtros|Descrição|
+|---|---|
 |`AuthorizeNow`|Define que qual o momento que uma recorrencia será criada. Se for enviado como `True`, ela é criada no momento da autorização, se `False`, a recorrencia ficará suspensaaté a data escolhida para ser iniciada.|
 |`StartDate`|Define a data que transação da Recorrência Programada será autorizada|
 |`EndDate`|Define a data que a Recorrência Programada será encerrada. Se não for enviada, a Recorrência será executada até ser cancelada pelo lojista|
@@ -2306,28 +2301,21 @@ Desse ponto em diante, ela passará a ocorre dentro do intervalo definido pelo l
 
 Caracteristicas importantes da **Recorrência Programada**:
 
-|Informação |Descrição |
-|:---------:|----------|
+|Informação|Descrição|
+|---|---|
 |**Criação**|A primeira transação é chamada de **"Transação de agendamento"**, todas as transações posteriores serão cópias dessa primeira transação. Ela não precisa ser capturada para que a recorrencia seja criada, basta ser **AUTORIZADA**|
 |**Captura**|Transações de Recorrência Programada não precisam ser capturadas. Após a primeira transação, todas as transações de recorrencia são capturadas automaticamente pela API|
-|**Identificação**|Transações de Recorrência Programada geram dois tipos de identificação:<br><br>**PAYMENTID**: Identifica 1 transação. É o mesmo identificador das outras transações na API    <br><br>**RECURRENTPAYMENTID**: Identifica Pedido de recorrencia. Um RecurrentPaymentID possui inumeros PaymentID vinculados a ela. Essa é a variavel usada para Cancelar uma Recorrencia Programada |
-|**Consultando**|Para consultar, basta usar um dos dois tipos de identificação:<br><br>**PAYMENTID**: Utilizada para consultar UMA TRANSAÇÃO DENTRO DA RECORRÊNCIA    <br><br>**RECURRENTPAYMENTID**: Utilizado para consultar A RECORRÊNCIA. |
+|**Identificação**|Transações de Recorrência Programada geram dois tipos de identificação:<br><br>**PAYMENTID**: Identifica 1 transação. É o mesmo identificador das outras transações na API    <br><br>**RECURRENTPAYMENTID**: Identifica Pedido de recorrencia. Um RecurrentPaymentID possui inumeros PaymentID vinculados a ela. Essa é a variavel usada para Cancelar uma Recorrencia Programada|
+|**Consultando**|Para consultar, basta usar um dos dois tipos de identificação:<br><br>**PAYMENTID**: Utilizada para consultar UMA TRANSAÇÃO DENTRO DA RECORRÊNCIA    <br><br>**RECURRENTPAYMENTID**: Utilizado para consultar A RECORRÊNCIA.|
 |**Cancelamento**|Uma Recorrencia Programada pode ser cancelada de duas maneiras: <br><br>**Lojista**: Solicita o cancelamento da recorrencia. Não cancela transações ja finalizadas antes da ordem de cancelamento da recorrência.  <br><br>**Por cartão invalido**: Caso a API identifique que um cartão salvo está invalido (EX: Expirado) a recorrência será cancelada e não se repetirá, até que o lojista atualize o meio de pagamento. <br><br> **OBS:** Cancelamento de transações dentro da recorrência não encerra o agendamento de transações futuras. Somente o Cancelamento usando o **RecurrentPaymentID** encerra agendamentos futuros.
-
-
 
 **Estrutura de um RecurrentPaymentID**
 
-
 ![](./images/RECpaymentID.PNG)
-
 
 **Fluxo de uma Recorrência Programada**
 
-
 ![](./images/FluxosRECPROG.PNG)
-
-
 
 ## Criando uma RECORRÊNCIA PRÓPRIA
 
@@ -2558,25 +2546,6 @@ curl
 |`CreditCard.ExpirationDate`|Data de validade impresso no cartão.|Texto|7|Sim|
 |`CreditCard.SecurityCode`|Código de segurança impresso no verso do cartão.|Texto|4|Não|
 |`CreditCard.Brand`|Bandeira do cartão.|Texto|10|Sim|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Criando uma RECORRÊNCIA PROGRAMADA
 
@@ -2922,7 +2891,6 @@ curl
 |`Customer.DeliveryAddress.Country`|Pais do endereço do Comprador.|Texto|35|Não|
 |`Customer.DeliveryAddress.District`|Bairro do Comprador.|Texto|50|Não|
 
-
 ### Resposta
 
 ```json
@@ -3025,8 +2993,6 @@ curl
 |`EndDate`|Data do fim da recorrência.|Texto|7|12/2030 (MM/YYYY)|
 |`Interval`|Intervalo entre as recorrência.|Texto|10|<ul><li>Monthly</li><li>Bimonthly </li><li>Quarterly </li><li>SemiAnnual </li><li>Annual</li></ul>|
 |`AuthorizeNow`|Booleano para saber se a primeira recorrencia já vai ser Autorizada ou não.|Booleano|---|true ou false|
-
-
 
 ## Modificando dados do comprador
 

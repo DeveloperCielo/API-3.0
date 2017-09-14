@@ -2023,13 +2023,6 @@ Para criar uma venda cuja a forma de pagamento é boleto, basta fazer um POST co
 
 **OBS:** A API suporta boletos registrados e não registrados, sendo o provider o diferenciador entre eles. Sugerimos que valide com seu banco qual o tipo de boleto suportado por sua carteira. A API Aceita apenas boletos **Bradesco** e **Banco do Brasil**
 
-**OBS:** Devido a exigência bancária, todos os dados enviados para a criação de um boleto não devem possuir caractéres especiais.
-EX:
-
-|Certo|Errado|
-|-----|------|
-|"City": "S**a**o Paulo",|"City": "S**ã**o Paulo",|
-
 ### Requisição
 
 <aside class="request"><span class="method post">POST</span> <span class="endpoint">/1/sales/</span></aside>
@@ -2240,6 +2233,52 @@ curl
 |`Address`|Endereço do Cedente.|Texto|256|Ex: Av. Teste, 160|
 |`Identification`|Documento de identificação do Cedente.|Texto|14|CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -)|
 |`Status`|Status da Transação.|Byte|---|1|
+
+
+
+
+
+## Regras Adicionais
+
+Quantidade de caracteres por campo e Provider:
+
+| Propriedade                   | Observações |    Bradesco    |          Banco do Brasil         |
+|-------------------------------|:-----------:|:--------------:|:--------------------------------:|
+| `Provider`                    |     N/A     |    Bradesco2   |          BancoDoBrasil2          |
+| `MerchantOrderId`             |    OBS 1    |       27       |                50                |
+| `Payment.BoletoNumber`        |    OBS 2    |       11       |                 9                |
+| `Customer.Name`               |    OBS 3    |       34       |                60                |
+| `Customer.Address.Street`     |    OBS 4    |       70       |          Ver comentário          |
+| `Customer.Address.Number`     |    OBS 4    |       10       |          Ver comentário          |
+| `Customer.Address.Complement` |    OBS 4    |       20       |          Ver comentário          |
+| `Customer.Address.District`   |    OBS 4    |       50       |          Ver comentário          |
+| `Customer.Address.City`       |             |   50 - OBS 4   |            18 - OBS 3            |
+| `Payment.Instructions`        |     N/A     |       450      |                450               |
+| `Payment.Demonstrative`       |     N/A     |       255      | Não é enviado ao banco do Brasil |
+
+> **Comentário Banco Do Brasil**: Os campos `Customer.Address.Street`; `Customer.Address.Number`; `Customer.Address.Complement`; `Customer.Address.District` devem totalizar até 60 caracteres.
+
+
+
+
+|Observações  | Bradesco                                          | Banco do Brasil                                                                                          |
+|:-----------:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
+| **OBS 1:**  |Apenas Letras, números e caracteres como "_" e "$" |Não é enviado ao banco                                                                                    |
+| **OBS 2:**  |O valor é persistido no banco                      |Quando enviado acima de 9 posições, a API Cielo trunca automaticamente, considerando os últimos 9 dígitos |
+| **OBS 3:**  |A API Cielo trunca automaticamente                 |**Caracteres válidos:** <BR> Letras de A a Z - MAIÚSCULAS <BR> **Caracteres especiais:** hífen (-) e apóstrofo (') <BR><BR> Quando utilizados, não pode conter espaços entre as letras; <BR><BR><BR> **Exemplos corretos**: D'EL-REI, D'ALCORTIVO, SANT'ANA.<BR><BR> **Exemplos incorretos**: D'EL - REI; até um espaço em branco entre palavras |
+| **OBS 4:**  |O valor é persistido na API Cielo                  | N/A |
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Pagamentos Recorrentes
 

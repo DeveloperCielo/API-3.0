@@ -4524,7 +4524,8 @@ Acesse nosso [**Tutorial**](https://developercielo.github.io/Tutorial//Backoffic
 
 # Cancelando uma venda
 
-O processo de cancelamento está disponivel para todos os meios de pagamento oferecidos na API Cielo Ecommerce. 
+## Cancelando uma venda via API
+O processo de cancelamento via API está disponivel apenas para cartão de crédito e débito. 
 
 Cada meio de pagamento sofre impactos diferentes quando uma ordem de cancelamento (VOID) é executada.
 
@@ -4532,8 +4533,7 @@ Cada meio de pagamento sofre impactos diferentes quando uma ordem de cancelament
 |---|---|---|---|
 |Cartão de crédito|A Cielo devolve o valor via crédito bancario|300 dias pós autorização|Sim|
 |Cartão de Débito|Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista|300 dias pós autorização|Não|
-|Boleto|Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista|Definido pelo lojista|Não|
-|Transferência Eletrônica|Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista|Definido pelo lojista|Não|
+
 
 OBS: Cancelamentos parciais são disponiveis apenas para Cartão de Crédito.
 
@@ -4711,7 +4711,16 @@ https://apisandbox.cieloecommerce.cielo.com.br/1/sales/{paymentId}/void?amount={
 
 ## Cancelamento via Backoffice
 
+O Cancelamento via Backoffice é a unica opção para realizar o cancelamento de transações de boletos e Débito Online.
 É possivel realizar tanto o cancelamento total quanto o Cancelamento parcial via O Backoffice Cielo.
+
+Efeitos sobre o meio de pagamento
+
+|Meio de pagamento|Descrição|Prazo|Participação Cielo|
+|---|---|---|---|
+|Boleto|Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista|Definido pelo lojista|Não|
+|Transferência Eletrônica|Cancelamento apenas na API. O retorno do valor é feito pelo proprio lojista|Definido pelo lojista|Não|
+
 
 Acesse nosso [**Tutorial**](https://developercielo.github.io/Tutorial//Backoffice-3.0)  para maiores informações
 

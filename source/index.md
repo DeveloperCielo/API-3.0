@@ -2288,6 +2288,28 @@ Em todas as instancias, a recorrencia programada é uma transação padrão para
 
 **Paramêtro:** `Payment.Recurrent`= `True`
 
+
+#### Caso de Uso
+
+Este é um exemplo de como a API Cielo Ecommerce permite a utilização de sistemas externos de recorrência em suas transações
+
+A recorrência própria é uma configuração da API Cielo Ecommerce que permite um lojista utilizar um sistema de recorrência interno especifico as suas necessidades de negócio. 
+Nesse modelo, o sistema do lojista é encarregado por definir o período, os dados transacionais, e quando necessário, nos enviar a venda de recorrência.
+
+**Veja um exemplo em uso:**
+
+* Recorrência própria + Cartão Tokenizado
+
+A academia CleverFit possui um sistema de cobrança diferenciado, onde a matricula é cobrada quinzenalmente, mas nunca nos fins de semana.
+
+Por ser um modelo altamente customizado, a CleverFit possui um sistema de recorrência própria, utilizando a API Cielo Ecommerce via dois mecanismos:
+
+1. **Recorrência Própria** - A CleverFit envia os dados da transação como uma venda normal, mas a API identifica que é uma recorrência e aplica regras de autorização diferenciada ao pedido.
+1. **Cartão Tokenizado** - A CleverFit mantem os cartões salvos via a tokenização, diminuindo o risco de assegurar os dados  transacionais em seu sistema.
+
+A CleverFit envia a transação quinzenalmente a API Cielo Ecommerce, usando os Tokens salvos na própria API e optando pela Recorrência Própria, que altera a regra de autorização para se adequar a seu modelo de cobrança
+
+
 ### Recorrência Programada
 
 Nesse modelo, a Cielo é responsavel pela inteligência necessaria para executar uma recorrência de maneira automatica.
@@ -2343,6 +2365,46 @@ Caracteristicas importantes da **Recorrência Programada**:
 **Fluxo de uma Recorrência Programada**
 
 ![](./images/FluxosRECPROG.PNG)
+
+#### Caso de uso
+
+Este é um exemplo de como usar as recorrências da API Cielo Ecommerce para elevar suas vendas:
+
+A recorrência é o processo de salvar uma transação e repeti-la em um intervalo de tempo predefinido. Ideal para modelo de assinaturas.
+
+A recorrência programada cielo tem as seguintes características:
+
+* **Intervalos programados:** Mensal, bimestral, trimestral semestral e anual
+* **Data de validade:** Permite definir se a recorrência vai se encerrar
+* **Retentativa:** se uma transação for negada, vamos retentar a transação até 4x
+* **Atualização:** Permite alterar dados da recorrência, como valor, intervalo.
+
+Veja um exemplo em uso:
+
+* **Recorrência Mensal e anual**
+
+A empresa Musicfy oferece um serviço de assinatura de online onde seus clientes pagam para poderem acessar uma biblioteca de músicas e ouvi-las via streaming.
+
+Para captar o máximo de clientes, eles oferecem 2 maneiras de pagamento:
+
+* Mensal por R$19,90 
+* Anual (com desconto) de R$180,00 
+
+Como eles executam a cobrança mensal ou anual de seus clientes? 
+
+A MusicFy utiliza a Recorrência programada da API Cielo Ecommerce.
+
+Ao criar uma transação, o Musicfy informa que o pedido em questão deve ser repetir mensalmente ou anualmente e que não há data de termino para a cobrança.
+
+Quais as vantagens de usar a recorrência programada para o MusicFy:
+
+1. **Facilidade:** A cobrança de mensalidade é automática, logo o MusicFy não precisa se preocupar em construir um sistema de cobrança.
+	
+2. **Usabilidade:** O valor das assinaturas pode ser atualizado sem a necessidade de refazer a transação. Um mês pode ser cancelado ou a recorrência pode ter um delay ( o modelo de 30 dias gratuito) com apenas uma configuração.
+	
+3. **Segurança:** Não é necessário armazenar dados sensíveis do cartão e do comprador junto a loja.
+	
+4. **Conversão:** A recorrência programada cielo possui um sistema de retentativa automática. Caso uma das transações seja negada, ela será retentada até 4 vezes, buscando atingir a autorização.
 
 ## Criando uma RECORRÊNCIA PRÓPRIA
 
